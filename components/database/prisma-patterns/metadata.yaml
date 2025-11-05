@@ -1,0 +1,13 @@
+component_id: prisma-schema-patterns
+name: Prisma Schema Patterns
+version: 1.0.0
+category: database
+subcategory: prisma
+maintainer: KAPI Templates Team
+
+provides:
+  - prisma_schema_examples
+  - auth_model_patterns
+  - graphql_adapter_patterns
+  - mongodb_schema_examples
+

@@ -1,0 +1,16 @@
+component_id: jwt-express-middleware
+name: Express JWT Middleware
+version: 1.0.0
+category: backend
+subcategory: authentication
+maintainer: KAPI Templates Team
+
+provides:
+  - express_jwt_middleware
+  - request_user_population
+  - bearer_token_parsing
+
+compatible_with:
+  - express>=4
+  - jsonwebtoken>=9
+

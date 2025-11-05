@@ -1,0 +1,106 @@
+---
+title: 'Welcome to My Blog'
+date: '2025-10-02'
+description: 'Learn how to create and publish blog posts with this MDX-powered blog.'
+author: 'Your Name'
+tags: ['welcome', 'tutorial', 'mdx']
+coverImage: '/images/welcome.jpg'
+---
+
+# Welcome to My Blog!
+
+This is your first blog post. It's written in **MDX**, which means you can use regular Markdown syntax with the power of React components.
+
+## Features
+
+This blog includes:
+
+- 📝 **MDX Support**: Write posts in Markdown with JSX
+- 🎨 **Syntax Highlighting**: Beautiful code blocks with Prism.js
+- 🏷️ **Tags**: Organize posts with tags
+- 📅 **Sorting**: Posts automatically sorted by date
+- 📊 **Reading Time**: Automatic reading time calculation
+- 🔗 **RSS Feed**: Subscribe at `/feed.xml`
+
+## Writing Posts
+
+Create a new file in the `posts/` directory:
+
+```mdx
+---
+title: 'My New Post'
+date: '2025-10-03'
+description: 'A brief description of your post'
+author: 'Your Name'
+tags: ['tag1', 'tag2']
+---
+
+# Your Post Title
+
+Your content here...
+```
+
+## Markdown Features
+
+### Code Blocks
+
+```typescript
+const greeting = (name: string) => {
+  console.log(`Hello, ${name}!`);
+};
+
+greeting('World');
+```
+
+```python
+def fibonacci(n):
+    if n <= 1:
+        return n
+    return fibonacci(n-1) + fibonacci(n-2)
+
+print(fibonacci(10))
+```
+
+### Lists
+
+Unordered list:
+- Item 1
+- Item 2
+- Item 3
+
+Ordered list:
+1. First
+2. Second
+3. Third
+
+### Tables
+
+| Feature | Supported |
+|---------|-----------|
+| MDX | ✅ |
+| Syntax Highlighting | ✅ |
+| RSS Feed | ✅ |
+| Tags | ✅ |
+
+### Blockquotes
+
+> "The best way to predict the future is to invent it."
+> — Alan Kay
+
+### Images
+
+Add images to the `public/` directory and reference them:
+
+```markdown
+![Alt text](/images/example.jpg)
+```
+
+## Next Steps
+
+1. Edit this post or delete it
+2. Create new posts in the `posts/` directory
+3. Customize the site title and description in `app/layout.tsx`
+4. Add your own styling in `app/globals.css`
+5. Deploy to Vercel, Netlify, or your preferred hosting platform
+
+Happy blogging! 🎉

@@ -1,0 +1,18 @@
+component_id: fastify-service
+name: Fastify Service Skeleton
+version: 1.0.0
+category: backend
+subcategory: web-server
+complexity: moderate
+maintainer: KAPI Templates Team
+
+provides:
+  - fastify_api_bootstrap
+  - swagger_ready_server
+  - request_context_plugin
+  - healthcheck_route
+
+compatible_with:
+  - node>=18
+  - typescript>=5
+

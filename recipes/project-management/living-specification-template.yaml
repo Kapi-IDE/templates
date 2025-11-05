@@ -1,0 +1,505 @@
+---
+# KAPI Living Specification Template
+# Based on: Comprehensive AI-Augmented Coding Playbook 2025
+# Version: 1.0.0
+# Purpose: External memory system for AI-assisted development
+
+template_metadata:
+  id: "living-specification-template"
+  version: "1.0.0"
+  category: "project-management"
+  last_updated: "2025-01-29"
+  author: "KAPI AI Development Team"
+  description: "Systematic project specification template implementing Backwards Build methodology"
+
+# ===== CORE PROJECT METADATA =====
+project: "[PROJECT_NAME]"
+version: "0.1.0"
+last_updated: "2025-01-29"
+owner: "[TEAM_NAME]"
+stakeholders: ["[SECURITY]", "[PRODUCT]", "[FRONTEND]", "[BACKEND]", "[QA]"]
+status: "planning" # planning | active | completed | on_hold | cancelled
+complexity: "medium" # low | medium | high | critical
+priority: "high" # low | medium | high | critical
+
+# ===== BUSINESS CONTEXT & PROBLEM =====
+context:
+  problem: |
+    [Describe the specific user/business problem being solved]
+    - What pain point does this address?
+    - Who is affected by the current state?
+    - What happens if we don't solve this?
+    
+  business_impact: "high" # high | medium | low
+  success_metrics:
+    - "[Quantifiable outcome 1]"
+    - "[Quantifiable outcome 2]" 
+    - "[User satisfaction improvement]"
+    
+  technical_debt: |
+    [Current system limitations that this addresses]
+    - Legacy system constraints
+    - Performance bottlenecks
+    - Maintenance difficulties
+    
+  opportunity_cost: |
+    [What we're not doing to focus on this]
+    - Alternative approaches considered
+    - Resources being redirected
+
+# ===== CONSTRAINTS & REQUIREMENTS =====
+constraints:
+  regulatory: 
+    - "[GDPR Article 25 - Privacy by Design]"
+    - "[SOX Section 404 - Internal Controls]"
+    - "[HIPAA - Protected Health Information]"
+    
+  technical:
+    - "[<200ms API response time]"
+    - "[99.9% uptime SLA]"
+    - "[Mobile-first responsive design]"
+    - "[Accessibility WCAG AA compliance]"
+    
+  budget: "[Dollar amount with breakdown]"
+  timeline: "[Quarter/Year delivery target]"
+  
+  resource_constraints:
+    - "[Team size limitations]"
+    - "[Technology stack restrictions]"
+    - "[Integration requirements]"
+
+# ===== ARCHITECTURAL DECISIONS =====
+decisions:
+  architecture:
+    chosen_approach: "[Selected technical approach]"
+    rationale: |
+      [Why this approach was selected]
+      - Technical advantages
+      - Business alignment
+      - Risk mitigation
+      
+    alternatives_considered:
+      - option_1: "[Alternative 1 description]"
+        pros: ["[Advantage 1]", "[Advantage 2]"]
+        cons: ["[Disadvantage 1]", "[Disadvantage 2]"]
+        
+      - option_2: "[Alternative 2 description]"
+        pros: ["[Advantage 1]", "[Advantage 2]"]
+        cons: ["[Disadvantage 1]", "[Disadvantage 2]"]
+        
+    trade_offs:
+      sacrificed: "[What we're giving up]"
+      gained: "[What we're optimizing for]"
+      
+    reversibility: "medium" # high | medium | low
+    review_date: "2025-07-15"
+
+# ===== STAKEHOLDER ANALYSIS =====
+stakeholder_analysis:
+  security_team:
+    requirements:
+      - "[Token rotation strategy]"
+      - "[Encrypted data storage]"
+      - "[Comprehensive audit trails]"
+    concerns:
+      - "[Potential attack vectors]"
+      - "[Compliance violations]"
+      - "[Data breach scenarios]"
+    success_criteria:
+      - "[Zero security incidents]"
+      - "[Audit compliance achieved]"
+      - "[Penetration test passed]"
+    communication_frequency: "weekly"
+    
+  product_team:
+    requirements:
+      - "[User experience standards]"
+      - "[Feature completeness]"
+      - "[Performance benchmarks]"
+    concerns:
+      - "[User adoption rates]"
+      - "[Competitive positioning]"
+      - "[Revenue impact]"
+    success_criteria:
+      - "[User satisfaction > 4.5/5]"
+      - "[Feature adoption > 80%]"
+      - "[Churn rate < 5%]"
+    communication_frequency: "bi-weekly"
+    
+  engineering_team:
+    requirements:
+      - "[Code maintainability]"
+      - "[System scalability]"
+      - "[Development velocity]"
+    concerns:
+      - "[Technical debt accumulation]"
+      - "[System complexity]"
+      - "[On-call burden]"
+    success_criteria:
+      - "[Code coverage > 85%]"
+      - "[Build time < 10 minutes]"
+      - "[Mean time to recovery < 1 hour]"
+    communication_frequency: "daily"
+
+# ===== VALIDATION METHODS =====
+validation_methods:
+  red_team_review:
+    description: "Security vulnerability assessment by hostile reviewers"
+    timeline: "[Date for security review]"
+    participants: ["[Security team]", "[External auditor]"]
+    deliverables: ["[Vulnerability report]", "[Mitigation plan]"]
+    
+  crisis_planning:
+    description: "Disaster recovery and business continuity procedures"
+    scenarios:
+      - "[Database corruption during peak hours]"
+      - "[Key team member departure]"
+      - "[Regulatory audit discovery]"
+    deliverables: ["[Recovery runbook]", "[Communication plan]"]
+    
+  compliance_check:
+    description: "Regulatory requirements validation"
+    frameworks: ["[GDPR]", "[SOC2]", "[ISO 27001]"]
+    timeline: "[Compliance review date]"
+    deliverables: ["[Compliance matrix]", "[Gap analysis]"]
+    
+  future_proofing:
+    description: "Scalability and evolution planning"
+    growth_scenarios:
+      - "[10k to 1M users]"
+      - "[5 to 25 engineers]"
+      - "[Single region to global]"
+    deliverables: ["[Scaling roadmap]", "[Migration strategy]"]
+
+# ===== USER STORIES & ACCEPTANCE CRITERIA =====
+user_stories:
+  epic_1:
+    title: "[Epic Name]"
+    description: "[High-level user journey]"
+    stories:
+      - story_1:
+          title: "As a [user type], I want [action] so that [benefit]"
+          acceptance_criteria:
+            - "Given [precondition], when [action], then [expected result]"
+            - "Given [precondition], when [action], then [expected result]"
+          priority: "high"
+          estimation: "[Story points or time estimate]"
+          
+      - story_2:
+          title: "As a [user type], I want [action] so that [benefit]"
+          acceptance_criteria:
+            - "Given [precondition], when [action], then [expected result]"
+            - "Given [precondition], when [action], then [expected result]"
+          priority: "medium"
+          estimation: "[Story points or time estimate]"
+
+# ===== TECHNICAL IMPLEMENTATION PLAN =====
+implementation_plan:
+  phase_1:
+    name: "[Foundation Phase]"
+    duration: "[2 weeks]"
+    deliverables:
+      - "[Database schema design]"
+      - "[API contract definition]"
+      - "[Security framework setup]"
+    success_criteria: ["[All tests pass]", "[Security review complete]"]
+    
+  phase_2:
+    name: "[Core Features Phase]"
+    duration: "[4 weeks]"
+    deliverables:
+      - "[Core functionality implementation]"
+      - "[User interface completion]"
+      - "[Integration testing]"
+    success_criteria: ["[Feature complete]", "[Performance targets met]"]
+    
+  phase_3:
+    name: "[Polish & Deploy Phase]"
+    duration: "[2 weeks]"
+    deliverables:
+      - "[Production deployment]"
+      - "[User documentation]"
+      - "[Monitoring setup]"
+    success_criteria: ["[Production stable]", "[Users onboarded]"]
+
+# ===== TESTING STRATEGY =====
+testing_strategy:
+  unit_tests:
+    coverage_target: "85%"
+    frameworks: ["[Jest]", "[pytest]", "[JUnit]"]
+    automation: "CI/CD pipeline"
+    
+  integration_tests:
+    coverage_target: "70%"
+    focus_areas: ["[API endpoints]", "[Database operations]", "[External services]"]
+    automation: "Staging environment"
+    
+  end_to_end_tests:
+    coverage_target: "Critical user journeys"
+    tools: ["[Playwright]", "[Cypress]", "[Selenium]"]
+    frequency: "Pre-release"
+    
+  performance_tests:
+    load_targets: ["[1000 concurrent users]", "[<200ms response time]"]
+    tools: ["[k6]", "[JMeter]", "[Artillery]"]
+    environments: ["[Staging]", "[Production]"]
+
+# ===== MONITORING & OPERATIONS =====
+monitoring:
+  metrics:
+    business_metrics:
+      - "[User engagement rate]"
+      - "[Feature adoption percentage]" 
+      - "[Revenue impact]"
+      
+    technical_metrics:
+      - "[Response time percentiles]"
+      - "[Error rate]"
+      - "[System availability]"
+      
+    security_metrics:
+      - "[Failed authentication attempts]"
+      - "[Privilege escalation attempts]"
+      - "[Data access patterns]"
+      
+  alerts:
+    critical:
+      - condition: "[Error rate > 1%]"
+        action: "[Page on-call engineer]"
+        
+    warning:
+      - condition: "[Response time > 500ms]"
+        action: "[Slack notification]"
+        
+  runbooks:
+    incident_response: "[Link to incident response procedures]"
+    scaling_procedures: "[Link to scaling playbook]"
+    backup_recovery: "[Link to backup/restore procedures]"
+
+# ===== RISK MANAGEMENT =====
+risks:
+  technical_risks:
+    - risk: "[Database scaling bottleneck]"
+      probability: "medium"
+      impact: "high"
+      mitigation: "[Implement read replicas and caching]"
+      owner: "[Database team]"
+      
+    - risk: "[Third-party API dependency failure]"
+      probability: "low"
+      impact: "high"
+      mitigation: "[Implement fallback mechanisms]"
+      owner: "[Backend team]"
+      
+  business_risks:
+    - risk: "[Competitor launches similar feature]"
+      probability: "medium"
+      impact: "medium"
+      mitigation: "[Focus on unique value proposition]"
+      owner: "[Product team]"
+      
+  operational_risks:
+    - risk: "[Key team member departure]"
+      probability: "low"
+      impact: "high"
+      mitigation: "[Documentation and knowledge sharing]"
+      owner: "[Engineering manager]"
+
+# ===== COMMUNICATION PLAN =====
+communication:
+  status_updates:
+    frequency: "weekly"
+    format: "[Dashboard with key metrics]"
+    audience: ["[Stakeholders]", "[Leadership]"]
+    
+  milestone_reviews:
+    frequency: "end of phase"
+    format: "[Presentation with demo]"
+    audience: ["[Executive team]", "[All stakeholders]"]
+    
+  issue_escalation:
+    level_1: "[Team lead - 2 hours response]"
+    level_2: "[Engineering manager - 4 hours response]"
+    level_3: "[Director - 8 hours response]"
+
+# ===== SUCCESS MEASUREMENT =====
+success_metrics:
+  leading_indicators:
+    - metric: "[Development velocity]"
+      target: "[Story points per sprint]"
+      current: "[Baseline measurement]"
+      
+    - metric: "[Code quality score]"
+      target: "[SonarQube rating A]"
+      current: "[Current rating]"
+      
+  lagging_indicators:
+    - metric: "[User adoption rate]"
+      target: "[80% of target users]"
+      measurement: "[Monthly active users]"
+      
+    - metric: "[Business impact]"
+      target: "[Revenue increase or cost savings]"
+      measurement: "[Quarterly business review]"
+
+# ===== DECISION ARCHITECTURE DOCUMENTS (DADs) =====
+# Reference to separate DAD files for major decisions
+decision_documents:
+  - dad_001: "[Database selection decision]"
+  - dad_002: "[Authentication strategy decision]"  
+  - dad_003: "[Frontend framework decision]"
+  - dad_004: "[Deployment strategy decision]"
+
+# ===== EVOLUTION PLANNING =====
+future_considerations:
+  technical_evolution:
+    - "[Migration to microservices architecture]"
+    - "[Adoption of new frameworks/technologies]"
+    - "[Performance optimization opportunities]"
+    
+  business_evolution:
+    - "[International expansion requirements]"
+    - "[New user segment targeting]"
+    - "[Integration with acquisition targets]"
+    
+  compliance_evolution:
+    - "[New regulatory requirements]"
+    - "[Industry standard changes]"
+    - "[Security framework updates]"
+
+---
+
+# [PROJECT_NAME]: Detailed Implementation Guide
+
+## Problem Statement
+
+[Provide detailed natural language description of the problem, user needs, and business context. Optimal length: 1500 words with concrete examples, user scenarios, and quantifiable impact.]
+
+## Solution Architecture
+
+### System Overview
+
+```mermaid
+graph TD
+    A[User Request] --> B{Authentication}
+    B -->|Valid| C[JWT Token]
+    B -->|Invalid| D[Error Response]
+    C --> E[Protected Resource]
+    D --> F[Login Prompt]
+    E --> G[Business Logic]
+    G --> H[Data Layer]
+    H --> I[Database]
+```
+
+### Component Architecture
+
+[Detailed description of system components, their relationships, and data flow]
+
+### Data Model
+
+[Entity relationship diagrams and data structures]
+
+### Security Architecture
+
+[Security controls, authentication flows, and authorization patterns]
+
+## API Specifications
+
+### Endpoint Documentation
+
+[Detailed API documentation with examples, request/response formats, and error codes]
+
+### Authentication & Authorization
+
+[Detailed authentication flows and permission models]
+
+## User Interface Design
+
+### User Experience Flow
+
+[Step-by-step user journeys with wireframes or mockups]
+
+### Responsive Design Strategy
+
+[Mobile-first approach and responsive breakpoints]
+
+### Accessibility Compliance
+
+[WCAG compliance strategy and implementation details]
+
+## Database Design
+
+### Schema Definition
+
+[Detailed database schema with relationships and constraints]
+
+### Performance Optimization
+
+[Indexing strategy, query optimization, and caching approach]
+
+### Backup & Recovery
+
+[Data protection and disaster recovery procedures]
+
+## Deployment Strategy
+
+### Infrastructure as Code
+
+[Infrastructure definition and deployment automation]
+
+### CI/CD Pipeline
+
+[Continuous integration and deployment workflows]
+
+### Environment Management
+
+[Development, staging, and production environment configurations]
+
+## Quality Assurance
+
+### Testing Approach
+
+[Comprehensive testing strategy with specific test cases]
+
+### Code Quality Standards
+
+[Coding standards, review processes, and quality metrics]
+
+### Performance Benchmarks
+
+[Performance requirements and measurement strategies]
+
+## Operations & Maintenance
+
+### Monitoring & Alerting
+
+[Comprehensive monitoring strategy with specific metrics and alerts]
+
+### Incident Response
+
+[Detailed incident response procedures and escalation paths]
+
+### Capacity Planning
+
+[Growth projections and scaling strategies]
+
+## Documentation & Training
+
+### User Documentation
+
+[End-user guides and training materials]
+
+### Technical Documentation
+
+[Developer guides and system documentation]
+
+### Knowledge Transfer
+
+[Team onboarding and knowledge sharing procedures]
+
+---
+
+*This living specification is maintained as the single source of truth for the project. All implementation decisions and changes should be reflected here to maintain persistent context for AI-assisted development.*
+
+*Last updated: [TIMESTAMP] by [AUTHOR]*
+*Next review: [DATE]*

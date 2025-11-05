@@ -1,0 +1,106 @@
+// Enterprise Analytics Dashboard - Database Schema
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Users and Authentication
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  name      String
+  role      Role     @default(VIEWER)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  sessions      Session[]
+  activityLogs  ActivityLog[]
+
+  @@index([email])
+  @@index([role])
+}
+
+enum Role {
+  ADMIN      // Full access
+  MANAGER    // View + export
+  ANALYST    // View + drill-down
+  VIEWER     // Read-only
+}
+
+model Session {
+  id        String   @id @default(cuid())
+  userId    String
+  token     String   @unique
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([token])
+}
+
+// Analytics Data
+model SalesMetric {
+  id          String   @id @default(cuid())
+  date        DateTime
+  revenue     Float
+  orders      Int
+  customers   Int
+  avgOrderValue Float
+  region      String
+  category    String
+  createdAt   DateTime @default(now())
+
+  @@index([date])
+  @@index([region])
+  @@index([category])
+}
+
+model UserMetric {
+  id             String   @id @default(cuid())
+  date           DateTime
+  activeUsers    Int
+  newUsers       Int
+  churnedUsers   Int
+  sessionDuration Float
+  pageViews      Int
+  bounceRate     Float
+  createdAt      DateTime @default(now())
+
+  @@index([date])
+}
+
+model PerformanceMetric {
+  id              String   @id @default(cuid())
+  date            DateTime
+  responseTime    Float
+  errorRate       Float
+  uptime          Float
+  requestsPerSec  Int
+  createdAt       DateTime @default(now())
+
+  @@index([date])
+}
+
+// Activity Logging
+model ActivityLog {
+  id        String   @id @default(cuid())
+  userId    String
+  action    String   // VIEW, EXPORT, FILTER, DRILL_DOWN
+  resource  String   // Dashboard name, report type
+  metadata  Json?    // Additional context
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([createdAt])
+  @@index([action])
+}

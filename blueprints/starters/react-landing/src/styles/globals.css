@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('/css/bootstrap.css');
+@import url('/css/style.css');
+@import url('/css/responsive.css');
+@import url('/css/meanmenu.min.css');
+
+html {
+  scroll-behavior: smooth;
+}

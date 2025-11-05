@@ -1,0 +1,50 @@
+# Atomic Component: Chat Interface
+
+component_id: streamlit-chat-interface
+name: Streamlit Chat Interface
+version: 1.0.0
+category: frontend
+subcategory: atomic-component
+tech_stack:
+  - python
+  - streamlit
+
+description: "Reusable chat interface component with message history, streaming support, and source citations"
+
+provides:
+  - chat_message_display
+  - streaming_responses
+  - source_citations
+  - chat_input
+
+compatible_with:
+  - streamlit>=1.28.0
+  - any_chat_api
+
+dependencies:
+  runtime:
+    - streamlit>=1.28.0
+
+metrics:
+  token_count: ~250
+  lines_of_code: ~100
+  setup_time_minutes: 1
+  complexity: simple
+
+voice_patterns:
+  - "chat interface component"
+  - "message display"
+  - "streaming chat"
+  - "chat UI"
+
+usage: |
+  from streamlit_components.chat_interface import chat
+
+  # Render messages
+  chat.render_chat_messages(messages)
+
+  # Get user input
+  user_input = chat.chat_input()
+
+  # Stream response
+  full_response = chat.stream_response(response_generator)

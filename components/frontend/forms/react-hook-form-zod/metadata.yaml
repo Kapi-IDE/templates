@@ -1,0 +1,173 @@
+component_id: react-hook-form-zod
+name: React Hook Form + Zod Validation
+description: Production-ready form handling with type-safe Zod validation, error handling, and common patterns
+category: frontend
+subcategory: forms
+type: component
+component_type: atomic
+complexity: medium
+version: 1.0.0
+languages:
+  - typescript
+  - tsx
+frameworks:
+  - react
+  - react-hook-form
+  - zod
+tags:
+  - forms
+  - validation
+  - react
+  - typescript
+  - accessibility
+  - ux
+  - type-safety
+use_cases:
+  - User registration and login
+  - Profile forms
+  - Contact forms
+  - Multi-step forms
+  - Dynamic forms (field arrays)
+  - File upload forms
+  - Settings and preferences
+  - Search forms
+setup_time_minutes: 5
+token_savings: 12000
+lines_of_code: 500
+dependencies:
+  react-hook-form: ^7.49.0
+  zod: ^3.22.0
+  "@hookform/resolvers": ^3.3.0
+features:
+  - Type-safe validation with Zod schemas
+  - Minimal re-renders (uncontrolled inputs)
+  - Clear error messages
+  - Field arrays (dynamic lists)
+  - Async validation
+  - File upload handling
+  - Multi-step forms
+  - Form state management
+  - Accessibility (ARIA labels)
+  - Custom validation
+  - Password strength validation
+  - Email validation
+  - Confirm password validation
+validation_patterns:
+  - Email and password
+  - Password confirmation
+  - Optional fields
+  - Arrays and lists
+  - File uploads
+  - Date validation
+  - URL validation
+  - Custom regex patterns
+  - Async server validation
+  - Cross-field validation
+form_examples:
+  - LoginForm.tsx - Simple login form
+  - RegistrationForm.tsx - User registration with confirmation
+  - ProfileForm.tsx - Complex form with file upload
+  - MultiStepForm.tsx - Wizard pattern
+  - DynamicForm.tsx - Field arrays
+schemas_included:
+  user_schema:
+    - loginSchema
+    - registrationSchema
+    - profileSchema
+    - passwordResetSchema
+    - changePasswordSchema
+    - preferencesSchema
+    - socialLinksSchema
+form_state:
+  - errors - Validation errors
+  - isSubmitting - Form is submitting
+  - isSubmitted - Form has been submitted
+  - isDirty - Any field modified
+  - isValid - Form passes validation
+  - touchedFields - Touched fields
+  - dirtyFields - Modified fields
+accessibility_features:
+  - ARIA labels
+  - Error announcements
+  - Keyboard navigation
+  - Focus management
+  - Screen reader support
+performance_tips:
+  - Use mode onBlur for validation
+  - Avoid unnecessary re-renders
+  - Use defaultValues
+  - Lazy load validation
+  - Debounce async validations
+best_practices:
+  - Use Zod schemas for validation
+  - Provide clear error messages
+  - Use uncontrolled inputs
+  - Implement proper accessibility
+  - Show loading states
+  - Disable submit during submission
+  - Validate on blur
+  - Use TypeScript for type safety
+common_validation_rules:
+  email:
+    - Required
+    - Valid email format
+    - Lowercase conversion
+  password:
+    - Min 8 characters
+    - At least one uppercase
+    - At least one lowercase
+    - At least one number
+    - At least one special character
+  file_upload:
+    - Max file size (5MB)
+    - Allowed file types
+    - Single or multiple files
+provides:
+  - form-handling
+  - type-safe-validation
+  - error-management
+  - field-arrays
+  - file-upload-forms
+  - multi-step-forms
+  - async-validation
+  - accessibility
+compatible_with:
+  - react
+  - typescript
+  - javascript
+  - next.js
+  - vite
+  - tailwind
+  - shadcn-ui
+  - material-ui
+  - jwt-authentication
+  - rest-api
+incompatible_with:
+  - vue
+  - angular
+  - svelte
+  - formik
+  - final-form
+voice_patterns:
+  - add form validation
+  - create login form
+  - implement registration form
+  - add contact form
+  - set up forms with validation
+  - create user input forms
+  - add file upload form
+integration_with:
+  - jwt-authentication - Login forms
+  - file-upload - File handling
+  - autocomplete - Search inputs
+  - date-picker - Date inputs
+  - rich-text-editor - Content forms
+  - image-cropper - Avatar uploads
+related_components:
+  - jwt-authentication
+  - file-upload
+  - autocomplete
+  - date-picker
+  - modal-dialog
+created_at: 2025-01-29
+updated_at: 2025-01-29

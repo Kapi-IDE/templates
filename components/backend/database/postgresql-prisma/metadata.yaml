@@ -1,0 +1,233 @@
+component_id: postgresql-prisma
+name: PostgreSQL + Prisma Setup
+description: Production-ready PostgreSQL database with Prisma ORM, migrations, relations, and type-safe queries
+category: backend
+subcategory: database
+type: component
+component_type: atomic
+complexity: medium
+version: 1.0.0
+languages:
+  - typescript
+  - sql
+frameworks:
+  - prisma
+  - postgresql
+tags:
+  - database
+  - orm
+  - postgresql
+  - prisma
+  - migrations
+  - type-safety
+  - relational-database
+  - sql
+use_cases:
+  - Relational data storage
+  - User authentication systems
+  - Content management systems
+  - E-commerce applications
+  - Social media platforms
+  - SaaS applications
+  - API backends
+  - Data-driven applications
+setup_time_minutes: 10
+token_savings: 20000
+lines_of_code: 800
+dependencies:
+  "@prisma/client": ^5.8.0
+  prisma: ^5.8.0 (dev)
+features:
+  - Type-safe database queries
+  - Automatic migrations
+  - Schema-first development
+  - One-to-one relations
+  - One-to-many relations
+  - Many-to-many relations
+  - Soft deletes
+  - Timestamps (createdAt, updatedAt)
+  - Database seeding
+  - Connection pooling
+  - Transaction support
+  - Pagination helpers
+  - Complex queries
+  - Full-text search ready
+models_included:
+  - User (with authentication)
+  - Profile (one-to-one)
+  - Session (refresh tokens)
+  - Post (content)
+  - Category (taxonomy)
+  - Tag (taxonomy)
+  - PostCategory (join table)
+  - PostTag (join table)
+  - Notification (user notifications)
+  - Upload (file uploads)
+  - AuditLog (activity tracking)
+prisma_commands:
+  development:
+    - npx prisma init - Initialize Prisma
+    - npx prisma migrate dev - Create migration
+    - npx prisma generate - Generate client
+    - npx prisma studio - Open database GUI
+    - npx prisma db seed - Seed database
+    - npx prisma migrate reset - Reset database
+  production:
+    - npx prisma migrate deploy - Apply migrations
+    - npx prisma generate - Generate client
+    - npx prisma migrate status - Check migration status
+schema_features:
+  - cuid() IDs for globally unique identifiers
+  - Email uniqueness constraints
+  - Cascading deletes
+  - Indexes on frequently queried fields
+  - Enums for fixed value sets
+  - JSON fields for flexible data
+  - Text fields for large content
+  - Timestamps with automatic updates
+  - Soft delete support
+  - Foreign key relations
+query_examples:
+  - Basic CRUD operations
+  - Relations (include, select)
+  - Pagination (skip, take)
+  - Filtering (where clauses)
+  - Sorting (orderBy)
+  - Transactions
+  - Aggregations (count, sum, avg)
+  - Batch operations
+  - Upsert operations
+  - Raw SQL queries
+performance_features:
+  - Connection pooling
+  - Query optimization
+  - Index usage
+  - Batch operations
+  - Select only needed fields
+  - Lazy loading support
+security_features:
+  - Password hashing (bcrypt)
+  - SQL injection prevention
+  - Prepared statements
+  - Input validation at schema level
+  - Soft deletes for data recovery
+  - Audit logging
+  - Session management
+best_practices:
+  - Use transactions for multi-step operations
+  - Index frequently queried fields
+  - Use soft deletes for important data
+  - Include timestamps on all models
+  - Use enums for fixed value sets
+  - Validate data at schema level
+  - Use cascading deletes carefully
+  - Version control migrations
+  - Use connection pooling in production
+  - Select only needed fields
+environment_variables:
+  required:
+    - DATABASE_URL - PostgreSQL connection string
+testing:
+  - Separate test database
+  - Migration testing
+  - Seed data for tests
+  - Transaction rollback in tests
+migration_workflow:
+  development:
+    - Edit schema.prisma
+    - Run prisma migrate dev
+    - Review generated SQL
+    - Commit migrations to git
+  production:
+    - Pull migrations from git
+    - Run prisma migrate deploy
+    - Verify with prisma migrate status
+seed_data:
+  - 3 users (admin, user, editor)
+  - 3 profiles
+  - 3 categories
+  - 5 tags
+  - 3 posts (2 published, 1 draft)
+  - Multiple relations
+  - Sample notifications
+  - Audit log entries
+provides:
+  - sql-database
+  - orm-client
+  - type-safe-queries
+  - database-migrations
+  - connection-pool
+  - transaction-support
+  - relations
+  - database-seeding
+  - pagination
+  - soft-deletes
+compatible_with:
+  - node.js
+  - typescript
+  - javascript
+  - express
+  - fastapi
+  - next.js
+  - docker
+  - postgresql
+  - jwt-authentication
+  - redis
+  - rest-api
+  - graphql
+incompatible_with:
+  - mongodb
+  - mysql
+  - sqlite
+  - dynamodb
+  - typeorm
+  - sequelize
+  - mongoose
+voice_patterns:
+  - add postgresql database
+  - set up prisma orm
+  - create database with migrations
+  - add relational database
+  - implement data models
+  - set up user database
+  - add database seeding
+integration_with:
+  - jwt-authentication - User authentication
+  - express-api - REST API routes
+  - graphql-api - GraphQL resolvers
+  - redis-cache - Query caching
+  - docker-compose - Database container
+  - backup-restore - Database backups
+  - elasticsearch - Full-text search
+common_issues:
+  cant_reach_database:
+    - Check DATABASE_URL format
+    - Verify PostgreSQL is running
+    - Check firewall settings
+  migration_conflicts:
+    - Pull latest migrations
+    - Run prisma migrate resolve
+  type_errors_after_schema_changes:
+    - Run prisma generate
+    - Restart TypeScript server
+performance_tips:
+  - Use indexes on queried fields
+  - Select only needed fields
+  - Use connection pooling
+  - Batch operations when possible
+  - Use transactions for consistency
+  - Cache frequently accessed data
+database_url_examples:
+  local: "postgresql://user:password@localhost:5432/mydb"
+  docker: "postgresql://user:password@postgres:5432/mydb"
+  production: "postgresql://user:password@host:5432/mydb?connection_limit=10"
+  heroku: "postgresql://user:password@host.compute.amazonaws.com:5432/dbname"
+related_components:
+  - jwt-authentication
+  - redis-cache
+  - docker-compose
+  - backup-restore
+  - elasticsearch
+  - graphql-api
+created_at: 2025-01-29
+updated_at: 2025-01-29

@@ -1,0 +1,23 @@
+name: legal-analysis-suite
+version: 1.0.0
+steps:
+  - type: shell_command
+    description: Install backend dependencies
+    command: |
+      cd backend && python3 -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt
+  - type: shell_command
+    description: Seed legal database and knowledge store
+    command: |
+      cd backend && python3 setup_legal_database.py
+  - type: shell_command
+    description: Install frontend dependencies
+    command: |
+      cd frontend && npm install
+  - type: shell_command
+    description: Run backend tests
+    command: |
+      cd backend && LEGAL_BLUEPRINT_UNIT_TEST=true python -m pytest
+  - type: shell_command
+    description: Run frontend tests
+    command: |
+      cd frontend && npm test -- --watchAll=false

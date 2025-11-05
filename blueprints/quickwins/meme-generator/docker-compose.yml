@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  meme-generator:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: meme_generator
+    ports:
+      - "8000:8000"
+    environment:
+      - PORT=8000
+      - STORAGE_TYPE=local
+      - UPLOAD_DIR=/app/uploads
+    volumes:
+      - ./uploads:/app/uploads
+      - ./backend:/app/backend
+      - ./frontend:/app/frontend
+    restart: unless-stopped

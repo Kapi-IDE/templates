@@ -1,0 +1,37 @@
+// GraphQL with Pothos Generator Pattern
+// Use case: GraphQL API with Pothos code-first approach
+// Source: Prisma graphql example
+// Features: Automatic GraphQL type generation from Prisma models
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Pothos generator for GraphQL type generation
+generator pothos {
+  provider = "prisma-pothos-types"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id    Int     @id @default(autoincrement())
+  email String  @unique
+  name  String?
+  posts Post[]
+}
+
+model Post {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  title     String
+  content   String?
+  published Boolean  @default(false)
+  viewCount Int      @default(0)
+  author    User?    @relation(fields: [authorId], references: [id])
+  authorId  Int?
+}

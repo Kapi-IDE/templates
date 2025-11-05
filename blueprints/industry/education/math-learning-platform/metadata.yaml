@@ -1,0 +1,213 @@
+name: math-learning-platform
+category: education
+subcategory: learning-management
+description: |
+  Production-ready educational platform for math competition preparation.
+  Modular architecture with kid-friendly UX, perfect for building quiz and
+  learning systems across any subject.
+
+original_use_case: AMC8 Math Competition Preparation
+adaptable_for:
+  - Science quiz platforms
+  - Language learning apps
+  - History and geography quizzes
+  - Coding challenge platforms
+  - General knowledge testing
+  - Educational content delivery
+
+features:
+  - Modular learning content structure
+  - Practice and test modes with timing
+  - Problem browsing and search
+  - Topic-based study guides
+  - Progress tracking dashboard
+  - RESTful API for data access
+  - Math formula support (MathJax)
+  - Mobile-responsive design
+  - Kid-friendly UX with encouragement
+
+tech_stack:
+  backend:
+    - Node.js (>=14.0.0)
+    - Express.js 4.18.0
+  frontend:
+    - Server-side HTML rendering
+    - Vanilla JavaScript
+    - Inline CSS with gradients
+  data:
+    - JSON file-based storage
+    - In-memory caching
+
+architecture:
+  pattern: Modular MVC-like
+  structure:
+    - routes/ (6 route modules)
+    - services/ (business logic)
+    - views/ (HTML generation)
+    - utils/ (helpers)
+
+routes:
+  user_facing:
+    - /: Main dashboard
+    - /study: Study guide
+    - /practice: Practice mode
+    - /browse: Problem catalog
+    - /search: Search functionality
+  api_endpoints:
+    - GET /api/problems/random/:count
+    - GET /api/problems/year/:year
+    - GET /api/problems/topic/:topic
+    - GET /api/statistics
+    - GET /health
+
+setup_time_minutes: 5-10
+
+lines_of_code: ~1500
+
+dependencies:
+  - express: ^4.18.0
+
+environment_variables:
+  - name: PORT
+    description: Web server port
+    required: false
+    default: "3000"
+
+data_requirements:
+  - name: Question Bank
+    file: manager/amc8_question_bank.json
+    format: JSON
+    schema: |
+      {
+        "total_count": number,
+        "years_available": array,
+        "problems": [
+          {
+            "year": number,
+            "problem_num": number,
+            "statement": string,
+            "choices": object,
+            "answer": string,
+            "solution": string
+          }
+        ]
+      }
+
+voice_patterns:
+  - "educational platform"
+  - "quiz system"
+  - "learning management"
+  - "math practice platform"
+  - "student portal"
+  - "online learning"
+  - "educational web app"
+
+educational_value:
+  concepts_taught:
+    - Express.js routing and middleware
+    - RESTful API design
+    - Service layer architecture
+    - Server-side rendering
+    - Modular code organization
+    - Error handling
+    - File-based data management
+
+  learning_path:
+    beginner:
+      - Understand Express.js basics
+      - Explore routing patterns
+      - Study HTML generation
+    intermediate:
+      - Add user authentication
+      - Implement database integration
+      - Create API extensions
+    advanced:
+      - Build real-time features
+      - Deploy to production
+      - Add AI recommendations
+
+  project_extensions:
+    - User authentication system
+    - Database integration (PostgreSQL/MongoDB)
+    - Gamification (points, badges, leaderboards)
+    - Social features (study groups, sharing)
+    - Teacher dashboard
+    - Mobile app version
+    - Real-time multiplayer
+    - AI-powered hints
+
+customization_examples:
+  science_quiz:
+    description: Adapt for science education
+    changes:
+      - Update question schema (topic instead of year)
+      - Replace math topics with science topics
+      - Add image support for diagrams
+
+  language_learning:
+    description: Vocabulary and grammar practice
+    changes:
+      - Add pronunciation audio
+      - Include example sentences
+      - Support multiple languages
+
+  coding_platform:
+    description: Programming challenges
+    changes:
+      - Add code editor integration
+      - Implement test case execution
+      - Support multiple languages
+
+production_ready: true
+
+scalability:
+  current: Small to medium (100-500 users)
+  recommended_upgrades:
+    - Add PostgreSQL/MongoDB database
+    - Implement Redis caching
+    - Add CDN for static assets
+    - Use load balancer for scaling
+
+security_features:
+  - Input sanitization
+  - Path traversal prevention
+  - HTML escaping
+  - Error handling without stack traces
+
+performance:
+  - In-memory question bank caching
+  - Efficient filtering algorithms
+  - Static file caching
+  - Minimal dependencies
+
+mobile_support: true
+responsive_design: true
+
+test_coverage: 0%
+
+difficulty_level: intermediate
+
+estimated_tokens_saved: 800
+
+ideal_for:
+  - Web development courses
+  - Full-stack bootcamps
+  - Computer science projects
+  - Capstone projects
+  - Educational startups
+  - School learning platforms
+
+deployment_options:
+  - Heroku (easiest)
+  - AWS Elastic Beanstalk
+  - Google Cloud Run
+  - Vercel
+  - Railway
+  - Render
+
+browser_support:
+  - Chrome (latest)
+  - Firefox (latest)
+  - Safari (latest)
+  - Edge (latest)
+  - Mobile browsers

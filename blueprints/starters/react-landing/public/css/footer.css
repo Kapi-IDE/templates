@@ -1,0 +1,245 @@
+/* Braine Digital Agency Business HTML-5 Template */
+
+/*** 
+
+====================================================================
+	Main Footer
+====================================================================
+
+***/
+
+.main-footer{
+	position:relative;
+	margin-top: -100px;
+	background-color: var(--color-four);
+}
+
+.main-footer .footer_pattern{
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	background-position: center bottom;
+	background-repeat: no-repeat;
+}
+
+.main-footer .widgets-section{
+	position: relative;
+	padding: 190px 0px 70px;
+}
+
+.main-footer .footer-upper-box{
+	position: relative;
+	padding: 50px 0px 50px;
+	border-bottom: 1px solid rgba(var(--white-color-rgb), 0.07);
+}
+
+.footer-widget{
+	position: relative;
+	margin-bottom: 30px;
+}
+
+.footer-newsletter{
+	position: relative;
+	padding: 34px 35px;
+	border-radius: 8px;
+	background-color: var(--color-seven);
+	border: 1px solid rgba(var(--white-color-rgb), 0.07);
+}
+
+.footer-title{
+	position: relative;
+	font-weight: 600;
+	font-size: 20px;
+	margin-bottom: 15px;
+	text-transform: capitalize;
+	color: var(--white-color);
+}
+
+.footer-newsletter_text{
+	position: relative;
+	font-size: 17px;
+	line-height: 27px;
+	color: var(--color-three);
+}
+
+/* Newsletter Box */
+
+.newsletter-box{
+    position: relative;
+	margin-top: 30px;
+}
+
+.newsletter-box .form-group {
+    position: relative;
+    margin: 0px;
+    width: 100%;
+    max-width: 100%;
+	padding-right: 160px;
+}
+
+.newsletter-box .form-group input[type="text"],
+.newsletter-box .form-group input[type="email"] {
+    position: relative;
+    line-height: 43px;
+    display: block;
+    height: 58px;
+    width: 100%;
+	border-radius: 8px;
+    box-shadow: inherit;
+    font-size: 17px;
+	padding: 10px 10px 10px 50px;
+    transition: all 500ms ease;
+    -moz-transition: all 500ms ease;
+    -webkit-transition: all 500ms ease;
+    -ms-transition: all 500ms ease;
+    -o-transition: all 500ms ease;
+    color:var(--color-six);
+    background: none;
+	border: 1px solid rgba(var(--white-color-rgb), 0.07);
+}
+
+.newsletter-box .form-group .icon{
+	position: absolute;
+	left: 18px;
+	top: 20px;
+	font-size: 18px;
+	color: var(--main-color);
+}
+
+.newsletter-box .form-group button {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+	padding: 17px 32px;
+}
+
+.footer-pages_list{
+	position: relative;
+}
+
+.footer-pages_list li{
+	position: relative;
+	margin-bottom: 15px;
+}
+
+.footer-pages_list li a{
+	position: relative;
+	font-weight: 500;
+	font-size: 16px;
+	color: var(--color-three);
+}
+
+.footer-pages_list li a:hover{
+	color: var(--main-color);
+}
+
+.footer-lists_outer{
+	position: relative;
+	padding-left: 70px;
+}
+
+.footer-lists_outer .column:last-child{
+	position: relative;
+	left: 40px;
+}
+
+.main-footer .footer-bottom{
+	position: relative;
+	padding: 30px 0px;
+	background-color: var(--color-seven);
+}
+
+.footer-copyright{
+	position: relative;
+	font-size: 17px;
+	color: var(--color-three);
+}
+
+.footer-copyright a{
+	position: relative;
+	color: var(--main-color);
+}
+
+.footer-social_box{
+	position: relative;
+}
+
+.footer-social_box a{
+	position: relative;
+	width: 40px;
+	height: 40px;
+	font-size: 14px;
+	line-height: 38px;
+	margin-left: 6px;
+	border-radius: 50px;
+	text-align: center;
+	display: inline-block;
+	color: var(--white-color);
+	border: 1px solid rgba(var(--white-color-rgb), 0.07);
+}
+
+.footer-social_box span{
+	position: relative;
+	font-size: 16px;
+	font-weight: 500;
+	margin-right: 10px;
+	color: var(--color-three);
+}
+
+.footer-social_box a:hover{
+	border-color: var(--main-color);
+	background-color: var(--main-color);
+}
+
+.main-footer .footer-newsletter h5{
+	font-size: 28px;
+}
+
+.main-footer.style-two{
+	overflow: hidden;
+	margin-top: 0px;
+	background-color: var(--color-seven);
+}
+
+.main-footer.style-two .widgets-section{
+	padding-top: 50px;
+}
+
+.main-footer.style-two .footer-lists_outer{
+	padding-left: 0px;
+}
+
+.main-footer.style-two .footer-newsletter{
+	border: none;
+	background-color: var(--color-eight);
+}
+
+.main-footer.style-two .footer_pattern{
+	background-position: center right;
+}
+
+.main-footer.style-two .footer-bottom{
+	background: none;
+	border-top: 1px solid rgba(var(--white-color-rgb), 0.07);
+}
+
+
+.main-footer.style-three{
+	background-color: var(--color-two);
+}
+
+.main-footer.style-three .footer-lists_outer{
+	padding-left: 0px;
+}
+
+.main-footer.style-three .footer-bottom{
+	background: none;
+	border-top: 1px solid rgba(var(--white-color-rgb), 0.07);
+}
+
+.main-footer.style-three .apps-buttons{
+	position: relative;
+	gap: 20px;
+}

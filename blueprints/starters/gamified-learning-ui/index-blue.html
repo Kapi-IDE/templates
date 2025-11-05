@@ -1,0 +1,74 @@
+<html>
+<head>
+    <title>Hi! Welcome! </title>
+    <link rel="stylesheet" href="./css/style-blue.css" >
+    <style type="text/css">@import url(https://fonts.googleapis.com/css?family=Lato:300,400,700,900);</style>
+    <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
+</head>
+<body>
+    <script text="javascript">
+        const count = 200,
+        defaults = {
+            origin: { y: 0.7 },
+        };
+
+        function fire(particleRatio, opts) {
+            confetti(
+            Object.assign({}, defaults, opts, {
+            particleCount: Math.floor(count * particleRatio),
+            })
+        );
+        confetti({
+                ...defaults,
+                particleCount: 20,
+                scalar: 2,
+                shapes: ["emoji"],
+                shapeOptions: {
+                emoji: {
+                    value: ["🎒", "👨‍🎓", "📕", "🧠"],
+                },
+                },
+            });
+
+        }
+
+        fire(0.25, {
+        spread: 26,
+        startVelocity: 55,
+        });
+
+        fire(0.2, {
+        spread: 60,
+        });
+
+        fire(0.35, {
+        spread: 100,
+        decay: 0.91,
+        scalar: 0.8,
+        });
+
+        fire(0.1, {
+        spread: 120,
+        startVelocity: 25,
+        decay: 0.92,
+        scalar: 1.2,
+        });
+
+        fire(0.1, {
+        spread: 120,
+        startVelocity: 45,
+        });
+
+    </script>
+    <div id="root">
+        
+        <div class="App">
+            <header class="App-header">
+                <h1 style="margin-bottom: 0px;">Welcome to Modern AI Pro!!!</h1>
+                <p style="margin-top: 10px; margin-bottom: 50px;">You ran your second container.</p>
+                
+            </header>
+        </div>
+    </div>
+</body>
+</html>

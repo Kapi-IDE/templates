@@ -1,0 +1,116 @@
+component_id: reveal-presentation
+name: Reveal.js Presentation Template
+description: Modern, customizable presentation template with dark theme and variable substitution
+category: documentation
+subcategory: presentations
+type: component
+component_type: atomic
+complexity: low
+version: 1.0.0
+languages:
+  - html
+  - css
+  - javascript
+frameworks:
+  - reveal.js
+tags:
+  - presentation
+  - slides
+  - pitch-deck
+  - documentation
+  - template
+  - dark-theme
+  - responsive
+use_cases:
+  - Product pitches and demos
+  - Technical presentations
+  - Project documentation
+  - Stakeholder updates
+  - Conference talks
+  - Internal training
+setup_time_minutes: 5
+token_savings: 8000
+lines_of_code: 295
+dependencies:
+  - reveal.js: 4.5.0 (CDN)
+features:
+  - Dark theme with customizable colors
+  - 9 pre-built slide templates
+  - Variable substitution (20+ variables)
+  - Fullscreen mode (F key)
+  - Keyboard navigation
+  - Progress bar and slide numbers
+  - Responsive layout
+  - No build step required
+browser_support:
+  - Chrome/Edge (latest)
+  - Firefox (latest)
+  - Safari (latest)
+  - iOS Safari
+  - Chrome Mobile
+variables:
+  basic:
+    - PRODUCT_NAME
+    - PRODUCT_DESCRIPTION
+    - TARGET_AUDIENCE
+  problem:
+    - PROBLEM_TITLE
+    - PROBLEM_DESCRIPTION
+    - PROBLEM_POINTS
+    - PROBLEM_QUOTE
+  solution:
+    - SOLUTION_TITLE
+    - SOLUTION_DESCRIPTION
+    - FEATURE_LIST
+  market:
+    - MARKET_SIZE
+    - USE_CASES
+  features:
+    - FEATURE_CARDS_LEFT
+    - FEATURE_CARDS_RIGHT
+  benefits:
+    - BENEFIT_METRICS
+    - USER_BENEFITS
+    - BUSINESS_BENEFITS
+  technology:
+    - TECH_FRONTEND
+    - TECH_BACKEND
+    - TECH_DATABASE
+    - TECH_INFRASTRUCTURE
+  roadmap:
+    - ROADMAP_PHASE1
+    - ROADMAP_PHASE2
+    - NEXT_STEPS
+  cta:
+    - CTA_DESCRIPTION
+    - CTA_TITLE
+    - CTA_ACTION
+provides:
+  - presentation-slides
+  - pitch-deck
+  - documentation
+  - variable-substitution
+  - dark-theme
+  - responsive-design
+compatible_with:
+  - html
+  - javascript
+  - any-web-server
+  - static-hosting
+  - github-pages
+  - vercel
+  - netlify
+  - markdown
+incompatible_with:
+  - powerpoint
+  - google-slides
+  - keynote
+voice_patterns:
+  - create presentation
+  - add pitch deck
+  - make slides
+  - create product demo slides
+  - add presentation template
+  - build slide deck
+created_at: 2025-01-15
+updated_at: 2025-01-29

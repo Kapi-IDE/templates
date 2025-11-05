@@ -1,0 +1,222 @@
+openapi: 3.0.3
+info:
+  title: Legal Analysis API
+  version: 1.0.0
+servers:
+  - url: http://localhost:5000
+paths:
+  /api/health:
+    get:
+      summary: Health check
+      responses:
+        '200':
+          description: Health status for database and knowledge store.
+  /api/research:
+    post:
+      summary: Run legal research workflow
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - question
+                - attorneyId
+              properties:
+                question:
+                  type: string
+                attorneyId:
+                  type: string
+                clientId:
+                  type: string
+                jurisdiction:
+                  type: string
+                limit:
+                  type: integer
+      responses:
+        '200':
+          description: Research packet with authorities and ethics summary.
+  /api/analyze-document:
+    post:
+      summary: Analyze legal document for risk
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - documentText
+                - documentType
+                - attorneyId
+              properties:
+                documentText:
+                  type: string
+                documentType:
+                  type: string
+                attorneyId:
+                  type: string
+                clientId:
+                  type: string
+                caseId:
+                  type: string
+      responses:
+        '200':
+          description: Document analysis summary with risks and related templates.
+  /api/cases:
+    get:
+      summary: List legal cases
+      parameters:
+        - name: attorneyId
+          in: query
+          schema:
+            type: string
+        - name: clientId
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Paginated case list
+    post:
+      summary: Create legal case
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - caseTitle
+                - attorneyId
+              properties:
+                caseTitle:
+                  type: string
+                caseType:
+                  type: string
+                jurisdiction:
+                  type: string
+                attorneyId:
+                  type: string
+                clientId:
+                  type: string
+                caseSummary:
+                  type: string
+      responses:
+        '201':
+          description: Created case record.
+  /api/cases/{caseId}:
+    put:
+      summary: Update legal case metadata
+      parameters:
+        - name: caseId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Updated case record.
+  /api/cases/{caseId}/analysis:
+    post:
+      summary: Run case analysis
+      parameters:
+        - name: caseId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - caseOverview
+                - legalIssues
+                - attorneyId
+              properties:
+                caseOverview:
+                  type: string
+                legalIssues:
+                  type: array
+                  items:
+                    type: string
+                attorneyId:
+                  type: string
+                clientId:
+                  type: string
+                jurisdiction:
+                  type: string
+      responses:
+        '200':
+          description: Case assessment with strategy guidance.
+  /api/precedents/search:
+    post:
+      summary: Search for relevant precedents
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - legalIssue
+                - attorneyId
+      responses:
+        '200':
+          description: Precedent packet with citation network.
+  /api/privileged-chat/session:
+    post:
+      summary: Start privileged chat session
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - attorneyId
+              properties:
+                attorneyId:
+                  type: string
+                clientId:
+                  type: string
+      responses:
+        '201':
+          description: Session identifiers.
+  /api/privileged-chat:
+    post:
+      summary: Send privileged message
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - sessionId
+                - sessionToken
+                - attorneyId
+                - message
+      responses:
+        '200':
+          description: AI response stored as privileged communication.
+  /api/ethics/audit:
+    get:
+      summary: Retrieve ethics audit summary
+      parameters:
+        - name: attorneyId
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Ethics compliance summary for attorney.

@@ -1,0 +1,48 @@
+component_id: mdx-blog-utils
+name: MDX Blog Utilities
+version: 1.0.0
+category: content
+subcategory: mdx-processing
+language: TypeScript
+framework: Next.js
+
+description: |
+  File-based MDX blog utilities for Next.js applications.
+  Parse frontmatter, load posts, sort by date, and generate slugs.
+
+features:
+  - Frontmatter parsing with gray-matter
+  - File-based content management
+  - Post metadata extraction
+  - Automatic sorting by date
+  - Slug generation from filenames
+  - Tag filtering
+  - Reading time calculation
+
+dependencies:
+  - gray-matter: ^4.0.3
+  - next: ^14.0.0
+
+use_cases:
+  - Blog platforms
+  - Documentation sites
+  - Content management
+  - Static site generation
+  - Knowledge bases
+
+created_for: blueprints/quickwins/markdown-blog
+
+example_usage: |
+  import { getAllPosts, getPostBySlug, formatDate } from './mdx-utils';
+
+  // Get all posts (sorted by date)
+  const posts = getAllPosts();
+
+  // Get single post
+  const post = getPostBySlug('my-post-slug');
+
+  // Format date
+  const formatted = formatDate(post.date);
+
+  // Get posts by tag
+  const taggedPosts = getPostsByTag('nextjs');

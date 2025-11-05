@@ -1,0 +1,180 @@
+{
+  "urgency_thresholds": {
+    "immediate": {
+      "score": 8,
+      "action": "call_911",
+      "description": "Life-threatening emergency requiring immediate medical attention"
+    },
+    "urgent": {
+      "score": 6,
+      "action": "emergency_department",
+      "description": "Urgent medical attention needed within 2 hours"
+    },
+    "semi_urgent": {
+      "score": 4,
+      "action": "clinic_today",
+      "description": "Should be seen by healthcare provider within 24 hours"
+    },
+    "less_urgent": {
+      "score": 2,
+      "action": "schedule_appointment",
+      "description": "Schedule appointment within 1-2 weeks"
+    },
+    "non_urgent": {
+      "score": 1,
+      "action": "self_care",
+      "description": "Self-care measures appropriate"
+    }
+  },
+  "red_flag_symptoms": [
+    {
+      "symptom": "chest_pain",
+      "triggers": [
+        "crushing_or_squeezing_pain",
+        "pain_radiating_to_arm",
+        "associated_shortness_of_breath",
+        "associated_sweating",
+        "nausea_with_chest_pain"
+      ],
+      "immediate_escalation": true
+    },
+    {
+      "symptom": "headache",
+      "triggers": [
+        "sudden_severe_onset",
+        "worst_headache_ever",
+        "headache_with_fever_and_stiff_neck",
+        "headache_with_vision_changes",
+        "headache_after_head_trauma"
+      ],
+      "immediate_escalation": true
+    },
+    {
+      "symptom": "shortness_of_breath",
+      "triggers": [
+        "inability_to_speak_full_sentences",
+        "shortness_of_breath_at_rest",
+        "blue_lips_or_fingernails",
+        "associated_chest_pain"
+      ],
+      "immediate_escalation": true
+    },
+    {
+      "symptom": "abdominal_pain",
+      "triggers": [
+        "severe_sudden_onset_pain",
+        "rigid_or_board_like_abdomen",
+        "vomiting_blood",
+        "high_fever_with_abdominal_pain"
+      ],
+      "immediate_escalation": true
+    }
+  ],
+  "age_modifiers": [
+    {
+      "age_group": "pediatric",
+      "range": "0-17",
+      "modifier": 1,
+      "special_considerations": [
+        "Different normal vital signs",
+        "Higher fever tolerance in some cases",
+        "Dehydration risk with vomiting/diarrhea"
+      ]
+    },
+    {
+      "age_group": "adult",
+      "range": "18-64",
+      "modifier": 0,
+      "special_considerations": []
+    },
+    {
+      "age_group": "elderly",
+      "range": "65+",
+      "modifier": 1,
+      "special_considerations": [
+        "Atypical presentation of serious conditions",
+        "Higher risk for complications",
+        "Medication interactions more common"
+      ]
+    }
+  ],
+  "comorbidity_modifiers": [
+    {
+      "condition": "diabetes",
+      "modifier": 1,
+      "high_risk_symptoms": ["infection", "chest_pain", "vision_changes"]
+    },
+    {
+      "condition": "hypertension",
+      "modifier": 1,
+      "high_risk_symptoms": ["headache", "chest_pain", "shortness_of_breath"]
+    },
+    {
+      "condition": "heart_disease",
+      "modifier": 2,
+      "high_risk_symptoms": ["chest_pain", "shortness_of_breath", "fatigue", "swelling"]
+    },
+    {
+      "condition": "copd",
+      "modifier": 1,
+      "high_risk_symptoms": ["shortness_of_breath", "cough", "fever"]
+    },
+    {
+      "condition": "immunocompromised",
+      "modifier": 2,
+      "high_risk_symptoms": ["fever", "infection", "unusual_symptoms"]
+    }
+  ],
+  "escalation_protocols": {
+    "call_911": {
+      "priority": "immediate",
+      "instructions": [
+        "Call 911 immediately",
+        "Stay on the line with dispatcher",
+        "Do not drive yourself to hospital",
+        "Have someone stay with you"
+      ],
+      "provider_notification": "immediate"
+    },
+    "emergency_department": {
+      "priority": "urgent",
+      "instructions": [
+        "Go to nearest emergency department",
+        "Have someone drive you or call ambulance",
+        "Bring list of medications and medical history",
+        "Do not delay seeking care"
+      ],
+      "provider_notification": "within_1_hour"
+    },
+    "clinic_today": {
+      "priority": "semi_urgent",
+      "instructions": [
+        "Contact your healthcare provider today",
+        "If unable to reach provider, consider urgent care",
+        "Monitor symptoms closely",
+        "Seek immediate care if symptoms worsen"
+      ],
+      "provider_notification": "within_4_hours"
+    },
+    "schedule_appointment": {
+      "priority": "routine",
+      "instructions": [
+        "Schedule appointment with healthcare provider",
+        "Continue monitoring symptoms",
+        "Seek urgent care if symptoms worsen",
+        "Follow up within 1-2 weeks"
+      ],
+      "provider_notification": "next_business_day"
+    },
+    "self_care": {
+      "priority": "low",
+      "instructions": [
+        "Continue self-care measures",
+        "Monitor symptoms",
+        "Schedule routine appointment if symptoms persist",
+        "Seek care if symptoms worsen"
+      ],
+      "provider_notification": "none"
+    }
+  }
+}

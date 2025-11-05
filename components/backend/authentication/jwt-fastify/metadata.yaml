@@ -1,0 +1,16 @@
+component_id: jwt-fastify-plugin
+name: Fastify JWT Plugin
+version: 1.0.0
+category: backend
+subcategory: authentication
+maintainer: KAPI Templates Team
+
+provides:
+  - fastify_jwt_plugin
+  - request_user_decoration
+  - bearer_token_parsing
+
+compatible_with:
+  - fastify>=4
+  - jsonwebtoken>=9
+

@@ -1,0 +1,174 @@
+component_id: jwt-authentication-node
+name: JWT Authentication (Node.js/TypeScript)
+description: Production-ready JWT authentication with access/refresh tokens, password hashing, and blacklisting
+category: backend
+subcategory: authentication
+type: component
+component_type: atomic
+complexity: medium
+version: 1.0.0
+languages:
+  - typescript
+  - javascript
+frameworks:
+  - express
+  - node.js
+tags:
+  - jwt
+  - authentication
+  - authorization
+  - security
+  - tokens
+  - bcrypt
+  - middleware
+  - api-security
+use_cases:
+  - User authentication systems
+  - API authorization
+  - Microservices authentication
+  - Mobile app backends
+  - SaaS applications
+  - Admin dashboards
+  - Protected API routes
+  - Session management
+setup_time_minutes: 5
+token_savings: 15000
+lines_of_code: 600
+dependencies:
+  jsonwebtoken: ^9.0.0
+  bcrypt: ^5.1.0
+  express: ^4.18.0
+dev_dependencies:
+  "@types/jsonwebtoken": ^9.0.0
+  "@types/bcrypt": ^5.0.0
+  "@types/express": ^4.17.0
+  typescript: ^5.0.0
+features:
+  - Access and refresh token generation
+  - Token verification middleware
+  - Password hashing with bcrypt
+  - Token blacklisting for logout
+  - Role-based authorization
+  - Permission-based authorization
+  - Rate limiting
+  - API key validation
+  - Comprehensive error handling
+  - TypeScript type safety
+security_features:
+  - bcrypt password hashing (10 rounds)
+  - Short-lived access tokens (15m)
+  - Long-lived refresh tokens (7d)
+  - Token blacklisting on logout
+  - Rate limiting on auth endpoints
+  - Protection against timing attacks
+  - No sensitive data in JWT payload
+  - Environment-based secrets
+  - Token expiry validation
+  - Authorization header extraction
+api_endpoints:
+  - POST /api/auth/register - User registration
+  - POST /api/auth/login - User login
+  - POST /api/auth/refresh - Refresh access token
+  - POST /api/auth/logout - Logout and blacklist token
+  - GET /api/auth/me - Get current user
+  - PUT /api/auth/password - Change password
+middleware:
+  - authMiddleware - Verify JWT and attach user
+  - optionalAuthMiddleware - Optional authentication
+  - requireRole(...roles) - Role-based access
+  - requirePermission(...perms) - Permission-based access
+  - rateLimitMiddleware(max, window) - Rate limiting
+  - apiKeyMiddleware - API key validation
+environment_variables:
+  required:
+    - JWT_SECRET - Access token secret (min 32 chars)
+    - JWT_REFRESH_SECRET - Refresh token secret (min 32 chars)
+  optional:
+    - JWT_EXPIRES_IN - Access token expiry (default 15m)
+    - JWT_REFRESH_EXPIRES_IN - Refresh token expiry (default 7d)
+    - JWT_ALGORITHM - Signing algorithm (default HS256)
+    - BCRYPT_ROUNDS - Password hashing rounds (default 10)
+token_strategy:
+  access_token:
+    expiry: 15 minutes
+    storage: Memory/State
+    purpose: API authorization
+  refresh_token:
+    expiry: 7 days
+    storage: httpOnly cookie
+    purpose: Token renewal
+examples:
+  - basic-jwt.ts - Simple token generation and verification
+  - refresh-token.ts - Access + refresh token flow
+  - blacklist.ts - Token blacklisting patterns
+testing:
+  unit_tests: true
+  integration_tests: true
+  coverage: 90%+
+performance:
+  token_generation_ms: 1
+  token_verification_ms: 0.5
+  password_hashing_ms: 100
+provides:
+  - jwt-generation
+  - jwt-verification
+  - password-hashing
+  - token-blacklisting
+  - auth-middleware
+  - role-based-access
+  - permission-based-access
+  - rate-limiting
+  - api-key-validation
+compatible_with:
+  - express
+  - node.js
+  - typescript
+  - javascript
+  - postgresql-prisma
+  - mongodb
+  - redis
+  - docker
+  - rest-api
+  - microservices
+incompatible_with:
+  - clerk-auth
+  - auth0
+  - supabase-auth
+  - firebase-auth
+  - nextauth
+  - oauth-only-systems
+voice_patterns:
+  - add jwt authentication
+  - set up user authentication
+  - implement token authentication
+  - add login system
+  - create auth middleware
+  - add role-based access control
+  - implement refresh tokens
+integration_with:
+  - postgresql-prisma - User model with password hash
+  - redis - Token blacklist storage
+  - rate-limiter - Protect auth endpoints
+  - cors - Cross-origin authentication
+  - password-reset - Password reset flow
+  - oauth-providers - Social login integration
+  - 2fa-totp - Two-factor authentication
+  - rbac-permissions - Role-based access control
+best_practices:
+  - Use strong secrets (min 32 characters)
+  - Store secrets in environment variables
+  - Use short expiry for access tokens
+  - Use HTTPS in production
+  - Implement rate limiting on auth endpoints
+  - Hash passwords with bcrypt (10+ rounds)
+  - Validate all user inputs
+  - Implement token blacklisting for logout
+  - Use httpOnly cookies for refresh tokens
+  - Never store sensitive data in JWT payload
+common_issues:
+  - jwt_malformed - Token not properly formatted
+  - jwt_expired - Token expired (use refresh token)
+  - invalid_signature - Secret mismatch
+browser_support: N/A (Backend component)
+created_at: 2025-01-29
+updated_at: 2025-01-29

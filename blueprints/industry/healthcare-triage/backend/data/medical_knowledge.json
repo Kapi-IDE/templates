@@ -1,0 +1,189 @@
+{
+  "symptoms": [
+    {
+      "id": 1,
+      "name": "chest_pain",
+      "description": "Pain or discomfort in the chest area",
+      "severity_base": 7,
+      "red_flags": ["crushing pain", "radiating to arm", "shortness of breath", "sweating"],
+      "associated_conditions": ["myocardial_infarction", "angina", "pulmonary_embolism", "pneumothorax"],
+      "triage_modifiers": {
+        "age_over_50": 2,
+        "diabetes": 1,
+        "hypertension": 1,
+        "smoking_history": 1
+      },
+      "questions": [
+        "On a scale of 1-10, how severe is your chest pain?",
+        "Does the pain radiate to your arm, jaw, or back?",
+        "Are you experiencing shortness of breath?",
+        "Do you have a history of heart disease?"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "headache",
+      "description": "Pain in the head or upper neck",
+      "severity_base": 3,
+      "red_flags": ["sudden onset", "worst headache ever", "fever", "neck stiffness", "vision changes"],
+      "associated_conditions": ["migraine", "tension_headache", "cluster_headache", "meningitis", "stroke"],
+      "triage_modifiers": {
+        "sudden_onset": 4,
+        "neck_stiffness": 3,
+        "fever": 2,
+        "vision_changes": 2
+      },
+      "questions": [
+        "How long have you had this headache?",
+        "Is this the worst headache you've ever experienced?",
+        "Do you have any neck stiffness or fever?",
+        "Are you experiencing any vision changes?"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "shortness_of_breath",
+      "description": "Difficulty breathing or feeling breathless",
+      "severity_base": 6,
+      "red_flags": ["at rest", "unable to speak in full sentences", "blue lips", "chest pain"],
+      "associated_conditions": ["asthma", "copd", "pneumonia", "heart_failure", "pulmonary_embolism"],
+      "triage_modifiers": {
+        "at_rest": 3,
+        "unable_to_speak": 4,
+        "chest_pain": 2,
+        "copd_history": 1
+      },
+      "questions": [
+        "Are you short of breath at rest or only with activity?",
+        "Can you speak in full sentences?",
+        "Do you have a history of lung or heart problems?",
+        "Are you experiencing any chest pain?"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "abdominal_pain",
+      "description": "Pain in the stomach or belly area",
+      "severity_base": 4,
+      "red_flags": ["severe sudden onset", "rigid abdomen", "vomiting blood", "fever"],
+      "associated_conditions": ["appendicitis", "gastritis", "kidney_stones", "gallstones", "bowel_obstruction"],
+      "triage_modifiers": {
+        "right_lower_quadrant": 2,
+        "rigid_abdomen": 3,
+        "vomiting": 1,
+        "fever": 2
+      },
+      "questions": [
+        "Where exactly is your abdominal pain located?",
+        "On a scale of 1-10, how severe is the pain?",
+        "Are you experiencing nausea or vomiting?",
+        "Do you have any fever?"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "fever",
+      "description": "Elevated body temperature",
+      "severity_base": 3,
+      "red_flags": ["temperature over 103F", "difficulty breathing", "confusion", "rash"],
+      "associated_conditions": ["infection", "flu", "pneumonia", "urinary_tract_infection"],
+      "triage_modifiers": {
+        "temp_over_103": 2,
+        "difficulty_breathing": 3,
+        "confusion": 3,
+        "immunocompromised": 2
+      },
+      "questions": [
+        "What is your temperature?",
+        "How long have you had the fever?",
+        "Are you experiencing any other symptoms?",
+        "Do you have any medical conditions that affect your immune system?"
+      ]
+    }
+  ],
+  "conditions": [
+    {
+      "id": 1,
+      "name": "myocardial_infarction",
+      "description": "Heart attack - blockage of blood flow to heart muscle",
+      "severity": 10,
+      "treatment_protocol": "Immediate emergency care, aspirin, cardiac catheterization",
+      "escalation_required": true,
+      "symptoms": ["chest_pain", "shortness_of_breath", "sweating", "nausea"],
+      "risk_factors": ["age", "smoking", "diabetes", "hypertension", "family_history"]
+    },
+    {
+      "id": 2,
+      "name": "migraine",
+      "description": "Severe headache often with sensitivity to light and sound",
+      "severity": 5,
+      "treatment_protocol": "Rest in dark room, pain medication, anti-nausea medication",
+      "escalation_required": false,
+      "symptoms": ["headache", "nausea", "light_sensitivity", "sound_sensitivity"],
+      "risk_factors": ["stress", "hormonal_changes", "certain_foods", "sleep_changes"]
+    },
+    {
+      "id": 3,
+      "name": "pneumonia",
+      "description": "Infection that inflames air sacs in lungs",
+      "severity": 6,
+      "treatment_protocol": "Antibiotics, rest, fluids, oxygen therapy if needed",
+      "escalation_required": true,
+      "symptoms": ["fever", "cough", "shortness_of_breath", "chest_pain"],
+      "risk_factors": ["age", "smoking", "chronic_illness", "weakened_immune_system"]
+    },
+    {
+      "id": 4,
+      "name": "appendicitis",
+      "description": "Inflammation of the appendix",
+      "severity": 8,
+      "treatment_protocol": "Surgical removal of appendix (appendectomy)",
+      "escalation_required": true,
+      "symptoms": ["abdominal_pain", "nausea", "vomiting", "fever"],
+      "risk_factors": ["age_10_30", "family_history", "certain_infections"]
+    }
+  ],
+  "treatments": [
+    {
+      "condition": "chest_pain",
+      "immediate_actions": [
+        "Call 911 if severe or associated with shortness of breath",
+        "Give aspirin if no allergies",
+        "Monitor vital signs",
+        "Prepare for emergency transport"
+      ],
+      "follow_up": [
+        "Cardiac evaluation within 24 hours",
+        "EKG and cardiac enzymes",
+        "Stress test if stable"
+      ]
+    },
+    {
+      "condition": "headache",
+      "immediate_actions": [
+        "Assess for red flag symptoms",
+        "Pain medication as appropriate",
+        "Rest in quiet, dark environment"
+      ],
+      "follow_up": [
+        "Neurology referral if recurrent",
+        "CT scan if sudden onset or severe",
+        "Medication management"
+      ]
+    },
+    {
+      "condition": "shortness_of_breath",
+      "immediate_actions": [
+        "Assess oxygen saturation",
+        "Position patient upright",
+        "Provide oxygen if needed",
+        "Bronchodilator if asthma history"
+      ],
+      "follow_up": [
+        "Chest X-ray",
+        "Pulmonary function tests",
+        "Cardiology evaluation if indicated"
+      ]
+    }
+  ]
+}

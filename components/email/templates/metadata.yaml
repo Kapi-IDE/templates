@@ -1,0 +1,13 @@
+component_id: email-template-renderer
+name: Email Template Renderer
+version: 1.0.0
+category: email
+subcategory: templating
+maintainer: KAPI Templates Team
+
+provides:
+  - multi_engine_template_rendering
+  - html_to_text_conversion
+  - css_inlining
+  - preview_mode_support
+

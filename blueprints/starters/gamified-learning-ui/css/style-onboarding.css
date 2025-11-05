@@ -1,0 +1,31 @@
+.overlay-top {
+    background-image: url('../images/plain-header.png');
+}
+
+.header-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Ensure space between video and text */
+    padding: 20px;
+}
+
+.video-container {
+    flex: 1;
+    max-width: 490px; /* Match the iframe width */
+    margin-right: 20px; /* Add space between the video and the header content */
+}
+
+
+.header-content {
+    background-color: rgba(255, 255, 255, 0.0); /* Semi-transparent background */
+    padding: 20px;
+    border-radius: 15px;
+    color: #fff; /* Darker text color */
+    width: 300px; /* Set a fixed width for the login form */
+    margin-right: 50px; /* Add margin to move the container away from the edge */
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2); /* Add a slight shadow for depth */
+}
+
+.header-content p{
+    font-size: 1.5em;
+}

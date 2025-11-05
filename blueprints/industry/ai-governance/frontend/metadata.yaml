@@ -1,0 +1,46 @@
+blueprint_id: next-landing-page
+name: Next.js Landing Page Starter
+version: 0.1.0
+category: starter
+subcategory: marketing-site
+setup_time_minutes: 15
+token_savings: 12000
+tech_stack:
+  - nextjs
+  - react
+  - tailwindcss
+  - typescript
+provides:
+  - marketing_site
+  - hero_section
+  - testimonial_section
+  - waitlist_modal
+compatible_with:
+  - vercel
+  - netlify
+  - render
+incompatible_with: []
+description: |
+  A polished Next.js App Router landing page with hero, feature, stats, testimonial, and call-to-action sections. Ideal for SaaS launches and agency retainers.
+features:
+  - Responsive dark UI built with Tailwind CSS
+  - SEO metadata and structured data ready to update
+  - Reusable React components for each section
+  - Waitlist modal hooked up with a simple custom event
+  - Ready-to-run example with minimal dependencies
+voice_patterns:
+  - "nextjs landing page"
+  - "next hero template"
+  - "tailwind marketing starter"
+  - "saas landing page blueprint"
+  - "nextjs app router landing"
+deployment:
+  instructions:
+    - npm install
+    - npm run build
+    - npm start
+  platforms:
+    - vercel
+    - netlify
+    - docker
+metadata_version: 1

@@ -1,0 +1,12 @@
+component_id: deterministic-faker
+name: Deterministic Fake Data Generator
+version: 1.0.0
+category: testing
+subcategory: data-generation
+maintainer: KAPI Templates Team
+
+provides:
+  - seeded_random_generators
+  - deterministic_fake_entities
+  - locale_aware_generators
+

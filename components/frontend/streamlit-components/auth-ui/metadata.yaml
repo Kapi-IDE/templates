@@ -1,0 +1,58 @@
+# Atomic Component: Authentication UI
+
+component_id: streamlit-auth-ui
+name: Streamlit Authentication UI
+version: 1.0.0
+category: frontend
+subcategory: atomic-component
+tech_stack:
+  - python
+  - streamlit
+
+description: "Reusable authentication UI with login, signup, logout, and session management"
+
+provides:
+  - login_form
+  - signup_form
+  - logout_button
+  - session_management
+  - auth_guards
+
+compatible_with:
+  - streamlit>=1.28.0
+  - jwt_authentication
+  - any_auth_api
+
+dependencies:
+  runtime:
+    - streamlit>=1.28.0
+
+metrics:
+  token_count: ~320
+  lines_of_code: ~140
+  setup_time_minutes: 1
+  complexity: simple
+
+voice_patterns:
+  - "login component"
+  - "authentication UI"
+  - "auth form"
+  - "user login"
+  - "session management"
+
+usage: |
+  from streamlit_components.auth_ui import auth
+
+  # Login form
+  auth.login_form(on_login=login_function)
+
+  # Check authentication
+  if auth.require_auth():
+      # Protected content
+      auth.display_user_info()
+
+  # Logout
+  auth.logout_button()
+
+  # Get auth headers
+  headers = auth.get_auth_headers()

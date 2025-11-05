@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Start Challenge</title>
+    <script src="https://unpkg.com/htmx.org@1.7.0"></script>
+</head>
+<body>
+    <h2>Login</h2>
+    <form hx-post="http://localhost:8001/login" hx-target="#login-response"
+    hx-swap="innerHTML">
+        <input type="text" id="username" name="username" placeholder="Username" required><br>
+        <input type="password" id="password" name="password" placeholder="Password" required><br><br>
+        <input type="submit" value="Login">
+    </form>
+
+    <div id="login-response"></div>
+
+    <button hx-get="http://localhost:8001/start-challenge" 
+    hx-target="#session-id" hx-swap="innerHTML"> 
+    Start Challenge</button>
+    <div id="session-id"></div>
+
+    <button id="start-challenge-btn" hx-get="http://localhost:8001/load-mcq?session_id=72" hx-trigger="click" hx-target="#session-info" hx-swap="innerHTML">Load Questions</button>
+    <div id="session-info"></div>
+
+    <!-- Submit Answer Button (POST request) -->
+    <form hx-post="http://localhost:8001/submit-answer" 
+    hx-target="#response" 
+    hx-swap="innerHTML">
+<input type="hidden" name="session_id" value="72">
+<input type="hidden" name="question_id" value="13">
+<input type="hidden" name="choice" value="2">
+<input type="submit" value="Submit Answer">
+</form>
+    
+
+    <div id="response"></div>
+
+    <script>
+        document.addEventListener('htmx:afterRequest', function(event) {
+            if (event.detail.target.id === 'session-info') {
+                var response = event.detail.xhr.response;
+                //alert(response);
+                var data = JSON.parse(response);
+                var sessionId = data.session_id;
+                
+                // Update the UI with the session_id
+                document.getElementById('session-info').innerHTML = "Session ID: " + sessionId;
+                
+            }
+        });
+    </script>
+</body>
+</html>

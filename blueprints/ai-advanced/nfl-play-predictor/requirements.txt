@@ -1,0 +1,25 @@
+# NFL Play Prediction - Requirements
+
+# Core ML Libraries
+pandas>=2.0.0
+numpy>=1.24.0
+scikit-learn>=1.3.0
+xgboost>=2.0.0
+
+# Data Source
+kaggle>=1.5.16
+
+# Visualization
+matplotlib>=3.7.0
+seaborn>=0.12.0
+plotly>=5.14.0
+
+# Streamlit UI
+streamlit>=1.28.0
+
+# Model Persistence
+pickle-mixin>=1.0.2
+
+# Jupyter (for notebook)
+jupyter>=1.0.0
+ipykernel>=6.25.0

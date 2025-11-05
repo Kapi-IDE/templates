@@ -1,0 +1,57 @@
+component_id: node-llm-framework
+name: Node.js LLM Framework
+version: 0.1.0
+category: backend
+subcategory: ai-services
+type: component
+component_type: service
+languages: typescript
+frameworks: nodejs
+tech_stack: typescript,aws-bedrock,azure-openai,google-genai
+provides:
+  - llm_abstraction
+  - multi_provider_support
+  - streaming_generation
+  - structured_output
+compatible_with:
+  - node>=18
+  - typescript>=5
+  - @google/genai
+  - @aws-sdk/client-bedrock-runtime
+  - openai
+incompatible_with: []
+dependencies:
+  runtime:
+    - @google/genai
+    - @aws-sdk/client-bedrock-runtime
+    - openai
+    - dotenv
+  optional:
+    - @anthropic-ai/sdk
+    - @azure/identity
+metrics:
+  token_savings: 5000
+  lines_of_code: 600
+  setup_time_minutes: 8
+  complexity: medium
+description: |
+  Unified TypeScript services for Azure OpenAI, Google Gemini, Anthropic Claude, and Amazon Nova with a shared interface, factory, and capability lookup.
+voice_patterns:
+  - "node llm framework"
+  - "typescript ai service"
+  - "multi provider llm"
+  - "azure openai service"
+  - "gemini node client"
+  - "bedrock claude sdk"
+installation:
+  steps:
+    - Copy `example/src` into your project (or install via component installer).
+    - Install dependencies: `npm install @google/genai @aws-sdk/client-bedrock-runtime openai dotenv`.
+    - Configure environment variables (`GEMINI_API_KEY`, `AZURE_API_KEY`, `AZURE_ENDPOINT`, `AWS_REGION`, `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`).
+usage_examples:
+  - path: example/src/services/ai/ai-service-factory.ts
+    description: Factory returning the right provider service based on `models.tsv`.
+  - path: example/src/services/ai/gemini-simple.service.ts
+    description: Gemini client with thinking token support.
+  - path: example/src/services/ai/claude-simple.service.ts
+    description: Claude service via AWS Bedrock runtime with streaming helper.

@@ -1,0 +1,120 @@
+id: langgraph-agent-framework
+name: Langraph Multi-Agent Framework
+description: Production-ready framework for building multi-agent systems with Langraph, ReAct pattern, memory management, and tool orchestration
+category: backend
+subcategory: ai-agents
+type: framework
+version: 1.0.0
+
+# Technical Details
+languages:
+  - python
+
+frameworks:
+  - langchain
+  - langgraph
+  - gradio
+
+provides:
+  - react-agent-pattern
+  - tool-orchestration
+  - multi-agent-coordination
+  - conversation-memory
+  - streaming-responses
+  - token-tracking
+
+compatible_with:
+  - langchain-groq
+  - langchain-openai
+  - langchain-anthropic
+  - langchain-google-genai
+  - gradio
+  - fastapi
+
+# Features
+features:
+  - ReAct (Reasoning + Acting) pattern implementation
+  - Tool registration and dynamic calling
+  - Streaming response support
+  - Conversation memory with checkpointing
+  - Token usage tracking
+  - Multi-agent orchestration with routing
+  - Gradio ChatInterface compatibility
+  - Markdown output formatting
+  - Thread-safe conversation management
+  - Agent performance monitoring
+
+# Usage
+use_cases:
+  - Multi-agent AI systems
+  - Research assistants with tool access
+  - Financial analysis agents
+  - Customer support automation
+  - Data analysis workflows
+  - Question-answering systems
+
+# API
+api:
+  classes:
+    - LanggraphAgent: "Main agent class with ReAct pattern and tool calling"
+    - MultiAgentOrchestrator: "Coordinate multiple specialized agents"
+    - AgentState: "Type-safe state schema for multi-agent systems"
+
+  methods:
+    - stream: "Stream agent responses with real-time updates"
+    - chat: "Single-turn chat compatible with Gradio"
+    - reset_memory: "Clear conversation history"
+    - get_stats: "Get token usage and tool statistics"
+    - add_agent: "Register agent with orchestrator"
+    - run: "Execute task with appropriate agent"
+
+  helpers:
+    - create_custom_tool: "Create tool from Python function"
+    - create_api_tool: "Create tool from REST API endpoint"
+
+# Dependencies
+dependencies:
+  required:
+    - langchain>=0.1.0
+    - langchain-core>=0.1.0
+    - langgraph>=0.1.0
+
+  optional:
+    - langchain-groq>=0.1.0
+    - langchain-openai>=0.1.0
+    - langchain-anthropic>=0.1.0
+    - langchain-google-genai>=0.1.0
+    - gradio>=4.0.0
+
+# Quality
+testing:
+  unit_tests: true
+  integration_tests: true
+  examples_included: true
+
+documentation:
+  readme: Complete with examples
+  api_reference: Comprehensive
+  best_practices: Included
+
+# Metadata
+created_at: 2025-10-02
+curriculum_source: Modern AI Pro - Advanced Agents
+based_on_notebook: Advanced agents use case (Langraph)
+
+examples:
+  - name: Research Assistant
+    description: Multi-tool agent with web search and academic paper retrieval
+  - name: Financial Analyst
+    description: Stock analysis with price data and news integration
+  - name: Customer Support
+    description: Order tracking and refund processing automation
+  - name: Multi-Agent System
+    description: Specialized agents with automatic routing
+
+voice_patterns:
+  - build langraph agent
+  - create multi-agent system
+  - add react agent
+  - set up tool orchestration
+  - implement agent framework

@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MedicaNova - Innovative Healthcare Solutions for a Healthier Tomorrow</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reset.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.css">
+
+  <!-- Check for print-pdf mode and load the appropriate print styles -->
+  <script>
+    // Determine if the print-pdf query parameter is present
+    var isPrintPDF = window.location.search.match(/print-pdf/gi);
+
+    // Keep the black theme for both modes but add PDF styles when needed
+    document.write('<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/theme/black.css" id="theme">');
+
+    // Add PDF-specific styles if in print mode
+    if (isPrintPDF) {
+      document.write('<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/css/print/pdf.css">');
+    }
+  </script>
+
+  <style>
+    /* Custom styles */
+    .reveal {
+      font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+      font-size: 30px;
+      color: #f0f0f0;
+      background-color: #1a1a2e;
+    }
+
+    html, body {
+      background: linear-gradient(135deg, #1a1a2e 0%, #232344 100%);
+    }
+
+    .reveal h1,
+    .reveal h2,
+    .reveal h3,
+    .reveal h4 {
+      font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+      color: #00d09c;  /* Modern fintech green */
+      text-transform: none;
+      margin-bottom: 20px;
+      letter-spacing: -0.01em;
+    }
+
+    .reveal h1 {
+      font-size: 2.3em;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .reveal h2 {
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    .reveal h3 {
+      font-size: 1.3em;
+      font-weight: 600;
+      color: #8ed8f8;
+      line-height: 1.4;
+    }
+
+    .reveal ul {
+      display: block;
+      margin-left: 2em;
+    }
+
+    .reveal li {
+      margin: 0.6em 0;
+      line-height: 1.5;
+      font-size: 0.92em;
+      font-weight: 300;
+    }
+
+    .reveal a {
+      color: #00d09c;
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+
+    .reveal a:hover {
+      color: #33ddb3;
+      text-shadow: none;
+      border: none;
+    }
+
+    .highlight-box {
+      background-color: rgba(91, 194, 231, 0.1);
+      border-left: 4px solid #00d09c;
+      padding: 12px 20px;
+      margin: 15px auto;
+      border-radius: 0 4px 4px 0;
+      font-size: 0.92em;
+      font-weight: 300;
+      line-height: 1.5;
+      max-width: 1000px;
+      width: 80%;
+      text-align: center;
+    }
+
+    .logo-footer {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      z-index: 30;
+      width: 150px; /* Adjust size as needed */
+      height: auto;
+      opacity: 0.7;
+      transition: opacity 0.3s ease;
+    }
+    .logo-footer:hover {
+      opacity: 1;
+    }
+
+    /* Title slide specific styling */
+    .title-slide {
+      display: flex !important;
+      flex-direction: column; /* Stack elements vertically */
+      justify-content: center !important;
+      align-items: center !important;
+      height: 100vh !important;
+      margin-top: 0 !important;
+      text-align: center;
+    }
+
+    .title-logo {
+      max-width: 250px; /* Increased size */
+      margin-bottom: 30px;
+    }
+
+    /* Two column layout */
+    .two-columns {
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      margin-top: 15px;
+    }
+
+    .column {
+      flex: 1;
+      padding: 0 10px;
+    }
+
+    /* Table styling */
+    table {
+      width: 80%;
+      max-width: 1000px;
+      margin: 15px auto;
+      border-collapse: collapse;
+      font-size: 0.75em;
+      background-color: rgba(26, 26, 46, 0.6);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 12px 15px; /* Increased padding */
+      text-align: left;
+      border-bottom: 1px solid #363658;
+    }
+
+    th {
+      background-color: rgba(91, 194, 231, 0.15);
+      font-weight: 600;
+      color: #8ed8f8;
+    }
+
+    tr:hover {
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+
+    tr.highlight-row {
+      background-color: rgba(91, 194, 231, 0.15);
+    }
+
+    tr.highlight-row td {
+      border-bottom: 1px solid #5bc2e7;
+    }
+
+    /* Success story boxes */
+    .success-story {
+      background-color: rgba(91, 194, 231, 0.1);
+      border-left: 4px solid #5bc2e7;
+      border-radius: 0 4px 4px 0;
+      padding: 12px 20px;
+      margin: 15px auto;
+      font-size: 0.85em;
+      max-width: 1000px;
+      width: 80%;
+    }
+
+    .success-story h3 {
+      margin-top: 0;
+      color: #5bc2e7;
+    }
+
+    /* Fragment animations */
+    .fragment.highlight-current-blue {
+      opacity: 1;
+      visibility: inherit;
+    }
+
+    .fragment.highlight-current-blue.current-fragment {
+      color: #5bc2e7;
+      font-weight: bold;
+    }
+
+    /* Trial progress indicator */
+    .trial-progress {
+      display: flex;
+      justify-content: space-between;
+      width: 80%;
+      max-width: 1000px;
+      margin: 30px auto;
+      position: relative;
+    }
+
+    .trial-progress:before {
+      content: '';
+      position: absolute;
+      top: 20px;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background-color: rgba(255, 255, 255, 0.2);
+      z-index: 1;
+    }
+
+    .trial-stage {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      width: 150px;
+    }
+
+    .stage-dot {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: #232344;
+      border: 3px solid rgba(255, 255, 255, 0.3);
+      margin: 0 auto 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+
+    .stage-dot.completed {
+      background-color: #5bc2e7;
+      border-color: #8ed8f8;
+    }
+
+    .stage-dot.active {
+      background-color: rgba(91, 194, 231, 0.3);
+      border-color: #5bc2e7;
+    }
+
+    .stage-label {
+      font-size: 0.8em;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .stage-label.completed, .stage-label.active {
+      color: #f0f0f0;
+      font-weight: 600;
+    }
+
+    /* Benefits grid */
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* More responsive */
+      gap: 20px;
+      max-width: 1000px;
+      margin: 30px auto;
+      width: 80%;
+    }
+
+    .benefit-card {
+      background-color: rgba(26, 26, 46, 0.6);
+      border-radius: 8px;
+      padding: 20px;
+      border: 1px solid rgba(91, 194, 231, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .benefit-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      border-color: rgba(91, 194, 231, 0.5);
+    }
+
+    .benefit-card h3 {
+      margin-top: 0;
+      font-size: 1.1em;
+      text-align: center;
+    }
+
+    .benefit-card p {
+      font-size: 0.8em;
+      line-height: 1.5;
+    }
+
+    /* PDF & Fullscreen button styles */
+    .custom-action-btn {
+      position: fixed;
+      z-index: 50;
+      bottom: 20px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(91, 194, 231, 0.85);
+      color: #1a1a2e;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      box-shadow: 0 2px 10px rgba(91, 194, 231, 0.3);
+      cursor: pointer;
+      margin-left: 8px;
+      transition: background 0.3s, transform 0.2s;
+    }
+    .custom-action-btn:hover {
+      background: rgba(91, 194, 231, 1);
+      transform: scale(1.07);
+    }
+  </style>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="reveal">
+    <!-- Logo in bottom left corner for non-title slides -->
+    <!-- IMPORTANT: Replace this placeholder URL with your actual logo URL -->
+    <img src="logo.jpeg" class="logo-footer" alt="MedicaNova Logo">
+
+    <div class="slides">
+      <!-- Title Slide -->
+      <section id="title-slide" class="title-slide">
+        <!-- IMPORTANT: Replace this placeholder URL with your actual logo URL -->
+        <img src="logo.jpeg" class="title-logo" alt="MedicaNova Logo">
+        <h1>MedicaNova</h1>
+        <h3 style="margin-bottom: 40px; color: #33ddb3;">Innovative Healthcare Solutions for a Healthier Tomorrow</h3>
+        <p style="font-size: 0.8em; opacity: 0.8;">Corporate Presentation</p>
+        <p style="font-size: 0.8em; opacity: 0.8;">2024</p>
+      </section>
+
+      <!-- The Healthcare Challenge -->
+      <section>
+        <h2>The Healthcare Challenge</h2>
+        <div class="highlight-box">
+          <p><strong>Millions face barriers to quality healthcare due to rising costs, access issues, and fragmented care</strong></p>
+        </div>
+        <div style="text-align: left; width: 80%; margin: 0 auto;">
+          <p class="fragment highlight-current-blue">Limited access to specialists and advanced diagnostics in remote areas</p>
+          <p class="fragment highlight-current-blue">Rising costs of healthcare services and medications</p>
+          <p class="fragment highlight-current-blue">Fragmented patient records and lack of care coordination</p>
+          <p class="fragment highlight-current-blue">Need for preventive, personalized, and digital-first care models</p>
+        </div>
+      </section>
+
+      <!-- Our Solution -->
+      <section>
+        <h2>Our Solution: MedicaNova</h2>
+        <div class="highlight-box">
+          <p><strong>A unified digital healthcare platform connecting patients, providers, and payers</strong></p>
+        </div>
+        <p>Telemedicine, e-pharmacy, and AI-powered health management in one seamless ecosystem</p>
+        <p class="fragment highlight-current-blue">Built on secure, scalable cloud-native architecture</p>
+        <p class="fragment highlight-current-blue">User-centric design for patients and providers</p>
+      </section>
+
+      <!-- Key Features -->
+      <section>
+        <h2>Core Features</h2>
+        <div class="benefits-grid">
+          <div class="benefit-card">
+            <h3>Telemedicine</h3>
+            <p>Consult with certified doctors via video, chat, or phone anytime, anywhere</p>
+          </div>
+          <div class="benefit-card">
+            <h3>e-Pharmacy</h3>
+            <p>Order medicines online with doorstep delivery and automated refill reminders</p>
+          </div>
+          <div class="benefit-card">
+            <h3>Personal Health Records</h3>
+            <p>Secure, unified patient records accessible to patients and providers</p>
+          </div>
+          <div class="benefit-card">
+            <h3>AI Health Insights</h3>
+            <p>Personalized risk assessments, preventive care reminders, and health coaching</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Technical Architecture -->
+      <section>
+        <h2>Technical Architecture</h2>
+        <div class="two-columns">
+          <div class="column">
+            <h3>Backend Stack</h3>
+            <ul>
+              <li>Node.js & Express for robust APIs</li>
+              <li>PostgreSQL for secure data storage</li>
+              <li>Redis for real-time data and caching</li>
+              <li>RabbitMQ for asynchronous processing</li>
+              <li>Docker & Kubernetes for scalability</li>
+            </ul>
+          </div>
+          <div class="column">
+            <h3>Key Integrations</h3>
+            <ul>
+              <li>Telemedicine video APIs</li>
+              <li>e-Pharmacy logistics partners</li>
+              <li>Insurance APIs for claims</li>
+              <li>SMS/email for notifications</li>
+              <li>AI analytics engines</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Business Impact -->
+      <section>
+        <h2>Impact on Healthcare Delivery</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Metric</th>
+              <th>Traditional Care</th>
+              <th>With MedicaNova</th>
+              <th>Improvement</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Specialist Access Time</td>
+              <td>7-30 days</td>
+              <td>Same day</td>
+              <td>-95%</td>
+            </tr>
+            <tr>
+              <td>Prescription Fulfillment</td>
+              <td>2-3 days</td>
+              <td>Within 24 hours</td>
+              <td>-70%</td>
+            </tr>
+            <tr>
+              <td>Medical Record Errors</td>
+              <td>10-15%</td>
+              <td>< 1%</td>
+              <td>-95%</td>
+            </tr>
+            <tr>
+              <td>Patient Satisfaction</td>
+              <td>70%</td>
+              <td>93%</td>
+              <td>+23%</td>
+            </tr>
+            <tr class="highlight-row">
+              <td><strong>Preventive Care Uptake</strong></td>
+              <td><strong>Low</strong></td>
+              <td><strong>High</strong></td>
+              <td><strong>+60%</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Success Stories -->
+      <section>
+        <h2>Success Stories</h2>
+        <div class="success-story">
+          <h3>Case Study 1: Sunrise Clinic, Bengaluru</h3>
+          <p>Reduced patient wait times by 80% with telemedicine. Improved medication adherence by 35% using e-pharmacy reminders. Patient satisfaction rose to 95%.</p>
+        </div>
+        <div class="success-story">
+          <h3>Case Study 2: CarePlus Hospital, Pune</h3>
+          <p>Unified health records enabled seamless care coordination. Reduced readmission rates by 20% and improved preventive care engagement by 50%.</p>
+        </div>
+      </section>
+
+      <!-- Market Opportunity -->
+      <section>
+        <h2>Market Opportunity</h2>
+        <div class="highlight-box">
+          <p><strong>Addressing the $370 billion Indian healthcare market and growing digital health adoption</strong></p>
+        </div>
+        <ul style="font-size: 0.85em;">
+          <li><strong>Target Market:</strong> 1.4 billion population, 70% in semi-urban/rural areas</li>
+          <li><strong>Digital Health:</strong> Expected CAGR of 28% (2024-2030)</li>
+          <li><strong>Telemedicine:</strong> Rapid expansion post-pandemic</li>
+          <li><strong>Policy Support:</strong> Ayushman Bharat & Digital Health Mission</li>
+        </ul>
+      </section>
+
+      <!-- Roadmap -->
+      <section>
+        <h2>Product Roadmap</h2>
+        <ul>
+          <li><strong>Q2 2024:</strong> Launch telemedicine and e-pharmacy modules</li>
+          <li><strong>Q3 2024:</strong> Release unified health records and AI health insights</li>
+          <li><strong>Q4 2024:</strong> Integrate insurance and claims processing</li>
+          <li><strong>Q1 2025:</strong> Expand to tier-2/3 cities and rural outreach</li>
+          <li><strong>Q2 2025:</strong> Launch multilingual mobile app</li>
+        </ul>
+        <div class="highlight-box" style="margin-top: 30px;">
+          <p><strong>On track to become India's leading digital healthcare platform</strong></p>
+        </div>
+      </section>
+
+      <!-- Team -->
+      <section>
+        <h2>Our Expert Team</h2>
+        <p style="margin-bottom: 30px;">Led by healthcare, technology, and business leaders with deep experience in digital health and Indian market</p>
+        <div class="two-columns" style="font-size: 0.8em; text-align: left;">
+          <div class="column">
+            <ul>
+              <li><strong>Balaji Viswanathan, CEO</strong><br>Visionary entrepreneur, 15+ years in tech and healthcare innovation</li>
+              <li><strong>Mahalakshmi R, CTO</strong><br>Former Tech Lead at Practo, expert in scalable healthtech platforms</li>
+            </ul>
+          </div>
+          <div class="column">
+            <ul>
+              <li><strong>Dr. Anjali Rao, Chief Medical Officer</strong><br>MBBS, MD, 20+ years clinical experience, digital health advocate</li>
+              <li><strong>Rohan Mehta, Head of Product</strong><br>Ex-Pharmeasy, healthtech product strategist, 12+ years experience</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Final Slide -->
+      <section class="final-slide">
+        <h2>Transform Healthcare with MedicaNova</h2>
+        <div class="highlight-box">
+          <p><strong>MedicaNova: Empowering Healthier Lives</strong></p>
+        </div>
+        <p style="margin-top: 30px;">Contact us: hello@medicanova.com | www.medicanova.com</p>
+      </section>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/notes/notes.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/markdown/markdown.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/highlight/highlight.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/zoom/zoom.js"></script> <!-- Added Zoom plugin -->
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/search/search.js"></script> <!-- Added Search plugin -->
+
+  <script>
+    // Initialize Reveal.js
+    let deck = new Reveal({
+      hash: true,
+      slideNumber: 'c/t', // Current slide / Total slides
+      transition: 'slide',
+      transitionSpeed: 'fast',
+      controls: true,
+      progress: true,
+      center: true,
+      width: 1400,
+      height: 900,
+      margin: 0.04, // Slight margin around slides
+      viewDistance: 3,
+      showNotes: false, // Set to true if you have speaker notes
+      backgroundTransition: 'fade',
+      controlsLayout: 'bottom-right',
+      controlsBackArrows: 'faded',
+      // Configure Fragments
+      fragments: true,
+      fragmentInURL: true,
+      // PDF export options
+      pdfMaxPagesPerSlide: 1,
+      pdfSeparateFragments: false,
+      pdfPageHeightOffset: -1, // Adjust if content gets cut off in PDF
+      // Add plugins
+      plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom, RevealSearch ]
+    });
+
+    // Initialize the presentation
+    deck.initialize();
+
+    // --- PDF Export Button with Icon ---
+    const pdfButton = document.createElement('div');
+    pdfButton.className = 'custom-action-btn';
+    pdfButton.title = 'Export to PDF (Use Browser Print: Ctrl+P)';
+    pdfButton.style.right = '170px';
+    pdfButton.innerHTML = `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="2" width="16" height="20" rx="2" fill="#fff" stroke="#1a1a2e" stroke-width="2"/><path d="M8 6h8M8 10h8M8 14h4" stroke="#1a1a2e" stroke-width="2" stroke-linecap="round"/></svg>`;
+    pdfButton.addEventListener('click', function() {
+      const currentUrl = window.location.href.split('?')[0];
+      window.open(currentUrl + '?print-pdf', '_blank');
+      setTimeout(() => {
+        alert("Presentation opened in PDF mode in a new tab. Use your browser's Print function (Ctrl+P or Cmd+P) and select 'Save as PDF'.");
+      }, 500);
+    });
+
+    // --- Fullscreen Button ---
+    const fullscreenButton = document.createElement('div');
+    fullscreenButton.className = 'custom-action-btn';
+    fullscreenButton.title = 'Toggle Fullscreen';
+    fullscreenButton.style.right = '120px';
+    fullscreenButton.innerHTML = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 4h6M4 4v6M4 20h6M4 20v-6M20 4h-6M20 4v6M20 20h-6M20 20v-6" stroke="#1a1a2e" stroke-width="2" stroke-linecap="round"/></svg>`;
+    fullscreenButton.addEventListener('click', function() {
+      const elem = document.documentElement;
+      if (!document.fullscreenElement) {
+        if (elem.requestFullscreen) elem.requestFullscreen();
+      } else {
+        if (document.exitFullscreen) document.exitFullscreen();
+      }
+    });
+
+    // Only add the buttons if not already in print mode
+    if (!isPrintPDF) {
+      document.body.appendChild(pdfButton);
+      document.body.appendChild(fullscreenButton);
+    }
+
+  </script>
+</body>
+</html>

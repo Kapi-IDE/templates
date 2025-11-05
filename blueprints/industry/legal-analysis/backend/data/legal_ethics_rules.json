@@ -1,0 +1,266 @@
+{
+  "professional_responsibility_rules": [
+    {
+      "rule_id": "rule_1_1",
+      "rule_number": "1.1",
+      "rule_title": "Competence",
+      "rule_text": "A lawyer shall provide competent representation to a client. Competent representation requires the legal knowledge, skill, thoroughness and preparation reasonably necessary for the representation.",
+      "ai_implications": [
+        "Lawyers must understand AI tools they use",
+        "Continuing education on legal technology required",
+        "Must supervise AI-generated work product",
+        "Cannot rely solely on AI without human review"
+      ],
+      "compliance_requirements": [
+        "Technology competence training",
+        "AI tool supervision protocols",
+        "Quality control procedures",
+        "Client disclosure of AI use"
+      ],
+      "violation_indicators": [
+        "Unsupervised AI use in legal work",
+        "Lack of technology training",
+        "Failure to review AI output",
+        "Inadequate legal research"
+      ],
+      "escalation_threshold": "high"
+    },
+    {
+      "rule_id": "rule_1_4",
+      "rule_number": "1.4", 
+      "rule_title": "Communication",
+      "rule_text": "A lawyer shall keep a client reasonably informed about the status of a matter and promptly comply with reasonable requests for information.",
+      "ai_implications": [
+        "Must disclose AI use to clients",
+        "Explain AI limitations and capabilities",
+        "Maintain human oversight of communications",
+        "Ensure client understands AI role"
+      ],
+      "compliance_requirements": [
+        "AI disclosure templates",
+        "Client consent procedures",
+        "Communication protocols",
+        "Documentation requirements"
+      ],
+      "violation_indicators": [
+        "Failure to disclose AI use",
+        "Inadequate client communication",
+        "Misleading AI capabilities claims",
+        "Lack of human oversight"
+      ],
+      "escalation_threshold": "medium"
+    },
+    {
+      "rule_id": "rule_1_6",
+      "rule_number": "1.6",
+      "rule_title": "Confidentiality of Information", 
+      "rule_text": "A lawyer shall not reveal information relating to the representation of a client unless informed consent is given, disclosure is impliedly authorized, or disclosure is permitted by specific exceptions.",
+      "ai_implications": [
+        "AI systems must protect client confidentiality",
+        "Secure data handling and storage required",
+        "Third-party AI vendor agreements needed",
+        "Data retention and deletion policies"
+      ],
+      "compliance_requirements": [
+        "End-to-end encryption",
+        "Secure AI vendor contracts",
+        "Data protection protocols",
+        "Access control systems"
+      ],
+      "violation_indicators": [
+        "Unsecured client data in AI systems",
+        "Inadequate vendor agreements",
+        "Data breaches or leaks",
+        "Improper data sharing"
+      ],
+      "escalation_threshold": "critical"
+    },
+    {
+      "rule_id": "rule_1_7",
+      "rule_number": "1.7",
+      "rule_title": "Conflict of Interest",
+      "rule_text": "A lawyer shall not represent a client if the representation involves a concurrent conflict of interest unless the lawyer reasonably believes representation will not be adversely affected and each affected client gives informed consent.",
+      "ai_implications": [
+        "AI systems must screen for conflicts",
+        "Automated conflict checking required",
+        "Cross-client data isolation needed",
+        "Conflict resolution procedures"
+      ],
+      "compliance_requirements": [
+        "Automated conflict screening",
+        "Client data segregation",
+        "Conflict resolution protocols",
+        "Documentation procedures"
+      ],
+      "violation_indicators": [
+        "Failure to screen conflicts",
+        "Cross-client data contamination",
+        "Inadequate conflict procedures",
+        "Undisclosed conflicts"
+      ],
+      "escalation_threshold": "critical"
+    },
+    {
+      "rule_id": "rule_5_5",
+      "rule_number": "5.5",
+      "rule_title": "Unauthorized Practice of Law",
+      "rule_text": "A lawyer shall not practice law in a jurisdiction in violation of the regulation of the legal profession in that jurisdiction, or assist another in doing so.",
+      "ai_implications": [
+        "AI cannot provide legal advice independently",
+        "Human lawyer supervision required",
+        "Jurisdiction-specific compliance needed",
+        "Clear AI limitations disclosure"
+      ],
+      "compliance_requirements": [
+        "Human supervision protocols",
+        "Jurisdiction compliance checks",
+        "AI limitation disclosures",
+        "Practice boundary definitions"
+      ],
+      "violation_indicators": [
+        "Unsupervised AI legal advice",
+        "Cross-jurisdiction violations",
+        "Inadequate human oversight",
+        "Misleading AI capabilities"
+      ],
+      "escalation_threshold": "high"
+    }
+  ],
+  "ethics_monitoring_rules": [
+    {
+      "monitoring_id": "monitor_001",
+      "category": "AI Disclosure",
+      "description": "Monitor for proper AI disclosure to clients",
+      "trigger_conditions": [
+        "AI-generated content without disclosure",
+        "Client communication without AI notice",
+        "Missing consent documentation"
+      ],
+      "alert_level": "medium",
+      "required_actions": [
+        "Generate disclosure notice",
+        "Document client consent",
+        "Update communication templates"
+      ]
+    },
+    {
+      "monitoring_id": "monitor_002",
+      "category": "Confidentiality Protection",
+      "description": "Monitor for client confidentiality breaches",
+      "trigger_conditions": [
+        "Unencrypted client data",
+        "Unauthorized access attempts",
+        "Data sharing violations"
+      ],
+      "alert_level": "critical",
+      "required_actions": [
+        "Immediate security review",
+        "Client notification procedures",
+        "Breach response protocol"
+      ]
+    },
+    {
+      "monitoring_id": "monitor_003",
+      "category": "Conflict Screening",
+      "description": "Monitor for potential conflicts of interest",
+      "trigger_conditions": [
+        "Cross-client data access",
+        "Conflicting representation indicators",
+        "Inadequate conflict screening"
+      ],
+      "alert_level": "critical", 
+      "required_actions": [
+        "Immediate conflict analysis",
+        "Client notification if needed",
+        "Representation review"
+      ]
+    },
+    {
+      "monitoring_id": "monitor_004",
+      "category": "Technology Competence",
+      "description": "Monitor for adequate AI supervision and competence",
+      "trigger_conditions": [
+        "Unsupervised AI output",
+        "Inadequate quality review",
+        "Technology training gaps"
+      ],
+      "alert_level": "high",
+      "required_actions": [
+        "Enhanced supervision protocols",
+        "Additional training requirements",
+        "Quality control improvements"
+      ]
+    }
+  ],
+  "escalation_procedures": [
+    {
+      "escalation_id": "escalation_001",
+      "trigger_level": "critical",
+      "description": "Critical ethics violation requiring immediate attention",
+      "immediate_actions": [
+        "Suspend AI system operations",
+        "Notify supervising attorney",
+        "Document incident details",
+        "Initiate breach response"
+      ],
+      "notification_recipients": [
+        "Managing Partner",
+        "Ethics Committee",
+        "IT Security Team",
+        "Affected Clients"
+      ],
+      "timeline": "Immediate (within 1 hour)"
+    },
+    {
+      "escalation_id": "escalation_002", 
+      "trigger_level": "high",
+      "description": "Significant ethics concern requiring prompt review",
+      "immediate_actions": [
+        "Flag for attorney review",
+        "Document compliance issue",
+        "Implement corrective measures",
+        "Update procedures"
+      ],
+      "notification_recipients": [
+        "Supervising Attorney",
+        "Compliance Officer",
+        "Practice Group Leader"
+      ],
+      "timeline": "Within 24 hours"
+    },
+    {
+      "escalation_id": "escalation_003",
+      "trigger_level": "medium",
+      "description": "Ethics compliance issue requiring attention",
+      "immediate_actions": [
+        "Generate compliance alert",
+        "Schedule review meeting",
+        "Update documentation",
+        "Provide additional training"
+      ],
+      "notification_recipients": [
+        "Attorney of Record",
+        "Practice Manager"
+      ],
+      "timeline": "Within 72 hours"
+    }
+  ],
+  "compliance_templates": [
+    {
+      "template_id": "template_001",
+      "template_name": "AI Disclosure Notice",
+      "template_type": "client_communication",
+      "content": "This communication was prepared with the assistance of artificial intelligence technology. All AI-generated content has been reviewed and approved by a licensed attorney. The use of AI does not diminish our professional responsibility or the quality of legal services provided.",
+      "required_fields": ["attorney_name", "date", "matter_description"],
+      "usage_context": "All client communications involving AI assistance"
+    },
+    {
+      "template_id": "template_002",
+      "template_name": "Technology Competence Certification",
+      "template_type": "internal_compliance",
+      "content": "I certify that I have received adequate training on the AI systems used in this matter and am competent to supervise their use in providing legal services.",
+      "required_fields": ["attorney_name", "training_date", "system_version"],
+      "usage_context": "Before using AI systems on client matters"
+    }
+  ]
+}

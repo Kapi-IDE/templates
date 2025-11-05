@@ -1,0 +1,112 @@
+{
+  "market_overview": {
+    "last_updated": "2024-09-14T10:00:00Z",
+    "market_status": "Open",
+    "indices": {
+      "SP500": {
+        "value": 4450.25,
+        "change": 12.75,
+        "change_percent": 0.29
+      },
+      "NASDAQ": {
+        "value": 13825.60,
+        "change": -15.40,
+        "change_percent": -0.11
+      },
+      "DOW": {
+        "value": 34125.80,
+        "change": 85.20,
+        "change_percent": 0.25
+      }
+    },
+    "trading_volume": 2850000000,
+    "volatility_index": 18.45
+  },
+  "sector_performance": {
+    "Technology": {
+      "performance_1d": 0.15,
+      "performance_1w": 1.25,
+      "performance_1m": 3.80,
+      "performance_ytd": 18.50
+    },
+    "Healthcare": {
+      "performance_1d": -0.25,
+      "performance_1w": 0.85,
+      "performance_1m": 2.10,
+      "performance_ytd": 12.30
+    },
+    "Financial Services": {
+      "performance_1d": 0.45,
+      "performance_1w": 2.15,
+      "performance_1m": 4.20,
+      "performance_ytd": 15.80
+    },
+    "Consumer Discretionary": {
+      "performance_1d": -0.15,
+      "performance_1w": 0.65,
+      "performance_1m": 1.85,
+      "performance_ytd": 9.40
+    },
+    "Energy": {
+      "performance_1d": 1.25,
+      "performance_1w": 3.40,
+      "performance_1m": 6.20,
+      "performance_ytd": 22.10
+    },
+    "Utilities": {
+      "performance_1d": 0.05,
+      "performance_1w": -0.35,
+      "performance_1m": 0.85,
+      "performance_ytd": 4.20
+    }
+  },
+  "economic_indicators": {
+    "interest_rates": {
+      "federal_funds_rate": 5.25,
+      "10_year_treasury": 4.30,
+      "2_year_treasury": 4.85,
+      "corporate_bond_yield": 5.60
+    },
+    "inflation_data": {
+      "cpi_annual": 2.9,
+      "core_cpi_annual": 2.6,
+      "pce_annual": 2.4,
+      "core_pce_annual": 2.1
+    },
+    "employment": {
+      "unemployment_rate": 4.2,
+      "labor_force_participation": 63.4,
+      "job_openings": 9200000,
+      "jobless_claims": 225000
+    },
+    "gdp": {
+      "annual_growth": 2.4,
+      "quarterly_growth": 0.6,
+      "consumer_spending_growth": 2.8,
+      "business_investment_growth": 1.9
+    }
+  },
+  "market_sentiment": {
+    "fear_greed_index": 62,
+    "sentiment_description": "Neutral to Bullish",
+    "options_put_call_ratio": 0.85,
+    "insider_trading_ratio": 0.42,
+    "institutional_activity": "Net Buying"
+  },
+  "currency_data": {
+    "USD_EUR": 1.0850,
+    "USD_GBP": 1.2745,
+    "USD_JPY": 148.25,
+    "USD_CAD": 1.3520,
+    "USD_CHF": 0.9185,
+    "DXY": 103.45
+  },
+  "commodity_prices": {
+    "WTI_crude": 87.25,
+    "Brent_crude": 90.80,
+    "Gold": 2025.50,
+    "Silver": 24.85,
+    "Copper": 3.82,
+    "Natural_gas": 2.65
+  }
+}

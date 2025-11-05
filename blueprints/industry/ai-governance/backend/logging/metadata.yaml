@@ -1,0 +1,35 @@
+component_id: interaction-logger
+name: Agent Interaction Logger
+version: 0.1.0
+category: backend
+subcategory: logging
+type: component
+component_type: service
+languages: python
+frameworks: none
+tech_stack: standard-library
+provides:
+  - audit_logging
+  - interaction_logging
+compatible_with:
+  - python>=3.9
+  - agent-foundation
+incompatible_with: []
+dependencies:
+  runtime: []
+metrics:
+  token_savings: 800
+  lines_of_code: 50
+  setup_time_minutes: 1
+  complexity: low
+description: |
+  Helper that records agent interactions into any audit store while emitting telemetry when logging fails.
+voice_patterns:
+  - "agent interaction logger"
+  - "audit logging helper"
+installation:
+  steps:
+    - Copy the module into your project or install via component installer.
+usage_examples:
+  - path: example/log_usage.py
+    description: Logs an interaction into an in-memory audit store.

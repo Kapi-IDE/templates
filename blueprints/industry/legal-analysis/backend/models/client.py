@@ -1,0 +1,1 @@
+# Client profiles with privilege protection

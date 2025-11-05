@@ -1,0 +1,50 @@
+# Atomic Component: File Uploader
+
+component_id: streamlit-file-uploader
+name: Streamlit File Uploader
+version: 1.0.0
+category: frontend
+subcategory: atomic-component
+tech_stack:
+  - python
+  - streamlit
+
+description: "Reusable file upload component with validation, progress tracking, and file list management"
+
+provides:
+  - file_upload_ui
+  - file_validation
+  - upload_progress
+  - file_list_display
+
+compatible_with:
+  - streamlit>=1.28.0
+  - any_file_upload_api
+
+dependencies:
+  runtime:
+    - streamlit>=1.28.0
+
+metrics:
+  token_count: ~280
+  lines_of_code: ~120
+  setup_time_minutes: 1
+  complexity: simple
+
+voice_patterns:
+  - "file upload component"
+  - "document uploader"
+  - "file upload UI"
+  - "drag and drop files"
+
+usage: |
+  from streamlit_components.file_uploader import uploader
+
+  # File upload
+  file = uploader.file_uploader(allowed_types=['pdf', 'txt'])
+
+  # Upload with progress
+  success = uploader.upload_with_progress(file, upload_function)
+
+  # Display file list
+  uploader.render_uploaded_files_list(files)

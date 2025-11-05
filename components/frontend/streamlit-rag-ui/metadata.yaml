@@ -1,0 +1,144 @@
+# Component Metadata for KAPI Blueprint System
+
+component_id: streamlit-rag-ui
+name: Streamlit RAG UI
+version: 1.0.0
+category: frontend
+subcategory: complete-ui
+tech_stack:
+  - python
+  - streamlit
+  - requests
+
+description: "Complete Streamlit UI for RAG applications with Onyx-inspired dark theme, chat interface, document upload, and authentication"
+
+provides:
+  - chat_interface
+  - document_upload
+  - authentication_ui
+  - dark_theme
+  - streaming_responses
+  - source_citations
+
+compatible_with:
+  - fastapi
+  - flask
+  - django
+  - express
+  - any_rest_api
+
+incompatible_with: []
+
+requires:
+  backend:
+    - rest_api_url
+    - jwt_authentication
+    - file_upload_endpoint
+    - query_endpoint
+
+dependencies:
+  runtime:
+    - streamlit>=1.28.0
+    - requests>=2.31.0
+  dev: []
+
+metrics:
+  token_count: 991
+  lines_of_code: 386
+  setup_time_minutes: 3
+  complexity: simple
+  file_count: 4
+
+installation:
+  type: copy
+  source: templates/components/frontend/streamlit-rag-ui
+  target: ui/
+  commands:
+    - pip install -r requirements.txt
+  run:
+    - streamlit run app.py
+
+configuration:
+  required:
+    - API_BASE_URL: "Backend API base URL (default: http://localhost:8000/api/v1)"
+  optional:
+    - STREAMLIT_SERVER_PORT: "UI port (default: 8501)"
+    - STREAMLIT_THEME: "Color theme (onyx, nord, dracula)"
+
+voice_patterns:
+  - "add UI to RAG"
+  - "Streamlit frontend"
+  - "chat interface"
+  - "document upload UI"
+  - "dark theme chat"
+  - "RAG user interface"
+  - "visual frontend for RAG"
+
+features:
+  - Onyx-inspired dark theme with custom CSS
+  - Real-time streaming chat responses
+  - PDF and TXT document upload
+  - JWT authentication (login/logout)
+  - Source citation expandables
+  - Session state management
+  - Responsive layout
+  - Settings panel (context chunks, streaming toggle)
+
+api_endpoints_used:
+  - POST /login/access-token
+  - POST /rag/upload
+  - POST /rag/query
+  - POST /rag/query/stream
+
+example_usage: |
+  # Copy component
+  cp -r templates/components/frontend/streamlit-rag-ui my-project/ui
+
+  # Install dependencies
+  cd my-project/ui
+  pip install -r requirements.txt
+
+  # Configure API URL in app.py
+  API_BASE_URL = "http://localhost:8000/api/v1"
+
+  # Run UI
+  streamlit run app.py
+
+deployment:
+  docker:
+    - Dockerfile included
+    - Exposes port 8501
+    - Health check configured
+  cloud:
+    - Streamlit Cloud compatible
+    - Heroku compatible
+    - AWS/GCP compatible
+
+screenshots:
+  - ui-login.png
+  - ui-chat.png
+  - ui-upload.png
+
+documentation:
+  - README.md
+  - Inline code comments
+  - Example usage in app.py
+
+testing:
+  unit_tests: false
+  integration_tests: false
+  manual_testing: recommended
+
+tags:
+  - streamlit
+  - rag
+  - chat
+  - ui
+  - dark-theme
+  - document-upload
+  - frontend
+
+author: KAPI Team
+created: 2025-10-01
+last_updated: 2025-10-01
+status: production-ready

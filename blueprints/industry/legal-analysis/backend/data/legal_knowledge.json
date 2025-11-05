@@ -1,0 +1,234 @@
+{
+  "case_law": [
+    {
+      "case_id": "case_001",
+      "case_name": "Brown v. Board of Education",
+      "citation": "347 U.S. 483 (1954)",
+      "court": "Supreme Court of the United States",
+      "jurisdiction": "federal",
+      "decision_date": "1954-05-17",
+      "legal_issues": ["Equal Protection", "Segregation", "Education Law"],
+      "holding": "Separate educational facilities are inherently unequal and violate the Equal Protection Clause of the Fourteenth Amendment.",
+      "facts": "African American students were denied admission to public schools attended by white children under laws requiring racial segregation.",
+      "legal_reasoning": "The Court found that segregation in public education creates a feeling of inferiority that affects children's motivation to learn and deprives them of equal educational opportunities.",
+      "precedent_weight": 10,
+      "binding_authority": "Supreme Court precedent binding on all lower courts",
+      "related_statutes": ["14th Amendment"],
+      "full_text": "We conclude that, in the field of public education, the doctrine of 'separate but equal' has no place..."
+    },
+    {
+      "case_id": "case_002", 
+      "case_name": "Miranda v. Arizona",
+      "citation": "384 U.S. 436 (1966)",
+      "court": "Supreme Court of the United States",
+      "jurisdiction": "federal",
+      "decision_date": "1966-06-13",
+      "legal_issues": ["Criminal Procedure", "Fifth Amendment", "Self-Incrimination"],
+      "holding": "Criminal suspects must be informed of their rights before interrogation, including the right to remain silent and right to counsel.",
+      "facts": "Defendant was interrogated without being informed of his constitutional rights and made incriminating statements.",
+      "legal_reasoning": "The Fifth Amendment privilege against self-incrimination requires that suspects be warned of their rights to ensure voluntary waiver.",
+      "precedent_weight": 10,
+      "binding_authority": "Supreme Court precedent binding on all lower courts",
+      "related_statutes": ["5th Amendment", "6th Amendment"],
+      "full_text": "Prior to any questioning, the person must be warned that he has a right to remain silent..."
+    },
+    {
+      "case_id": "case_003",
+      "case_name": "Roe v. Wade", 
+      "citation": "410 U.S. 113 (1973)",
+      "court": "Supreme Court of the United States",
+      "jurisdiction": "federal",
+      "decision_date": "1973-01-22",
+      "legal_issues": ["Privacy Rights", "Due Process", "Reproductive Rights"],
+      "holding": "The Constitution protects a woman's right to choose whether to continue a pregnancy, but this right is not absolute.",
+      "facts": "Texas law prohibited abortions except to save the mother's life, challenged as unconstitutional.",
+      "legal_reasoning": "The Due Process Clause of the Fourteenth Amendment provides a fundamental right to privacy that protects personal reproductive decisions.",
+      "precedent_weight": 10,
+      "binding_authority": "Supreme Court precedent (overruled by Dobbs v. Jackson 2022)",
+      "related_statutes": ["14th Amendment"],
+      "full_text": "This right of privacy, whether it be founded in the Fourteenth Amendment's concept of personal liberty..."
+    },
+    {
+      "case_id": "case_004",
+      "case_name": "Marbury v. Madison",
+      "citation": "5 U.S. 137 (1803)",
+      "court": "Supreme Court of the United States", 
+      "jurisdiction": "federal",
+      "decision_date": "1803-02-24",
+      "legal_issues": ["Judicial Review", "Constitutional Law", "Separation of Powers"],
+      "holding": "The Supreme Court has the authority to review acts of Congress and declare them unconstitutional.",
+      "facts": "William Marbury sought a writ of mandamus to compel delivery of his judicial commission.",
+      "legal_reasoning": "It is the duty of the judicial department to say what the law is, establishing the principle of judicial review.",
+      "precedent_weight": 10,
+      "binding_authority": "Foundational Supreme Court precedent establishing judicial review",
+      "related_statutes": ["Article III", "Judiciary Act of 1789"],
+      "full_text": "It is emphatically the province and duty of the judicial department to say what the law is..."
+    },
+    {
+      "case_id": "case_005",
+      "case_name": "Gideon v. Wainwright",
+      "citation": "372 U.S. 335 (1963)",
+      "court": "Supreme Court of the United States",
+      "jurisdiction": "federal", 
+      "decision_date": "1963-03-18",
+      "legal_issues": ["Right to Counsel", "Sixth Amendment", "Due Process"],
+      "holding": "States must provide counsel to criminal defendants who cannot afford an attorney in felony cases.",
+      "facts": "Clarence Gideon was charged with a felony and requested court-appointed counsel but was denied.",
+      "legal_reasoning": "The Sixth Amendment's guarantee of counsel is fundamental to a fair trial and applies to state courts through the Fourteenth Amendment.",
+      "precedent_weight": 10,
+      "binding_authority": "Supreme Court precedent binding on all courts",
+      "related_statutes": ["6th Amendment", "14th Amendment"],
+      "full_text": "The right of one charged with crime to counsel may not be deemed fundamental and essential to fair trials..."
+    }
+  ],
+  "statutes": [
+    {
+      "statute_id": "statute_001",
+      "title": "Civil Rights Act of 1964",
+      "citation": "42 U.S.C. § 2000e et seq.",
+      "jurisdiction": "federal",
+      "effective_date": "1964-07-02",
+      "legal_areas": ["Employment Law", "Civil Rights", "Discrimination"],
+      "summary": "Prohibits discrimination in employment based on race, color, religion, sex, or national origin.",
+      "key_provisions": [
+        "Title VII - Employment discrimination prohibition",
+        "EEOC enforcement authority",
+        "Private right of action for discrimination claims"
+      ],
+      "full_text": "It shall be an unlawful employment practice for an employer to fail or refuse to hire or to discharge any individual...",
+      "related_cases": ["case_001"],
+      "amendments": ["Civil Rights Act of 1991"]
+    },
+    {
+      "statute_id": "statute_002", 
+      "title": "Americans with Disabilities Act",
+      "citation": "42 U.S.C. § 12101 et seq.",
+      "jurisdiction": "federal",
+      "effective_date": "1990-07-26",
+      "legal_areas": ["Disability Rights", "Employment Law", "Public Accommodations"],
+      "summary": "Prohibits discrimination against individuals with disabilities in employment, public accommodations, and government services.",
+      "key_provisions": [
+        "Title I - Employment discrimination",
+        "Title II - Public services",
+        "Title III - Public accommodations",
+        "Reasonable accommodation requirements"
+      ],
+      "full_text": "No covered entity shall discriminate against a qualified individual on the basis of disability...",
+      "related_cases": [],
+      "amendments": ["ADA Amendments Act of 2008"]
+    },
+    {
+      "statute_id": "statute_003",
+      "title": "Fair Labor Standards Act", 
+      "citation": "29 U.S.C. § 201 et seq.",
+      "jurisdiction": "federal",
+      "effective_date": "1938-06-25",
+      "legal_areas": ["Employment Law", "Wage and Hour", "Labor Standards"],
+      "summary": "Establishes minimum wage, overtime pay, recordkeeping, and youth employment standards.",
+      "key_provisions": [
+        "Federal minimum wage requirements",
+        "Overtime pay at time and one-half",
+        "Child labor protections",
+        "Recordkeeping requirements"
+      ],
+      "full_text": "Every employer shall pay to each of his employees wages at rates not less than $7.25 an hour...",
+      "related_cases": [],
+      "amendments": ["Multiple amendments raising minimum wage"]
+    }
+  ],
+  "legal_precedents": [
+    {
+      "precedent_id": "precedent_001",
+      "case_id": "case_001",
+      "legal_principle": "Separate but equal doctrine is unconstitutional in public education",
+      "binding_authority": "Supreme Court - binding on all courts",
+      "jurisdiction": "federal",
+      "precedent_weight": 10,
+      "related_statutes": ["14th Amendment"],
+      "application_scope": "Education law, equal protection analysis",
+      "distinguishing_factors": ["Public education context", "State action requirement"]
+    },
+    {
+      "precedent_id": "precedent_002", 
+      "case_id": "case_002",
+      "legal_principle": "Miranda warnings required before custodial interrogation",
+      "binding_authority": "Supreme Court - binding on all courts",
+      "jurisdiction": "federal",
+      "precedent_weight": 10,
+      "related_statutes": ["5th Amendment", "6th Amendment"],
+      "application_scope": "Criminal procedure, police interrogation",
+      "distinguishing_factors": ["Custodial interrogation", "Voluntary waiver"]
+    },
+    {
+      "precedent_id": "precedent_003",
+      "case_id": "case_004", 
+      "legal_principle": "Courts have authority to review constitutionality of legislative acts",
+      "binding_authority": "Supreme Court - foundational precedent",
+      "jurisdiction": "federal",
+      "precedent_weight": 10,
+      "related_statutes": ["Article III"],
+      "application_scope": "Constitutional law, separation of powers",
+      "distinguishing_factors": ["Judicial review power", "Constitutional interpretation"]
+    }
+  ],
+  "contract_templates": [
+    {
+      "template_id": "contract_001",
+      "contract_type": "Employment Agreement",
+      "jurisdiction": "general",
+      "legal_areas": ["Employment Law", "Contract Law"],
+      "key_clauses": [
+        "At-will employment provision",
+        "Confidentiality and non-disclosure",
+        "Non-compete restrictions",
+        "Compensation and benefits",
+        "Termination procedures"
+      ],
+      "risk_factors": [
+        "Non-compete enforceability varies by state",
+        "At-will employment exceptions",
+        "Wage and hour compliance requirements"
+      ],
+      "standard_terms": {
+        "probationary_period": "90 days",
+        "notice_period": "Two weeks",
+        "confidentiality_duration": "Indefinite"
+      },
+      "negotiation_points": [
+        "Compensation structure",
+        "Non-compete scope and duration", 
+        "Severance provisions",
+        "Benefits package"
+      ]
+    },
+    {
+      "template_id": "contract_002",
+      "contract_type": "Non-Disclosure Agreement",
+      "jurisdiction": "general", 
+      "legal_areas": ["Contract Law", "Intellectual Property"],
+      "key_clauses": [
+        "Definition of confidential information",
+        "Permitted uses and restrictions",
+        "Return of materials",
+        "Duration of confidentiality",
+        "Remedies for breach"
+      ],
+      "risk_factors": [
+        "Overly broad confidentiality definitions",
+        "Unreasonable duration",
+        "Inadequate remedy provisions"
+      ],
+      "standard_terms": {
+        "duration": "3-5 years",
+        "return_period": "30 days after termination",
+        "governing_law": "State of incorporation"
+      },
+      "negotiation_points": [
+        "Scope of confidential information",
+        "Duration of obligations",
+        "Carve-outs for publicly available information",
+        "Remedy provisions"
+      ]
+    }
+  ]
+}

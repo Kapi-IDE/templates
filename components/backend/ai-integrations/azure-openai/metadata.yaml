@@ -1,0 +1,92 @@
+name: azure-openai-integration
+category: ai-integrations
+description: |
+  Enterprise-grade Azure OpenAI client with multi-region support, DeepSeek integration,
+  and special model handling (o3-mini). Production-ready with comprehensive error handling.
+
+features:
+  - Multi-region Azure deployment support
+  - DeepSeek model integration
+  - Embeddings via LangChain
+  - Special model handling (o3-mini with max_completion_tokens)
+  - Comprehensive error logging and retry logic
+  - Token usage tracking and cost estimation
+
+tech_stack:
+  - Python 3.8+
+  - Azure AI Inference SDK
+  - OpenAI Python SDK
+  - LangChain for embeddings
+
+environment_variables:
+  - name: AZURE_OPENAI_ENDPOINT
+    description: Azure OpenAI endpoint URL
+    required: true
+    example: "https://your-resource.openai.azure.com/"
+  - name: AZURE_OPENAI_KEY
+    description: Azure OpenAI API key
+    required: true
+    example: "your_azure_openai_key"
+  - name: AZURE_OPENAI_API_VERSION
+    description: API version
+    required: false
+    default: "2024-02-15-preview"
+  - name: AZURE_DEEPSEEK_ENDPOINT
+    description: Azure DeepSeek endpoint (optional)
+    required: false
+  - name: AZURE_DEEPSEEK_KEY
+    description: Azure DeepSeek API key (optional)
+    required: false
+
+setup_time_minutes: 2
+
+lines_of_code: 280
+
+dependencies:
+  - azure-ai-inference
+  - azure-identity
+  - azure-core
+  - openai
+  - langchain-openai
+
+usage_example: |
+  from components.backend.ai_integrations.azure_openai import (
+      create_azure_openai_client,
+      chat_completion
+  )
+
+  client = create_azure_openai_client()
+  result = chat_completion(
+      client=client,
+      model="gpt-4",
+      messages=[{"role": "user", "content": "Hello!"}],
+      max_tokens=500
+  )
+  print(result["content"])
+
+supported_models:
+  - gpt-4
+  - gpt-35-turbo
+  - o3-mini
+  - deepseek-coder
+
+voice_patterns:
+  - "Azure OpenAI integration"
+  - "Enterprise OpenAI client"
+  - "Azure GPT-4"
+  - "DeepSeek integration"
+  - "Multi-region OpenAI"
+
+security_features:
+  - Azure Key Vault compatible
+  - Environment variable based authentication
+  - No hardcoded credentials
+  - Enterprise security compliance
+
+production_ready: true
+
+test_coverage: 85%
+
+token_efficiency: high
+
+estimated_tokens_saved: 350

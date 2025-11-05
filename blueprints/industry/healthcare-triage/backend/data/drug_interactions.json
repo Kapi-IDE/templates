@@ -1,0 +1,125 @@
+{
+  "medications": [
+    {
+      "name": "aspirin",
+      "generic_name": "acetylsalicylic_acid",
+      "class": "nsaid",
+      "contraindications": ["active_bleeding", "severe_kidney_disease", "aspirin_allergy"],
+      "interactions": [
+        {
+          "drug": "warfarin",
+          "severity": "major",
+          "description": "Increased bleeding risk"
+        },
+        {
+          "drug": "ibuprofen",
+          "severity": "moderate",
+          "description": "Reduced cardioprotective effect"
+        }
+      ],
+      "side_effects": ["stomach_upset", "bleeding", "tinnitus"],
+      "dosage_adult": "81-325mg daily for cardioprotection"
+    },
+    {
+      "name": "ibuprofen",
+      "generic_name": "ibuprofen",
+      "class": "nsaid",
+      "contraindications": ["kidney_disease", "heart_failure", "active_bleeding"],
+      "interactions": [
+        {
+          "drug": "aspirin",
+          "severity": "moderate",
+          "description": "Reduced cardioprotective effect of aspirin"
+        },
+        {
+          "drug": "warfarin",
+          "severity": "major",
+          "description": "Increased bleeding risk"
+        },
+        {
+          "drug": "ace_inhibitors",
+          "severity": "moderate",
+          "description": "Reduced blood pressure control"
+        }
+      ],
+      "side_effects": ["stomach_upset", "kidney_problems", "increased_blood_pressure"],
+      "dosage_adult": "200-800mg every 6-8 hours, max 3200mg daily"
+    },
+    {
+      "name": "acetaminophen",
+      "generic_name": "acetaminophen",
+      "class": "analgesic",
+      "contraindications": ["severe_liver_disease", "acetaminophen_allergy"],
+      "interactions": [
+        {
+          "drug": "warfarin",
+          "severity": "minor",
+          "description": "May slightly increase bleeding risk with high doses"
+        },
+        {
+          "drug": "alcohol",
+          "severity": "major",
+          "description": "Increased liver toxicity risk"
+        }
+      ],
+      "side_effects": ["liver_damage_with_overdose", "rare_skin_reactions"],
+      "dosage_adult": "325-1000mg every 4-6 hours, max 4000mg daily"
+    },
+    {
+      "name": "warfarin",
+      "generic_name": "warfarin",
+      "class": "anticoagulant",
+      "contraindications": ["active_bleeding", "pregnancy", "severe_liver_disease"],
+      "interactions": [
+        {
+          "drug": "aspirin",
+          "severity": "major",
+          "description": "Significantly increased bleeding risk"
+        },
+        {
+          "drug": "vitamin_k",
+          "severity": "major",
+          "description": "Antagonizes anticoagulant effect"
+        },
+        {
+          "drug": "antibiotics",
+          "severity": "moderate",
+          "description": "May increase or decrease anticoagulation"
+        }
+      ],
+      "side_effects": ["bleeding", "bruising", "hair_loss"],
+      "dosage_adult": "Variable, typically 2-10mg daily based on INR"
+    }
+  ],
+  "interaction_checker": {
+    "rules": [
+      {
+        "combination": ["nsaid", "anticoagulant"],
+        "severity": "major",
+        "warning": "Increased bleeding risk - monitor closely"
+      },
+      {
+        "combination": ["ace_inhibitor", "nsaid"],
+        "severity": "moderate",
+        "warning": "May reduce blood pressure control and kidney function"
+      },
+      {
+        "combination": ["acetaminophen", "alcohol"],
+        "severity": "major",
+        "warning": "Increased liver toxicity risk"
+      }
+    ]
+  },
+  "allergy_alerts": [
+    {
+      "allergen": "aspirin",
+      "contraindicated_drugs": ["aspirin", "other_salicylates"],
+      "alternatives": ["acetaminophen", "topical_analgesics"]
+    },
+    {
+      "allergen": "nsaids",
+      "contraindicated_drugs": ["ibuprofen", "naproxen", "diclofenac"],
+      "alternatives": ["acetaminophen", "topical_analgesics", "physical_therapy"]
+    }
+  ]
+}

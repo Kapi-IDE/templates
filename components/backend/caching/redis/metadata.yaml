@@ -1,0 +1,12 @@
+component_id: redis-client
+name: Redis Client & Session Manager
+version: 1.0.0
+category: backend
+subcategory: caching
+maintainer: KAPI Templates Team
+
+provides:
+  - redis_client_factory
+  - session_management_helpers
+  - distributed_locking_helpers
+

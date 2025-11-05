@@ -1,0 +1,70 @@
+// URL Shortener Schema
+// Adapted from Prisma basic blog pattern for URL shortening service
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Url {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Core URL data
+  originalUrl String   @db.Text
+  shortCode   String   @unique @db.VarChar(20)
+  customSlug  Boolean  @default(false) // Was this a custom slug?
+
+  // Analytics
+  clicks      Int      @default(0)
+
+  // Metadata
+  title       String?  @db.VarChar(500)
+  description String?  @db.Text
+
+  // Expiration
+  expiresAt   DateTime?
+  isActive    Boolean  @default(true)
+
+  // Optional user association (for future auth)
+  createdBy   String?  @db.VarChar(100) // Could be IP or user ID
+
+  // Relations
+  analytics   Analytics[]
+
+  @@index([shortCode])
+  @@index([createdAt])
+  @@index([isActive])
+}
+
+model Analytics {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+
+  // Click tracking
+  url       Url      @relation(fields: [urlId], references: [id], onDelete: Cascade)
+  urlId     Int
+
+  // User agent data
+  userAgent String?  @db.Text
+  browser   String?  @db.VarChar(50)
+  os        String?  @db.VarChar(50)
+  device    String?  @db.VarChar(50)
+
+  // Geographic data
+  ipAddress String?  @db.VarChar(45) // IPv6 compatible
+  country   String?  @db.VarChar(100)
+  city      String?  @db.VarChar(100)
+
+  // Referrer
+  referrer  String?  @db.Text
+
+  @@index([urlId])
+  @@index([createdAt])
+  @@index([country])
+}

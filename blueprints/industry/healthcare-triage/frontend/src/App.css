@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.App {
+  text-align: center;
+}
+
+/* Custom scrollbar for chat */
+.overflow-y-auto::-webkit-scrollbar {
+  width: 4px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 2px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Animation for loading dots */
+@keyframes pulse {
+  0%, 20% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.7;
+  }
+  80%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-pulse div:nth-child(1) {
+  animation: pulse 1.4s ease-in-out infinite;
+}
+
+.animate-pulse div:nth-child(2) {
+  animation: pulse 1.4s ease-in-out infinite 0.2s;
+}
+
+.animate-pulse div:nth-child(3) {
+  animation: pulse 1.4s ease-in-out infinite 0.4s;
+}

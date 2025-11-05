@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HealthcSuits - Revolutionary RNA-based Cancer Treatments</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reset.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.css">
+  
+  <!-- Check for print-pdf mode and load the appropriate print styles -->
+  <script>
+    // Determine if the print-pdf query parameter is present
+    var isPrintPDF = window.location.search.match(/print-pdf/gi);
+    
+    // Keep the black theme for both modes but add PDF styles when needed
+    document.write('<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/theme/black.css" id="theme">');
+    
+    // Add PDF-specific styles if in print mode
+    if (isPrintPDF) {
+      document.write('<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/css/print/pdf.css">');
+    }
+  </script>
+  
+  <style>
+    /* Custom styles */
+    .reveal {
+      font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+      font-size: 30px;
+      color: #f0f0f0;
+      background-color: #1a1a2e;
+    }
+
+    html, body {
+      background: linear-gradient(135deg, #1a1a2e 0%, #232344 100%);
+    }
+
+    .reveal h1, 
+    .reveal h2, 
+    .reveal h3, 
+    .reveal h4 {
+      font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+      color: #5bc2e7;
+      text-transform: none;
+      margin-bottom: 20px;
+      letter-spacing: -0.01em;
+    }
+
+    .reveal h1 {
+      font-size: 2.3em;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .reveal h2 {
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    .reveal h3 {
+      font-size: 1.3em;
+      font-weight: 600;
+      color: #8ed8f8;
+      line-height: 1.4;
+    }
+
+    .reveal ul {
+      display: block;
+      margin-left: 2em;
+    }
+
+    .reveal li {
+      margin: 0.6em 0;
+      line-height: 1.5;
+      font-size: 0.92em;
+      font-weight: 300;
+    }
+
+    .reveal a {
+      color: #5bc2e7;
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+
+    .reveal a:hover {
+      color: #8ed8f8;
+      text-shadow: none;
+      border: none;
+    }
+
+    .highlight-box {
+      background-color: rgba(91, 194, 231, 0.1);
+      border-left: 4px solid #5bc2e7;
+      padding: 12px 20px;
+      margin: 15px auto;
+      border-radius: 0 4px 4px 0;
+      font-size: 0.92em;
+      font-weight: 300;
+      line-height: 1.5;
+      max-width: 1000px;
+      width: 80%;
+      text-align: center;
+    }
+
+    .logo-footer {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      z-index: 30;
+      width: 150px;
+      height: auto;
+      opacity: 0.7;
+      transition: opacity 0.3s ease;
+    }
+
+    /* Title slide specific styling */
+    .title-slide {
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      height: 100vh !important;
+      margin-top: 0 !important;
+      flex-direction: column;
+    }
+    
+    .title-logo {
+      max-width: 200px;
+      margin-bottom: 30px;
+      background-color: rgba(91, 194, 231, 0.1);
+      border-radius: 50%;
+      padding: 20px;
+      border: 2px solid rgba(91, 194, 231, 0.3);
+    }
+
+    .logo-placeholder {
+      width: 200px;
+      height: 200px;
+      background-color: rgba(91, 194, 231, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #5bc2e7;
+      font-weight: bold;
+      font-size: 1.5em;
+      margin-bottom: 30px;
+      border: 2px solid rgba(91, 194, 231, 0.3);
+    }
+
+    /* Two column layout */
+    .two-columns {
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      margin-top: 15px;
+    }
+
+    .column {
+      flex: 1;
+      padding: 0 10px;
+    }
+
+    /* Table styling */
+    table {
+      width: 80%;
+      max-width: 1000px;
+      margin: 15px auto;
+      border-collapse: collapse;
+      font-size: 0.75em;
+      background-color: rgba(26, 26, 46, 0.6);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 10px 12px;
+      text-align: left;
+      border-bottom: 1px solid #363658;
+    }
+
+    th {
+      background-color: rgba(91, 194, 231, 0.15);
+      font-weight: 600;
+      color: #8ed8f8;
+    }
+
+    tr:hover {
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+
+    tr.highlight-row {
+      background-color: rgba(91, 194, 231, 0.15);
+    }
+
+    tr.highlight-row td {
+      border-bottom: 1px solid #5bc2e7;
+    }
+
+    /* Success story boxes */
+    .success-story {
+      background-color: rgba(91, 194, 231, 0.1);
+      border-left: 4px solid #5bc2e7;
+      border-radius: 0 4px 4px 0;
+      padding: 12px 20px;
+      margin: 15px auto;
+      font-size: 0.85em;
+      max-width: 1000px;
+      width: 80%;
+    }
+
+    .success-story h3 {
+      margin-top: 0;
+      color: #5bc2e7;
+    }
+    
+    /* Fragment animations */
+    .fragment.highlight-current-blue {
+      opacity: 1;
+      visibility: inherit;
+    }
+
+    .fragment.highlight-current-blue.current-fragment {
+      color: #5bc2e7;
+      font-weight: bold;
+    }
+    
+    /* Trial progress indicator */
+    .trial-progress {
+      display: flex;
+      justify-content: space-between;
+      width: 80%;
+      max-width: 1000px;
+      margin: 30px auto;
+      position: relative;
+    }
+    
+    .trial-progress:before {
+      content: '';
+      position: absolute;
+      top: 20px;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background-color: rgba(255, 255, 255, 0.2);
+      z-index: 1;
+    }
+    
+    .trial-stage {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      width: 150px;
+    }
+    
+    .stage-dot {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: #232344;
+      border: 3px solid rgba(255, 255, 255, 0.3);
+      margin: 0 auto 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+    
+    .stage-dot.completed {
+      background-color: #5bc2e7;
+      border-color: #8ed8f8;
+    }
+    
+    .stage-dot.active {
+      background-color: rgba(91, 194, 231, 0.3);
+      border-color: #5bc2e7;
+    }
+    
+    .stage-label {
+      font-size: 0.8em;
+      color: rgba(255, 255, 255, 0.7);
+    }
+    
+    .stage-label.completed, .stage-label.active {
+      color: #f0f0f0;
+      font-weight: 600;
+    }
+    
+    /* Benefits grid */
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      max-width: 1000px;
+      margin: 30px auto;
+      width: 80%;
+    }
+    
+    .benefit-card {
+      background-color: rgba(26, 26, 46, 0.6);
+      border-radius: 8px;
+      padding: 20px;
+      border: 1px solid rgba(91, 194, 231, 0.2);
+      transition: all 0.3s ease;
+    }
+    
+    .benefit-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      border-color: rgba(91, 194, 231, 0.5);
+    }
+    
+    .benefit-card h3 {
+      margin-top: 0;
+      font-size: 1.1em;
+      text-align: center;
+    }
+    
+    .benefit-card p {
+      font-size: 0.8em;
+      line-height: 1.5;
+    }
+
+    /* Final slide styling */
+    .final-slide {
+      text-align: center;
+    }
+
+    /* Print mode styles */
+    @media print {
+      .controls, .progress, .pdf-export-button {
+        display: none !important;
+      }
+      
+      .logo-footer {
+        opacity: 1 !important;
+      }
+      
+      html, body {
+        background: #1a1a2e !important;
+        background-color: #1a1a2e !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      
+      .reveal {
+        background-color: #1a1a2e !important;
+        color: #f0f0f0 !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      
+      .reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+        color: #5bc2e7 !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      
+      .title-slide, .final-slide {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        height: 100vh !important;
+        margin-top: 0 !important;
+        position: relative !important;
+        top: 0 !important;
+        transform: none !important;
+      }
+      
+      .reveal .slides > section {
+        padding-top: 0 !important;
+        transform: none !important;
+        height: 100vh !important;
+        min-height: 100vh !important;
+        page-break-after: always !important;
+        page-break-before: avoid !important;
+      }
+      
+      .fragment {
+        opacity: 1 !important;
+        visibility: visible !important;
+      }
+      
+      table, th, td {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color-adjust: exact !important;
+      }
+    }
+  </style>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="reveal">
+    <!-- Logo placeholder in bottom left corner for non-title slides -->
+    <div class="logo-footer" style="width: 120px; height: 40px; background-color: rgba(91, 194, 231, 0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #5bc2e7; font-weight: bold; font-size: 0.5em; border: 1px solid rgba(91, 194, 231, 0.3);">
+      HealthcSuits
+    </div>
+    
+    <div class="slides">
+      <!-- Title Slide -->
+      <section id="title-slide" class="title-slide">
+        <div class="logo-placeholder">
+          HealthcSuits
+        </div>
+        <h1>HealthcSuits</h1>
+        <h3 style="margin-bottom: 40px; color: #8ed8f8;">Revolutionary RNA-based Cancer Treatments</h3>
+        <p style="font-size: 0.8em; opacity: 0.8;">Clinical Research Presentation</p>
+        <p style="font-size: 0.8em; opacity: 0.8;">April 2025</p>
+      </section>
+
+      <!-- The Cancer Challenge -->
+      <section>
+        <h2>The Cancer Treatment Challenge</h2>
+        <div class="highlight-box">
+          <p><strong>Current cancer treatments have significant limitations in effectiveness and side effects</strong></p>
+        </div>
+        <div style="text-align: left; width: 80%; margin: 0 auto;">
+          <p class="fragment highlight-current-blue">Traditional cancer treatments like chemotherapy and radiation target both cancerous and healthy cells, leading to severe side effects and reduced quality of life.</p>
+          <p class="fragment highlight-current-blue">Despite advances, many cancers remain resistant to current treatments, with limited options for patients with advanced disease.</p>
+          <p class="fragment highlight-current-blue">The medical community needs targeted therapies that can effectively treat cancer while minimizing harm to healthy tissues.</p>
+        </div>
+      </section>
+
+      <!-- Our Solution -->
+      <section>
+        <h2>Our Solution: RNA-based Precision Medicine</h2>
+        <div class="highlight-box">
+          <p><strong>HealthcSuits has developed a revolutionary approach to RNA-based cancer treatment</strong></p>
+        </div>
+        <p>Our proprietary RNA technology precisely targets cancer cells by recognizing unique genetic signatures, leaving healthy cells untouched.</p>
+        <p class="fragment highlight-current-blue">Unlike conventional treatments, our RNA therapeutics can be rapidly adapted to address different cancer types and mutations.</p>
+        <p class="fragment highlight-current-blue">We've successfully completed Stage 2 clinical trials with promising efficacy and safety profiles.</p>
+      </section>
+
+      <!-- How It Works -->
+      <section>
+        <h2>How Our Technology Works</h2>
+        <div class="two-columns">
+          <div class="column">
+            <h3>Targeting Mechanism</h3>
+            <ul>
+              <li>Proprietary RNA sequences identify cancer-specific markers</li>
+              <li>Therapeutic payload delivery only to cancerous cells</li>
+              <li>Adaptive binding technology increases specificity</li>
+            </ul>
+          </div>
+          <div class="column">
+            <h3>Therapeutic Action</h3>
+            <ul>
+              <li>Disruption of cancer cell replication</li>
+              <li>Activation of natural immune response</li>
+              <li>Prevention of resistance development</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Clinical Trial Progress -->
+      <section>
+        <h2>Clinical Trial Progress</h2>
+        <div class="highlight-box">
+          <p><strong>Our groundbreaking RNA therapy has successfully completed Stage 2 trials</strong></p>
+        </div>
+        
+        <div class="trial-progress">
+          <div class="trial-stage">
+            <div class="stage-dot completed">1</div>
+            <div class="stage-label completed">Preclinical</div>
+          </div>
+          <div class="trial-stage">
+            <div class="stage-dot completed">2</div>
+            <div class="stage-label completed">Phase I</div>
+          </div>
+          <div class="trial-stage">
+            <div class="stage-dot completed">3</div>
+            <div class="stage-label completed">Phase II</div>
+          </div>
+          <div class="trial-stage">
+            <div class="stage-dot active">4</div>
+            <div class="stage-label active">Phase III</div>
+          </div>
+          <div class="trial-stage">
+            <div class="stage-dot">5</div>
+            <div class="stage-label">FDA Review</div>
+          </div>
+          <div class="trial-stage">
+            <div class="stage-dot">6</div>
+            <div class="stage-label">Market</div>
+          </div>
+        </div>
+        
+        <ul style="margin-top: 40px;">
+          <li><strong>Phase I:</strong> Demonstrated safety in healthy volunteers with minimal side effects</li>
+          <li><strong>Phase II:</strong> 73% response rate in patients with treatment-resistant tumors</li>
+          <li><strong>Phase III:</strong> Currently enrolling patients across 15 research centers</li>
+        </ul>
+      </section>
+
+      <!-- Key Results -->
+      <section>
+        <h2>Phase II Trial Results</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Metric</th>
+              <th>HealthcSuits RNA Therapy</th>
+              <th>Standard of Care</th>
+              <th>Improvement</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Overall Response Rate</td>
+              <td>73%</td>
+              <td>41%</td>
+              <td>+32%</td>
+            </tr>
+            <tr>
+              <td>Disease-Free Survival</td>
+              <td>18.3 months</td>
+              <td>9.7 months</td>
+              <td>+8.6 months</td>
+            </tr>
+            <tr>
+              <td>Grade 3/4 Adverse Events</td>
+              <td>14%</td>
+              <td>47%</td>
+              <td>-33%</td>
+            </tr>
+            <tr>
+              <td>Quality of Life Score</td>
+              <td>76/100</td>
+              <td>53/100</td>
+              <td>+23 points</td>
+            </tr>
+            <tr class="highlight-row">
+              <td><strong>Treatment Discontinuation</strong></td>
+              <td><strong>8%</strong></td>
+              <td><strong>32%</strong></td>
+              <td><strong>-24%</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Key Benefits -->
+      <section>
+        <h2>Key Benefits</h2>
+        <div class="benefits-grid">
+          <div class="benefit-card">
+            <h3>Enhanced Efficacy</h3>
+            <p>Significantly higher response rates compared to current standard treatments, even in treatment-resistant cases.</p>
+          </div>
+          <div class="benefit-card">
+            <h3>Reduced Side Effects</h3>
+            <p>Targeted action means minimal impact on healthy cells, resulting in better quality of life during treatment.</p>
+          </div>
+          <div class="benefit-card">
+            <h3>Adaptability</h3>
+            <p>Platform technology can be quickly modified to target different cancer types and address tumor mutations.</p>
+          </div>
+          <div class="benefit-card">
+            <h3>Complementary Therapy</h3>
+            <p>Can be used in combination with existing treatments to enhance overall efficacy.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Patient Case Studies -->
+      <section>
+        <h2>Patient Case Studies</h2>
+        <div class="success-story">
+          <h3>Case Study 1: Treatment-Resistant Breast Cancer</h3>
+          <p>56-year-old female with HER2+ breast cancer that had progressed despite multiple lines of therapy. After 3 months on our RNA treatment, showed 67% tumor reduction and remained stable for 14+ months.</p>
+        </div>
+        <div class="success-story">
+          <h3>Case Study 2: Advanced Prostate Cancer</h3>
+          <p>62-year-old male with metastatic prostate cancer. Previous treatments had failed, with rapidly rising PSA. Our RNA therapy reduced PSA by 94% and achieved complete response in 2 of 3 metastatic sites.</p>
+        </div>
+      </section>
+
+      <!-- Market Opportunity -->
+      <section>
+        <h2>Market Opportunity</h2>
+        <div class="highlight-box">
+          <p><strong>Addressing a significant unmet need in cancer treatment</strong></p>
+        </div>
+        <ul>
+          <li><strong>Global oncology market:</strong> $243 billion, projected to reach $393 billion by 2029</li>
+          <li><strong>RNA therapeutics segment:</strong> Growing at 17.6% CAGR</li>
+          <li><strong>Initial target indications:</strong> Breast, prostate, colorectal, and lung cancers</li>
+          <li><strong>Expanded applications:</strong> Platform technology adaptable to multiple cancer types</li>
+        </ul>
+      </section>
+
+      <!-- Research Partnerships -->
+      <section>
+        <h2>Research Partnerships</h2>
+        <p>We're collaborating with leading research institutions to advance cancer treatment:</p>
+        <div class="two-columns">
+          <div class="column">
+            <h3>Academic Partners</h3>
+            <ul>
+              <li>Stanford Medical Center</li>
+              <li>MD Anderson Cancer Center</li>
+              <li>Memorial Sloan Kettering</li>
+              <li>Johns Hopkins Medicine</li>
+            </ul>
+          </div>
+          <div class="column">
+            <h3>Industry Collaborations</h3>
+            <ul>
+              <li>Laboratory equipment suppliers</li>
+              <li>RNA synthesis specialists</li>
+              <li>Clinical research organizations</li>
+              <li>Biotech incubators</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Next Steps -->
+      <section>
+        <h2>Next Steps in Our Research</h2>
+        <ul>
+          <li><strong>Complete Phase III trials</strong> with expanded patient population (Expected: Q4 2025)</li>
+          <li><strong>FDA submission</strong> for our lead RNA therapeutic candidate (Expected: Q1 2026)</li>
+          <li><strong>Expand research</strong> to additional cancer types and combination therapies</li>
+          <li><strong>Scale manufacturing capacity</strong> for commercial production</li>
+          <li><strong>Develop international regulatory strategy</strong> for global market access</li>
+        </ul>
+      </section>
+
+      <!-- Investment & Funding -->
+      <section>
+        <h2>Investment Opportunity</h2>
+        <div class="highlight-box">
+          <p><strong>Seeking strategic partnerships and investment to advance our revolutionary cancer treatments</strong></p>
+        </div>
+        <ul>
+          <li><strong>Current Funding:</strong> $28M raised to date across seed and Series A rounds</li>
+          <li><strong>Series B Round:</strong> Raising $45M to fund Phase III completion and preparation for commercialization</li>
+          <li><strong>Use of Funds:</strong> Clinical trials, regulatory submissions, manufacturing scale-up, and team expansion</li>
+          <li><strong>ROI Timeline:</strong> Path to market established with clear milestones and regulatory strategy</li>
+        </ul>
+      </section>
+
+      <!-- Our Team -->
+      <section>
+        <h2>Our Team</h2>
+        <ul class="team-list">
+          <li><strong>Dr. [Founder Name], CEO</strong> - Ph.D. in Molecular Biology, 15+ years in RNA therapeutics research</li>
+          <li><strong>[Name], Chief Scientific Officer</strong> - Previously led oncology research at [Major Pharma Company]</li>
+          <li><strong>[Name], Clinical Research Director</strong> - Supervised 20+ successful clinical trials</li>
+          <li><strong>[Name], Regulatory Affairs</strong> - Former FDA oncology review committee member</li>
+        </ul>
+        <p>Our team combines deep scientific expertise, clinical research experience, and regulatory knowledge specifically focused on RNA therapeutics for oncology.</p>
+      </section>
+
+      <!-- Contact -->
+      <section class="final-slide">
+        <h2>Revolutionary Cancer Treatment Through RNA Innovation</h2>
+        <div class="highlight-box">
+          <p><strong>Join us in transforming cancer treatment with precision RNA therapeutics</strong></p>
+        </div>
+        <p>Contact: <a href="mailto:info@healthcsuits.com">info@healthcsuits.com</a></p>
+        <p>Website: <a href="https://healthcsuits.com" target="_blank">healthcsuits.com</a></p>
+      </section>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/notes/notes.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/markdown/markdown.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/highlight/highlight.js"></script>
+  <script>
+    // Initialize Reveal.js
+    let deck = new Reveal({
+      hash: true,
+      slideNumber: true,
+      transition: 'slide', 
+      transitionSpeed: 'fast',
+      controls: true,
+      progress: true,
+      center: true,
+      width: 1400,
+      height: 900,
+      margin: 0,
+      marginLeft: 0,
+      marginRight: 0,
+      viewDistance: 3,
+      showNotes: false,
+      backgroundTransition: 'fade',
+      controlsBackArrows: 'faded',
+      controlsLayout: 'bottom-right',
+      // Configure Fragments
+      fragments: true,
+      fragmentInURL: true,
+      // PDF export options
+      pdfMaxPagesPerSlide: 1,
+      pdfSeparateFragments: false,
+      pdf: {
+        margin: 0,
+        size: [1200, 700],
+        format: 'Letter'
+      }
+    });
+    
+    // Initialize the presentation
+    deck.initialize();
+    
+    // Wait for DOM to be ready
+    window.addEventListener('load', function() {
+      // Add PDF export button
+      const pdfButton = document.createElement('div');
+      pdfButton.innerHTML = '📄';
+      pdfButton.className = 'pdf-export-button';
+      pdfButton.title = 'Export to PDF (Print with Ctrl+P)';
+      pdfButton.style.position = 'fixed';
+      pdfButton.style.zIndex = '40';
+      pdfButton.style.bottom = '20px';
+      pdfButton.style.right = '170px';
+      pdfButton.style.width = '38px';
+      pdfButton.style.height = '38px';
+      pdfButton.style.backgroundColor = 'rgba(91, 194, 231, 0.7)';
+      pdfButton.style.borderRadius = '50%';
+      pdfButton.style.display = 'flex';
+      pdfButton.style.alignItems = 'center';
+      pdfButton.style.justifyContent = 'center';
+      pdfButton.style.fontSize = '18px';
+      pdfButton.style.cursor = 'pointer';
+      pdfButton.style.transition = 'all 0.3s ease';
+      pdfButton.style.boxShadow = '0 2px 10px rgba(91, 194, 231, 0.3)';
+      
+      pdfButton.addEventListener('mouseenter', function() {
+        pdfButton.style.backgroundColor = 'rgba(91, 194, 231, 0.9)';
+        pdfButton.style.transform = 'scale(1.05)';
+      });
+      
+      pdfButton.addEventListener('mouseleave', function() {
+        pdfButton.style.backgroundColor = 'rgba(91, 194, 231, 0.7)';
+        pdfButton.style.transform = 'scale(1)';
+      });
+      
+      pdfButton.addEventListener('click', function() {
+        // Always redirect to print-pdf mode for consistent behavior
+        const currentUrl = window.location.href.split('?')[0];
+        window.location.href = currentUrl + '?print-pdf';
+      });
+      
+      document.body.appendChild(pdfButton);
+      
+      // Handle slide-specific styling
+      function handleSlideStyles() {
+        const currentIndex = Reveal.getIndices().h;
+        const revealElement = document.querySelector('.reveal');
+        
+        // Set data attribute for current slide number for CSS targeting
+        revealElement.setAttribute('data-slide-number', currentIndex);
+        
+        // Add special class to body for first slide
+        if (currentIndex === 0) {
+          document.body.classList.add('on-title-slide');
+        } else {
+          document.body.classList.remove('on-title-slide');
+        }
+      }
+
+      // Call on slide change
+      Reveal.addEventListener('slidechanged', handleSlideStyles);
+      
+      // Initial call after load
+      setTimeout(handleSlideStyles, 500);
+    });
+  </script>
+</body>
+</html>

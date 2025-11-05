@@ -1,0 +1,26 @@
+component_id: express-service
+name: Express Service Skeleton
+version: 1.0.0
+category: backend
+subcategory: web-server
+complexity: moderate
+maintainer: KAPI Templates Team
+
+provides:
+  - express_api_bootstrap
+  - http_server_lifecycle
+  - healthcheck_route
+  - structured_logging
+
+compatible_with:
+  - node>=18
+  - typescript>=5
+
+incompatible_with: []
+
+voice_patterns:
+  - "express api starter"
+  - "express rest template"
+  - "node service skeleton"
+  - "http server bootstrap"
+

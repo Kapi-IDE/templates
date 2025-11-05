@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meme Generator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #eee;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            color: #666;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .tab.active {
+            color: #667eea;
+            border-bottom-color: #667eea;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        input[type="text"],
+        input[type="file"],
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #eee;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus,
+        select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: transform 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .preview {
+            margin-top: 30px;
+            text-align: center;
+            display: none;
+        }
+
+        .preview.active {
+            display: block;
+        }
+
+        .preview img {
+            max-width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+        }
+
+        .download-btn {
+            background: #10b981;
+            margin-top: 10px;
+        }
+
+        .download-btn:hover {
+            background: #059669;
+        }
+
+        .templates {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .template {
+            border: 3px solid #eee;
+            border-radius: 8px;
+            padding: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .template:hover {
+            border-color: #667eea;
+            transform: scale(1.05);
+        }
+
+        .template.selected {
+            border-color: #667eea;
+            background: #f0f4ff;
+        }
+
+        .template img {
+            width: 100%;
+            border-radius: 4px;
+            margin-bottom: 8px;
+        }
+
+        .template-name {
+            font-size: 12px;
+            text-align: center;
+            color: #666;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 20px;
+            display: none;
+        }
+
+        .loading.active {
+            display: block;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .error {
+            background: #fee;
+            border: 2px solid #fcc;
+            color: #c33;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .error.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎭 Meme Generator</h1>
+
+        <div class="tabs">
+            <button class="tab active" onclick="switchTab('upload')">Upload Image</button>
+            <button class="tab" onclick="switchTab('template')">Use Template</button>
+        </div>
+
+        <div class="error" id="error"></div>
+
+        <!-- Upload Tab -->
+        <div class="tab-content active" id="upload-tab">
+            <form id="upload-form" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="image">Choose Image:</label>
+                    <input type="file" id="image" name="image" accept="image/*" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="top-text">Top Text:</label>
+                    <input type="text" id="top-text" name="top_text" placeholder="Enter top text">
+                </div>
+
+                <div class="form-group">
+                    <label for="bottom-text">Bottom Text:</label>
+                    <input type="text" id="bottom-text" name="bottom_text" placeholder="Enter bottom text">
+                </div>
+
+                <button type="submit" class="btn">Generate Meme</button>
+            </form>
+        </div>
+
+        <!-- Template Tab -->
+        <div class="tab-content" id="template-tab">
+            <div class="form-group">
+                <label>Select Template:</label>
+                <div class="templates" id="templates"></div>
+            </div>
+
+            <form id="template-form">
+                <div id="text-inputs"></div>
+                <button type="submit" class="btn" disabled>Generate Meme</button>
+            </form>
+        </div>
+
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p style="margin-top: 10px;">Generating meme...</p>
+        </div>
+
+        <div class="preview" id="preview">
+            <img id="preview-image" src="" alt="Generated meme">
+            <button class="btn download-btn" onclick="downloadMeme()">Download Meme</button>
+        </div>
+    </div>
+
+    <script>
+        const API_URL = 'http://localhost:8000';
+        let selectedTemplate = null;
+        let currentMemeUrl = null;
+
+        // Switch tabs
+        function switchTab(tab) {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+
+            if (tab === 'upload') {
+                document.querySelectorAll('.tab')[0].classList.add('active');
+                document.getElementById('upload-tab').classList.add('active');
+            } else {
+                document.querySelectorAll('.tab')[1].classList.add('active');
+                document.getElementById('template-tab').classList.add('active');
+                loadTemplates();
+            }
+
+            hidePreview();
+            hideError();
+        }
+
+        // Load templates
+        async function loadTemplates() {
+            try {
+                const response = await fetch(`${API_URL}/api/templates`);
+                const templates = await response.json();
+
+                const container = document.getElementById('templates');
+                container.innerHTML = '';
+
+                templates.forEach(template => {
+                    const div = document.createElement('div');
+                    div.className = 'template';
+                    div.onclick = () => selectTemplate(template);
+                    div.innerHTML = `
+                        <img src="${template.image_url}" alt="${template.name}">
+                        <div class="template-name">${template.name}</div>
+                    `;
+                    container.appendChild(div);
+                });
+            } catch (error) {
+                showError('Failed to load templates');
+            }
+        }
+
+        // Select template
+        function selectTemplate(template) {
+            selectedTemplate = template;
+
+            // Update UI
+            document.querySelectorAll('.template').forEach(t => t.classList.remove('selected'));
+            event.currentTarget.classList.add('selected');
+
+            // Generate text inputs
+            const container = document.getElementById('text-inputs');
+            container.innerHTML = '';
+
+            for (let i = 0; i < template.text_count; i++) {
+                const div = document.createElement('div');
+                div.className = 'form-group';
+                div.innerHTML = `
+                    <label for="text-${i}">Text ${i + 1}:</label>
+                    <input type="text" id="text-${i}" name="text_${i}" placeholder="Enter text ${i + 1}" required>
+                `;
+                container.appendChild(div);
+            }
+
+            document.querySelector('#template-form .btn').disabled = false;
+        }
+
+        // Handle upload form
+        document.getElementById('upload-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const formData = new FormData(e.target);
+            showLoading();
+            hideError();
+
+            try {
+                const response = await fetch(`${API_URL}/api/create`, {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to generate meme');
+                }
+
+                const data = await response.json();
+                showPreview(`${API_URL}${data.url}`);
+            } catch (error) {
+                showError(error.message);
+            } finally {
+                hideLoading();
+            }
+        });
+
+        // Handle template form
+        document.getElementById('template-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            if (!selectedTemplate) return;
+
+            const texts = [];
+            for (let i = 0; i < selectedTemplate.text_count; i++) {
+                const value = document.getElementById(`text-${i}`).value;
+                texts.push(value);
+            }
+
+            showLoading();
+            hideError();
+
+            try {
+                const response = await fetch(`${API_URL}/api/create/template/${selectedTemplate.id}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ texts })
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to generate meme');
+                }
+
+                const data = await response.json();
+                showPreview(`${API_URL}${data.url}`);
+            } catch (error) {
+                showError(error.message);
+            } finally {
+                hideLoading();
+            }
+        });
+
+        // UI helpers
+        function showLoading() {
+            document.getElementById('loading').classList.add('active');
+        }
+
+        function hideLoading() {
+            document.getElementById('loading').classList.remove('active');
+        }
+
+        function showPreview(url) {
+            currentMemeUrl = url;
+            document.getElementById('preview-image').src = url;
+            document.getElementById('preview').classList.add('active');
+        }
+
+        function hidePreview() {
+            document.getElementById('preview').classList.remove('active');
+        }
+
+        function showError(message) {
+            const errorEl = document.getElementById('error');
+            errorEl.textContent = message;
+            errorEl.classList.add('active');
+        }
+
+        function hideError() {
+            document.getElementById('error').classList.remove('active');
+        }
+
+        function downloadMeme() {
+            if (currentMemeUrl) {
+                const a = document.createElement('a');
+                a.href = currentMemeUrl;
+                a.download = 'meme.png';
+                a.click();
+            }
+        }
+    </script>
+</body>
+</html>

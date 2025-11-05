@@ -1,0 +1,96 @@
+id: deep-document-analysis
+name: Deep Document Analysis Workbench
+description: Multi-provider RAG blueprint combining FastAPI, Streamlit, Chroma, and the universal LLM selector for deep document interrogation.
+category: full-app
+subcategory: ai-advanced
+industry: knowledge-intelligence
+type: complete-application
+component_type: service
+complexity: medium
+version: 1.0.0
+
+business_value:
+  problem: Teams waste hours moving between tools to summarize reports, policies, and research papers.
+  solution: Unified ingest + analysis workbench with instant provider switching and explainable context.
+  roi: $48,000/year productivity uplift for a 12-person research team saving 30 minutes/day.
+  time_to_value: 30 minutes (local install).
+
+target_users:
+  - Research and intelligence teams
+  - Compliance analysts
+  - Customer success / support enablement
+  - Knowledge management squads
+
+use_cases:
+  - Summarize compliance binders across regions
+  - Compare LLM answer quality and cost side-by-side
+  - Build ad-hoc knowledge assistants for client Q&A
+  - Rapid due diligence over long-form PDFs
+
+languages:
+  - python
+
+frameworks:
+  - fastapi
+  - streamlit
+  - langchain
+  - chromadb
+
+setup_time_minutes: 30
+deployment_time_minutes: 10
+token_savings: 28000
+lines_of_code: 1800
+
+dependencies:
+  - HuggingFace sentence transformers
+  - Chroma vector database
+  - FastAPI + Uvicorn
+  - Streamlit
+  - Groq/OpenAI/Anthropic/Gemini/Ollama LLM APIs (optional)
+
+features:
+  - Multi-provider LLM selector with pricing hints
+  - PDF, URL, and manual text ingestion pipeline
+  - Vector-backed retrieval QA with source citations
+  - Streamlit analyst console
+  - Pricing transparency for provider comparisons
+  - Persisted vector store for repeat queries
+
+quality:
+  unit_tests: partial (examples provided in docs)
+  linting: via `ruff` / `black` recommended
+  monitoring: built-in `/healthz`
+
+security_features:
+  - Environment-based API keys (never stored in code)
+  - File type validation for uploads
+  - CORS guarded front-end origins configurable
+
+performance:
+  concurrent_users: 50 (FastAPI async)
+  average_answer_time: 3-7 seconds depending on provider
+
+provides:
+  - multi-llm-evaluation
+  - document-rag-workbench
+  - vector-ingestion-pipeline
+
+compatible_with:
+  - groq
+  - openai
+  - anthropic
+  - gemini
+  - ollama
+  - chromadb
+
+incompatible_with:
+  - legacy sql-only deployments (requires vector store)
+
+voice_patterns:
+  - build document analysis workbench
+  - compare llm answers for a policy
+  - ingest multiple PDFs and summarize
+  - launch multi-llm report analyst
+
+created_at: 2025-02-14
+updated_at: 2025-02-14

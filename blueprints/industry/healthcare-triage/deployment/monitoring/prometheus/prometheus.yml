@@ -1,0 +1,242 @@
+# Prometheus configuration for Healthcare Triage System
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+  external_labels:
+    cluster: 'healthcare-triage'
+    environment: 'production'
+
+rule_files:
+  - "rules/*.yml"
+
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+          - alertmanager:9093
+
+scrape_configs:
+  # Healthcare Triage Application Metrics
+  - job_name: 'healthcare-triage-app'
+    metrics_path: '/metrics'
+    scrape_interval: 30s
+    static_configs:
+      - targets:
+          - 'healthcare-triage-web:5000'
+          - 'healthcare-triage-worker:5000'
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: instance
+      - target_label: service
+        replacement: 'healthcare-triage'
+
+  # Database Metrics (PostgreSQL)
+  - job_name: 'postgresql'
+    static_configs:
+      - targets:
+          - 'postgres-exporter:9187'
+    relabel_configs:
+      - target_label: service
+        replacement: 'postgresql'
+
+  # Redis Metrics
+  - job_name: 'redis'
+    static_configs:
+      - targets:
+          - 'redis-exporter:9121'
+    relabel_configs:
+      - target_label: service
+        replacement: 'redis'
+
+  # NGINX Metrics
+  - job_name: 'nginx'
+    static_configs:
+      - targets:
+          - 'nginx-exporter:9113'
+    relabel_configs:
+      - target_label: service
+        replacement: 'nginx'
+
+  # Node Exporter (System Metrics)
+  - job_name: 'node-exporter'
+    static_configs:
+      - targets:
+          - 'node-exporter:9100'
+    relabel_configs:
+      - target_label: service
+        replacement: 'system'
+
+  # Kubernetes Metrics
+  - job_name: 'kubernetes-apiservers'
+    kubernetes_sd_configs:
+      - role: endpoints
+    scheme: https
+    tls_config:
+      ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+    bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
+    relabel_configs:
+      - source_labels: [__meta_kubernetes_namespace, __meta_kubernetes_service_name, __meta_kubernetes_endpoint_port_name]
+        action: keep
+        regex: default;kubernetes;https
+
+  - job_name: 'kubernetes-nodes'
+    kubernetes_sd_configs:
+      - role: node
+    scheme: https
+    tls_config:
+      ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+    bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
+    relabel_configs:
+      - action: labelmap
+        regex: __meta_kubernetes_node_label_(.+)
+      - target_label: __address__
+        replacement: kubernetes.default.svc:443
+      - source_labels: [__meta_kubernetes_node_name]
+        regex: (.+)
+        target_label: __metrics_path__
+        replacement: /api/v1/nodes/${1}/proxy/metrics
+
+  - job_name: 'kubernetes-pods'
+    kubernetes_sd_configs:
+      - role: pod
+    relabel_configs:
+      - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_scrape]
+        action: keep
+        regex: true
+      - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_path]
+        action: replace
+        target_label: __metrics_path__
+        regex: (.+)
+      - source_labels: [__address__, __meta_kubernetes_pod_annotation_prometheus_io_port]
+        action: replace
+        regex: ([^:]+)(?::\d+)?;(\d+)
+        replacement: $1:$2
+        target_label: __address__
+      - action: labelmap
+        regex: __meta_kubernetes_pod_label_(.+)
+      - source_labels: [__meta_kubernetes_namespace]
+        action: replace
+        target_label: kubernetes_namespace
+      - source_labels: [__meta_kubernetes_pod_name]
+        action: replace
+        target_label: kubernetes_pod_name
+
+  # AI Service Monitoring
+  - job_name: 'ai-service-monitoring'
+    scrape_interval: 60s
+    metrics_path: '/ai/metrics'
+    static_configs:
+      - targets:
+          - 'healthcare-triage-ai:8080'
+    relabel_configs:
+      - target_label: service
+        replacement: 'ai-service'
+
+  # Custom Business Metrics
+  - job_name: 'business-metrics'
+    scrape_interval: 300s  # 5 minutes
+    metrics_path: '/business/metrics'
+    static_configs:
+      - targets:
+          - 'healthcare-triage-metrics:8081'
+    relabel_configs:
+      - target_label: service
+        replacement: 'business-metrics'
+
+  # External Health Checks
+  - job_name: 'blackbox'
+    metrics_path: /probe
+    params:
+      module: [http_2xx]
+    static_configs:
+      - targets:
+          - https://healthcare-triage.com
+          - https://api.healthcare-triage.com/health
+          - https://staging.healthcare-triage.com
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: blackbox-exporter:9115
+
+  # Certificate Monitoring
+  - job_name: 'ssl-certificates'
+    metrics_path: /probe
+    params:
+      module: [tcp_connect]
+    static_configs:
+      - targets:
+          - healthcare-triage.com:443
+          - api.healthcare-triage.com:443
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: blackbox-exporter:9115
+
+  # Third-party Service Monitoring
+  - job_name: 'external-dependencies'
+    scrape_interval: 120s
+    metrics_path: /probe
+    params:
+      module: [http_2xx]
+    static_configs:
+      - targets:
+          # AI Service Providers
+          - https://api.openai.com/v1/models
+          - https://api.anthropic.com/v1/health
+          
+          # Email Service
+          - https://api.sendgrid.com/v3/health
+          
+          # SMS Service
+          - https://api.twilio.com/health
+          
+          # Authentication Service
+          - https://api.clerk.dev/health
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: blackbox-exporter:9115
+      - target_label: service_type
+        replacement: 'external-dependency'
+
+# Metric relabeling for compliance and privacy
+metric_relabel_configs:
+  # Remove sensitive labels from metrics
+  - source_labels: [__name__]
+    regex: '.*patient_id.*|.*ssn.*|.*phi.*'
+    action: drop
+  
+  # Anonymize instance names containing PHI
+  - source_labels: [instance]
+    regex: '.*patient.*|.*name.*'
+    target_label: instance
+    replacement: 'anonymized'
+
+# Remote write configuration for long-term storage
+remote_write:
+  - url: "https://prometheus-remote-write.healthcare-triage.com/api/v1/write"
+    queue_config:
+      max_samples_per_send: 1000
+      max_shards: 200
+      capacity: 2500
+    write_relabel_configs:
+      # Only send critical metrics to remote storage
+      - source_labels: [__name__]
+        regex: 'up|http_requests_total|response_time_seconds|database_connections|memory_usage|cpu_usage|disk_usage|patient_queue_size|triage_processing_time|ai_accuracy_rate'
+        action: keep
+
+# Storage configuration
+storage:
+  tsdb:
+    retention.time: 30d
+    retention.size: 50GB
+    wal-compression: true

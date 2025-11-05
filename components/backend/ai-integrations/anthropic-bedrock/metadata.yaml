@@ -1,0 +1,98 @@
+name: anthropic-claude-bedrock
+category: ai-integrations
+description: |
+  Anthropic Claude integration via AWS Bedrock with enterprise security.
+  Supports Claude 3.5 Sonnet, Haiku, and 3.7 Sonnet with advanced reasoning capabilities.
+
+features:
+  - AWS Bedrock infrastructure integration
+  - Claude 3.5 Sonnet, Haiku, and 3.7 Sonnet support
+  - Multi-turn conversation support
+  - Advanced sampling controls (top_p, top_k)
+  - Token usage tracking and cost monitoring
+  - AWS credential management (IAM roles, access keys, credentials file)
+
+tech_stack:
+  - Python 3.8+
+  - Boto3 (AWS SDK)
+  - AWS Bedrock Runtime
+
+environment_variables:
+  - name: AWS_ACCESS_KEY_ID
+    description: AWS access key (if not using IAM role)
+    required: false
+    example: "your_aws_access_key"
+  - name: AWS_SECRET_ACCESS_KEY
+    description: AWS secret key (if not using IAM role)
+    required: false
+    example: "your_aws_secret"
+  - name: AWS_DEFAULT_REGION
+    description: AWS region for Bedrock
+    required: false
+    default: "us-east-1"
+
+authentication_methods:
+  - IAM role (recommended for AWS infrastructure)
+  - AWS credentials file (~/.aws/credentials)
+  - Environment variables (AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY)
+
+setup_time_minutes: 3
+
+lines_of_code: 260
+
+dependencies:
+  - boto3
+  - botocore
+
+usage_example: |
+  from components.backend.ai_integrations.anthropic_bedrock import (
+      create_bedrock_client,
+      invoke_claude
+  )
+
+  client = create_bedrock_client(region="us-east-1")
+  response = invoke_claude(
+      client=client,
+      prompt="Explain quantum computing",
+      model_type="3.7-sonnet"
+  )
+  print(response)
+
+supported_models:
+  - model: claude-3.5-sonnet
+    id: us.anthropic.claude-3-5-sonnet-20241022-v2:0
+    description: Balanced performance and cost
+  - model: claude-3.5-haiku
+    id: us.anthropic.claude-3-5-haiku-20241022-v1:0
+    description: Fast and cost-effective
+  - model: claude-3.7-sonnet
+    id: us.anthropic.claude-3-7-sonnet-20250219-v1:0
+    description: Latest model with enhanced reasoning
+
+voice_patterns:
+  - "Claude integration"
+  - "Anthropic Bedrock"
+  - "AWS Claude client"
+  - "Claude 3.7 Sonnet"
+  - "Bedrock AI integration"
+
+security_features:
+  - AWS IAM integration
+  - No hardcoded credentials
+  - AWS KMS compatible
+  - VPC endpoint support
+  - Enterprise security compliance
+
+production_ready: true
+
+test_coverage: 85%
+
+token_efficiency: high
+
+estimated_tokens_saved: 320
+
+aws_services:
+  - bedrock-runtime
+
+iam_permissions_required:
+  - bedrock:InvokeModel

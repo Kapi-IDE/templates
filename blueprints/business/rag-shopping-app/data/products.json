@@ -1,0 +1,182 @@
+[
+  {
+    "id": "prod_001",
+    "name": "Road Running Shoes - CloudFlex Pro",
+    "category": "Footwear",
+    "price": 129.99,
+    "description": "Premium cushioned running shoes designed for marathon training and long-distance road running. Features advanced shock absorption and breathable mesh upper.",
+    "tags": ["running", "marathon", "road", "cushioned", "athletic"],
+    "image": "/products/running-shoes.jpg"
+  },
+  {
+    "id": "prod_002",
+    "name": "Trail Hiking Boots - MountainGrip",
+    "category": "Footwear",
+    "price": 159.99,
+    "description": "Waterproof hiking boots with superior ankle support for rugged terrain. Perfect for winter hiking and mountain trails.",
+    "tags": ["hiking", "boots", "waterproof", "winter", "trail"],
+    "image": "/products/hiking-boots.jpg"
+  },
+  {
+    "id": "prod_003",
+    "name": "Wireless Noise-Cancelling Headphones",
+    "category": "Electronics",
+    "price": 249.99,
+    "description": "Premium over-ear headphones with active noise cancellation. 30-hour battery life, ideal for travel and focused work.",
+    "tags": ["headphones", "wireless", "noise-cancelling", "travel", "audio"],
+    "image": "/products/headphones.jpg"
+  },
+  {
+    "id": "prod_004",
+    "name": "Eco-Friendly Yoga Mat",
+    "category": "Fitness",
+    "price": 49.99,
+    "description": "Biodegradable yoga mat made from natural rubber. Extra thick for joint support during practice.",
+    "tags": ["yoga", "eco-friendly", "fitness", "sustainable", "exercise"],
+    "image": "/products/yoga-mat.jpg"
+  },
+  {
+    "id": "prod_005",
+    "name": "Insulated Winter Jacket",
+    "category": "Apparel",
+    "price": 189.99,
+    "description": "Lightweight down jacket with water-resistant shell. Perfect for cold weather hiking and outdoor activities.",
+    "tags": ["jacket", "winter", "outdoor", "insulated", "hiking"],
+    "image": "/products/winter-jacket.jpg"
+  },
+  {
+    "id": "prod_006",
+    "name": "Smart Fitness Watch",
+    "category": "Electronics",
+    "price": 299.99,
+    "description": "GPS fitness tracker with heart rate monitor, sleep tracking, and 50m water resistance. Track runs, swims, and cycling.",
+    "tags": ["fitness", "watch", "gps", "tracker", "health"],
+    "image": "/products/fitness-watch.jpg"
+  },
+  {
+    "id": "prod_007",
+    "name": "Compression Running Socks",
+    "category": "Apparel",
+    "price": 24.99,
+    "description": "Graduated compression socks for improved circulation during long runs. Moisture-wicking fabric for comfort.",
+    "tags": ["socks", "compression", "running", "recovery", "athletic"],
+    "image": "/products/compression-socks.jpg"
+  },
+  {
+    "id": "prod_008",
+    "name": "Portable Bluetooth Speaker",
+    "category": "Electronics",
+    "price": 79.99,
+    "description": "Waterproof outdoor speaker with 12-hour battery. Perfect for beach trips, camping, and pool parties.",
+    "tags": ["speaker", "bluetooth", "waterproof", "outdoor", "portable"],
+    "image": "/products/speaker.jpg"
+  },
+  {
+    "id": "prod_009",
+    "name": "Stainless Steel Water Bottle",
+    "category": "Accessories",
+    "price": 29.99,
+    "description": "Vacuum-insulated bottle keeps drinks cold for 24 hours, hot for 12 hours. BPA-free, leak-proof lid.",
+    "tags": ["bottle", "hydration", "insulated", "eco-friendly", "outdoor"],
+    "image": "/products/water-bottle.jpg"
+  },
+  {
+    "id": "prod_010",
+    "name": "Camping Tent - 4 Person",
+    "category": "Outdoor Gear",
+    "price": 199.99,
+    "description": "Easy-setup family tent with rainfly and vestibule. Spacious interior for 4 people, perfect for weekend camping trips.",
+    "tags": ["tent", "camping", "outdoor", "family", "shelter"],
+    "image": "/products/tent.jpg"
+  },
+  {
+    "id": "prod_011",
+    "name": "Resistance Bands Set",
+    "category": "Fitness",
+    "price": 34.99,
+    "description": "5-band set with varying resistance levels for strength training. Includes door anchor and carrying bag.",
+    "tags": ["resistance", "bands", "strength", "fitness", "home-workout"],
+    "image": "/products/resistance-bands.jpg"
+  },
+  {
+    "id": "prod_012",
+    "name": "Thermal Sleeping Bag",
+    "category": "Outdoor Gear",
+    "price": 89.99,
+    "description": "3-season sleeping bag rated for 20°F. Lightweight and compressible for backpacking.",
+    "tags": ["sleeping-bag", "camping", "thermal", "backpacking", "outdoor"],
+    "image": "/products/sleeping-bag.jpg"
+  },
+  {
+    "id": "prod_013",
+    "name": "Organic Cotton T-Shirt",
+    "category": "Apparel",
+    "price": 29.99,
+    "description": "Soft, breathable organic cotton tee. Fair trade certified, perfect for casual wear.",
+    "tags": ["t-shirt", "organic", "cotton", "eco-friendly", "casual"],
+    "image": "/products/tshirt.jpg"
+  },
+  {
+    "id": "prod_014",
+    "name": "LED Camping Lantern",
+    "category": "Outdoor Gear",
+    "price": 39.99,
+    "description": "Rechargeable LED lantern with 300-hour runtime. Water-resistant, includes USB charging port for devices.",
+    "tags": ["lantern", "camping", "led", "rechargeable", "outdoor"],
+    "image": "/products/lantern.jpg"
+  },
+  {
+    "id": "prod_015",
+    "name": "Memory Foam Pillow",
+    "category": "Home",
+    "price": 59.99,
+    "description": "Ergonomic cervical pillow for neck pain relief. Hypoallergenic bamboo cover, ideal for side sleepers.",
+    "tags": ["pillow", "memory-foam", "sleep", "comfort", "ergonomic"],
+    "image": "/products/pillow.jpg"
+  },
+  {
+    "id": "prod_016",
+    "name": "Adjustable Dumbbells",
+    "category": "Fitness",
+    "price": 149.99,
+    "description": "Space-saving adjustable dumbbells 5-25 lbs per hand. Quick-change weight selector for home gym.",
+    "tags": ["dumbbells", "weights", "strength", "fitness", "home-gym"],
+    "image": "/products/dumbbells.jpg"
+  },
+  {
+    "id": "prod_017",
+    "name": "Backpacking Backpack - 50L",
+    "category": "Outdoor Gear",
+    "price": 129.99,
+    "description": "Lightweight hiking backpack with adjustable torso and padded hip belt. Rain cover included.",
+    "tags": ["backpack", "hiking", "backpacking", "outdoor", "travel"],
+    "image": "/products/backpack.jpg"
+  },
+  {
+    "id": "prod_018",
+    "name": "Air Purifier - HEPA Filter",
+    "category": "Home",
+    "price": 179.99,
+    "description": "True HEPA air purifier for rooms up to 500 sq ft. Removes 99.97% of allergens, dust, and pollen.",
+    "tags": ["air-purifier", "hepa", "home", "health", "filter"],
+    "image": "/products/air-purifier.jpg"
+  },
+  {
+    "id": "prod_019",
+    "name": "Foam Roller - Deep Tissue",
+    "category": "Fitness",
+    "price": 29.99,
+    "description": "High-density foam roller for muscle recovery and myofascial release. Textured surface for deep tissue massage.",
+    "tags": ["foam-roller", "recovery", "massage", "fitness", "muscle"],
+    "image": "/products/foam-roller.jpg"
+  },
+  {
+    "id": "prod_020",
+    "name": "Portable Solar Charger",
+    "category": "Electronics",
+    "price": 69.99,
+    "description": "Foldable solar panel charger with dual USB ports. Perfect for camping and emergency preparedness.",
+    "tags": ["solar", "charger", "portable", "camping", "emergency"],
+    "image": "/products/solar-charger.jpg"
+  }
+]

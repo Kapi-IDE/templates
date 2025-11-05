@@ -1,0 +1,42 @@
+component_id: agent-foundation
+name: Agent Foundation Base Class
+version: 0.1.0
+category: backend
+subcategory: agent-framework
+type: component
+component_type: service
+languages: python
+frameworks: none
+tech_stack: google-generativeai
+provides:
+  - agent_lifecycle
+  - prompt_scaffolding
+  - logging_hooks
+compatible_with:
+  - python>=3.9
+  - gemini-client-wrapper
+incompatible_with: []
+dependencies:
+  runtime:
+    - google-generativeai
+  optional:
+    - openai
+    - anthropic
+metrics:
+  token_savings: 3200
+  lines_of_code: 270
+  setup_time_minutes: 3
+  complexity: moderate
+description: |
+  Shared foundation for conversational agents with prompt scaffolding, structured data extraction, urgency assessment, logging helpers, and health checks.
+voice_patterns:
+  - "agent base class"
+  - "healthcare agent foundation"
+  - "triage agent scaffold"
+installation:
+  steps:
+    - Copy the component files into your project or install via component installer.
+    - Combine with the `gemini-client-wrapper` and `interaction-logger` components.
+usage_examples:
+  - path: example/app/main.py
+    description: FastAPI endpoint demonstrating the agent foundation.

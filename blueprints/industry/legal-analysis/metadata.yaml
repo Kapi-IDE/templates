@@ -1,0 +1,152 @@
+id: legal-analysis-suite
+name: Legal Analysis Suite
+description: Multi-agent legal research and privileged communication platform with ethics auditing
+category: full-app
+subcategory: industry-specific
+industry: legal-tech
+type: complete-application
+component_type: service
+complexity: high
+version: 1.1.0
+
+business_value:
+  problem: Legal teams spend hours compiling research, managing matters, and tracking privilege compliance.
+  solution: Automate research, document analysis, and case management with baked-in ethics monitoring.
+  roi: Saves 15+ hours per attorney per week and reduces compliance exposure with continuous auditing.
+  time_to_value: 35 minutes
+
+target_users:
+  - Litigation associates
+  - In-house counsel teams
+  - Legal operations professionals
+  - Compliance and risk managers
+  - Boutique firm partners
+
+use_cases:
+  - Natural language legal research with cited authorities
+  - Contract and brief analysis with risk surfacing
+  - Case portfolio tracking and strategy drafting
+  - Privileged attorney-client communications
+  - Ethics and disclosure monitoring with audit trails
+
+languages:
+  - python
+  - javascript
+
+frameworks:
+  - flask
+  - react
+  - chromadb
+  - google-generativeai
+
+tech_stack:
+  frontend: React 18 (CRA), PropTypes, Fetch API, glassmorphism UI
+  backend: Flask 2, Google Gemini, ChromaDB, SQLite, Cryptography
+  database: SQLite (demo) + Chroma vector store
+  auth: Attorney-client session tokens with encrypted storage
+  deployment: Docker Compose (backend + frontend)
+
+components_used:
+  foundational:
+    - templates/components/backend/legal-ai/base-agent
+    - templates/components/backend/legal-ai/ethics-manager
+  custom:
+    - multi-agent orchestration (research, case, document, precedent)
+    - privileged chat session manager
+    - compliance/ethics audit endpoints
+
+integrations:
+  ai_providers:
+    - Google Gemini (via google-generativeai)
+  knowledge_sources:
+    - SQLite legal corpus (seeded)
+    - ChromaDB vector store
+
+setup_time_minutes: 35
+deployment_time_minutes: 45
+token_savings: 24000
+lines_of_code: 4200
+
+features:
+  - REST API for research, document analysis, cases, chat, and ethics
+  - Multi-agent orchestration with shared legal components
+  - Privileged communication logging and encryption
+  - React operations console with research, documents, cases, chat, ethics tabs
+  - Automated ethics audit summaries
+  - Unit tests for backend API (pytest) and frontend UI (Jest)
+
+quality:
+  unit_tests: true
+  integration_tests: true
+  e2e_tests: false
+  coverage_goal: 90
+
+security_features:
+  - Attorney-client session tokens with encryption
+  - Privileged communication audit logging
+  - Stored summaries encrypted in SQLite
+  - Ethics compliance monitoring endpoints
+
+compliance:
+  - Supports privilege retention policies
+  - AI disclosure tracking hooks
+
+performance:
+  research_response_seconds: 2-5 (LLM dependent)
+  document_analysis_seconds: 3-6
+  concurrent_users: 25 demo sessions
+
+deployment_targets:
+  - Local Docker Compose
+  - KAPI blueprint installer recipe
+
+environment_variables:
+  required:
+    - GOOGLE_API_KEY
+    - SECRET_KEY
+    - LEGAL_ENCRYPTION_KEY
+  optional:
+    - LEGAL_BLUEPRINT_UNIT_TEST (stub backend during tests)
+    - CHROMADB_PATH
+    - SQLITE_DB_PATH
+
+documentation_included:
+  - Remediation spec and API contract placeholders
+  - Setup and usage guide
+  - Frontend/Backend test instructions
+
+provides:
+  - legal-research
+  - document-analysis
+  - case-management
+  - privileged-chat
+  - ethics-audit
+
+compatible_with:
+  - chromadb
+  - google-gemini
+  - docker
+  - sqlite
+
+incompatible_with:
+  - unsecured storage without encryption
+  - AI providers lacking privilege guarantees
+
+voice_patterns:
+  - build legal analysis suite
+  - deploy privileged legal assistant
+  - research legal issues with citations
+  - analyse legal documents for risk
+  - run ethics audit on cases
+
+related_blueprints:
+  - industry/finance-analysis
+  - industry/healthcare-triage
+  - industry/team-knowledge-base
+
+packages:
+  - specification/
+  - backend/
+  - frontend/
+  - scripts/
+  - documentation/

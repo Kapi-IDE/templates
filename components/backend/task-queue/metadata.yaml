@@ -1,0 +1,12 @@
+component_id: celery-config
+name: Celery Task Queue Config
+version: 1.0.0
+category: backend
+subcategory: task-queue
+maintainer: KAPI Templates Team
+
+provides:
+  - celery_app_factory
+  - redis_broker_configuration
+  - task_retry_defaults
+

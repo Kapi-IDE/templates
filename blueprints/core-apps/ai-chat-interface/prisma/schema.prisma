@@ -1,0 +1,52 @@
+// AI Chat Interface Schema
+// Adapted from Prisma patterns for chat/messaging
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Conversation {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Conversation metadata
+  title       String   @default("New Chat")
+  shareId     String?  @unique // For public sharing
+  isShared    Boolean  @default(false)
+
+  // Optional user association (for future auth)
+  userId      String?
+
+  // Relations
+  messages    Message[]
+
+  @@index([createdAt])
+  @@index([shareId])
+  @@index([userId])
+}
+
+model Message {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+
+  // Message content
+  role      String   // 'user' or 'assistant'
+  content   String   @db.Text
+
+  // Metadata
+  model     String?  // GPT model used
+  tokens    Int?     // Token count
+
+  // Relations
+  conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  conversationId String
+
+  @@index([conversationId])
+  @@index([createdAt])
+}

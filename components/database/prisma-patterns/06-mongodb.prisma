@@ -1,0 +1,32 @@
+// MongoDB Schema Pattern
+// Use case: NoSQL database with Prisma ORM
+// Source: Prisma mongodb example
+// Note: MongoDB uses ObjectId for IDs and requires @map("_id") directive
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt DateTime @default(now())
+  firstName String
+  lastName  String?
+  email     String   @unique
+  posts     Post[]
+}
+
+model Post {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt DateTime @default(now())
+  title     String
+  body      String?
+  views     Int      @default(0)
+  author    User?    @relation(fields: [authorId], references: [id])
+  authorId  String?  @db.ObjectId
+}

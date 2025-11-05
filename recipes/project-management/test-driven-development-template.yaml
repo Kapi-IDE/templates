@@ -1,0 +1,426 @@
+---
+# KAPI Test-Driven Development Template
+# Based on: Comprehensive AI-Augmented Coding Playbook 2025 - Part VI TDD with AI
+# Version: 1.0.0
+# Purpose: Systematic test-first development with AI assistance and quality validation
+
+template_metadata:
+  id: "test-driven-development-template"
+  version: "1.0.0"
+  category: "project-management"
+  last_updated: "2025-01-29"
+  author: "KAPI AI Development Team"
+  description: "Comprehensive TDD framework integrating AI-powered test generation with systematic quality validation"
+  methodology: "Red-Green-Refactor with AI Enhancement"
+
+# ===== PROJECT CONTEXT =====
+project: "[PROJECT_NAME]"
+tdd_phase: "red" # red | green | refactor
+development_cycle: 1
+feature_under_test: "[FEATURE_NAME]"
+test_lead: "[LEAD_NAME]"
+testing_date: "2025-01-29"
+
+# ===== TDD PHILOSOPHY AND APPROACH =====
+tdd_framework:
+  core_principle: "Test specifications drive implementation, not test implementation"
+  ai_integration: "AI assists in test generation while maintaining human judgment in test design"
+  quality_gates: "Automated validation of test quality before implementation begins"
+  
+  red_green_refactor_cycle:
+    red_phase:
+      objective: "Write failing tests that precisely specify desired behavior"
+      duration: "[TIME_ESTIMATE]"
+      ai_assistance: "Generate comprehensive test scenarios based on specifications"
+      human_validation: "Review test quality, edge cases, and specification alignment"
+      success_criteria: "Tests fail for right reasons, comprehensively specify behavior"
+      
+    green_phase:
+      objective: "Implement minimal code to make tests pass"
+      duration: "[TIME_ESTIMATE]"
+      ai_assistance: "Generate implementation focused solely on passing tests"
+      human_validation: "Ensure implementation doesn't over-engineer beyond test requirements"
+      success_criteria: "All tests pass, no unnecessary complexity introduced"
+      
+    refactor_phase:
+      objective: "Improve code quality while maintaining test compliance"
+      duration: "[TIME_ESTIMATE]"
+      ai_assistance: "Suggest refactoring opportunities while preserving behavior"
+      human_validation: "Evaluate refactoring impact on maintainability and performance"
+      success_criteria: "Improved code quality, all tests still pass"
+
+# ===== SPECIFICATION-DRIVEN TEST DESIGN =====
+test_specification_framework:
+  specification_analysis:
+    living_spec_reference: "[PATH_TO_LIVING_SPECIFICATION]"
+    feature_requirements:
+      - requirement: "[SPECIFIC_REQUIREMENT_1]"
+        test_coverage_needed: "[TYPES_OF_TESTS_REQUIRED]"
+        edge_cases: ["[EDGE_CASE_1]", "[EDGE_CASE_2]"]
+        acceptance_criteria: "[MEASURABLE_SUCCESS_CRITERIA]"
+        
+      - requirement: "[SPECIFIC_REQUIREMENT_2]"
+        test_coverage_needed: "[TYPES_OF_TESTS_REQUIRED]"
+        edge_cases: ["[EDGE_CASE_1]", "[EDGE_CASE_2]"]
+        acceptance_criteria: "[MEASURABLE_SUCCESS_CRITERIA]"
+    
+    constraint_analysis:
+      performance_requirements:
+        - constraint: "[PERFORMANCE_REQUIREMENT]"
+          test_approach: "[HOW_TO_TEST_THIS_CONSTRAINT]"
+          measurement_method: "[SPECIFIC_METRICS_TO_TRACK]"
+          
+      security_requirements:
+        - constraint: "[SECURITY_REQUIREMENT]"
+          test_approach: "[SECURITY_TEST_STRATEGY]"
+          validation_method: "[SECURITY_VALIDATION_APPROACH]"
+          
+      business_rules:
+        - rule: "[BUSINESS_RULE]"
+          test_scenarios: "[SCENARIOS_TO_VALIDATE_RULE]"
+          edge_cases: "[BOUNDARY_CONDITIONS_TO_TEST]"
+
+  test_design_patterns:
+    behavior_specification:
+      pattern: "Given-When-Then structure for all test scenarios"
+      implementation: |
+        Given: [Initial system state and preconditions]
+        When: [Action or event that triggers behavior]
+        Then: [Expected outcome and state changes]
+      ai_prompt_template: |
+        Analyze this specification section: {specification_context}
+        Generate comprehensive Given-When-Then scenarios covering:
+        - Happy path behaviors
+        - Error conditions and edge cases
+        - Boundary value testing
+        - Business rule validation
+        
+        Format each scenario as:
+        ```
+        Scenario: [Descriptive name]
+        Given: [Preconditions]
+        When: [Action]
+        Then: [Expected results]
+        ```
+        
+    equivalence_partitioning:
+      approach: "Identify input categories that should behave similarly"
+      ai_assistance: "Generate representative test cases for each equivalence class"
+      validation_method: "Ensure comprehensive coverage without redundant tests"
+      
+    boundary_value_analysis:
+      approach: "Test behavior at the edges of valid/invalid input ranges"
+      ai_assistance: "Identify boundary conditions from specification constraints"
+      test_generation: "Create tests for minimum, maximum, and just-outside boundaries"
+
+# ===== AI-POWERED TEST GENERATION =====
+ai_test_generation:
+  test_generation_prompts:
+    unit_test_prompt: |
+      Specification Context: {relevant_spec_section}
+      Function Signature: {function_signature}
+      Business Rules: {applicable_business_rules}
+      
+      Generate comprehensive unit tests including:
+      1. Happy path tests for all specified behaviors
+      2. Edge case tests for boundary conditions
+      3. Error condition tests for invalid inputs
+      4. State change validation tests
+      5. Side effect verification tests
+      
+      Test Framework: {testing_framework}
+      Assertion Style: {assertion_style}
+      Mock Requirements: {dependencies_to_mock}
+      
+      Ensure tests are:
+      - Isolated and independent
+      - Descriptive with clear test names
+      - Fast-executing without external dependencies
+      - Focused on single behaviors per test
+      
+    integration_test_prompt: |
+      System Integration Point: {integration_description}
+      Component Interfaces: {interface_specifications}
+      Data Flow: {expected_data_transformations}
+      
+      Generate integration tests covering:
+      1. Successful data flow scenarios
+      2. Error propagation and handling
+      3. Transaction boundaries and consistency
+      4. Performance characteristics under load
+      5. Security boundaries and validation
+      
+      Test Environment: {test_environment_setup}
+      Test Data Strategy: {test_data_approach}
+      Cleanup Requirements: {test_cleanup_needs}
+      
+    end_to_end_test_prompt: |
+      User Journey: {user_story_or_workflow}
+      System Boundaries: {external_system_interfaces}
+      Success Criteria: {business_outcome_validation}
+      
+      Generate end-to-end tests covering:
+      1. Complete user workflows from start to finish
+      2. Cross-system integration and data consistency
+      3. Error recovery and user experience
+      4. Performance under realistic conditions
+      5. Security and access control validation
+      
+      Test Automation Strategy: {automation_approach}
+      Test Data Management: {realistic_data_requirements}
+      Environment Management: {test_environment_needs}
+      
+  test_quality_validation:
+    generated_test_review:
+      coverage_analysis: "Ensure all specification requirements have corresponding tests"
+      test_independence: "Verify tests can run in any order without dependencies"
+      assertion_quality: "Validate assertions test specific behaviors, not implementation details"
+      edge_case_completeness: "Confirm comprehensive coverage of boundary conditions"
+      
+    test_naming_standards:
+      pattern: "should_[expected_behavior]_when_[condition]"
+      examples:
+        - "should_return_user_profile_when_valid_token_provided"
+        - "should_throw_authentication_error_when_token_expired"
+        - "should_update_inventory_count_when_product_purchased"
+      
+    test_structure_validation:
+      arrange_act_assert: "Each test clearly separates setup, execution, and verification"
+      single_responsibility: "Each test validates one specific behavior"
+      descriptive_failures: "Test failures provide clear information about what went wrong"
+
+# ===== TDD WORKFLOW INTEGRATION =====
+tdd_workflow_steps:
+  phase_1_red_failing_tests:
+    duration: "[ESTIMATED_DURATION]"
+    activities:
+      - activity: "Analyze specification requirements"
+        ai_assistance: "Extract testable behaviors from living specifications"
+        output: "Comprehensive list of behaviors requiring test coverage"
+        
+      - activity: "Generate test scenarios using AI"
+        ai_assistance: "Create Given-When-Then scenarios for each behavior"
+        output: "Structured test scenarios with clear acceptance criteria"
+        
+      - activity: "Implement failing tests"
+        ai_assistance: "Generate test code from scenarios using appropriate framework"
+        output: "Executable tests that fail with clear error messages"
+        
+      - activity: "Validate test quality"
+        ai_assistance: "Review test coverage, independence, and clarity"
+        output: "High-quality failing tests ready for implementation"
+        
+    success_criteria:
+      - "All tests fail for correct reasons (functionality not yet implemented)"
+      - "Test names clearly describe expected behaviors"
+      - "Tests comprehensively cover specification requirements"
+      - "Edge cases and error conditions included"
+      - "Tests are independent and can run in any order"
+      
+  phase_2_green_passing_implementation:
+    duration: "[ESTIMATED_DURATION]"
+    activities:
+      - activity: "Generate minimal implementation"
+        ai_assistance: "Create code focused solely on making tests pass"
+        output: "Implementation that satisfies test requirements"
+        
+      - activity: "Validate test passage"
+        ai_assistance: "Ensure all tests pass without over-engineering"
+        output: "All tests passing with minimal, focused code"
+        
+      - activity: "Review implementation scope"
+        ai_assistance: "Verify implementation doesn't exceed test requirements"
+        output: "Confirmation that implementation is appropriately scoped"
+        
+    success_criteria:
+      - "All tests pass consistently"
+      - "Implementation is minimal and focused"
+      - "No unnecessary complexity introduced"
+      - "Code directly addresses test requirements"
+      
+  phase_3_refactor_improvement:
+    duration: "[ESTIMATED_DURATION]"
+    activities:
+      - activity: "Identify refactoring opportunities"
+        ai_assistance: "Analyze code for improvement potential while preserving behavior"
+        output: "Prioritized list of refactoring opportunities"
+        
+      - activity: "Apply systematic refactorings"
+        ai_assistance: "Suggest specific refactoring transformations with risk assessment"
+        output: "Improved code structure maintaining test compliance"
+        
+      - activity: "Validate behavioral preservation"
+        ai_assistance: "Confirm all tests still pass after refactoring"
+        output: "Refactored code with maintained functionality"
+        
+    success_criteria:
+      - "All tests continue to pass after refactoring"
+      - "Code quality improved (readability, maintainability, performance)"
+      - "No new functionality introduced during refactoring"
+      - "Refactoring enhances long-term maintainability"
+
+# ===== QUALITY METRICS AND VALIDATION =====
+quality_metrics:
+  test_coverage_analysis:
+    line_coverage: "[TARGET_PERCENTAGE]%"
+    branch_coverage: "[TARGET_PERCENTAGE]%"
+    function_coverage: "[TARGET_PERCENTAGE]%"
+    specification_coverage: "[PERCENTAGE_OF_REQUIREMENTS_TESTED]%"
+    
+    coverage_quality_assessment:
+      meaningful_coverage: "Tests validate behavior, not just execute code"
+      edge_case_coverage: "Boundary conditions and error cases included"
+      integration_coverage: "Cross-component interactions tested"
+      
+  test_execution_metrics:
+    test_execution_time: "[AVERAGE_TEST_SUITE_RUNTIME]"
+    test_reliability: "[PERCENTAGE_OF_CONSISTENT_RESULTS]%"
+    test_independence: "[PERCENTAGE_OF_TESTS_THAT_CAN_RUN_ALONE]%"
+    
+  code_quality_metrics:
+    cyclomatic_complexity: "[AVERAGE_COMPLEXITY_SCORE]"
+    code_duplication: "[PERCENTAGE_OF_DUPLICATED_CODE]%"
+    maintainability_index: "[MAINTAINABILITY_SCORE]"
+    technical_debt_ratio: "[RATIO_OF_DEBT_TO_IMPLEMENTATION]"
+    
+  ai_assistance_effectiveness:
+    test_generation_accuracy: "[PERCENTAGE_OF_GENERATED_TESTS_REQUIRING_MINIMAL_MODIFICATION]%"
+    implementation_first_pass_success: "[PERCENTAGE_OF_AI_GENERATED_CODE_PASSING_TESTS]%"
+    refactoring_suggestion_adoption: "[PERCENTAGE_OF_AI_REFACTORING_SUGGESTIONS_IMPLEMENTED]%"
+
+# ===== CONTINUOUS IMPROVEMENT FRAMEWORK =====
+continuous_improvement:
+  retrospective_analysis:
+    cycle_completion_time: "[ACTUAL_CYCLE_DURATION] vs [ESTIMATED_DURATION]"
+    quality_achievement: "[ACTUAL_QUALITY_METRICS] vs [TARGET_METRICS]"
+    ai_assistance_effectiveness: "[EFFECTIVENESS_ASSESSMENT]"
+    
+    improvement_opportunities:
+      - opportunity: "[SPECIFIC_IMPROVEMENT_AREA]"
+        current_performance: "[CURRENT_STATE_MEASUREMENT]"
+        target_improvement: "[DESIRED_IMPROVEMENT_GOAL]"
+        implementation_approach: "[SPECIFIC_ACTIONS_TO_TAKE]"
+        
+  process_optimization:
+    test_generation_refinement:
+      prompt_optimization: "Refine AI prompts based on test quality outcomes"
+      template_enhancement: "Improve test templates based on successful patterns"
+      validation_automation: "Increase automation of test quality checks"
+      
+    workflow_streamlining:
+      bottleneck_identification: "Identify and address workflow constraints"
+      tool_integration: "Improve integration between testing tools and AI assistance"
+      feedback_loop_optimization: "Reduce time between test generation and validation"
+
+# ===== INTEGRATION WITH KAPI ECOSYSTEM =====
+kapi_integration:
+  living_specification_integration:
+    spec_driven_test_generation: "Tests generated from living specification requirements"
+    test_to_spec_alignment: "Continuous validation of test coverage against specs"
+    spec_update_triggers: "Test failures trigger specification review and updates"
+    
+  implementation_blueprint_compatibility:
+    blueprint_test_patterns: "TDD templates aligned with implementation blueprint structures"
+    test_framework_consistency: "Consistent testing approaches across blueprints"
+    quality_standard_enforcement: "TDD process enforces blueprint quality standards"
+    
+  brutal_analysis_integration:
+    test_quality_assessment: "TDD process feeds into overall code quality analysis"
+    technical_debt_prevention: "TDD prevents accumulation of testing debt"
+    ai_slop_detection: "TDD process helps identify AI-generated code quality issues"
+
+# ===== SUCCESS MEASUREMENT =====
+success_measurement:
+  development_velocity:
+    feature_completion_time: "[TIME_FROM_SPEC_TO_WORKING_FEATURE]"
+    defect_rate: "[BUGS_FOUND_POST_IMPLEMENTATION]"
+    refactoring_frequency: "[TIMES_CODE_NEEDED_RESTRUCTURING]"
+    
+  code_quality_outcomes:
+    maintainability_score: "[LONG_TERM_MAINTENANCE_EFFORT_REQUIRED]"
+    test_maintenance_overhead: "[TIME_SPENT_UPDATING_TESTS]"
+    specification_alignment: "[DEGREE_OF_IMPLEMENTATION_SPEC_CONSISTENCY]"
+    
+  team_adoption_metrics:
+    tdd_practice_adherence: "[PERCENTAGE_OF_FEATURES_DEVELOPED_USING_TDD]%"
+    ai_assistance_satisfaction: "[DEVELOPER_SATISFACTION_WITH_AI_TEST_GENERATION]"
+    process_improvement_suggestions: "[NUMBER_OF_TEAM_SUGGESTED_IMPROVEMENTS]"
+
+---
+
+# Test-Driven Development Summary Report
+
+## TDD Cycle Overview
+
+**Current Phase**: [Red/Green/Refactor]
+**Feature Under Development**: [FEATURE_NAME]
+**Cycle Duration**: [ESTIMATED_TIME]
+
+## Test Generation Strategy
+
+### Specification Analysis
+[Summary of how specification requirements translate to test scenarios]
+
+### AI-Generated Test Coverage
+- **Unit Tests**: [NUMBER] tests covering [BEHAVIORS]
+- **Integration Tests**: [NUMBER] tests covering [INTEGRATIONS]
+- **End-to-End Tests**: [NUMBER] tests covering [USER_WORKFLOWS]
+
+### Edge Case Coverage
+[Description of boundary conditions and error scenarios covered]
+
+## Quality Metrics
+
+### Test Quality Assessment
+- **Coverage**: Line [%] | Branch [%] | Specification [%]
+- **Execution Time**: [DURATION] 
+- **Reliability**: [CONSISTENCY_PERCENTAGE]%
+
+### Implementation Quality
+- **Complexity**: [CYCLOMATIC_COMPLEXITY_SCORE]
+- **Maintainability**: [MAINTAINABILITY_INDEX]
+- **Technical Debt**: [DEBT_RATIO]
+
+## AI Assistance Effectiveness
+
+### Test Generation Performance
+- **Accuracy**: [PERCENTAGE]% of generated tests required minimal modification
+- **Coverage Completeness**: [PERCENTAGE]% of specification requirements covered
+- **Edge Case Discovery**: [NUMBER] additional scenarios identified by AI
+
+### Implementation Support
+- **First-Pass Success**: [PERCENTAGE]% of AI-generated code passed tests immediately
+- **Refactoring Quality**: [PERCENTAGE]% of AI suggestions adopted
+
+## Process Improvement Opportunities
+
+### Cycle Optimization
+1. [HIGHEST_IMPACT_IMPROVEMENT]
+2. [SECOND_HIGHEST_IMPACT_IMPROVEMENT]
+3. [THIRD_HIGHEST_IMPACT_IMPROVEMENT]
+
+### AI Integration Enhancement
+- **Prompt Refinement**: [SPECIFIC_PROMPT_IMPROVEMENTS]
+- **Workflow Streamlining**: [PROCESS_OPTIMIZATIONS]
+- **Quality Validation**: [AUTOMATED_QUALITY_CHECKS]
+
+## Next Steps
+
+### Immediate Actions (Next 24 Hours)
+- [ACTION_1]: [DESCRIPTION] - Owner: [PERSON]
+- [ACTION_2]: [DESCRIPTION] - Owner: [PERSON]
+
+### Short-term Goals (Next Week)
+- [GOAL_1]: [DESCRIPTION] - Target: [DATE]
+- [GOAL_2]: [DESCRIPTION] - Target: [DATE]
+
+### Long-term Process Evolution (Next Month)
+- [EVOLUTION_1]: [DESCRIPTION] - Target: [DATE]
+- [EVOLUTION_2]: [DESCRIPTION] - Target: [DATE]
+
+---
+
+*This Test-Driven Development template integrates AI-powered test generation with systematic quality validation, ensuring that TDD practices enhance rather than complicate the development process. It serves as persistent memory for AI-assisted development, preserving test design decisions and quality improvements across development sessions.*
+
+*Last updated: [TIMESTAMP] by [TEST_LEAD]*
+*Next TDD cycle review: [DATE]*

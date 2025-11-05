@@ -1,0 +1,202 @@
+{
+  "courts": [
+    {
+      "court_id": "court_001",
+      "court_name": "Supreme Court of the United States",
+      "jurisdiction": "federal",
+      "court_level": "supreme",
+      "location": "Washington, D.C.",
+      "authority_scope": "Final appellate jurisdiction over federal and state courts",
+      "precedent_weight": 10,
+      "established": "1789"
+    },
+    {
+      "court_id": "court_002", 
+      "court_name": "United States Court of Appeals for the Ninth Circuit",
+      "jurisdiction": "federal",
+      "court_level": "appellate",
+      "location": "San Francisco, CA",
+      "authority_scope": "Alaska, Arizona, California, Hawaii, Idaho, Montana, Nevada, Oregon, Washington",
+      "precedent_weight": 8,
+      "established": "1891"
+    },
+    {
+      "court_id": "court_003",
+      "court_name": "United States District Court for the Southern District of New York", 
+      "jurisdiction": "federal",
+      "court_level": "district",
+      "location": "New York, NY",
+      "authority_scope": "Southern District of New York",
+      "precedent_weight": 6,
+      "established": "1789"
+    },
+    {
+      "court_id": "court_004",
+      "court_name": "California Supreme Court",
+      "jurisdiction": "state",
+      "court_level": "supreme",
+      "location": "San Francisco, CA", 
+      "authority_scope": "State of California",
+      "precedent_weight": 9,
+      "established": "1849"
+    },
+    {
+      "court_id": "court_005",
+      "court_name": "New York Court of Appeals",
+      "jurisdiction": "state",
+      "court_level": "supreme",
+      "location": "Albany, NY",
+      "authority_scope": "State of New York",
+      "precedent_weight": 9,
+      "established": "1847"
+    }
+  ],
+  "judges": [
+    {
+      "judge_id": "judge_001",
+      "name": "Chief Justice John Roberts",
+      "court": "Supreme Court of the United States",
+      "appointed_by": "George W. Bush",
+      "appointment_date": "2005-09-29",
+      "judicial_philosophy": "Conservative",
+      "notable_opinions": ["NFIB v. Sebelius", "Department of Homeland Security v. Regents of the University of California"]
+    },
+    {
+      "judge_id": "judge_002",
+      "name": "Justice Elena Kagan", 
+      "court": "Supreme Court of the United States",
+      "appointed_by": "Barack Obama",
+      "appointment_date": "2010-08-07",
+      "judicial_philosophy": "Liberal",
+      "notable_opinions": ["Arizona Legislature v. Arizona Independent Redistricting Commission"]
+    },
+    {
+      "judge_id": "judge_003",
+      "name": "Judge Diane Wood",
+      "court": "United States Court of Appeals for the Seventh Circuit",
+      "appointed_by": "Bill Clinton", 
+      "appointment_date": "1995-06-30",
+      "judicial_philosophy": "Liberal",
+      "notable_opinions": ["Employment discrimination cases", "Constitutional law decisions"]
+    }
+  ],
+  "law_firms": [
+    {
+      "firm_id": "firm_001",
+      "firm_name": "Skadden, Arps, Slate, Meagher & Flom LLP",
+      "firm_type": "BigLaw",
+      "headquarters": "New York, NY",
+      "practice_areas": ["Corporate Law", "Mergers & Acquisitions", "Securities", "Litigation"],
+      "attorney_count": 1700,
+      "founded": "1948",
+      "notable_cases": ["Major corporate transactions", "High-profile litigation"]
+    },
+    {
+      "firm_id": "firm_002",
+      "firm_name": "Latham & Watkins LLP",
+      "firm_type": "BigLaw", 
+      "headquarters": "Los Angeles, CA",
+      "practice_areas": ["Corporate Law", "Finance", "Litigation", "Tax"],
+      "attorney_count": 3000,
+      "founded": "1934",
+      "notable_cases": ["Technology transactions", "Private equity deals"]
+    },
+    {
+      "firm_id": "firm_003",
+      "firm_name": "Williams & Connolly LLP",
+      "firm_type": "Boutique",
+      "headquarters": "Washington, D.C.",
+      "practice_areas": ["White Collar Defense", "Complex Litigation", "Regulatory"],
+      "attorney_count": 200,
+      "founded": "1967",
+      "notable_cases": ["High-profile criminal defense", "Congressional investigations"]
+    }
+  ],
+  "legal_organizations": [
+    {
+      "org_id": "org_001",
+      "organization_name": "American Bar Association",
+      "org_type": "Professional Association",
+      "headquarters": "Chicago, IL",
+      "membership": 400000,
+      "founded": "1878",
+      "mission": "Serve the legal profession and the public by promoting justice, professional excellence and respect for the law"
+    },
+    {
+      "org_id": "org_002",
+      "organization_name": "Federal Bar Association",
+      "org_type": "Professional Association",
+      "headquarters": "Washington, D.C.",
+      "membership": 16000,
+      "founded": "1920", 
+      "mission": "Strengthen the federal legal system and administration of justice"
+    },
+    {
+      "org_id": "org_003",
+      "organization_name": "National Association of Criminal Defense Lawyers",
+      "org_type": "Professional Association",
+      "headquarters": "Washington, D.C.",
+      "membership": 10000,
+      "founded": "1958",
+      "mission": "Ensure justice and due process for persons accused of crime or wrongdoing"
+    }
+  ],
+  "regulatory_agencies": [
+    {
+      "agency_id": "agency_001",
+      "agency_name": "Securities and Exchange Commission",
+      "agency_type": "Federal Regulatory Agency",
+      "headquarters": "Washington, D.C.",
+      "jurisdiction": "Securities regulation and enforcement",
+      "established": "1934",
+      "authority": "Securities Act of 1933, Securities Exchange Act of 1934"
+    },
+    {
+      "agency_id": "agency_002",
+      "agency_name": "Equal Employment Opportunity Commission",
+      "agency_type": "Federal Regulatory Agency", 
+      "headquarters": "Washington, D.C.",
+      "jurisdiction": "Employment discrimination enforcement",
+      "established": "1965",
+      "authority": "Civil Rights Act of 1964, Americans with Disabilities Act"
+    },
+    {
+      "agency_id": "agency_003",
+      "agency_name": "Federal Trade Commission",
+      "agency_type": "Federal Regulatory Agency",
+      "headquarters": "Washington, D.C.",
+      "jurisdiction": "Consumer protection and antitrust enforcement",
+      "established": "1914",
+      "authority": "Federal Trade Commission Act, Clayton Act"
+    }
+  ],
+  "jurisdictions": [
+    {
+      "jurisdiction_id": "jurisdiction_001",
+      "name": "Federal",
+      "type": "federal",
+      "authority_level": "supreme",
+      "geographic_scope": "United States",
+      "court_system": ["Supreme Court", "Courts of Appeals", "District Courts"],
+      "precedent_hierarchy": 10
+    },
+    {
+      "jurisdiction_id": "jurisdiction_002",
+      "name": "California",
+      "type": "state",
+      "authority_level": "state",
+      "geographic_scope": "State of California",
+      "court_system": ["Supreme Court", "Courts of Appeal", "Superior Courts"],
+      "precedent_hierarchy": 8
+    },
+    {
+      "jurisdiction_id": "jurisdiction_003", 
+      "name": "New York",
+      "type": "state",
+      "authority_level": "state",
+      "geographic_scope": "State of New York",
+      "court_system": ["Court of Appeals", "Appellate Division", "Trial Courts"],
+      "precedent_hierarchy": 8
+    }
+  ]
+}

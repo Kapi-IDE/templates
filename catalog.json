@@ -1,0 +1,2379 @@
+{
+  "version": "2025.10.08",
+  "generatedAt": "2025-10-16T05:37:45.443Z",
+  "schemaVersion": "1.0.0",
+  "assets": {
+    "blueprints": [
+      {
+        "id": "practica-clean-architecture",
+        "slug": "practica-clean-architecture",
+        "name": "Practica Clean Architecture (Node.js)",
+        "category": "reference",
+        "version": "1.0.0",
+        "bundlePath": "blueprints/reference/practica-clean-architecture/bundle.tar.zst",
+        "size": 0,
+        "sha256": "PENDING"
+      },
+      {
+        "id": "fastapi-fullstack-official",
+        "slug": "fastapi-fullstack-official",
+        "name": "FastAPI Full Stack (Official)",
+        "category": "reference",
+        "version": "1.0.0",
+        "bundlePath": "blueprints/reference/fastapi-fullstack-official/bundle.tar.zst",
+        "size": 0,
+        "sha256": "PENDING"
+      },
+      {
+        "id": "jason-taylor-clean-architecture",
+        "slug": "jason-taylor-clean-architecture",
+        "name": "Jason Taylor Clean Architecture (.NET)",
+        "category": "reference",
+        "version": "1.0.0",
+        "bundlePath": "blueprints/reference/jason-taylor-clean-architecture/bundle.tar.zst",
+        "size": 0,
+        "sha256": "PENDING"
+      },
+      {
+        "id": "go-clean-template",
+        "slug": "go-clean-template",
+        "name": "Go Clean Architecture Template",
+        "category": "reference",
+        "version": "1.0.0",
+        "bundlePath": "blueprints/reference/go-clean-template/bundle.tar.zst",
+        "size": 0,
+        "sha256": "PENDING"
+      },
+      {
+        "id": "jhipster-sample",
+        "slug": "jhipster-sample",
+        "name": "JHipster Application Generator",
+        "category": "reference",
+        "version": "1.0.0",
+        "bundlePath": "blueprints/reference/jhipster-sample/bundle.tar.zst",
+        "size": 0,
+        "sha256": "PENDING"
+      },
+      {
+        "id": "url-shortener",
+        "slug": "url-shortener",
+        "name": "URL Shortener",
+        "category": "quickwins",
+        "version": "1.0.0",
+        "bundlePath": "blueprints/quickwins/url-shortener/bundle.tar.zst",
+        "size": 0,
+        "sha256": "PENDING"
+      },
+      {
+        "id": "meme-generator",
+        "slug": "meme-generator",
+        "name": "Meme Generator",
+        "category": "quickwins",
+        "version": "1.0.0",
+        "bundlePath": "blueprints/quickwins/meme-generator/bundle.tar.zst",
+        "size": 0,
+        "sha256": "PENDING"
+      },
+      {
+        "id": "markdown-blog",
+        "slug": "markdown-blog",
+        "name": "Markdown Blog",
+        "category": "quickwins",
+        "version": "1.0.0",
+        "bundlePath": "blueprints/quickwins/markdown-blog/bundle.tar.zst",
+        "size": 0,
+        "sha256": "PENDING"
+      },
+      {
+        "id": "ai-chat-interface",
+        "slug": "ai-chat-interface",
+        "name": "AI Chat Interface",
+        "category": "core-apps",
+        "version": "1.0.0",
+        "bundlePath": "blueprints/core-apps/ai-chat-interface/bundle.tar.zst",
+        "size": 0,
+        "sha256": "PENDING"
+      },
+      {
+        "id": "perplexity-clone",
+        "slug": "perplexity-clone",
+        "name": "Perplexity Clone",
+        "category": "core-apps",
+        "version": "1.0.0",
+        "bundlePath": "blueprints/core-apps/perplexity-clone/bundle.tar.zst",
+        "size": 0,
+        "sha256": "PENDING"
+      },
+      {
+        "id": "habit-tracker",
+        "slug": "habit-tracker",
+        "name": "Habit Tracker App",
+        "category": "core-apps",
+        "version": "1.0.0",
+        "bundlePath": "blueprints/core-apps/habit-tracker/bundle.tar.zst",
+        "size": 17549,
+        "sha256": "dbb1bec7949b442c69030f0a14358b32fd5c26b372f9a8834f9716a8418c9f6f",
+        "description": "Full-stack habit tracking application with streak analytics, goal tracking, and rich visual dashboards.",
+        "subcategory": "productivity",
+        "setupTime": "18 min",
+        "difficulty": "low",
+        "features": [
+          "Habit creation with categories and scheduling",
+          "Daily check-ins with streak calculations",
+          "Progress analytics dashboard with charts",
+          "Weekly goal tracking and reminders",
+          "Responsive UI optimized for desktop and mobile"
+        ],
+        "tokenSavings": 18000,
+        "provides": [
+          "habit-tracking",
+          "progress-analytics",
+          "streak-calculation",
+          "goal-setting"
+        ],
+        "useCases": [
+          "personal wellness tracking",
+          "team goal dashboards",
+          "coaching accountability portals",
+          "internal skill-building programs"
+        ],
+        "stack": {
+          "frontend": "Next.js 14, React 18, TailwindCSS",
+          "backend": "Next.js App Router API routes",
+          "database": "PostgreSQL (Prisma ORM)",
+          "auth": "NextAuth (email/password + OAuth providers)",
+          "charts": "Recharts"
+        },
+        "metadataPath": "blueprints/core-apps/habit-tracker/metadata.yaml"
+      },
+      {
+        "id": "prompt-engineering-lab",
+        "slug": "prompt-engineering-lab",
+        "name": "Prompt Engineering Lab",
+        "category": "core-apps",
+        "version": "1.0.0",
+        "bundlePath": "blueprints/core-apps/prompt-engineering-lab/bundle.tar.zst",
+        "size": 0,
+        "sha256": "PENDING",
+        "subcategory": "ai-tooling",
+        "stack": {
+          "language": "TypeScript",
+          "framework": "Next.js 14",
+          "database": "PostgreSQL",
+          "orm": "Prisma",
+          "ai": "Multi-provider (OpenAI, Azure, Gemini, Claude, Ollama)",
+          "editor": "Monaco"
+        },
+        "setupTime": "22 min",
+        "difficulty": "intermediate"
+      },
+      {
+        "id": "sql-query-builder",
+        "slug": "sql-query-builder",
+        "name": "SQL Query Builder",
+        "category": "core-apps",
+        "version": "1.0.0",
+        "bundlePath": "blueprints/core-apps/sql-query-builder/bundle.tar.zst",
+        "size": 0,
+        "sha256": "PENDING",
+        "subcategory": "data-tooling",
+        "stack": {
+          "language": "TypeScript",
+          "framework": "Next.js 14",
+          "database": "PostgreSQL/MySQL/SQLite",
+          "orm": "Prisma",
+          "ai": "OpenAI",
+          "editor": "Monaco"
+        },
+        "setupTime": "22 min",
+        "difficulty": "intermediate"
+      },
+      {
+        "id": "fastapi-rag-starter",
+        "slug": "fastapi-rag-starter",
+        "name": "FastAPI RAG Starter",
+        "category": "starters",
+        "version": "1.0.0",
+        "bundlePath": "blueprints/starters/fastapi-rag-starter/bundle.tar.zst",
+        "size": 0,
+        "sha256": "PENDING"
+      },
+      {
+        "id": "next-landing-page",
+        "slug": "next-landing-page",
+        "name": "Next.js Landing Page",
+        "category": "starters",
+        "version": "0.1.0",
+        "bundlePath": "blueprints/starters/next-landing-page/bundle.tar.zst",
+        "size": 9818,
+        "sha256": "6251c93ba76e151b137051190bcaf332fa10cb7ea0b614ea72d49c709f370b4d",
+        "description": "A polished Next.js App Router landing page with hero, feature, stats, testimonial, and call-to-action sections. Ideal for SaaS launches and agency retainers.\n",
+        "subcategory": "marketing-site",
+        "setupTime": "15 min",
+        "features": [
+          "Responsive dark UI built with Tailwind CSS",
+          "SEO metadata and structured data ready to update",
+          "Reusable React components for each section",
+          "Waitlist modal hooked up with a simple custom event",
+          "Ready-to-run example with minimal dependencies"
+        ],
+        "tokenSavings": 12000,
+        "provides": [
+          "marketing_site",
+          "hero_section",
+          "testimonial_section",
+          "waitlist_modal"
+        ],
+        "stack": [
+          "nextjs",
+          "react",
+          "tailwindcss",
+          "typescript"
+        ],
+        "metadataPath": "blueprints/starters/next-landing-page/metadata.yaml"
+      },
+      {
+        "id": "react-landing",
+        "slug": "react-landing",
+        "name": "React Landing Page",
+        "category": "starters",
+        "version": "0.1.0",
+        "bundlePath": "blueprints/starters/react-landing/bundle.tar.zst",
+        "size": 3979364,
+        "sha256": "791f5c1c17d3ba2056f807911a1efa6ec64b75786378b784d59c47b1c5d5a80d",
+        "description": "Next.js App Router starter kit recreating the Braine agency theme with modular React components and bundled assets.\n",
+        "subcategory": "marketing-site",
+        "setupTime": "20 min",
+        "features": [
+          "Hero, services, case studies, testimonials, contact form, footer components",
+          "Original CSS/JS assets imported via globals.css",
+          "Swiper carousel replacing jQuery slider"
+        ],
+        "tokenSavings": 18000,
+        "provides": [
+          "agency_landing",
+          "hero_section",
+          "services_section",
+          "testimonial_section",
+          "contact_form"
+        ],
+        "stack": [
+          "nextjs",
+          "react",
+          "tailwindcss",
+          "swiper"
+        ],
+        "metadataPath": "blueprints/starters/react-landing/metadata.yaml"
+      },
+      {
+        "id": "modernai-education",
+        "slug": "modernai-education",
+        "name": "Modern AI Education Platform",
+        "category": "starters",
+        "version": "1.0.0",
+        "bundlePath": "blueprints/starters/modernai-education/bundle.tar.zst",
+        "size": 8612366,
+        "sha256": "b97ee8226afcf21c44df97ca4831a10ceeaaf99d9bc4a1446702890732b71133",
+        "metadataPath": "blueprints/starters/modernai-education/metadata.yaml"
+      },
+      {
+        "id": "gamified-learning-ui",
+        "slug": "gamified-learning-ui",
+        "name": "Gamified Learning UI",
+        "category": "starters",
+        "version": "1.0.0",
+        "bundlePath": "blueprints/starters/gamified-learning-ui/bundle.tar.zst",
+        "size": 9774819,
+        "sha256": "dd4b8c6cee0bd0d1af6096477d593565f3110b0a61cfc48a14d63b7a256a7f54",
+        "description": "Modern gamification UI patterns for educational platforms. Features level/XP\nsystems, progress tracking, badges, and conversational AI interface using HTMX.\nFrontend-only starter kit requiring backend implementation.\n",
+        "subcategory": "frontend-components",
+        "setupTime": "2 min",
+        "features": {
+          "gamification": [
+            "Level and XP tracking display",
+            "Category-based progress bars",
+            "Badge system with icons",
+            "Leaderboard interface",
+            "Challenge modes"
+          ],
+          "ui_patterns": [
+            "Conversational chat interface",
+            "Auto-scrolling chat history",
+            "Audio response support",
+            "Celebration animations (confetti)",
+            "Responsive mobile design"
+          ],
+          "htmx_features": [
+            "Server-driven UI updates",
+            "Form submissions without page reload",
+            "Dynamic content loading",
+            "Event-driven interactions",
+            "Post-request handling"
+          ]
+        },
+        "useCases": {
+          "coding_education": {
+            "description": "Programming learning platform",
+            "categories": [
+              "algorithms",
+              "data_structures",
+              "coding_challenges"
+            ]
+          },
+          "language_learning": {
+            "description": "Language acquisition app",
+            "categories": [
+              "grammar",
+              "vocabulary",
+              "listening",
+              "speaking"
+            ]
+          },
+          "math_platform": {
+            "description": "Mathematics education",
+            "categories": [
+              "algebra",
+              "geometry",
+              "calculus",
+              "statistics"
+            ]
+          },
+          "professional_training": {
+            "description": "Corporate skill development",
+            "categories": [
+              "technical_skills",
+              "soft_skills",
+              "certifications"
+            ]
+          }
+        },
+        "stack": {
+          "frontend": [
+            "HTMX 1.7.0",
+            "Bootstrap 4.5.2",
+            "Font Awesome 6.0",
+            "Confetti.js 3.0.3",
+            "Vanilla JavaScript"
+          ],
+          "backend_required": [
+            "Any REST API framework",
+            "Authentication system",
+            "Database for persistence",
+            "AI/LLM integration (optional)"
+          ]
+        },
+        "metadataPath": "blueprints/starters/gamified-learning-ui/metadata.yaml"
+      },
+      {
+        "id": "ai-governance",
+        "slug": "ai-governance",
+        "name": "AI Governance Platform",
+        "category": "industry",
+        "version": "1.0.0",
+        "bundlePath": "blueprints/industry/ai-governance/bundle.tar.zst",
+        "size": 8419150,
+        "sha256": "c0025e4eac486274b62e68a886ad4a24cfced6dae9f7fcc8ecb5cdf76d6d0e60",
+        "description": "Enterprise AI governance with model monitoring, bias detection, compliance tracking, and risk management",
+        "subcategory": "industry-specific",
+        "setupTime": "40 min",
+        "difficulty": "high",
+        "features": [
+          "AI model inventory and catalog",
+          "Automated bias detection",
+          "Model performance monitoring",
+          "Explainability dashboards (LIME, SHAP)",
+          "Compliance documentation generator",
+          "Risk scoring and assessment",
+          "Incident tracking and response",
+          "Ethical review workflows",
+          "Audit trail and logging",
+          "Custom policy enforcement",
+          "API for CI/CD integration"
+        ],
+        "tokenSavings": 35000,
+        "provides": [
+          "ai-governance",
+          "model-monitoring",
+          "bias-detection",
+          "compliance-tracking",
+          "risk-management",
+          "explainability",
+          "audit-trail"
+        ],
+        "useCases": [
+          "AI model inventory and cataloging",
+          "Bias detection and fairness monitoring",
+          "Model performance tracking",
+          "Compliance documentation (EU AI Act, GDPR)",
+          "Risk assessment and mitigation",
+          "Explainability and transparency",
+          "Incident management",
+          "Ethical AI reviews"
+        ],
+        "stack": {
+          "frontend": "React 18, TypeScript, TailwindCSS, Recharts",
+          "backend": "FastAPI (Python), MLflow, Prometheus",
+          "database": "PostgreSQL (Prisma), InfluxDB (metrics)",
+          "auth": "JWT + OAuth2",
+          "deployment": "Docker Compose, Kubernetes"
+        },
+        "metadataPath": "blueprints/industry/ai-governance/metadata.yaml"
+      },
+      {
+        "id": "healthcare-triage",
+        "slug": "healthcare-triage",
+        "name": "Healthcare Patient Triage System",
+        "category": "industry",
+        "version": "1.0.0",
+        "bundlePath": "blueprints/industry/healthcare-triage/bundle.tar.zst",
+        "size": 409045,
+        "sha256": "548aa366f6f483342488649bff2fa3e1ad7201bb0584040ef67f08c803e276da",
+        "description": "HIPAA-ready AI-powered patient triage with symptom analysis, urgency scoring, and care recommendations",
+        "subcategory": "industry-specific",
+        "setupTime": "50 min",
+        "difficulty": "high",
+        "features": [
+          "Conversational symptom collection",
+          "AI-powered urgency assessment",
+          "Care pathway recommendations",
+          "Medical knowledge retrieval (RAG)",
+          "Multi-language support",
+          "HIPAA-compliant data handling",
+          "Audit logging and compliance reporting",
+          "Real-time triage dashboard",
+          "Patient history integration",
+          "Emergency escalation alerts"
+        ],
+        "tokenSavings": 30000,
+        "provides": [
+          "medical-triage",
+          "symptom-analysis",
+          "urgency-scoring",
+          "care-recommendations",
+          "hipaa-compliance",
+          "ehr-integration-ready"
+        ],
+        "useCases": [
+          "Emergency department triage",
+          "Telehealth initial assessment",
+          "Walk-in clinic prioritization",
+          "Remote patient monitoring",
+          "Symptom self-assessment",
+          "Care pathway recommendations"
+        ],
+        "stack": {
+          "frontend": "React 18, Material-UI, TypeScript",
+          "backend": "Flask (Python), Google Gemini AI",
+          "database": "ChromaDB (vector), SQLite (session)",
+          "auth": "Custom encryption-based",
+          "deployment": "Docker Compose, HIPAA-compliant hosting"
+        },
+        "metadataPath": "blueprints/industry/healthcare-triage/metadata.yaml"
+      },
+      {
+        "id": "legal-analysis",
+        "slug": "legal-analysis",
+        "name": "Legal Document Analysis",
+        "category": "industry",
+        "version": "1.1.0",
+        "bundlePath": "blueprints/industry/legal-analysis/bundle.tar.zst",
+        "size": 92070,
+        "sha256": "7243b0c3f556aadc4b1c40eefce46fa566fbedcbba0d65ae36247fcfcaeb8115",
+        "description": "Multi-agent legal research and privileged communication platform with ethics auditing",
+        "subcategory": "industry-specific",
+        "setupTime": "35 min",
+        "difficulty": "high",
+        "features": [
+          "REST API for research, document analysis, cases, chat, and ethics",
+          "Multi-agent orchestration with shared legal components",
+          "Privileged communication logging and encryption",
+          "React operations console with research, documents, cases, chat, ethics tabs",
+          "Automated ethics audit summaries",
+          "Unit tests for backend API (pytest) and frontend UI (Jest)"
+        ],
+        "tokenSavings": 24000,
+        "provides": [
+          "legal-research",
+          "document-analysis",
+          "case-management",
+          "privileged-chat",
+          "ethics-audit"
+        ],
+        "useCases": [
+          "Natural language legal research with cited authorities",
+          "Contract and brief analysis with risk surfacing",
+          "Case portfolio tracking and strategy drafting",
+          "Privileged attorney-client communications",
+          "Ethics and disclosure monitoring with audit trails"
+        ],
+        "stack": {
+          "frontend": "React 18 (CRA), PropTypes, Fetch API, glassmorphism UI",
+          "backend": "Flask 2, Google Gemini, ChromaDB, SQLite, Cryptography",
+          "database": "SQLite (demo) + Chroma vector store",
+          "auth": "Attorney-client session tokens with encrypted storage",
+          "deployment": "Docker Compose (backend + frontend)"
+        },
+        "metadataPath": "blueprints/industry/legal-analysis/metadata.yaml"
+      },
+      {
+        "id": "finance-analysis",
+        "slug": "finance-analysis",
+        "name": "Financial Analysis Platform",
+        "category": "industry",
+        "version": "1.0.0",
+        "bundlePath": "blueprints/industry/finance-analysis/bundle.tar.zst",
+        "size": 48113,
+        "sha256": "3c8d8868de6cb6743b3db697e41b319714ab5cfdf4f73bab37e13f74460d9e29",
+        "description": "Real-time financial risk monitoring with ML-powered anomaly detection, compliance tracking, and regulatory reporting",
+        "subcategory": "industry-specific",
+        "setupTime": "45 min",
+        "difficulty": "high",
+        "features": [
+          "Real-time transaction monitoring",
+          "ML-powered anomaly detection",
+          "Credit risk scoring (FICO-like)",
+          "Market risk VaR calculations",
+          "Regulatory compliance dashboard",
+          "Automated alert generation",
+          "Historical trend analysis",
+          "Stress testing scenarios",
+          "Custom risk model creation",
+          "API for integration"
+        ],
+        "tokenSavings": 32000,
+        "provides": [
+          "risk-monitoring",
+          "fraud-detection",
+          "compliance-tracking",
+          "anomaly-detection",
+          "regulatory-reporting",
+          "real-time-analytics"
+        ],
+        "useCases": [
+          "Real-time fraud detection",
+          "Credit risk assessment",
+          "Market risk monitoring",
+          "Regulatory compliance tracking",
+          "Anomaly detection in transactions",
+          "Portfolio risk analysis",
+          "Stress testing and scenarios",
+          "Automated regulatory reporting"
+        ],
+        "stack": {
+          "frontend": "React 18, TypeScript, Recharts, TailwindCSS",
+          "backend": "FastAPI (Python), Scikit-learn, Pandas",
+          "database": "PostgreSQL (Prisma), TimescaleDB (time-series)",
+          "auth": "JWT + OAuth2",
+          "deployment": "Docker Compose, Kubernetes"
+        },
+        "metadataPath": "blueprints/industry/finance-analysis/metadata.yaml"
+      },
+      {
+        "id": "education",
+        "slug": "education",
+        "name": "Kid-Friendly Modular Learning System",
+        "category": "industry",
+        "version": "1.0.0",
+        "bundlePath": "blueprints/industry/education/bundle.tar.zst",
+        "size": 300441,
+        "sha256": "6f96b27211c9f1d80d7a3402b610d330167af9ac5d02031c0dd494547569bf6a",
+        "description": "Production-ready educational platform for math competition preparation.\nModular architecture with kid-friendly UX, perfect for building quiz and\nlearning systems across any subject.\n",
+        "subcategory": "learning-management",
+        "setupTime": "5-10 min",
+        "features": [
+          "Modular learning content structure",
+          "Practice and test modes with timing",
+          "Problem browsing and search",
+          "Topic-based study guides",
+          "Progress tracking dashboard",
+          "RESTful API for data access",
+          "Math formula support (MathJax)",
+          "Mobile-responsive design",
+          "Kid-friendly UX with encouragement"
+        ],
+        "stack": {
+          "backend": [
+            "Node.js (>=14.0.0)",
+            "Express.js 4.18.0"
+          ],
+          "frontend": [
+            "Server-side HTML rendering",
+            "Vanilla JavaScript",
+            "Inline CSS with gradients"
+          ],
+          "data": [
+            "JSON file-based storage",
+            "In-memory caching"
+          ]
+        },
+        "metadataPath": "blueprints/industry/education/metadata.yaml",
+        "difficulty": "beginner"
+      },
+      {
+        "id": "team-knowledge-base",
+        "slug": "team-knowledge-base",
+        "name": "Team Knowledge Base",
+        "category": "industry",
+        "version": "1.0.0",
+        "bundlePath": "blueprints/industry/team-knowledge-base/bundle.tar.zst",
+        "size": 11277,
+        "sha256": "4c0719ac046a38738ef713de8b7ce183cf9901169e820971ff07bc170f1f78f3",
+        "description": "RAG-powered semantic search across Slack, docs, wikis, and internal repositories with AI-driven discovery",
+        "subcategory": "enterprise",
+        "setupTime": "2 min",
+        "difficulty": "medium",
+        "features": [
+          "Semantic search across all sources",
+          "RAG-powered answer generation",
+          "Multi-source document ingestion",
+          "Real-time index updates",
+          "User permissions and access control",
+          "Search history and analytics",
+          "Document preview and highlighting",
+          "Slack bot integration",
+          "API for programmatic access"
+        ],
+        "tokenSavings": 25000,
+        "provides": [
+          "semantic-search",
+          "rag-system",
+          "document-ingestion",
+          "multi-source-integration",
+          "knowledge-base",
+          "chat-interface"
+        ],
+        "useCases": [
+          "Code documentation search",
+          "Feature specification lookup",
+          "Competitive intelligence access",
+          "Troubleshooting guide discovery",
+          "Decision history tracking",
+          "New employee onboarding"
+        ],
+        "stack": {
+          "frontend": "Next.js 14, React 18, TailwindCSS",
+          "backend": "Express.js, Node.js",
+          "database": "PostgreSQL (Prisma), ChromaDB (vector)",
+          "auth": "JWT or Auth0",
+          "deployment": "Docker Compose"
+        },
+        "metadataPath": "blueprints/industry/team-knowledge-base/metadata.yaml"
+      },
+      {
+        "id": "langgraph-multi-agent",
+        "slug": "langgraph-multi-agent",
+        "name": "Langraph Multi-Agent System",
+        "category": "ai-advanced",
+        "version": "1.0.0",
+        "bundlePath": "blueprints/ai-advanced/langgraph-multi-agent/bundle.tar.zst",
+        "size": 20427,
+        "sha256": "0eb3f01a4b570260e2252b3e719ef9c739099ee29e15045d96d08aad22c4fa0e",
+        "description": "Production-ready multi-agent AI system with Langraph, specialized agents for research/finance/general tasks, automatic routing, and Gradio UI",
+        "subcategory": "agents",
+        "setupTime": "5 min",
+        "difficulty": "medium",
+        "features": [
+          "Multi-agent orchestration",
+          "Automatic keyword-based routing",
+          "ReAct (Reasoning + Acting) pattern",
+          "Tool calling and execution",
+          "Conversation memory",
+          "Streaming responses",
+          "Token usage tracking",
+          "Markdown-formatted output",
+          "Gradio chat interface",
+          "Docker deployment ready",
+          "10+ integrated tools",
+          "Agent performance monitoring"
+        ],
+        "tokenSavings": 5000,
+        "provides": [
+          "multi-agent-orchestration",
+          "react-agent-pattern",
+          "tool-calling-framework",
+          "gradio-chat-interface"
+        ],
+        "useCases": [
+          "Research assistance with web search and papers",
+          "Financial analysis with stock data",
+          "General task automation",
+          "Customer support with specialized agents",
+          "Educational demonstrations",
+          "Prototype development"
+        ],
+        "stack": {
+          "backend": "Python, LangChain, Langraph, Gradio",
+          "llm_provider": "Groq (Free), OpenAI (Optional), Anthropic (Optional)",
+          "tools": "Tavily Search, Polygon.io, ArXiv, YouTube, NASA",
+          "ui": "Gradio ChatInterface",
+          "deployment": "Docker, Railway, Hugging Face Spaces"
+        },
+        "metadataPath": "blueprints/ai-advanced/langgraph-multi-agent/metadata.yaml"
+      },
+      {
+        "id": "cancer-detection-trainer",
+        "slug": "cancer-detection-trainer",
+        "name": "Cancer Detection Trainer",
+        "category": "ai-advanced",
+        "version": "1.0.0",
+        "bundlePath": "blueprints/ai-advanced/cancer-detection-trainer/bundle.tar.zst",
+        "size": 0,
+        "sha256": "PENDING",
+        "subcategory": "healthcare-ai",
+        "stack": {
+          "language": "Python",
+          "ml_framework": "TensorFlow/Keras",
+          "api": "FastAPI",
+          "ui": "Streamlit",
+          "notebook": "Jupyter"
+        },
+        "setupTime": "30 min",
+        "difficulty": "advanced"
+      },
+      {
+        "id": "nfl-play-predictor",
+        "slug": "nfl-play-predictor",
+        "name": "NFL Play Predictor",
+        "category": "ai-advanced",
+        "version": "1.0.0",
+        "bundlePath": "blueprints/ai-advanced/nfl-play-predictor/bundle.tar.zst",
+        "size": 0,
+        "sha256": "PENDING",
+        "subcategory": "sports-analytics",
+        "stack": {
+          "language": "Python",
+          "ml_framework": "Scikit-learn/XGBoost",
+          "ui": "Streamlit",
+          "notebook": "Jupyter"
+        },
+        "setupTime": "5 min",
+        "difficulty": "beginner"
+      },
+      {
+        "id": "react-stock-agent",
+        "slug": "react-stock-agent",
+        "name": "React Stock Agent",
+        "category": "ai-advanced",
+        "version": "1.0.0",
+        "bundlePath": "blueprints/ai-advanced/react-stock-agent/bundle.tar.zst",
+        "size": 0,
+        "sha256": "PENDING",
+        "subcategory": "ai-agents",
+        "stack": {
+          "language": "TypeScript",
+          "framework": "Next.js",
+          "ai": "OpenAI (Functions)",
+          "charts": "Recharts"
+        },
+        "setupTime": "15 min",
+        "difficulty": "intermediate"
+      },
+      {
+        "id": "deep-document-analysis",
+        "slug": "deep-document-analysis",
+        "name": "Deep Document Analysis Workbench",
+        "category": "ai-advanced",
+        "version": "1.0.0",
+        "bundlePath": "blueprints/ai-advanced/deep-document-analysis/bundle.tar.zst",
+        "size": 12747,
+        "sha256": "5c9f93389de9aec8af604e155ba6a57c12303ea5ee3fefb009d52d144fab0bd5",
+        "description": "Multi-provider RAG blueprint combining FastAPI, Streamlit, Chroma, and the universal LLM selector for deep document interrogation.",
+        "subcategory": "ai-advanced",
+        "setupTime": "30 min",
+        "difficulty": "medium",
+        "features": [
+          "Multi-provider LLM selector with pricing hints",
+          "PDF, URL, and manual text ingestion pipeline",
+          "Vector-backed retrieval QA with source citations",
+          "Streamlit analyst console",
+          "Pricing transparency for provider comparisons",
+          "Persisted vector store for repeat queries"
+        ],
+        "tokenSavings": 28000,
+        "provides": [
+          "multi-llm-evaluation",
+          "document-rag-workbench",
+          "vector-ingestion-pipeline"
+        ],
+        "useCases": [
+          "Summarize compliance binders across regions",
+          "Compare LLM answer quality and cost side-by-side",
+          "Build ad-hoc knowledge assistants for client Q&A",
+          "Rapid due diligence over long-form PDFs"
+        ],
+        "stack": {
+          "language": "python",
+          "frameworks": "fastapi, streamlit, langchain, chromadb"
+        },
+        "metadataPath": "blueprints/ai-advanced/deep-document-analysis/metadata.yaml"
+      },
+      {
+        "id": "simple-crm",
+        "slug": "simple-crm",
+        "name": "Simple CRM",
+        "category": "business",
+        "version": "1.0.0",
+        "bundlePath": "blueprints/business/simple-crm/bundle.tar.zst",
+        "size": 0,
+        "sha256": "PENDING",
+        "subcategory": "sales",
+        "stack": {
+          "language": "TypeScript",
+          "framework": "Next.js 14",
+          "database": "PostgreSQL",
+          "orm": "Prisma",
+          "payments": "Stripe (optional)",
+          "email": "SendGrid (optional)",
+          "storage": "S3 (optional)"
+        },
+        "setupTime": "35 min",
+        "difficulty": "intermediate"
+      },
+      {
+        "id": "racing-game",
+        "slug": "racing-game",
+        "name": "3D Racing Game",
+        "category": "games",
+        "version": "1.0.0",
+        "bundlePath": "blueprints/games/racing-game/bundle.tar.zst",
+        "size": 0,
+        "sha256": "PENDING",
+        "subcategory": "3d",
+        "stack": {
+          "language": "TypeScript",
+          "framework": "React",
+          "graphics": "React Three Fiber (Three.js)",
+          "physics": "Cannon.js",
+          "state": "Zustand"
+        },
+        "setupTime": "30 min",
+        "difficulty": "advanced"
+      },
+      {
+        "id": "huggingface-model-explorer",
+        "slug": "huggingface-model-explorer",
+        "name": "HuggingFace Model Explorer",
+        "category": "ml-education",
+        "version": "1.0.0",
+        "bundlePath": "blueprints/ml-education/huggingface-model-explorer/bundle.tar.zst",
+        "size": 0,
+        "sha256": "PENDING",
+        "subcategory": "nlp-tools",
+        "stack": {
+          "language": "Python",
+          "framework": "Streamlit",
+          "ml_framework": "HuggingFace Transformers",
+          "ui": "Plotly"
+        },
+        "setupTime": "10 min",
+        "difficulty": "beginner"
+      },
+      {
+        "id": "llm-judge-platform",
+        "slug": "llm-judge-platform",
+        "name": "LLM-as-a-Judge Evaluation Platform",
+        "category": "ml-education",
+        "version": "1.0.0",
+        "bundlePath": "blueprints/ml-education/llm-judge-platform/bundle.tar.zst",
+        "size": 0,
+        "sha256": "PENDING",
+        "subcategory": "ai-evaluation",
+        "stack": {
+          "language": "Python",
+          "framework": "Streamlit",
+          "ai_providers": [
+            "OpenAI",
+            "Anthropic",
+            "Groq",
+            "Google",
+            "HuggingFace"
+          ],
+          "evaluation": "LangChain Evaluators",
+          "visualization": "Plotly"
+        },
+        "setupTime": "15 min",
+        "difficulty": "intermediate"
+      },
+      {
+        "id": "cancer-detection-ml-pipeline",
+        "slug": "cancer-detection-ml-pipeline",
+        "name": "Cancer Detection ML Pipeline",
+        "category": "ml-education",
+        "version": "1.0.0",
+        "bundlePath": "blueprints/ml-education/cancer-detection-ml-pipeline/bundle.tar.zst",
+        "size": 0,
+        "sha256": "PENDING",
+        "subcategory": "healthcare-ml",
+        "stack": {
+          "language": "Python",
+          "ml_framework": "TensorFlow/Keras",
+          "api": "FastAPI",
+          "ui": "Streamlit",
+          "notebook": "Jupyter",
+          "model": "MobileNetV2 (transfer learning)"
+        },
+        "setupTime": "30 min",
+        "difficulty": "intermediate"
+      }
+    ],
+    "components": [
+      {
+        "id": "express-oidc-provider",
+        "slug": "express-oidc-provider",
+        "name": "Express OIDC Provider",
+        "category": "auth",
+        "version": "1.0.0",
+        "bundlePath": "components/auth/oidc-provider/bundle.tar.zst",
+        "size": 3166,
+        "sha256": "cfb7c8fa9600d4e22645698cad50c9cb219ed11a63856c66c2457b09126b2f61",
+        "subcategory": "oidc",
+        "provides": [
+          "oidc_provider_bootstrap",
+          "account_store_hook",
+          "express_security_headers"
+        ],
+        "metadataPath": "components/auth/oidc-provider/metadata.yaml"
+      },
+      {
+        "id": "agent-foundation",
+        "slug": "agent-foundation",
+        "name": "Agent Foundation Base Class",
+        "category": "backend",
+        "version": "0.1.0",
+        "bundlePath": "components/backend/agent-base/bundle.tar.zst",
+        "size": 4741,
+        "sha256": "f32451b5442f4c39f4650e58242702a23a42f2a88eb4c4bf4f70cd05df2b0cbe",
+        "subcategory": "agent-framework",
+        "description": "Shared foundation for conversational agents with prompt scaffolding, structured data extraction, urgency assessment, logging helpers, and health checks.\n",
+        "provides": [
+          "agent_lifecycle",
+          "prompt_scaffolding",
+          "logging_hooks"
+        ],
+        "dependencies": {
+          "runtime": [
+            "google-generativeai"
+          ],
+          "optional": [
+            "openai",
+            "anthropic"
+          ]
+        },
+        "metadataPath": "components/backend/agent-base/metadata.yaml"
+      },
+      {
+        "id": "agent-framework",
+        "slug": "agent-framework",
+        "name": "Agent Framework",
+        "category": "backend",
+        "version": "1.0.0",
+        "bundlePath": "components/backend/agent_framework/bundle.tar.zst",
+        "size": 6921,
+        "sha256": "24361be7456ca9d24a2f1cf0ccfdd40919e5e6982ea4eefce53281e6332d9e2e",
+        "subcategory": "ai-agents",
+        "description": "Domain-agnostic foundation for building conversational AI agents with LLM integration,\nstructured data extraction, audit logging, and health monitoring. Easily customizable\nfor healthcare, finance, legal, or any other domain.\n",
+        "features": [
+          "Swappable LLM providers (Gemini, OpenAI, Claude)",
+          "Automatic structured data extraction",
+          "Comprehensive audit logging",
+          "Health check and monitoring",
+          "Graceful fallback handling",
+          "Context-aware generation",
+          "Domain-agnostic design"
+        ],
+        "provides": [
+          "llm_integration",
+          "agent_foundation",
+          "audit_logging",
+          "structured_extraction",
+          "health_monitoring",
+          "context_management"
+        ],
+        "dependencies": {
+          "required": [
+            "google-generativeai"
+          ],
+          "optional": [
+            "openai",
+            "anthropic"
+          ]
+        },
+        "metadataPath": "components/backend/agent_framework/metadata.yaml"
+      },
+      {
+        "id": "anthropic-bedrock",
+        "slug": "anthropic-bedrock",
+        "name": "anthropic-claude-bedrock",
+        "category": "ai-integrations",
+        "version": "1.0.0",
+        "bundlePath": "components/backend/ai-integrations/anthropic-bedrock/bundle.tar.zst",
+        "size": 4286,
+        "sha256": "6c61bf5721724d1c41b51bf407c10a85705c5b505cba17dedb52dca3dae2588b",
+        "description": "Anthropic Claude integration via AWS Bedrock with enterprise security.\nSupports Claude 3.5 Sonnet, Haiku, and 3.7 Sonnet with advanced reasoning capabilities.\n",
+        "features": [
+          "AWS Bedrock infrastructure integration",
+          "Claude 3.5 Sonnet, Haiku, and 3.7 Sonnet support",
+          "Multi-turn conversation support",
+          "Advanced sampling controls (top_p, top_k)",
+          "Token usage tracking and cost monitoring",
+          "AWS credential management (IAM roles, access keys, credentials file)"
+        ],
+        "dependencies": [
+          "boto3",
+          "botocore"
+        ],
+        "setupTime": "3 min",
+        "metadataPath": "components/backend/ai-integrations/anthropic-bedrock/metadata.yaml"
+      },
+      {
+        "id": "azure-openai",
+        "slug": "azure-openai",
+        "name": "azure-openai-integration",
+        "category": "ai-integrations",
+        "version": "1.0.0",
+        "bundlePath": "components/backend/ai-integrations/azure-openai/bundle.tar.zst",
+        "size": 4215,
+        "sha256": "bee52ebc9f407fdeaa21fa589c9e86ddac84b7a0d0a346252f85d11bcdc98f6b",
+        "description": "Enterprise-grade Azure OpenAI client with multi-region support, DeepSeek integration,\nand special model handling (o3-mini). Production-ready with comprehensive error handling.\n",
+        "features": [
+          "Multi-region Azure deployment support",
+          "DeepSeek model integration",
+          "Embeddings via LangChain",
+          "Special model handling (o3-mini with max_completion_tokens)",
+          "Comprehensive error logging and retry logic",
+          "Token usage tracking and cost estimation"
+        ],
+        "dependencies": [
+          "azure-ai-inference",
+          "azure-identity",
+          "azure-core",
+          "openai",
+          "langchain-openai"
+        ],
+        "setupTime": "2 min",
+        "metadataPath": "components/backend/ai-integrations/azure-openai/metadata.yaml"
+      },
+      {
+        "id": "gemini",
+        "slug": "gemini",
+        "name": "gemini-integration",
+        "category": "ai-integrations",
+        "version": "1.0.0",
+        "bundlePath": "components/backend/ai-integrations/gemini/bundle.tar.zst",
+        "size": 3682,
+        "sha256": "056636f5f884f3d3e38bd8ad412a920ea97f7342b215ede9f1580cd529eb3e8a",
+        "description": "Production-ready Gemini AI client with OpenAI-compatible interface.\nSupports reasoning effort, tool calling, embeddings, and streaming.\n",
+        "features": [
+          "OpenAI-compatible interface for easy migration",
+          "Reasoning effort control (LOW/MEDIUM/HIGH/NONE)",
+          "Tool and function calling support",
+          "Text embeddings (text-embedding-004)",
+          "Streaming responses",
+          "Production error handling and logging"
+        ],
+        "dependencies": [
+          "openai"
+        ],
+        "setupTime": "1 min",
+        "metadataPath": "components/backend/ai-integrations/gemini/metadata.yaml"
+      },
+      {
+        "id": "jwt-express-middleware",
+        "slug": "jwt-express-middleware",
+        "name": "Express JWT Middleware",
+        "category": "backend",
+        "version": "1.0.0",
+        "bundlePath": "components/backend/authentication/jwt-express/bundle.tar.zst",
+        "size": 1867,
+        "sha256": "dea88aba991554ceb4e41fe3cd51d620af4e5363e33f0b4e36d882d4d4841bca",
+        "subcategory": "authentication",
+        "provides": [
+          "express_jwt_middleware",
+          "request_user_population",
+          "bearer_token_parsing"
+        ],
+        "metadataPath": "components/backend/authentication/jwt-express/metadata.yaml"
+      },
+      {
+        "id": "jwt-fastify-plugin",
+        "slug": "jwt-fastify-plugin",
+        "name": "Fastify JWT Plugin",
+        "category": "backend",
+        "version": "1.0.0",
+        "bundlePath": "components/backend/authentication/jwt-fastify/bundle.tar.zst",
+        "size": 1970,
+        "sha256": "1c27bb83aab0d5067091b2191e2a39419359aa9d8609f9e70ec0637397870020",
+        "subcategory": "authentication",
+        "provides": [
+          "fastify_jwt_plugin",
+          "request_user_decoration",
+          "bearer_token_parsing"
+        ],
+        "metadataPath": "components/backend/authentication/jwt-fastify/metadata.yaml"
+      },
+      {
+        "id": "jwt-authentication-node",
+        "slug": "jwt-authentication-node",
+        "name": "JWT Authentication (Node.js/TypeScript)",
+        "category": "backend",
+        "version": "1.0.0",
+        "bundlePath": "components/backend/authentication/jwt-node/bundle.tar.zst",
+        "size": 12051,
+        "sha256": "921ecf9972688d1358192b48a8c152dd631934ed9df06e4f5c6b05c83e39548b",
+        "subcategory": "authentication",
+        "description": "Production-ready JWT authentication with access/refresh tokens, password hashing, and blacklisting",
+        "features": [
+          "Access and refresh token generation",
+          "Token verification middleware",
+          "Password hashing with bcrypt",
+          "Token blacklisting for logout",
+          "Role-based authorization",
+          "Permission-based authorization",
+          "Rate limiting",
+          "API key validation",
+          "Comprehensive error handling",
+          "TypeScript type safety"
+        ],
+        "provides": [
+          "jwt-generation",
+          "jwt-verification",
+          "password-hashing",
+          "token-blacklisting",
+          "auth-middleware",
+          "role-based-access",
+          "permission-based-access",
+          "rate-limiting",
+          "api-key-validation"
+        ],
+        "dependencies": {
+          "jsonwebtoken": "^9.0.0",
+          "bcrypt": "^5.1.0",
+          "express": "^4.18.0"
+        },
+        "setupTime": "5 min",
+        "metadataPath": "components/backend/authentication/jwt-node/metadata.yaml"
+      },
+      {
+        "id": "redis-client",
+        "slug": "redis-client",
+        "name": "Redis Client & Session Manager",
+        "category": "backend",
+        "version": "1.0.0",
+        "bundlePath": "components/backend/caching/redis/bundle.tar.zst",
+        "size": 3961,
+        "sha256": "efb37b844bb93b675d8c2209dd570afafedce68f11c48286d2e2e9aba85a5d2e",
+        "subcategory": "caching",
+        "provides": [
+          "redis_client_factory",
+          "session_management_helpers",
+          "distributed_locking_helpers"
+        ],
+        "metadataPath": "components/backend/caching/redis/metadata.yaml"
+      },
+      {
+        "id": "redis-client-nodejs",
+        "slug": "redis-client-nodejs",
+        "name": "Redis Client for Node.js",
+        "category": "backend",
+        "version": "1.0.0",
+        "bundlePath": "components/backend/caching/redis-nodejs/bundle.tar.zst",
+        "size": 3002,
+        "sha256": "ef3e3a0c65895a43251b653388da66fff74526defa65ee8fd832f76d17a57f03",
+        "subcategory": "caching",
+        "description": "Production-ready Redis client for Node.js with specialized utilities\nfor URL caching, click counting, and rate limiting.\n",
+        "features": [
+          "Redis connection management with reconnection strategy",
+          "URL caching with configurable TTL",
+          "Atomic click counter",
+          "IP-based rate limiting",
+          "Health check utilities",
+          "Connection pooling"
+        ],
+        "dependencies": [
+          {
+            "redis": "^4.7.0"
+          }
+        ],
+        "metadataPath": "components/backend/caching/redis-nodejs/metadata.yaml"
+      },
+      {
+        "id": "postgresql-prisma",
+        "slug": "postgresql-prisma",
+        "name": "PostgreSQL + Prisma Setup",
+        "category": "backend",
+        "version": "1.0.0",
+        "bundlePath": "components/backend/database/postgresql-prisma/bundle.tar.zst",
+        "size": 11395,
+        "sha256": "ddc1c88c9929fd808862beebe74ecf077e37d3eb451ceb70562f6055cee386f0",
+        "subcategory": "database",
+        "description": "Production-ready PostgreSQL database with Prisma ORM, migrations, relations, and type-safe queries",
+        "features": [
+          "Type-safe database queries",
+          "Automatic migrations",
+          "Schema-first development",
+          "One-to-one relations",
+          "One-to-many relations",
+          "Many-to-many relations",
+          "Soft deletes",
+          "Timestamps (createdAt, updatedAt)",
+          "Database seeding",
+          "Connection pooling",
+          "Transaction support",
+          "Pagination helpers",
+          "Complex queries",
+          "Full-text search ready"
+        ],
+        "provides": [
+          "sql-database",
+          "orm-client",
+          "type-safe-queries",
+          "database-migrations",
+          "connection-pool",
+          "transaction-support",
+          "relations",
+          "database-seeding",
+          "pagination",
+          "soft-deletes"
+        ],
+        "dependencies": {
+          "@prisma/client": "^5.8.0",
+          "prisma": "^5.8.0 (dev)"
+        },
+        "setupTime": "10 min",
+        "metadataPath": "components/backend/database/postgresql-prisma/metadata.yaml"
+      },
+      {
+        "id": "cloud-file-storage",
+        "slug": "cloud-file-storage",
+        "name": "Cloud File Storage Component",
+        "category": "backend",
+        "version": "1.0.0",
+        "bundlePath": "components/backend/file-storage/bundle.tar.zst",
+        "size": 3797,
+        "sha256": "88659aa2c1c139d8d8f2d099f56027e79a2497c6f35a2868f70a8ac660664c3d",
+        "subcategory": "file-storage",
+        "description": "Flexible file storage component supporting local filesystem,\nCloudinary, and AWS S3. Provides unified interface for file\nupload, retrieval, and deletion.\n",
+        "features": [
+          "Local filesystem storage",
+          "Cloudinary integration (optional)",
+          "AWS S3 integration (optional)",
+          "Automatic filename generation",
+          "MD5 hash deduplication",
+          "File listing and management"
+        ],
+        "dependencies": [
+          "cloudinary>=1.41.0 (optional)",
+          "boto3>=1.35.0 (optional)"
+        ],
+        "metadataPath": "components/backend/file-storage/metadata.yaml"
+      },
+      {
+        "id": "meme-text-overlay",
+        "slug": "meme-text-overlay",
+        "name": "Meme Text Overlay Processor",
+        "category": "backend",
+        "version": "1.0.0",
+        "bundlePath": "components/backend/image-processing/bundle.tar.zst",
+        "size": 4363,
+        "sha256": "b2c223885dacb5b57af91ab8ff54eb98e02594ccc1448c4fa3fdef53196f84f1",
+        "subcategory": "image-processing",
+        "description": "Image processing component for adding text overlays to images.\nDesigned for meme generation with automatic text wrapping, outlines,\nand template-based positioning.\n",
+        "features": [
+          "Text overlay with custom positioning",
+          "Automatic text wrapping",
+          "Outline text for readability",
+          "Meme template support",
+          "Image resizing and optimization",
+          "Multiple output formats (PNG, JPEG)"
+        ],
+        "dependencies": [
+          "pillow>=10.4.0"
+        ],
+        "metadataPath": "components/backend/image-processing/metadata.yaml"
+      },
+      {
+        "id": "gemini-client-wrapper",
+        "slug": "gemini-client-wrapper",
+        "name": "Gemini Client Wrapper",
+        "category": "backend",
+        "version": "0.1.0",
+        "bundlePath": "components/backend/llm-wrapper/bundle.tar.zst",
+        "size": 2693,
+        "sha256": "acc9830aaaba97c33459c2046f60bee6e5a2406f151bcf048b5873ac52ae6848",
+        "subcategory": "llm-wrapper",
+        "description": "Configurable Gemini client that handles API key discovery, text generation, structured JSON extraction, and health checks for Python agents.\n",
+        "provides": [
+          "llm_interface",
+          "text_generation",
+          "structured_extraction"
+        ],
+        "dependencies": {
+          "runtime": [
+            "google-generativeai"
+          ]
+        },
+        "metadataPath": "components/backend/llm-wrapper/metadata.yaml"
+      },
+      {
+        "id": "interaction-logger",
+        "slug": "interaction-logger",
+        "name": "Agent Interaction Logger",
+        "category": "backend",
+        "version": "0.1.0",
+        "bundlePath": "components/backend/logging/bundle.tar.zst",
+        "size": 2329,
+        "sha256": "eba379f49306524ae791d14b6eca0636706b38dd608bc6b87edb04576dbf84a5",
+        "subcategory": "logging",
+        "description": "Helper that records agent interactions into any audit store while emitting telemetry when logging fails.\n",
+        "provides": [
+          "audit_logging",
+          "interaction_logging"
+        ],
+        "dependencies": {
+          "runtime": []
+        },
+        "metadataPath": "components/backend/logging/metadata.yaml"
+      },
+      {
+        "id": "node-llm-framework",
+        "slug": "node-llm-framework",
+        "name": "Node.js LLM Framework",
+        "category": "backend",
+        "version": "0.1.0",
+        "bundlePath": "components/backend/node-llm-framework/bundle.tar.zst",
+        "size": 10568,
+        "sha256": "ba1402f3d10ed46e8879f0210c1abf33b3297a4ad9ed6f9942d867618f51006d",
+        "subcategory": "ai-services",
+        "metadataPath": "components/backend/node-llm-framework/metadata.yaml",
+        "description": "Unified TypeScript services for Azure OpenAI, Google Gemini, Anthropic Claude, and Amazon Nova with a shared interface, factory, and capability lookup."
+      },
+      {
+        "id": "celery-config",
+        "slug": "celery-config",
+        "name": "Celery Task Queue Config",
+        "category": "backend",
+        "version": "1.0.0",
+        "bundlePath": "components/backend/task-queue/bundle.tar.zst",
+        "size": 2752,
+        "sha256": "fa6496f0c8bec87ad772d09e9c7b1a39a1f40df32424834bc45e778c19a8a104",
+        "subcategory": "task-queue",
+        "provides": [
+          "celery_app_factory",
+          "redis_broker_configuration",
+          "task_retry_defaults"
+        ],
+        "metadataPath": "components/backend/task-queue/metadata.yaml"
+      },
+      {
+        "id": "express-service",
+        "slug": "express-service",
+        "name": "Express Service Skeleton",
+        "category": "backend",
+        "version": "1.0.0",
+        "bundlePath": "components/backend/web-servers/express-service/bundle.tar.zst",
+        "size": 4016,
+        "sha256": "be6e7dd7aea45b71c129432d31c333141a7aac72b512409e22385f6acda00085",
+        "subcategory": "web-server",
+        "provides": [
+          "express_api_bootstrap",
+          "http_server_lifecycle",
+          "healthcheck_route",
+          "structured_logging"
+        ],
+        "metadataPath": "components/backend/web-servers/express-service/metadata.yaml"
+      },
+      {
+        "id": "fastify-service",
+        "slug": "fastify-service",
+        "name": "Fastify Service Skeleton",
+        "category": "backend",
+        "version": "1.0.0",
+        "bundlePath": "components/backend/web-servers/fastify-service/bundle.tar.zst",
+        "size": 2770,
+        "sha256": "bca5d5e41935f53fbf16bd7a46cbc0bbce948523d01f62f26b557d86f97fb807",
+        "subcategory": "web-server",
+        "provides": [
+          "fastify_api_bootstrap",
+          "swagger_ready_server",
+          "request_context_plugin",
+          "healthcheck_route"
+        ],
+        "metadataPath": "components/backend/web-servers/fastify-service/metadata.yaml"
+      },
+      {
+        "id": "mdx-blog-utils",
+        "slug": "mdx-blog-utils",
+        "name": "MDX Blog Utilities",
+        "category": "content",
+        "version": "1.0.0",
+        "bundlePath": "components/content/mdx-processing/bundle.tar.zst",
+        "size": 2287,
+        "sha256": "7410e182e8b849a42569350b0daa88978cf66ecd1d4f8f3028dd81149c9f9b93",
+        "subcategory": "mdx-processing",
+        "description": "File-based MDX blog utilities for Next.js applications.\nParse frontmatter, load posts, sort by date, and generate slugs.\n",
+        "features": [
+          "Frontmatter parsing with gray-matter",
+          "File-based content management",
+          "Post metadata extraction",
+          "Automatic sorting by date",
+          "Slug generation from filenames",
+          "Tag filtering",
+          "Reading time calculation"
+        ],
+        "dependencies": [
+          {
+            "gray-matter": "^4.0.3"
+          },
+          {
+            "next": "^14.0.0"
+          }
+        ],
+        "metadataPath": "components/content/mdx-processing/metadata.yaml"
+      },
+      {
+        "id": "prisma-schema-patterns",
+        "slug": "prisma-schema-patterns",
+        "name": "Prisma Schema Patterns",
+        "category": "database",
+        "version": "1.0.0",
+        "bundlePath": "components/database/prisma-patterns/bundle.tar.zst",
+        "size": 5131,
+        "sha256": "ad931c1b014d39c9cb439eb15cf772d001756f1b9cb5b92df0693002fde0f4f2",
+        "subcategory": "prisma",
+        "provides": [
+          "prisma_schema_examples",
+          "auth_model_patterns",
+          "graphql_adapter_patterns",
+          "mongodb_schema_examples"
+        ],
+        "metadataPath": "components/database/prisma-patterns/metadata.yaml"
+      },
+      {
+        "id": "docker-compose-stack",
+        "slug": "docker-compose-stack",
+        "name": "Docker Compose Stack",
+        "category": "devops",
+        "version": "1.0.0",
+        "bundlePath": "components/devops/docker/docker-compose-stack/bundle.tar.zst",
+        "size": 6342,
+        "sha256": "3948f3acefb9524938490e30165e1aea40b6ccbe21db8fded274bbb25da4d9db",
+        "subcategory": "containers",
+        "description": "Production-ready Docker Compose configurations for common stacks (PostgreSQL, Redis, Nginx, monitoring)",
+        "features": [
+          "Health checks for all services",
+          "Persistent volumes",
+          "Network isolation",
+          "Resource limits",
+          "Restart policies",
+          "Environment variables",
+          "Service dependencies",
+          "Hot reload support (dev)",
+          "SSL support",
+          "Database initialization",
+          "Admin tools (optional)"
+        ],
+        "provides": [
+          "container-orchestration",
+          "service-networking",
+          "volume-management",
+          "health-checks",
+          "resource-limits",
+          "environment-config",
+          "multi-service-stack"
+        ],
+        "dependencies": {
+          "docker": ">=20.10",
+          "docker-compose": ">=2.0"
+        },
+        "setupTime": "5 min",
+        "metadataPath": "components/devops/docker/docker-compose-stack/metadata.yaml"
+      },
+      {
+        "id": "reveal-presentation",
+        "slug": "reveal-presentation",
+        "name": "Reveal.js Presentation Template",
+        "category": "documentation",
+        "version": "1.0.0",
+        "bundlePath": "components/documentation/reveal-presentation/bundle.tar.zst",
+        "size": 380211,
+        "sha256": "bfe97e0f53545df8f6d246d6159d496c552d03032efca92b86cab58827d25415",
+        "subcategory": "presentations",
+        "description": "Modern, customizable presentation template with dark theme and variable substitution",
+        "features": [
+          "Dark theme with customizable colors",
+          "9 pre-built slide templates",
+          "Variable substitution (20+ variables)",
+          "Fullscreen mode (F key)",
+          "Keyboard navigation",
+          "Progress bar and slide numbers",
+          "Responsive layout",
+          "No build step required"
+        ],
+        "provides": [
+          "presentation-slides",
+          "pitch-deck",
+          "documentation",
+          "variable-substitution",
+          "dark-theme",
+          "responsive-design"
+        ],
+        "dependencies": [
+          {
+            "reveal.js": "4.5.0 (CDN)"
+          }
+        ],
+        "setupTime": "5 min",
+        "metadataPath": "components/documentation/reveal-presentation/metadata.yaml"
+      },
+      {
+        "id": "email-template-renderer",
+        "slug": "email-template-renderer",
+        "name": "Email Template Renderer",
+        "category": "email",
+        "version": "1.0.0",
+        "bundlePath": "components/email/templates/bundle.tar.zst",
+        "size": 3733,
+        "sha256": "472646159fbf321b56326ebd5038bc9fd7a4c8cea7567390853f67d5db347096",
+        "subcategory": "templating",
+        "provides": [
+          "multi_engine_template_rendering",
+          "html_to_text_conversion",
+          "css_inlining",
+          "preview_mode_support"
+        ],
+        "metadataPath": "components/email/templates/metadata.yaml"
+      },
+      {
+        "id": "react-hook-form-zod",
+        "slug": "react-hook-form-zod",
+        "name": "React Hook Form + Zod Validation",
+        "category": "frontend",
+        "version": "1.0.0",
+        "bundlePath": "components/frontend/forms/react-hook-form-zod/bundle.tar.zst",
+        "size": 9624,
+        "sha256": "1179ba52d555c66bc49a9edb0bfe9f3eadccf944265a579079ffda215f99bbdf",
+        "subcategory": "forms",
+        "description": "Production-ready form handling with type-safe Zod validation, error handling, and common patterns",
+        "features": [
+          "Type-safe validation with Zod schemas",
+          "Minimal re-renders (uncontrolled inputs)",
+          "Clear error messages",
+          "Field arrays (dynamic lists)",
+          "Async validation",
+          "File upload handling",
+          "Multi-step forms",
+          "Form state management",
+          "Accessibility (ARIA labels)",
+          "Custom validation",
+          "Password strength validation",
+          "Email validation",
+          "Confirm password validation"
+        ],
+        "provides": [
+          "form-handling",
+          "type-safe-validation",
+          "error-management",
+          "field-arrays",
+          "file-upload-forms",
+          "multi-step-forms",
+          "async-validation",
+          "accessibility"
+        ],
+        "dependencies": {
+          "react-hook-form": "^7.49.0",
+          "zod": "^3.22.0",
+          "@hookform/resolvers": "^3.3.0"
+        },
+        "setupTime": "5 min",
+        "metadataPath": "components/frontend/forms/react-hook-form-zod/metadata.yaml"
+      },
+      {
+        "id": "react-chat-ui",
+        "slug": "react-chat-ui",
+        "name": "React Chat UI (Onyx-Inspired)",
+        "category": "frontend",
+        "version": "1.0.0",
+        "bundlePath": "components/frontend/react-chat-ui/bundle.tar.zst",
+        "size": 19583,
+        "sha256": "c2028f3d8d06349e2210069f8d7fa64026f67176768bc2cac73181459c3e1153",
+        "subcategory": "complete-ui",
+        "description": "Professional Onyx-inspired React chat interface with multi-assistant support, dark theme, and modern UI components",
+        "features": [
+          "Onyx-inspired dark theme with professional design",
+          "Multi-assistant support (General, Search, Art)",
+          "Message history with user/assistant styling",
+          "Suggestion chips for quick prompts",
+          "File attachment UI (ready for backend)",
+          "Previous chats sidebar with collapsible sections",
+          "Loading states and animations",
+          "Keyboard navigation (Enter to send)",
+          "Responsive layout",
+          "TypeScript type safety"
+        ],
+        "provides": [
+          "chat_interface",
+          "multi_assistant_support",
+          "message_history",
+          "file_attachment_ui",
+          "suggestion_chips",
+          "dark_theme",
+          "loading_states",
+          "previous_chats_sidebar"
+        ],
+        "metadataPath": "components/frontend/react-chat-ui/metadata.yaml"
+      },
+      {
+        "id": "streamlit-auth-ui",
+        "slug": "streamlit-auth-ui",
+        "name": "Streamlit Authentication UI",
+        "category": "frontend",
+        "version": "1.0.0",
+        "bundlePath": "components/frontend/streamlit-components/auth-ui/bundle.tar.zst",
+        "size": 2928,
+        "sha256": "7ce3ac883dc81b6e4668dcc1fbfc9d706d7a56fe9c6b6ac515f40ff235ae4bd0",
+        "subcategory": "atomic-component",
+        "description": "Reusable authentication UI with login, signup, logout, and session management",
+        "provides": [
+          "login_form",
+          "signup_form",
+          "logout_button",
+          "session_management",
+          "auth_guards"
+        ],
+        "dependencies": {
+          "runtime": [
+            "streamlit>=1.28.0"
+          ]
+        },
+        "metadataPath": "components/frontend/streamlit-components/auth-ui/metadata.yaml"
+      },
+      {
+        "id": "streamlit-chat-interface",
+        "slug": "streamlit-chat-interface",
+        "name": "Streamlit Chat Interface",
+        "category": "frontend",
+        "version": "1.0.0",
+        "bundlePath": "components/frontend/streamlit-components/chat-interface/bundle.tar.zst",
+        "size": 2279,
+        "sha256": "74913cafac9387a9fb444d250f3ef2b4196d4b0dcc75b336b95bf34c5faff1b6",
+        "subcategory": "atomic-component",
+        "description": "Reusable chat interface component with message history, streaming support, and source citations",
+        "provides": [
+          "chat_message_display",
+          "streaming_responses",
+          "source_citations",
+          "chat_input"
+        ],
+        "dependencies": {
+          "runtime": [
+            "streamlit>=1.28.0"
+          ]
+        },
+        "metadataPath": "components/frontend/streamlit-components/chat-interface/metadata.yaml"
+      },
+      {
+        "id": "streamlit-dark-theme",
+        "slug": "streamlit-dark-theme",
+        "name": "Streamlit Dark Theme",
+        "category": "frontend",
+        "version": "1.0.0",
+        "bundlePath": "components/frontend/streamlit-components/dark-theme/bundle.tar.zst",
+        "size": 3505,
+        "sha256": "ccefaeb2b59da1221eceaafc95cdb15b4a1f0e91065a971e633908dd6e2f633c",
+        "subcategory": "atomic-component",
+        "description": "Customizable dark theme for Streamlit with multiple color palettes (Onyx, Nord, Dracula)",
+        "provides": [
+          "dark_theme_css",
+          "onyx_palette",
+          "nord_palette",
+          "dracula_palette",
+          "theme_customization"
+        ],
+        "dependencies": {
+          "runtime": [
+            "streamlit>=1.28.0"
+          ]
+        },
+        "metadataPath": "components/frontend/streamlit-components/dark-theme/metadata.yaml"
+      },
+      {
+        "id": "streamlit-file-uploader",
+        "slug": "streamlit-file-uploader",
+        "name": "Streamlit File Uploader",
+        "category": "frontend",
+        "version": "1.0.0",
+        "bundlePath": "components/frontend/streamlit-components/file-uploader/bundle.tar.zst",
+        "size": 2694,
+        "sha256": "87f0237a11eb9368f9a7be80cf489721f57daee45251a2568a83213f8c40b259",
+        "subcategory": "atomic-component",
+        "description": "Reusable file upload component with validation, progress tracking, and file list management",
+        "provides": [
+          "file_upload_ui",
+          "file_validation",
+          "upload_progress",
+          "file_list_display"
+        ],
+        "dependencies": {
+          "runtime": [
+            "streamlit>=1.28.0"
+          ]
+        },
+        "metadataPath": "components/frontend/streamlit-components/file-uploader/metadata.yaml"
+      },
+      {
+        "id": "streamlit-rag-ui",
+        "slug": "streamlit-rag-ui",
+        "name": "Streamlit RAG UI",
+        "category": "frontend",
+        "version": "1.0.0",
+        "bundlePath": "components/frontend/streamlit-rag-ui/bundle.tar.zst",
+        "size": 6713,
+        "sha256": "023542962b273e6ba3e18c64b17da6dfc7ade9d578dc80049f24b05d3fe30de9",
+        "subcategory": "complete-ui",
+        "description": "Complete Streamlit UI for RAG applications with Onyx-inspired dark theme, chat interface, document upload, and authentication",
+        "features": [
+          "Onyx-inspired dark theme with custom CSS",
+          "Real-time streaming chat responses",
+          "PDF and TXT document upload",
+          "JWT authentication (login/logout)",
+          "Source citation expandables",
+          "Session state management",
+          "Responsive layout",
+          "Settings panel (context chunks, streaming toggle)"
+        ],
+        "provides": [
+          "chat_interface",
+          "document_upload",
+          "authentication_ui",
+          "dark_theme",
+          "streaming_responses",
+          "source_citations"
+        ],
+        "dependencies": {
+          "runtime": [
+            "streamlit>=1.28.0",
+            "requests>=2.31.0"
+          ],
+          "dev": []
+        },
+        "metadataPath": "components/frontend/streamlit-rag-ui/metadata.yaml"
+      },
+      {
+        "id": "stripe-payment-server",
+        "slug": "stripe-payment-server",
+        "name": "Stripe Payment Server",
+        "category": "payments",
+        "version": "1.0.0",
+        "bundlePath": "components/payments/stripe/bundle.tar.zst",
+        "size": 3408,
+        "sha256": "33cffafc3b860a48888a7a55a25520b31639320ebe042d202b768801e8bb71d9",
+        "subcategory": "stripe",
+        "provides": [
+          "stripe_payment_intent_api",
+          "webhook_signature_verification",
+          "tax_calculation_example",
+          "express_server_bootstrap"
+        ],
+        "metadataPath": "components/payments/stripe/metadata.yaml"
+      },
+      {
+        "id": "deterministic-faker",
+        "slug": "deterministic-faker",
+        "name": "Deterministic Fake Data Generator",
+        "category": "testing",
+        "version": "1.0.0",
+        "bundlePath": "components/testing/data-generation/bundle.tar.zst",
+        "size": 3089,
+        "sha256": "3b23a0a627c42f11a8ac55bc04f2c28ef3c24bb250dc384cbd4aba5c4d7553ef",
+        "subcategory": "data-generation",
+        "provides": [
+          "seeded_random_generators",
+          "deterministic_fake_entities",
+          "locale_aware_generators"
+        ],
+        "metadataPath": "components/testing/data-generation/metadata.yaml"
+      },
+      {
+        "id": "3d-visualizations",
+        "slug": "3d-visualizations",
+        "name": "3d-visualizations",
+        "category": "ui-components",
+        "version": "1.0.0",
+        "bundlePath": "components/ui/3d-visualizations/bundle.tar.zst",
+        "size": 53046,
+        "sha256": "39f0633790d2ff96a95e028524d4830b20af94528953a9d83d620040a400ccb6",
+        "subcategory": "threejs-visualization",
+        "description": "Enterprise-grade Three.js visualization components for knowledge management,\nindustrial applications, and creative presentations. Includes Digital Twin,\nKnowledge Seismograph, Knowledge Galaxy, and Space Animation components.\n",
+        "setupTime": "5 min",
+        "metadataPath": "components/ui/3d-visualizations/metadata.yaml"
+      },
+      {
+        "id": "langgraph-agent-framework",
+        "slug": "langgraph-agent-framework",
+        "name": "Langraph Multi-Agent Framework",
+        "category": "backend",
+        "version": "1.0.0",
+        "bundlePath": "components/backend/langgraph-agent-framework/bundle.tar.zst",
+        "size": 8457,
+        "sha256": "ab007112da8643fd3e467ac75cf216d6b496a37b00731194220bcb8dfa25a730",
+        "subcategory": "ai-agents",
+        "description": "Production-ready framework for building multi-agent systems with Langraph, ReAct pattern, memory management, and tool orchestration",
+        "features": [
+          "ReAct (Reasoning + Acting) pattern implementation",
+          "Tool registration and dynamic calling",
+          "Streaming response support",
+          "Conversation memory with checkpointing",
+          "Token usage tracking",
+          "Multi-agent orchestration with routing",
+          "Gradio ChatInterface compatibility",
+          "Markdown output formatting",
+          "Thread-safe conversation management",
+          "Agent performance monitoring"
+        ],
+        "provides": [
+          "react-agent-pattern",
+          "tool-orchestration",
+          "multi-agent-coordination",
+          "conversation-memory",
+          "streaming-responses",
+          "token-tracking"
+        ],
+        "dependencies": {
+          "required": [
+            "langchain>=0.1.0",
+            "langchain-core>=0.1.0",
+            "langgraph>=0.1.0"
+          ],
+          "optional": [
+            "langchain-groq>=0.1.0",
+            "langchain-openai>=0.1.0",
+            "langchain-anthropic>=0.1.0",
+            "langchain-google-genai>=0.1.0",
+            "gradio>=4.0.0"
+          ]
+        },
+        "metadataPath": "components/backend/langgraph-agent-framework/metadata.yaml"
+      }
+    ],
+    "recipes": [
+      {
+        "id": "llm-integration-blueprint",
+        "slug": "llm-integration-blueprint",
+        "name": "LLM Integration Blueprint",
+        "category": "ai-specific",
+        "version": "1.0.0",
+        "filePath": "recipes/ai-specific/llm-integration-blueprint.yaml",
+        "size": 26215,
+        "sha256": "6ed0cce328cf5017f6f4b6d7af5566bd75dc424f1a98ab64004d6368ac6c40eb",
+        "type": "architecture",
+        "difficulty": "intermediate",
+        "provides": [
+          "Multi-provider LLM setup",
+          "Token counting",
+          "Cost tracking",
+          "Retry logic with exponential backoff",
+          "Streaming response handling"
+        ],
+        "appliesTo": [
+          "AI chat applications",
+          "RAG systems",
+          "Agent frameworks"
+        ]
+      },
+      {
+        "id": "vector-database-blueprint",
+        "slug": "vector-database-blueprint",
+        "name": "Vector Database Blueprint",
+        "category": "ai-specific",
+        "version": "1.0.0",
+        "filePath": "recipes/ai-specific/vector-database-blueprint.yaml",
+        "size": 29571,
+        "sha256": "aefe7d4a2d4d023374a4245f166f7a0fe658bef086a145b76e7aa4bef33a370d",
+        "type": "architecture",
+        "difficulty": "intermediate",
+        "provides": [
+          "ChromaDB/Pinecone/Weaviate setup",
+          "Embedding pipeline",
+          "Chunking strategies",
+          "Semantic search patterns",
+          "Metadata filtering"
+        ],
+        "appliesTo": [
+          "RAG applications",
+          "Semantic search",
+          "Document Q&A systems"
+        ]
+      },
+      {
+        "id": "ai-ethics-safety-blueprint",
+        "slug": "ai-ethics-safety-blueprint",
+        "name": "AI Ethics & Safety Blueprint",
+        "category": "ai-specific",
+        "version": "1.0.0",
+        "filePath": "recipes/ai-specific/ai-ethics-safety-blueprint.yaml",
+        "size": 29111,
+        "sha256": "322e5998c71fe04c3089772081f3a70755f149348b7863f78c5662ebd1634252",
+        "type": "compliance",
+        "difficulty": "advanced",
+        "provides": [
+          "Content moderation",
+          "Bias detection",
+          "Safety guardrails",
+          "Audit logging",
+          "Ethical AI principles"
+        ],
+        "appliesTo": [
+          "Production AI applications",
+          "Customer-facing chatbots",
+          "Regulated industries"
+        ]
+      },
+      {
+        "id": "prompt-templates",
+        "slug": "prompt-templates",
+        "name": "Prompt Engineering Templates",
+        "category": "ai-specific",
+        "version": "1.0.0",
+        "filePath": "recipes/ai-specific/prompt-templates.yaml",
+        "size": 9809,
+        "sha256": "4caf88113f6b79a76da520290781cfbd4b97d8de29faf3d12f204278c0c9b317",
+        "type": "template",
+        "difficulty": "beginner",
+        "provides": [
+          "System prompts",
+          "Few-shot examples",
+          "Chain-of-thought patterns",
+          "Tool calling schemas",
+          "Error handling prompts"
+        ],
+        "appliesTo": [
+          "All AI applications",
+          "Agent systems",
+          "Chat interfaces"
+        ]
+      },
+      {
+        "id": "nodejs-best-practices",
+        "slug": "nodejs-best-practices",
+        "name": "Node.js Best Practices Pattern",
+        "category": "cross-cutting",
+        "version": "1.0.0",
+        "filePath": "quality-baselines/nodejs-best-practices-pattern.md",
+        "size": 21056,
+        "sha256": "a6e8f9bfc089036159e495573f6ccd7c58ae33ec1c1d3ef5e6c4ab171eb85d61",
+        "difficulty": "intermediate",
+        "provides": [
+          "Project structure",
+          "Error handling patterns",
+          "Security middleware",
+          "Testing strategies",
+          "Logging setup",
+          "Performance optimization"
+        ],
+        "appliesTo": [
+          "Express applications",
+          "Fastify services",
+          "Next.js backends"
+        ],
+        "language": "TypeScript/JavaScript"
+      },
+      {
+        "id": "fastapi-best-practices",
+        "slug": "fastapi-best-practices",
+        "name": "FastAPI Best Practices",
+        "category": "cross-cutting",
+        "version": "1.0.0",
+        "filePath": "quality-baselines/fastapi-best-practices.md",
+        "size": 26463,
+        "sha256": "619e11bbec5c90cdd0d2c4877b459c22405ee429b27eda521b3313bdcf19fd22",
+        "difficulty": "intermediate",
+        "provides": [
+          "Async patterns",
+          "Pydantic validation",
+          "Dependency injection",
+          "Testing with pytest",
+          "OpenAPI documentation",
+          "Database sessions"
+        ],
+        "appliesTo": [
+          "FastAPI applications",
+          "Python backends",
+          "AI/ML APIs"
+        ],
+        "language": "Python"
+      },
+      {
+        "id": "go-best-practices",
+        "slug": "go-best-practices",
+        "name": "Go Best Practices Pattern",
+        "category": "cross-cutting",
+        "version": "1.0.0",
+        "filePath": "quality-baselines/go-best-practices-pattern.md",
+        "size": 19675,
+        "sha256": "105567bdf13a1243f1eeaecce62bbfd5f79cbeaaa52e86fdf8aafdbbfd8fb27f",
+        "difficulty": "intermediate",
+        "provides": [
+          "Project layout",
+          "Error handling",
+          "Concurrency patterns",
+          "Interface design",
+          "Testing strategies",
+          "Performance tips"
+        ],
+        "appliesTo": [
+          "Go microservices",
+          "Infrastructure tools",
+          "High-performance backends"
+        ],
+        "language": "Go"
+      },
+      {
+        "id": "dotnet-best-practices",
+        "slug": "dotnet-best-practices",
+        "name": ".NET Best Practices",
+        "category": "cross-cutting",
+        "version": "1.0.0",
+        "filePath": "quality-baselines/dotnet-best-practices.md",
+        "size": 3769,
+        "sha256": "4a22ba856410e4613507a9b31c57c677074538cc733970322c2a3f8413c61ac3",
+        "difficulty": "advanced",
+        "provides": [
+          "Clean architecture",
+          "CQRS pattern",
+          "Entity Framework patterns",
+          "Dependency injection",
+          "Testing with xUnit",
+          "Security practices"
+        ],
+        "appliesTo": [
+          ".NET applications",
+          "Enterprise systems",
+          "Azure deployments"
+        ],
+        "language": "C#"
+      },
+      {
+        "id": "java-spring-best-practices",
+        "slug": "java-spring-best-practices",
+        "name": "Java Spring Best Practices",
+        "category": "cross-cutting",
+        "version": "1.0.0",
+        "filePath": "quality-baselines/java-spring-best-practices.md",
+        "size": 2669,
+        "sha256": "c4048988fc9b74d4c818d0f48ba06cacf32e97f15988406bd029d7a3efe80034",
+        "difficulty": "advanced",
+        "provides": [
+          "Spring Boot patterns",
+          "JPA/Hibernate",
+          "RESTful API design",
+          "Security with Spring Security",
+          "Testing strategies",
+          "Microservices patterns"
+        ],
+        "appliesTo": [
+          "Spring Boot applications",
+          "Enterprise Java",
+          "Microservices"
+        ],
+        "language": "Java"
+      },
+      {
+        "id": "aws-infrastructure-template",
+        "slug": "aws-infrastructure-template",
+        "name": "AWS Infrastructure Template",
+        "category": "implementation",
+        "version": "1.0.0",
+        "filePath": "recipes/implementation/aws-infrastructure-template.md",
+        "size": 13304,
+        "sha256": "2465d76affa0f41950d85126b11ec797db0d5a930753526309fb6b80fd62755a",
+        "type": "infrastructure",
+        "difficulty": "advanced",
+        "provides": [
+          "EC2 setup",
+          "RDS configuration",
+          "HTTPS with Let's Encrypt",
+          "Load balancing",
+          "Auto-scaling",
+          "Monitoring with CloudWatch"
+        ],
+        "appliesTo": [
+          "Production deployments",
+          "Scalable applications"
+        ]
+      },
+      {
+        "id": "aws-setup",
+        "slug": "aws-setup",
+        "name": "AWS Setup Guide",
+        "category": "implementation",
+        "version": "1.0.0",
+        "filePath": "recipes/implementation/aws_setup.md",
+        "size": 4884,
+        "sha256": "b45565e6002b3b94fc67692424ea8e6bf6fb24e3d4853285f2c2e56b48621afb",
+        "type": "guide",
+        "difficulty": "intermediate",
+        "provides": [
+          "Step-by-step AWS deployment",
+          "Security groups",
+          "Database setup",
+          "SSL certificates",
+          "Domain configuration"
+        ],
+        "appliesTo": [
+          "First-time AWS users",
+          "Quick production deployment"
+        ]
+      },
+      {
+        "id": "monorepo-template",
+        "slug": "monorepo-template",
+        "name": "Monorepo Template Instructions",
+        "category": "implementation",
+        "version": "1.0.0",
+        "filePath": "recipes/implementation/monorepo-template-instructions.md",
+        "size": 11902,
+        "sha256": "e46c80ae888a6310381d1d0aa22c54f4712a623116a09d4a390f4c61baf97773",
+        "type": "architecture",
+        "difficulty": "advanced",
+        "provides": [
+          "Monorepo structure",
+          "Shared packages",
+          "Build orchestration",
+          "Dependency management",
+          "CI/CD for monorepos"
+        ],
+        "appliesTo": [
+          "Multi-service applications",
+          "Component libraries",
+          "Enterprise codebases"
+        ]
+      },
+      {
+        "id": "backwards-build-workflow",
+        "slug": "backwards-build-workflow",
+        "name": "Backwards Build Workflow",
+        "category": "strategic",
+        "version": "1.0.0",
+        "filePath": "recipes/strategic/backwards-build-workflow.md",
+        "size": 13750,
+        "sha256": "db054e66da470183d41412ac1818b6503e245fa353f42323b804af734a65dba7",
+        "type": "methodology",
+        "difficulty": "intermediate",
+        "provides": [
+          "Spec-first development",
+          "Test-driven approach",
+          "Architecture before code",
+          "Living specifications",
+          "Quality gates"
+        ],
+        "appliesTo": [
+          "All projects",
+          "Team development",
+          "Quality-focused teams"
+        ]
+      },
+      {
+        "id": "backwards-build-template",
+        "slug": "backwards-build-template",
+        "name": "Backwards Build Workflow Template",
+        "category": "strategic",
+        "version": "1.0.0",
+        "filePath": "recipes/strategic/backwards-build-workflow-template.md",
+        "size": 13665,
+        "sha256": "5e4254eec387a9f2f7fec67e884305d88f0d06d7da445e9f0dc9d4bf2543e4f5",
+        "type": "template",
+        "difficulty": "beginner",
+        "provides": [
+          "Spec template",
+          "Architecture document template",
+          "Test plan template",
+          "Implementation checklist",
+          "Review criteria"
+        ],
+        "appliesTo": [
+          "New features",
+          "Major refactors",
+          "Complex implementations"
+        ]
+      },
+      {
+        "id": "vms-over-vercel",
+        "slug": "vms-over-vercel",
+        "name": "VMs Over Vercel Strategy",
+        "category": "strategic",
+        "version": "1.0.0",
+        "filePath": "recipes/strategic/vms_over_vercel.md",
+        "size": 1309,
+        "sha256": "82d653bc421fc83367432df6ac72c8bed07a4de6b192a62055f9cb2cc2d412e7",
+        "type": "strategy",
+        "difficulty": "intermediate",
+        "provides": [
+          "Cost analysis",
+          "Control vs convenience",
+          "Deployment strategies",
+          "Migration patterns"
+        ],
+        "appliesTo": [
+          "Deployment decisions",
+          "Cost optimization",
+          "Infrastructure planning"
+        ]
+      },
+      {
+        "id": "mermaid-diagrams",
+        "slug": "mermaid-diagrams",
+        "name": "Mermaid Diagram Templates",
+        "category": "project-management",
+        "version": "1.0.0",
+        "filePath": "recipes/project-management/diagrams/mermaid.md",
+        "size": 1581,
+        "sha256": "2a883b06cee34ca5cc67b4079098c2078aa6dba26a1cc094966d6cac9a040fa3",
+        "type": "template",
+        "difficulty": "beginner",
+        "provides": [
+          "Sequence diagrams",
+          "Flowcharts",
+          "Entity relationships",
+          "State diagrams",
+          "Gantt charts"
+        ],
+        "appliesTo": [
+          "Documentation",
+          "Architecture diagrams",
+          "Process flows"
+        ]
+      },
+      {
+        "id": "sequence-diagrams",
+        "slug": "sequence-diagrams",
+        "name": "Sequence Diagram Guide",
+        "category": "project-management",
+        "version": "1.0.0",
+        "filePath": "recipes/project-management/diagrams/sequence_diagram.md",
+        "size": 1339,
+        "sha256": "c72e9659cd4eab7e5320e97bcde8d3cfe6b643f9d4a5c0405b7eeb7e7e4e72c2",
+        "type": "guide",
+        "difficulty": "beginner",
+        "provides": [
+          "API flow visualization",
+          "System interactions",
+          "Timing diagrams"
+        ],
+        "appliesTo": [
+          "API documentation",
+          "System design",
+          "Debugging"
+        ]
+      },
+      {
+        "id": "create-reveal-slides",
+        "slug": "create-reveal-slides",
+        "name": "Create Reveal.js Slides",
+        "category": "project-management",
+        "version": "1.0.0",
+        "filePath": "recipes/project-management/create-reveal-slides.md",
+        "size": 3017,
+        "sha256": "9997c6668884868130224050aeca1d8fbfeae9d7ae3db3cfa321a0b0f7b4beb6",
+        "type": "template",
+        "difficulty": "beginner",
+        "provides": [
+          "Presentation templates",
+          "Markdown-based slides",
+          "Interactive presentations",
+          "Export to PDF"
+        ],
+        "appliesTo": [
+          "Technical presentations",
+          "Demo days",
+          "Architecture reviews"
+        ]
+      },
+      {
+        "id": "mermaid-diagrams-extended",
+        "slug": "mermaid-diagrams-extended",
+        "name": "Extended Mermaid Diagrams",
+        "category": "project-management",
+        "version": "1.0.0",
+        "filePath": "recipes/project-management/diagrams/mermaid2.md",
+        "size": 2318,
+        "sha256": "a92f9a82e000650d50f47308422595db3dd29568ee4af63e0703d0c350de5105",
+        "type": "template",
+        "difficulty": "intermediate",
+        "provides": [
+          "Advanced diagram patterns",
+          "Complex flowcharts",
+          "Class diagrams",
+          "Git graphs"
+        ],
+        "appliesTo": [
+          "Technical documentation",
+          "Architecture design",
+          "Process documentation"
+        ]
+      }
+    ],
+    "quality-baselines": [
+      {
+        "id": "dotnet-best-practices",
+        "slug": "dotnet-best-practices",
+        "name": "Dotnet Best Practices",
+        "filePath": "quality-baselines/dotnet-best-practices.md",
+        "size": 3769,
+        "sha256": "4a22ba856410e4613507a9b31c57c677074538cc733970322c2a3f8413c61ac3",
+        "version": "1.0.0"
+      },
+      {
+        "id": "fastapi-best-practices",
+        "slug": "fastapi-best-practices",
+        "name": "Fastapi Best Practices",
+        "filePath": "quality-baselines/fastapi-best-practices.md",
+        "size": 26463,
+        "sha256": "619e11bbec5c90cdd0d2c4877b459c22405ee429b27eda521b3313bdcf19fd22",
+        "version": "1.0.0"
+      },
+      {
+        "id": "go-best-practices-pattern",
+        "slug": "go-best-practices-pattern",
+        "name": "Go Best Practices Pattern",
+        "filePath": "quality-baselines/go-best-practices-pattern.md",
+        "size": 19675,
+        "sha256": "105567bdf13a1243f1eeaecce62bbfd5f79cbeaaa52e86fdf8aafdbbfd8fb27f",
+        "version": "1.0.0"
+      },
+      {
+        "id": "java-spring-best-practices",
+        "slug": "java-spring-best-practices",
+        "name": "Java Spring Best Practices",
+        "filePath": "quality-baselines/java-spring-best-practices.md",
+        "size": 2669,
+        "sha256": "c4048988fc9b74d4c818d0f48ba06cacf32e97f15988406bd029d7a3efe80034",
+        "version": "1.0.0"
+      },
+      {
+        "id": "nodejs-best-practices-pattern",
+        "slug": "nodejs-best-practices-pattern",
+        "name": "Nodejs Best Practices Pattern",
+        "filePath": "quality-baselines/nodejs-best-practices-pattern.md",
+        "size": 21056,
+        "sha256": "a6e8f9bfc089036159e495573f6ccd7c58ae33ec1c1d3ef5e6c4ab171eb85d61",
+        "version": "1.0.0"
+      },
+      {
+        "id": "README",
+        "slug": "README",
+        "name": "README",
+        "filePath": "quality-baselines/README.md",
+        "size": 221,
+        "sha256": "4abdea2f93a481526c8352ff290119829c111e8706cf8b6c505a5ab7d8f10a27",
+        "version": "1.0.0"
+      }
+    ]
+  },
+  "statistics": {
+    "blueprints": 34,
+    "components": 36,
+    "qualityBaselines": 6,
+    "recipes": 19,
+    "total": 95
+  }
+}

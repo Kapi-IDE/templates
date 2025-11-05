@@ -1,0 +1,30 @@
+{
+  "name": "threejs-puzzle-game",
+  "version": "1.0.0",
+  "description": "3D Tetris/2048 hybrid puzzle game with particle effects",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "@react-three/fiber": "^8.15.0",
+    "@react-three/drei": "^9.92.0",
+    "three": "^0.159.0",
+    "zustand": "^4.4.7",
+    "@react-three/postprocessing": "^2.15.0",
+    "leva": "^0.9.35"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
+    "@types/three": "^0.159.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "typescript": "^5.2.2",
+    "vite": "^5.0.8",
+    "eslint": "^8.55.0"
+  }
+}

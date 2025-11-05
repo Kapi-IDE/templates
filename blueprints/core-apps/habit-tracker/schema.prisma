@@ -1,0 +1,64 @@
+// Habit Tracker - Prisma Schema
+// Database: SQLite (easy setup) or PostgreSQL (production)
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Habit definition
+model Habit {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  category    String   @default("general") // health, work, learning, personal
+  color       String   @default("#3B82F6") // For UI visualization
+  icon        String?  // Emoji or icon name
+
+  // Goal settings
+  targetDays  Int      @default(7) // Target completions per week
+  frequency   String   @default("daily") // daily, weekly, custom
+
+  // Tracking
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  archived    Boolean  @default(false)
+
+  // Relations
+  completions Completion[]
+  reminders   Reminder[]
+
+  @@index([archived])
+}
+
+// Daily completion record
+model Completion {
+  id        String   @id @default(cuid())
+  habitId   String
+  date      DateTime // Date of completion (stored as start of day UTC)
+  note      String?  // Optional context note
+  createdAt DateTime @default(now())
+
+  habit     Habit    @relation(fields: [habitId], references: [id], onDelete: Cascade)
+
+  @@unique([habitId, date]) // One completion per habit per day
+  @@index([habitId, date])
+}
+
+// Reminder settings (optional feature)
+model Reminder {
+  id        String   @id @default(cuid())
+  habitId   String
+  time      String   // HH:MM format (e.g., "09:00")
+  days      String   @default("1,2,3,4,5,6,7") // Comma-separated day numbers (1=Mon, 7=Sun)
+  enabled   Boolean  @default(true)
+  createdAt DateTime @default(now())
+
+  habit     Habit    @relation(fields: [habitId], references: [id], onDelete: Cascade)
+
+  @@index([habitId, enabled])
+}

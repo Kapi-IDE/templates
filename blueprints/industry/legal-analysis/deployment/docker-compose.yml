@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  legal-backend:
+    build:
+      context: ../backend
+      dockerfile: Dockerfile
+    container_name: legal-backend
+    env_file:
+      - ../backend/.env
+    environment:
+      - FLASK_ENV=production
+      - LEGAL_BLUEPRINT_UNIT_TEST=false
+    ports:
+      - "5000:5000"
+    volumes:
+      - ../backend:/app
+      - legal_chroma:/app/legal_chroma_db
+    depends_on:
+      - chromadb
+    networks:
+      - legal-net
+
+  legal-frontend:
+    build:
+      context: ../frontend
+      dockerfile: Dockerfile
+    container_name: legal-frontend
+    environment:
+      - REACT_APP_API_BASE_URL=http://legal-backend:5000
+    ports:
+      - "3000:3000"
+    depends_on:
+      - legal-backend
+    networks:
+      - legal-net
+
+  chromadb:
+    image: ghcr.io/chroma-core/chroma:0.4.22
+    container_name: legal-chromadb
+    volumes:
+      - legal_chroma:/chroma/chroma
+    environment:
+      - IS_PERSISTENT=TRUE
+    networks:
+      - legal-net
+
+volumes:
+  legal_chroma:
+    driver: local
+
+networks:
+  legal-net:
+    driver: bridge

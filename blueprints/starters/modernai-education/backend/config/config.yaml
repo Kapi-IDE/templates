@@ -1,0 +1,26 @@
+models:
+  azure_openai:
+    temperature: 0.7
+    top_p: 0.9
+    frequency_penalty: 0
+    presence_penalty: 0
+    max_tokens: 1000
+    api_version: "2024-08-01-preview"
+    endpoint-large-llm: "https://brahmasumm-ai.openai.azure.com/openai/deployments/brahmasumm-large/chat/completions?api-version=2024-08-01-preview"
+    endpoint-small-llm: "https://brahmasumm-ai.openai.azure.com/openai/deployments/brahmasumm-gpt4o-mini/chat/completions?api-version=2024-08-01-preview"
+    mini_embedding_endpoint: "https://balaj-m1w89mas-eastus2.openai.azure.com/openai/deployments/text-embedding-3-small/embeddings?api-version=2023-05-15"
+
+  groq:
+    #model: "deepseek-r1-distill-llama-70b"
+    model: "llama-3.1-8b-instant"
+    temperature: 0.6
+    max_completion_tokens: 4096
+    top_p: 0.95
+
+  groq_fast:
+    model: "llama-3.1-8b-instant"
+    temperature: 0.6
+    max_completion_tokens: 500
+    top_p: 0.95
+
+llm_select: "azure_openai"

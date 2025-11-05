@@ -1,0 +1,196 @@
+# Component Metadata for KAPI Blueprint System
+
+component_id: react-chat-ui
+name: React Chat UI (Onyx-Inspired)
+version: 1.0.0
+category: frontend
+subcategory: complete-ui
+tech_stack:
+  - react
+  - typescript
+  - tailwindcss
+  - lucide-react
+
+description: "Professional Onyx-inspired React chat interface with multi-assistant support, dark theme, and modern UI components"
+
+provides:
+  - chat_interface
+  - multi_assistant_support
+  - message_history
+  - file_attachment_ui
+  - suggestion_chips
+  - dark_theme
+  - loading_states
+  - previous_chats_sidebar
+
+compatible_with:
+  - react>=18.0.0
+  - nextjs>=13.0.0
+  - vite>=4.0.0
+  - create-react-app
+  - fastapi
+  - flask
+  - express
+  - any_rest_api
+
+incompatible_with: []
+
+requires:
+  dependencies:
+    - react>=18.2.0
+    - react-dom>=18.2.0
+    - lucide-react>=0.263.1
+    - tailwindcss>=3.3.0
+  backend_optional:
+    - rest_api_url
+    - authentication_endpoint
+    - chat_endpoint
+
+metrics:
+  token_count: 967
+  lines_of_code: 339
+  file_count: 8
+  setup_time_minutes: 5
+  complexity: moderate
+  bundle_size_kb: 50
+
+installation:
+  type: copy
+  source: templates/components/frontend/react-chat-ui
+  target: src/components/chat
+  commands:
+    - npm install lucide-react
+    - npm install -D tailwindcss postcss autoprefixer
+    - npx tailwindcss init -p
+  run:
+    - npm run dev
+
+configuration:
+  required: []
+  optional:
+    - API_BASE_URL: "Backend API base URL (default: http://localhost:8000/api/v1)"
+    - THEME_COLOR: "Primary accent color (default: blue-500)"
+
+voice_patterns:
+  - "React chat UI"
+  - "Onyx chat interface"
+  - "React chat component"
+  - "multi-assistant chat"
+  - "dark theme chat React"
+  - "TypeScript chat interface"
+  - "React RAG UI"
+  - "modern chat interface"
+
+features:
+  - Onyx-inspired dark theme with professional design
+  - Multi-assistant support (General, Search, Art)
+  - Message history with user/assistant styling
+  - Suggestion chips for quick prompts
+  - File attachment UI (ready for backend)
+  - Previous chats sidebar with collapsible sections
+  - Loading states and animations
+  - Keyboard navigation (Enter to send)
+  - Responsive layout
+  - TypeScript type safety
+
+api_endpoints_optional:
+  - POST /login/access-token
+  - POST /rag/upload
+  - POST /rag/query
+  - POST /rag/query/stream
+
+example_usage: |
+  # Copy component
+  cp -r templates/components/frontend/react-chat-ui src/components
+
+  # Install dependencies
+  npm install lucide-react
+  npm install -D tailwindcss
+
+  # Use in app
+  import OnyxChatClone from '@/components/react-chat-ui/OnyxChatClone';
+
+  function App() {
+    return <OnyxChatClone />;
+  }
+
+integration_examples:
+  - Next.js App Router
+  - Vite + React
+  - Create React App
+  - FastAPI backend
+  - Streaming responses
+  - Environment configuration
+  - Error handling
+
+deployment:
+  platforms:
+    - Vercel
+    - Netlify
+    - AWS Amplify
+    - Docker
+    - Static hosting
+  build_command: npm run build
+  output_directory: dist
+
+screenshots:
+  - chat-interface.png
+  - sidebar-navigation.png
+  - message-history.png
+  - suggestion-chips.png
+
+documentation:
+  - README.md (comprehensive guide)
+  - EXAMPLES.md (7 integration examples)
+  - Inline TypeScript types
+  - Component JSDoc comments
+
+testing:
+  unit_tests: false
+  integration_tests: false
+  e2e_tests: false
+  manual_testing: recommended
+
+performance:
+  bundle_size: "~50KB minified + gzipped"
+  first_paint: "<100ms"
+  interactive: "<200ms"
+  dependencies_count: 3
+
+accessibility:
+  - Keyboard navigation
+  - ARIA labels
+  - Semantic HTML
+  - Focus management
+  - Screen reader support
+
+browser_support:
+  - Chrome 90+
+  - Firefox 88+
+  - Safari 14+
+  - Edge 90+
+
+tags:
+  - react
+  - chat
+  - ui
+  - onyx
+  - dark-theme
+  - typescript
+  - tailwind
+  - multi-assistant
+  - rag
+  - frontend
+
+comparison:
+  streamlit_ui:
+    setup_time: "3 min vs 5 min"
+    language: "Python vs TypeScript"
+    ecosystem: "Growing vs Mature"
+    use_case: "Internal tools vs Production UIs"
+
+author: KAPI Team
+created: 2025-10-01
+last_updated: 2025-10-01
+status: production-ready
+license: MIT

@@ -1,0 +1,27 @@
+{
+  "name": "amc8-practice-hub",
+  "version": "1.0.0",
+  "description": "Interactive AMC8 math competition practice web interface",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "node --watch app.js",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "keywords": [
+    "amc8",
+    "math",
+    "competition",
+    "practice",
+    "education",
+    "nodejs"
+  ],
+  "author": "AMC8 Practice Hub",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

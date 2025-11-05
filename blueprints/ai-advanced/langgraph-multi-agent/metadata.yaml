@@ -1,0 +1,263 @@
+id: langgraph-multi-agent
+name: Langraph Multi-Agent System
+description: Production-ready multi-agent AI system with Langraph, specialized agents for research/finance/general tasks, automatic routing, and Gradio UI
+category: ai-advanced
+subcategory: agents
+industry: general
+type: complete-application
+complexity: medium
+version: 1.0.0
+
+# Business Context
+business_value:
+  problem: Building multi-agent AI systems requires complex orchestration, tool management, and routing logic
+  solution: Pre-built multi-agent framework with 3 specialized agents, automatic routing, and production patterns
+  roi: 40+ hours saved building agent infrastructure
+  time_to_value: 5 minutes
+
+target_users:
+  - AI developers building agent systems
+  - Product teams prototyping AI features
+  - Students learning multi-agent architectures
+  - Researchers experimenting with LangGraph
+
+use_cases:
+  - Research assistance with web search and papers
+  - Financial analysis with stock data
+  - General task automation
+  - Customer support with specialized agents
+  - Educational demonstrations
+  - Prototype development
+
+# Technical Details
+languages:
+  - python
+
+frameworks:
+  - langchain
+  - langgraph
+  - gradio
+
+tech_stack:
+  backend: Python, LangChain, Langraph, Gradio
+  llm_provider: Groq (Free), OpenAI (Optional), Anthropic (Optional)
+  tools: Tavily Search, Polygon.io, ArXiv, YouTube, NASA
+  ui: Gradio ChatInterface
+  deployment: Docker, Railway, Hugging Face Spaces
+
+# Component Dependencies
+components_used:
+  custom:
+    - langgraph-agent-framework  # NEW - Reusable multi-agent framework
+    - universal-llm-client-python  # Multi-provider LLM support
+
+# Built-in Agents
+agents:
+  - id: research_agent
+    name: Research Agent
+    tools:
+      - Tavily web search
+      - ArXiv academic papers
+      - YouTube video search
+    routing_keywords:
+      - research
+      - paper
+      - study
+      - find
+      - youtube
+      - video
+
+  - id: finance_agent
+    name: Finance Agent
+    tools:
+      - Polygon stock prices
+      - Financial data API
+      - Ticker news
+      - ROI calculator
+    routing_keywords:
+      - stock
+      - price
+      - financial
+      - invest
+      - market
+      - ticker
+      - roi
+
+  - id: general_agent
+    name: General Agent
+    tools:
+      - Hotel booking (demo)
+      - NASA astronomy API
+      - Web search
+    routing_keywords:
+      - hotel
+      - booking
+      - nasa
+      - picture
+      - space
+
+integrations:
+  llm_providers:
+    - Groq (recommended - free and fast)
+    - OpenAI
+    - Anthropic Claude
+    - Google Gemini
+    - Ollama (local)
+  data_sources:
+    - Tavily Search API
+    - Polygon.io Stock API
+    - ArXiv academic database
+    - NASA API
+    - YouTube Search
+  ui:
+    - Gradio ChatInterface
+
+# Setup and Deployment
+setup_time_minutes: 5
+deployment_time_minutes: 10
+lines_of_code: 450
+token_savings: 5000
+
+features:
+  - Multi-agent orchestration
+  - Automatic keyword-based routing
+  - ReAct (Reasoning + Acting) pattern
+  - Tool calling and execution
+  - Conversation memory
+  - Streaming responses
+  - Token usage tracking
+  - Markdown-formatted output
+  - Gradio chat interface
+  - Docker deployment ready
+  - 10+ integrated tools
+  - Agent performance monitoring
+
+# Quality Metrics
+testing:
+  unit_tests: false
+  integration_tests: false
+  e2e_tests: false
+  examples_included: true
+
+# API Keys Required
+api_keys_required:
+  - name: GROQ_API_KEY
+    cost: FREE
+    limit: "14,400 requests/day"
+    url: https://console.groq.com/keys
+    required: true
+
+  - name: TAVILY_API_KEY
+    cost: FREE
+    limit: "1,000 searches/month"
+    url: https://tavily.com/
+    required: true
+
+  - name: POLYGON_API_KEY
+    cost: FREE
+    limit: "5 calls/minute"
+    url: https://polygon.io/
+    required: true
+
+  - name: NASA_API_KEY
+    cost: FREE
+    limit: Unlimited
+    url: https://api.nasa.gov/
+    required: false
+
+# Optional LLM Providers
+optional_llm_providers:
+  - OPENAI_API_KEY
+  - ANTHROPIC_API_KEY
+  - GOOGLE_API_KEY
+
+# Pricing
+pricing:
+  minimum_cost: "$0/month (all free APIs)"
+  production_cost: "$78/month (upgraded API tiers)"
+  breakdown:
+    - "Groq LLM: FREE"
+    - "Tavily Search: FREE (1K/mo) or $49/mo (10K)"
+    - "Polygon Stocks: FREE (5/min) or $29/mo (unlimited)"
+    - "NASA: FREE"
+
+performance:
+  response_time_seconds: 2-5
+  agent_routing_ms: 10
+  tool_execution_ms: 500-2000
+  concurrent_users: 50+
+
+# Deployment
+deployment_targets:
+  - Docker (local development)
+  - Railway (recommended for production)
+  - Hugging Face Spaces (free hosting)
+  - AWS ECS / GCP Cloud Run / Azure Container Apps
+
+environment_variables:
+  required:
+    - GROQ_API_KEY
+    - TAVILY_API_KEY
+    - POLYGON_API_KEY
+  optional:
+    - OPENAI_API_KEY
+    - ANTHROPIC_API_KEY
+    - GOOGLE_API_KEY
+    - NASA_API_KEY
+    - GRADIO_SERVER_PORT
+    - GRADIO_SHARE
+
+# Documentation
+documentation_included:
+  - Complete README with setup guide
+  - API key setup instructions
+  - Example queries for each agent
+  - Customization guide
+  - Docker deployment guide
+  - Production deployment options
+  - Troubleshooting section
+  - Component reuse documentation
+
+# Compatibility
+provides:
+  - multi-agent-orchestration
+  - react-agent-pattern
+  - tool-calling-framework
+  - gradio-chat-interface
+
+compatible_with:
+  - langchain
+  - langgraph
+  - gradio
+  - docker
+  - groq
+  - openai
+  - anthropic
+
+voice_patterns:
+  - build multi-agent system
+  - create langraph agents
+  - add agent orchestration
+  - set up specialized agents
+  - implement react agents
+
+related_blueprints:
+  - ReAct Stock Trading Agent
+  - Financial Analysis Dashboard
+  - Customer Support Bot
+  - Research Assistant
+
+# Educational Content
+curriculum_source: Modern AI Pro - Advanced Agents
+based_on_notebook: Advanced_agents_use_case.ipynb
+
+learning_objectives:
+  - Multi-agent system architecture
+  - Langraph framework usage
+  - ReAct pattern implementation
+  - Tool orchestration strategies
+  - Agent routing and delegation
+  - Production deployment patterns
+
+created_at: 2025-10-02
+updated_at: 2025-10-02

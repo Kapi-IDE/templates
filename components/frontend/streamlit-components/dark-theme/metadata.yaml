@@ -1,0 +1,52 @@
+# Atomic Component: Dark Theme
+
+component_id: streamlit-dark-theme
+name: Streamlit Dark Theme
+version: 1.0.0
+category: frontend
+subcategory: atomic-component
+tech_stack:
+  - python
+  - streamlit
+  - css
+
+description: "Customizable dark theme for Streamlit with multiple color palettes (Onyx, Nord, Dracula)"
+
+provides:
+  - dark_theme_css
+  - onyx_palette
+  - nord_palette
+  - dracula_palette
+  - theme_customization
+
+compatible_with:
+  - streamlit>=1.28.0
+
+dependencies:
+  runtime:
+    - streamlit>=1.28.0
+
+metrics:
+  token_count: ~450
+  lines_of_code: ~200
+  setup_time_minutes: 1
+  complexity: simple
+
+voice_patterns:
+  - "dark theme"
+  - "Onyx theme"
+  - "Nord theme"
+  - "custom styling"
+  - "dark mode UI"
+
+usage: |
+  from streamlit_components.dark_theme import theme
+
+  # Apply theme
+  theme.apply_dark_theme(theme='onyx')  # or 'nord', 'dracula'
+
+  # Get color palette
+  colors = theme.get_theme_colors('onyx')
+
+  # Use in custom components
+  st.markdown(f'<div style="color: {colors["accent_blue"]}">Text</div>')

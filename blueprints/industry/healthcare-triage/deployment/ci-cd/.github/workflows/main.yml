@@ -1,0 +1,560 @@
+name: Healthcare Triage CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, develop, 'release/*' ]
+  pull_request:
+    branches: [ main, develop ]
+  schedule:
+    # Run security scans daily at 2 AM UTC
+    - cron: '0 2 * * *'
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: healthcare-triage
+  NODE_VERSION: '18'
+  PYTHON_VERSION: '3.11'
+
+jobs:
+  # Code Quality and Security Scanning
+  code-quality:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Full history for SonarQube
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -r requirements-dev.txt
+
+      - name: Install Node.js dependencies
+        run: npm ci
+
+      - name: Run Python linting
+        run: |
+          flake8 --config=.flake8 app/
+          black --check app/
+          isort --check-only app/
+          mypy app/
+
+      - name: Run JavaScript linting
+        run: |
+          npm run lint
+          npm run prettier:check
+
+      - name: Run security scanning
+        run: |
+          # Python security scan
+          bandit -r app/ -f json -o bandit-report.json
+          safety check --json --output safety-report.json
+          
+          # Node.js security scan
+          npm audit --audit-level moderate
+          npx audit-ci --moderate
+
+      - name: SonarQube Scan
+        uses: sonarqube-quality-gate-action@master
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+      - name: Upload security reports
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: security-reports
+          path: |
+            bandit-report.json
+            safety-report.json
+          retention-days: 30
+
+  # Unit and Integration Testing
+  test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:13
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: healthcare_triage_test
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+
+      redis:
+        image: redis:6
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 6379:6379
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -r requirements-test.txt
+          npm ci
+
+      - name: Set up test database
+        run: |
+          export DATABASE_URL=postgresql://postgres:postgres@localhost:5432/healthcare_triage_test
+          export REDIS_URL=redis://localhost:6379
+          python manage.py db upgrade
+          python manage.py seed-test-data
+
+      - name: Run Python unit tests
+        run: |
+          export DATABASE_URL=postgresql://postgres:postgres@localhost:5432/healthcare_triage_test
+          export REDIS_URL=redis://localhost:6379
+          export TESTING=true
+          pytest tests/ -v --cov=app --cov-report=xml --cov-report=html
+        env:
+          AI_API_KEY: ${{ secrets.TEST_AI_API_KEY }}
+
+      - name: Run JavaScript unit tests
+        run: |
+          npm run test:unit -- --coverage --watchAll=false
+
+      - name: Run integration tests
+        run: |
+          export DATABASE_URL=postgresql://postgres:postgres@localhost:5432/healthcare_triage_test
+          export REDIS_URL=redis://localhost:6379
+          export TESTING=true
+          pytest tests/integration/ -v
+        env:
+          AI_API_KEY: ${{ secrets.TEST_AI_API_KEY }}
+
+      - name: Upload coverage reports
+        uses: codecov/codecov-action@v3
+        with:
+          files: ./coverage.xml,./coverage/lcov.info
+          fail_ci_if_error: true
+
+      - name: Generate test reports
+        run: |
+          # Generate HTML test report
+          pytest tests/ --html=test-report.html --self-contained-html
+
+      - name: Upload test artifacts
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: test-reports
+          path: |
+            htmlcov/
+            test-report.html
+            coverage/
+          retention-days: 30
+
+  # End-to-End Testing
+  e2e-test:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request' || github.ref == 'refs/heads/main'
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright
+        run: npx playwright install --with-deps
+
+      - name: Start test environment
+        run: |
+          docker-compose -f docker-compose.test.yml up -d
+          sleep 30  # Wait for services to start
+
+      - name: Run E2E tests
+        run: |
+          npm run test:e2e
+        env:
+          BASE_URL: http://localhost:3000
+
+      - name: Upload E2E test results
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: e2e-test-results
+          path: |
+            test-results/
+            playwright-report/
+          retention-days: 30
+
+      - name: Cleanup test environment
+        if: always()
+        run: docker-compose -f docker-compose.test.yml down
+
+  # Build and Push Container Images
+  build:
+    runs-on: ubuntu-latest
+    needs: [code-quality, test]
+    outputs:
+      image-digest: ${{ steps.build.outputs.digest }}
+      image-tag: ${{ steps.meta.outputs.tags }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/${{ github.repository }}/${{ env.IMAGE_NAME }}
+          tags: |
+            type=ref,event=branch
+            type=ref,event=pr
+            type=sha,prefix={{branch}}-
+            type=raw,value=latest,enable={{is_default_branch}}
+
+      - name: Build and push Docker image
+        id: build
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          build-args: |
+            BUILD_DATE=${{ github.event.head_commit.timestamp }}
+            VCS_REF=${{ github.sha }}
+            VERSION=${{ steps.meta.outputs.version }}
+
+      - name: Generate SBOM
+        uses: anchore/sbom-action@v0
+        with:
+          image: ${{ steps.meta.outputs.tags }}
+          format: spdx-json
+          output-file: sbom.spdx.json
+
+      - name: Upload SBOM
+        uses: actions/upload-artifact@v3
+        with:
+          name: sbom
+          path: sbom.spdx.json
+
+  # Container Security Scanning
+  container-scan:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: ${{ needs.build.outputs.image-tag }}
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+
+      - name: Upload Trivy scan results
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: 'trivy-results.sarif'
+
+      - name: Run Snyk container scan
+        uses: snyk/actions/docker@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          image: ${{ needs.build.outputs.image-tag }}
+          args: --severity-threshold=high --file=Dockerfile
+
+  # Deploy to Development Environment
+  deploy-dev:
+    runs-on: ubuntu-latest
+    needs: [build, container-scan]
+    if: github.ref == 'refs/heads/develop'
+    environment: development
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Configure kubectl
+        uses: azure/k8s-set-context@v3
+        with:
+          method: kubeconfig
+          kubeconfig: ${{ secrets.KUBE_CONFIG_DEV }}
+
+      - name: Deploy to development
+        run: |
+          # Update deployment with new image
+          kubectl set image deployment/healthcare-triage-web \
+            web=${{ needs.build.outputs.image-tag }} \
+            --namespace=healthcare-triage-dev
+          
+          # Wait for rollout
+          kubectl rollout status deployment/healthcare-triage-web \
+            --namespace=healthcare-triage-dev \
+            --timeout=300s
+
+      - name: Run smoke tests
+        run: |
+          # Wait for deployment to be ready
+          sleep 30
+          
+          # Run basic health checks
+          kubectl exec -n healthcare-triage-dev \
+            deployment/healthcare-triage-web -- \
+            python manage.py health-check
+
+      - name: Notify deployment
+        uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          channel: '#deployments'
+          webhook_url: ${{ secrets.SLACK_WEBHOOK }}
+        if: always()
+
+  # Deploy to Staging Environment
+  deploy-staging:
+    runs-on: ubuntu-latest
+    needs: [build, container-scan, e2e-test]
+    if: github.ref == 'refs/heads/main'
+    environment: staging
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Configure kubectl
+        uses: azure/k8s-set-context@v3
+        with:
+          method: kubeconfig
+          kubeconfig: ${{ secrets.KUBE_CONFIG_STAGING }}
+
+      - name: Deploy to staging
+        run: |
+          # Apply Kubernetes manifests
+          envsubst < k8s/staging/deployment.yaml | kubectl apply -f -
+          envsubst < k8s/staging/service.yaml | kubectl apply -f -
+          envsubst < k8s/staging/ingress.yaml | kubectl apply -f -
+        env:
+          IMAGE_TAG: ${{ needs.build.outputs.image-tag }}
+          DATABASE_URL: ${{ secrets.STAGING_DATABASE_URL }}
+          REDIS_URL: ${{ secrets.STAGING_REDIS_URL }}
+
+      - name: Wait for deployment
+        run: |
+          kubectl rollout status deployment/healthcare-triage-web \
+            --namespace=healthcare-triage-staging \
+            --timeout=600s
+
+      - name: Run staging tests
+        run: |
+          # Run comprehensive staging tests
+          pytest tests/staging/ -v --base-url=https://staging.healthcare-triage.com
+        env:
+          STAGING_API_KEY: ${{ secrets.STAGING_API_KEY }}
+
+      - name: Performance testing
+        run: |
+          # Run load tests against staging
+          docker run --rm \
+            -v $PWD/tests/load:/mnt/locust \
+            locustio/locust:latest \
+            -f /mnt/locust/locustfile.py \
+            --host=https://staging.healthcare-triage.com \
+            --users=50 \
+            --spawn-rate=5 \
+            --run-time=300s \
+            --headless
+
+  # Production Deployment (Manual Approval Required)
+  deploy-production:
+    runs-on: ubuntu-latest
+    needs: [build, deploy-staging]
+    if: github.ref == 'refs/heads/main'
+    environment: production
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Configure kubectl
+        uses: azure/k8s-set-context@v3
+        with:
+          method: kubeconfig
+          kubeconfig: ${{ secrets.KUBE_CONFIG_PROD }}
+
+      - name: Pre-deployment checks
+        run: |
+          # Verify staging deployment health
+          curl -f https://staging.healthcare-triage.com/api/health
+          
+          # Check for any critical alerts
+          python scripts/check-alerts.py --environment=production
+
+      - name: Create deployment backup
+        run: |
+          # Backup current production database
+          kubectl exec -n healthcare-triage-prod \
+            deployment/postgres -- \
+            pg_dump healthcare_triage > prod-backup-$(date +%Y%m%d-%H%M%S).sql
+
+      - name: Deploy to production
+        run: |
+          # Blue-green deployment strategy
+          ./scripts/blue-green-deploy.sh \
+            --image=${{ needs.build.outputs.image-tag }} \
+            --namespace=healthcare-triage-prod \
+            --timeout=900
+
+      - name: Post-deployment verification
+        run: |
+          # Comprehensive production health checks
+          python scripts/production-health-check.py
+          
+          # Verify critical functionality
+          pytest tests/production/ -v --base-url=https://healthcare-triage.com
+        env:
+          PROD_API_KEY: ${{ secrets.PROD_API_KEY }}
+
+      - name: Update monitoring
+        run: |
+          # Update Grafana dashboards
+          curl -X POST \
+            -H "Authorization: Bearer ${{ secrets.GRAFANA_API_KEY }}" \
+            -H "Content-Type: application/json" \
+            -d @monitoring/grafana-dashboard.json \
+            https://grafana.healthcare-triage.com/api/dashboards/db
+
+      - name: Notify stakeholders
+        uses: 8398a7/action-slack@v3
+        with:
+          status: success
+          channel: '#production-deployments'
+          webhook_url: ${{ secrets.SLACK_WEBHOOK }}
+          text: |
+            🚀 Production deployment completed successfully!
+            Version: ${{ github.sha }}
+            Image: ${{ needs.build.outputs.image-tag }}
+
+  # Security and Compliance Reporting
+  compliance-report:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'schedule' || github.ref == 'refs/heads/main'
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Generate compliance report
+        run: |
+          # Generate HIPAA compliance report
+          python scripts/generate-compliance-report.py \
+            --format=json \
+            --output=compliance-report.json
+
+      - name: Upload compliance artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: compliance-report
+          path: compliance-report.json
+          retention-days: 365
+
+      - name: Notify compliance team
+        if: failure()
+        uses: 8398a7/action-slack@v3
+        with:
+          status: failure
+          channel: '#compliance'
+          webhook_url: ${{ secrets.SLACK_WEBHOOK }}
+          text: "🚨 Compliance check failed - immediate attention required"
+
+  # Cleanup and Maintenance
+  cleanup:
+    runs-on: ubuntu-latest
+    if: always()
+    needs: [test, build, deploy-production]
+    
+    steps:
+      - name: Cleanup old images
+        run: |
+          # Keep only last 10 images
+          gh api /orgs/${{ github.repository_owner }}/packages/container/${{ env.IMAGE_NAME }}/versions \
+            --paginate --jq '.[] | select(.metadata.container.tags | length == 0) | .id' \
+            | tail -n +11 \
+            | xargs -I {} gh api -X DELETE /orgs/${{ github.repository_owner }}/packages/container/${{ env.IMAGE_NAME }}/versions/{}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Update documentation
+        run: |
+          # Auto-update deployment documentation
+          ./scripts/update-deployment-docs.sh
+
+# Workflow notifications and reporting
+on_failure:
+  runs-on: ubuntu-latest
+  if: failure()
+  steps:
+    - name: Notify on failure
+      uses: 8398a7/action-slack@v3
+      with:
+        status: failure
+        channel: '#ci-cd-alerts'
+        webhook_url: ${{ secrets.SLACK_WEBHOOK }}
+        text: |
+          🚨 CI/CD Pipeline Failed!
+          Repository: ${{ github.repository }}
+          Branch: ${{ github.ref }}
+          Commit: ${{ github.sha }}
+          Job: ${{ github.job }}
+          Run: ${{ github.run_id }}

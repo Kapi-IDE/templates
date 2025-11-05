@@ -1,0 +1,215 @@
+// Prisma schema for PostgreSQL
+// Learn more: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// User model with authentication
+model User {
+  id           String    @id @default(cuid())
+  email        String    @unique
+  name         String?
+  passwordHash String
+  role         Role      @default(USER)
+
+  // Relations
+  posts        Post[]
+  profile      Profile?
+  sessions     Session[]
+
+  // Timestamps
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  deletedAt    DateTime?
+
+  @@index([email])
+  @@map("users")
+}
+
+// User profile (one-to-one)
+model Profile {
+  id        String   @id @default(cuid())
+  bio       String?  @db.Text
+  avatar    String?
+  website   String?
+  location  String?
+
+  // One-to-one relation
+  userId    String   @unique
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("profiles")
+}
+
+// Session model for JWT refresh tokens
+model Session {
+  id           String   @id @default(cuid())
+  userId       String
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  refreshToken String   @unique
+  expiresAt    DateTime
+  userAgent    String?
+  ipAddress    String?
+
+  createdAt    DateTime @default(now())
+
+  @@index([userId])
+  @@index([refreshToken])
+  @@map("sessions")
+}
+
+// Post model (one-to-many with User)
+model Post {
+  id        String   @id @default(cuid())
+  title     String
+  slug      String   @unique
+  content   String   @db.Text
+  excerpt   String?
+  published Boolean  @default(false)
+
+  // Many-to-one relation
+  authorId  String
+  author    User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
+
+  // Many-to-many relation
+  categories PostCategory[]
+  tags       PostTag[]
+
+  // Timestamps
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  publishedAt DateTime?
+
+  @@index([authorId])
+  @@index([slug])
+  @@index([published])
+  @@map("posts")
+}
+
+// Category model
+model Category {
+  id          String         @id @default(cuid())
+  name        String         @unique
+  slug        String         @unique
+  description String?
+
+  // Many-to-many relation
+  posts       PostCategory[]
+
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+
+  @@index([slug])
+  @@map("categories")
+}
+
+// Join table for Post <-> Category (many-to-many)
+model PostCategory {
+  post       Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  postId     String
+  category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  categoryId String
+
+  assignedAt DateTime @default(now())
+
+  @@id([postId, categoryId])
+  @@map("post_categories")
+}
+
+// Tag model
+model Tag {
+  id        String    @id @default(cuid())
+  name      String    @unique
+  posts     PostTag[]
+
+  createdAt DateTime  @default(now())
+
+  @@map("tags")
+}
+
+// Join table for Post <-> Tag (many-to-many)
+model PostTag {
+  post   Post   @relation(fields: [postId], references: [id], onDelete: Cascade)
+  postId String
+  tag    Tag    @relation(fields: [tagId], references: [id], onDelete: Cascade)
+  tagId  String
+
+  assignedAt DateTime @default(now())
+
+  @@id([postId, tagId])
+  @@map("post_tags")
+}
+
+// Role enum
+enum Role {
+  USER
+  ADMIN
+  MODERATOR
+  EDITOR
+}
+
+// Additional models for common use cases
+
+// Notification model
+model Notification {
+  id        String   @id @default(cuid())
+  userId    String
+  type      String
+  title     String
+  message   String   @db.Text
+  read      Boolean  @default(false)
+  data      Json?
+
+  createdAt DateTime @default(now())
+  readAt    DateTime?
+
+  @@index([userId, read])
+  @@map("notifications")
+}
+
+// File upload model
+model Upload {
+  id        String   @id @default(cuid())
+  filename  String
+  mimetype  String
+  size      Int
+  url       String
+  key       String   @unique
+
+  userId    String?
+
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+  @@index([key])
+  @@map("uploads")
+}
+
+// Audit log model
+model AuditLog {
+  id        String   @id @default(cuid())
+  userId    String?
+  action    String
+  resource  String
+  resourceId String?
+  details   Json?
+  ipAddress String?
+  userAgent String?
+
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+  @@index([action])
+  @@index([resource, resourceId])
+  @@index([createdAt])
+  @@map("audit_logs")
+}

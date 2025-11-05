@@ -1,0 +1,185 @@
+id: team-knowledge-base
+name: Team Knowledge Base
+description: RAG-powered semantic search across Slack, docs, wikis, and internal repositories with AI-driven discovery
+category: full-app
+subcategory: enterprise
+type: complete-application
+component_type: service
+complexity: medium
+version: 1.0.0
+
+# Business Context
+business_value:
+  problem: Information silos and tribal knowledge loss costing 40+ hours/month in discovery time
+  solution: Unified searchable repository with intelligent RAG-powered retrieval
+  roi: $85,000/year savings for 10-person team
+  time_to_value: 2 minutes
+
+target_users:
+  - Knowledge workers (developers, PMs, sales, support)
+  - Team leads (managers, project leads)
+  - Executives (C-level, board members)
+
+use_cases:
+  - Code documentation search
+  - Feature specification lookup
+  - Competitive intelligence access
+  - Troubleshooting guide discovery
+  - Decision history tracking
+  - New employee onboarding
+
+# Technical Details
+languages:
+  - typescript
+  - javascript
+  - python
+
+frameworks:
+  - next.js
+  - react
+  - express
+  - chromadb
+
+tech_stack:
+  frontend: Next.js 14, React 18, TailwindCSS
+  backend: Express.js, Node.js
+  database: PostgreSQL (Prisma), ChromaDB (vector)
+  auth: JWT or Auth0
+  deployment: Docker Compose
+
+# Component Dependencies
+components_used:
+  foundational:
+    - postgresql-prisma  # User management, content storage
+    - docker-compose-stack  # Local development and deployment
+  custom:
+    - chromadb-vector-store  # Semantic search
+    - rag-pipeline  # Context retrieval
+    - embedding-service  # Text embeddings
+    - document-ingestion  # Multi-source ingestion
+
+integrations:
+  data_sources:
+    - Slack messages and threads
+    - Google Docs and Drive
+    - Confluence wikis
+    - GitHub repositories
+    - Notion databases
+  auth_providers:
+    - JWT (built-in)
+    - Auth0
+    - Google OAuth
+    - Microsoft Azure AD
+
+# Setup and Deployment
+setup_time_minutes: 2
+deployment_time_minutes: 5
+token_savings: 25000
+lines_of_code: 3500
+
+features:
+  - Semantic search across all sources
+  - RAG-powered answer generation
+  - Multi-source document ingestion
+  - Real-time index updates
+  - User permissions and access control
+  - Search history and analytics
+  - Document preview and highlighting
+  - Slack bot integration
+  - API for programmatic access
+
+# Quality Metrics
+testing:
+  unit_tests: true
+  integration_tests: true
+  e2e_tests: true
+  coverage: 85%+
+
+security_features:
+  - Row-level security for access control
+  - OAuth2 integration
+  - API rate limiting
+  - Encryption at rest and in transit
+  - Audit logging
+
+performance:
+  search_latency_ms: 200
+  index_update_seconds: 5
+  concurrent_users: 100+
+  documents_indexed: 10000+
+
+# Deployment
+deployment_targets:
+  - Docker Compose (local)
+  - AWS (EC2, RDS, S3)
+  - GCP (Compute Engine, Cloud SQL)
+  - Azure (VMs, PostgreSQL)
+
+environment_variables:
+  required:
+    - DATABASE_URL
+    - CHROMADB_HOST
+    - OPENAI_API_KEY or ANTHROPIC_API_KEY
+    - JWT_SECRET
+  optional:
+    - SLACK_TOKEN
+    - GOOGLE_DRIVE_CREDENTIALS
+    - CONFLUENCE_URL
+
+# Documentation
+documentation_included:
+  - Business requirements
+  - UI mockups and user flows
+  - API documentation (OpenAPI)
+  - Deployment guides (Docker, AWS, GCP)
+  - User guides and tutorials
+  - Admin configuration guide
+  - Troubleshooting guide
+
+# Compatibility
+provides:
+  - semantic-search
+  - rag-system
+  - document-ingestion
+  - multi-source-integration
+  - knowledge-base
+  - chat-interface
+
+compatible_with:
+  - postgresql
+  - chromadb
+  - openai
+  - anthropic
+  - slack
+  - google-workspace
+  - confluence
+  - docker
+
+incompatible_with:
+  - mongodb  # Requires PostgreSQL for relational data
+  - elasticsearch  # Uses ChromaDB for vector search
+
+voice_patterns:
+  - create knowledge base
+  - add team wiki
+  - build internal search
+  - set up rag system
+  - add document search
+  - create company knowledge hub
+
+related_blueprints:
+  - Meeting Intelligence System
+  - Code Review Assistant
+  - AI Customer Support System
+
+# Package Structure (6-package standard)
+packages:
+  - specification/  # Business requirements, UI mockups, architecture
+  - implementation/  # Frontend, backend, database code
+  - quality/  # Tests, security scans, benchmarks
+  - documentation/  # User guides, API docs, troubleshooting
+  - deployment/  # Docker, CI/CD, monitoring setup
+  - business/  # ROI analysis, metrics, case studies
+
+created_at: 2025-01-15
+updated_at: 2025-09-30

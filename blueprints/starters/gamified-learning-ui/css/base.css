@@ -1,0 +1,130 @@
+/* Import fonts from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Play:wght@400;700&family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap');
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: 'Roboto', sans-serif; /* Default font for longer reading */
+    margin: 0;
+
+    background-image: url('../images/robot_background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+h1, h2, h3, h4, h5, h6, .heading, .button, .level {
+    font-family: 'Play', sans-serif; /* Headings, buttons, and levels */
+}
+
+p, .label, .menu-item, .ui-element {
+    font-family: 'Poppins', sans-serif; /* Other UI elements */
+}
+
+.background-overlay {
+    opacity: 0.0;
+    width: 57vw;
+    height: 90vh; /* 90% of the viewport height */
+    margin: 5vh auto; /* Centers the overlay vertically */
+    text-align: center;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Ensure content does not overflow */
+    animation: fadeIn 2s ease-in-out forwards;
+    animation-delay: 1s; /* Delay before the animation starts */
+}
+
+.overlay-top {
+    opacity: 1;
+    height: 62vh; /* Adjusted to cover the top part properly */
+    width: 100%;
+    display: flex;
+    justify-content: flex-end; /* Align the login container to the right */
+    align-items: center;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    background-image: url('../images/robot_header_simple.png');
+    background-size: cover; /* Make the background image stretch to cover the div */
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative; /* Ensure the top overlay is positioned correctly */
+}
+
+.overlay-bottom {
+    background-color: gray;
+    opacity: 0.8;
+    height: 28vh; /* Adjusted to fit within the 90% height of the parent */
+    width: 100%; /* 100% of the width of the background overlay */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Align children to the bottom */
+    align-items: center;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    position: relative; /* Ensure the top overlay is positioned correctly */
+}
+
+.start-button {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.7em;
+    font-family: 'Play', sans-serif; /* Font for buttons */
+    transition: background-color 0.3s ease;
+}
+.start-button .btn .btn-light{
+    background-color: #4e4d4d;
+}
+
+.start-button:hover {
+    background-color: #555;
+}
+
+.text-box {
+    width: 98%; /* Fill most of the width */
+    height: 40px; /* Height to accommodate 2-3 lines of text */
+    padding: 10px;
+    margin: 0px 0;
+    color: #333; /* Darker text color for contrast */
+    background-color: rgba(255, 255, 255, 0); /* Transparent background color */
+    font-size: 1.5em;
+    font-family: Roboto;
+}
+
+.robot-chat {
+    color: #171717;
+    height: calc(100% - 50px); /* Height of the textarea minus the input box */
+    font-size: 1.5em;
+    text-align: left;
+    width: 98%; /* Ensure it fills most of the width */
+    background-color: rgba(255, 255, 255, 0.0); /* Transparent background */
+    font-family: Lato;
+    margin: 10px auto; /* Center the div horizontally and add top/bottom margin */
+    padding: 10px;
+    box-sizing: border-box; /* Include padding in the element's total width */
+    border: 1px solid transparent; /* Optional: Add border for better visibility */
+}
+
+@media screen and (max-width: 768px) {
+    .background-overlay {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .background-overlay {
+        width: 90%;
+    }
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 0.99;
+    }
+}

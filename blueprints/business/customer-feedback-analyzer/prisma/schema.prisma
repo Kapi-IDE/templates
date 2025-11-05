@@ -1,0 +1,93 @@
+// Customer Feedback Analyzer - Database Schema
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Feedback submissions
+model Feedback {
+  id          String   @id @default(cuid())
+  source      String   // email, chat, survey, review
+  content     String   @db.Text
+  customerName String?
+  customerEmail String?
+  productId   String?
+  createdAt   DateTime @default(now())
+
+  // AI Analysis results
+  analyzed    Boolean  @default(false)
+  sentiment   Sentiment?
+  sentimentScore Float? // -1 to 1
+  themes      String[] // Array of extracted themes
+  priority    Priority?
+  summary     String?  @db.Text
+
+  analysis    Analysis?
+
+  @@index([analyzed])
+  @@index([sentiment])
+  @@index([priority])
+  @@index([createdAt])
+}
+
+enum Sentiment {
+  POSITIVE
+  NEUTRAL
+  NEGATIVE
+}
+
+enum Priority {
+  CRITICAL   // Urgent issues, bugs, angry customers
+  HIGH       // Important feature requests, concerns
+  MEDIUM     // General feedback, suggestions
+  LOW        // Minor comments, praise
+}
+
+// Detailed AI analysis
+model Analysis {
+  id          String   @id @default(cuid())
+  feedbackId  String   @unique
+
+  // Sentiment details
+  sentimentReasoning String @db.Text
+  emotionalTone String[] // frustrated, happy, confused, etc.
+
+  // Theme extraction
+  primaryTheme String
+  secondaryThemes String[]
+  keywords    String[]
+
+  // Priority reasoning
+  priorityScore Int    // 1-100
+  priorityFactors String[] // urgency, impact, frequency
+
+  // Actionable insights
+  suggestedActions String[]
+  relatedFeedback  String[] // IDs of similar feedback
+
+  createdAt   DateTime @default(now())
+
+  feedback Feedback @relation(fields: [feedbackId], references: [id], onDelete: Cascade)
+
+  @@index([feedbackId])
+  @@index([primaryTheme])
+}
+
+// Theme aggregation
+model Theme {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  category    String   // product, support, pricing, ux, etc.
+  count       Int      @default(0)
+  avgSentiment Float   @default(0)
+  trending    Boolean  @default(false)
+  updatedAt   DateTime @updatedAt
+
+  @@index([category])
+  @@index([count])
+}

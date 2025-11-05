@@ -1,0 +1,43 @@
+blueprint_id: modernai-education
+name: ModernAI Education Platform Starter
+version: 0.1.0
+category: starter
+subcategory: education-platform
+setup_time_minutes: 45
+token_savings: 35000
+tech_stack:
+  - fastapi
+  - react
+  - chakra-ui
+  - postgresql
+  - sqladmin
+provides:
+  - quiz_engine
+  - onboarding_flows
+  - admin_dashboard
+  - live_workshop_pages
+compatible_with:
+  - docker
+  - vercel
+  - render
+incompatible_with: []
+description: |
+  Full-stack education platform starter pairing a FastAPI backend (auth, quizzes, admin) with a React + Chakra UI frontend for onboarding, workshops, and pair programming experiences.
+features:
+  - API for quizzes, auth, and admin management
+  - React frontend with dashboards, live classes, and surveys
+  - Postgres/SQLAlchemy models and Alembic migrations
+  - SQLAdmin-powered admin interface
+voice_patterns:
+  - "education platform blueprint"
+  - "fastapi react bootcamp starter"
+  - "modernai education app"
+installation:
+  steps:
+    - Back-end: `cd backend && poetry install && poetry run uvicorn app.main:app --reload --port 8001`
+    - Front-end: `cd frontend && npm install && npm start`
+usage_examples:
+  - path: frontend/src/components/HomePage.jsx
+    description: Quiz experience with celebration video overlay.
+  - path: backend/app/routes
+    description: Auth, quiz, and admin endpoints.

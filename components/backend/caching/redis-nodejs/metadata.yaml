@@ -1,0 +1,50 @@
+component_id: redis-client-nodejs
+name: Redis Client for Node.js
+version: 1.0.0
+category: backend
+subcategory: caching
+language: JavaScript/TypeScript
+framework: Node.js
+
+description: |
+  Production-ready Redis client for Node.js with specialized utilities
+  for URL caching, click counting, and rate limiting.
+
+features:
+  - Redis connection management with reconnection strategy
+  - URL caching with configurable TTL
+  - Atomic click counter
+  - IP-based rate limiting
+  - Health check utilities
+  - Connection pooling
+
+dependencies:
+  - redis: ^4.7.0
+
+use_cases:
+  - URL shortener services
+  - Session management
+  - API rate limiting
+  - Real-time counters
+  - Cache layer for databases
+
+adapted_from: components/backend/caching/redis (Python version)
+
+example_usage: |
+  const { UrlCache, ClickCounter, RateLimiter } = require('./redis-client');
+
+  // Cache URLs
+  const cache = new UrlCache();
+  await cache.cacheUrl('abc123', 'https://example.com', 3600);
+  const url = await cache.getUrl('abc123');
+
+  // Track clicks
+  const counter = new ClickCounter();
+  const clicks = await counter.incrementClicks('abc123');
+
+  // Rate limiting
+  const limiter = new RateLimiter();
+  const result = await limiter.checkLimit('192.168.1.1');
+  if (!result.allowed) {
+    // Return 429 Too Many Requests
+  }

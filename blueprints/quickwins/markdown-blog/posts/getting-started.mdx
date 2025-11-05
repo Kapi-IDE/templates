@@ -1,0 +1,111 @@
+---
+title: 'Getting Started with Next.js and MDX'
+date: '2025-10-01'
+description: 'A quick guide to building a blog with Next.js 14 and MDX.'
+author: 'Your Name'
+tags: ['nextjs', 'mdx', 'tutorial']
+---
+
+# Getting Started with Next.js and MDX
+
+Next.js 14 with the App Router makes it incredibly easy to build a fast, modern blog with MDX support.
+
+## Why MDX?
+
+MDX combines the simplicity of Markdown with the power of JSX. This means you can:
+
+- Write content in Markdown
+- Import and use React components
+- Create interactive content
+- Maintain type safety with TypeScript
+
+## Project Structure
+
+```
+markdown-blog/
+├── app/
+│   ├── page.tsx              # Home page (post list)
+│   ├── blog/[slug]/page.tsx  # Blog post page
+│   ├── layout.tsx            # Root layout
+│   └── globals.css           # Global styles
+├── lib/
+│   └── mdx.ts                # MDX utilities
+├── posts/
+│   ├── welcome.mdx           # Blog posts
+│   └── getting-started.mdx
+└── package.json
+```
+
+## Key Features
+
+### Static Site Generation
+
+Posts are statically generated at build time using `generateStaticParams`:
+
+```typescript
+export async function generateStaticParams() {
+  const slugs = getAllPostSlugs();
+  return slugs.map((slug) => ({ slug }));
+}
+```
+
+### Frontmatter Metadata
+
+Each post includes metadata in YAML frontmatter:
+
+```yaml
+---
+title: 'Post Title'
+date: '2025-10-01'
+description: 'Post description'
+tags: ['tag1', 'tag2']
+---
+```
+
+### Syntax Highlighting
+
+Code blocks are automatically highlighted using Prism.js:
+
+```javascript
+// Automatic syntax highlighting
+function hello(name) {
+  return `Hello, ${name}!`;
+}
+```
+
+## Customization
+
+You can customize the blog by:
+
+1. **Styling**: Edit `app/globals.css` or add Tailwind classes
+2. **Components**: Create custom MDX components in the `components` object
+3. **Layout**: Modify `app/layout.tsx` for site-wide changes
+4. **Utilities**: Extend `lib/mdx.ts` for additional features
+
+## Performance
+
+This blog is optimized for performance:
+
+- ⚡ Static generation (instant page loads)
+- 🎯 Automatic code splitting
+- 📦 Optimized images with Next.js Image
+- 🔄 ISR (Incremental Static Regeneration) ready
+
+## Deployment
+
+Deploy to Vercel with one command:
+
+```bash
+npm run build
+vercel --prod
+```
+
+Or use any static hosting:
+- Netlify
+- CloudFlare Pages
+- GitHub Pages
+- AWS S3 + CloudFront
+
+---
+
+Ready to start blogging? Create a new `.mdx` file in the `posts/` directory and you're good to go!

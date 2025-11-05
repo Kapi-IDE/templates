@@ -1,0 +1,11 @@
+# Environment variables
+.env
+
+# Local database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Logs
+*.log
+npm-debug.log*

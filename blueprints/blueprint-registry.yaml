@@ -1,0 +1,1005 @@
+# KAPI Blueprint Registry
+# Complete catalog of all production-ready application blueprints
+# Last updated: 2025-10-02
+
+metadata:
+  version: "1.6.0"
+  total_blueprints: 20
+  categories:
+    - reference        # Architecture patterns (not deployed directly)
+    - quickwins        # Gateway apps (fast wins in <15 min)
+    - core-apps        # Core AI & productivity applications
+    - starters         # Quick-start applications
+    - industry         # Domain-specific applications
+    - ai-advanced      # Advanced AI applications (agents, multi-agent systems)
+
+blueprints:
+  # ============================================================================
+  # REFERENCE BLUEPRINTS (Architecture Patterns)
+  # ============================================================================
+
+  - id: practica-clean-architecture
+    name: Practica Clean Architecture (Node.js)
+    path: blueprints/reference/practica-clean-architecture
+    category: reference
+    subcategory: backend-foundation
+    stack:
+      language: TypeScript
+      runtime: Node.js 20+
+      framework: Express
+      database: PostgreSQL
+      orm: Prisma
+      testing: Jest + Supertest
+      containerization: Docker
+      observability: OpenTelemetry
+    features:
+      - Clean architecture with layered structure
+      - Microservices-ready patterns
+      - Production-grade error handling
+      - Security middleware (Helmet, rate limiting)
+      - Structured logging with correlation IDs
+      - Comprehensive testing patterns
+      - Docker multi-stage builds
+      - Health checks and monitoring
+    setup_time: "45 min"
+    loc: "~5000"
+    difficulty: advanced
+    use_cases:
+      - Enterprise backend APIs
+      - Microservices foundation
+      - Reference architecture for new projects
+    documentation:
+      - Repository: https://github.com/practicajs/practica
+      - Best Practices: https://github.com/goldbergyoni/nodebestpractices
+
+  - id: fastapi-fullstack-official
+    name: FastAPI Full Stack (Official)
+    path: blueprints/reference/fastapi-fullstack-official
+    category: reference
+    subcategory: fullstack-foundation
+    stack:
+      language: Python + TypeScript
+      backend: FastAPI
+      frontend: React + TypeScript + Vite
+      database: PostgreSQL
+      orm: SQLModel
+      auth: JWT with OAuth2
+      testing: pytest
+      containerization: Docker
+    features:
+      - Complete FastAPI backend with async
+      - Modern React frontend with Vite
+      - JWT authentication with refresh tokens
+      - SQLModel for type-safe database
+      - Alembic migrations
+      - Docker Compose development
+      - Production-ready deployment configs
+    setup_time: "40 min"
+    loc: "~6000"
+    difficulty: intermediate
+    use_cases:
+      - Python full-stack applications
+      - AI/ML backend with web frontend
+      - Data-driven applications
+    documentation:
+      - Repository: https://github.com/tiangolo/full-stack-fastapi-template
+
+  - id: jason-taylor-clean-architecture
+    name: Jason Taylor Clean Architecture (.NET)
+    path: blueprints/reference/jason-taylor-clean-architecture
+    category: reference
+    subcategory: dotnet-foundation
+    stack:
+      language: C#
+      runtime: .NET 8
+      frontend: React
+      database: SQL Server
+      orm: Entity Framework Core
+      testing: xUnit + Moq
+      patterns: CQRS + MediatR
+    features:
+      - Clean architecture with CQRS
+      - Domain-driven design patterns
+      - Entity Framework Core
+      - React SPA frontend
+      - Identity Server integration
+      - Azure deployment ready
+      - Comprehensive testing
+    setup_time: "50 min"
+    loc: "~7000"
+    difficulty: advanced
+    use_cases:
+      - Enterprise .NET applications
+      - Regulated industries (finance, healthcare)
+      - Legacy .NET migration target
+    documentation:
+      - Repository: https://github.com/jasontaylordev/CleanArchitecture
+
+  - id: go-clean-template
+    name: Go Clean Architecture Template
+    path: blueprints/reference/go-clean-template
+    category: reference
+    subcategory: go-foundation
+    stack:
+      language: Go
+      framework: Echo/Gin
+      database: PostgreSQL
+      orm: sqlx
+      testing: testify
+      containerization: Docker
+      migration: golang-migrate
+    features:
+      - Clean architecture in Go
+      - Dependency injection
+      - Repository pattern
+      - REST API with validation
+      - Database migrations
+      - Docker development
+      - CI/CD configs
+    setup_time: "35 min"
+    loc: "~3000"
+    difficulty: intermediate
+    use_cases:
+      - High-performance backend services
+      - Infrastructure tooling
+      - Microservices in Go
+    documentation:
+      - Repository: https://github.com/evrone/go-clean-template
+
+  - id: jhipster-sample
+    name: JHipster Application Generator
+    path: blueprints/reference/jhipster-sample
+    category: reference
+    subcategory: java-foundation
+    stack:
+      language: Java
+      runtime: Spring Boot
+      frontend: Angular/React/Vue
+      database: PostgreSQL/MySQL/MongoDB
+      orm: JPA/Hibernate
+      security: Spring Security + JWT
+      testing: JUnit + Mockito
+    features:
+      - Full-stack Java application generator
+      - Spring Boot backend
+      - Choice of frontend frameworks
+      - Database flexibility
+      - OAuth2/JWT authentication
+      - Microservices support
+      - Cloud deployment ready
+    setup_time: "60 min"
+    loc: "~10000"
+    difficulty: advanced
+    use_cases:
+      - Enterprise Java applications
+      - Large-scale business systems
+      - Regulated environments
+    documentation:
+      - Repository: https://www.jhipster.tech/
+
+  # ============================================================================
+  # QUICKWIN BLUEPRINTS (Gateway Apps - Fast Wins)
+  # ============================================================================
+
+  - id: url-shortener
+    name: URL Shortener
+    path: blueprints/quickwins/url-shortener
+    category: quickwins
+    subcategory: gateway-app
+    stack:
+      language: TypeScript/JavaScript
+      framework: Express
+      database: PostgreSQL
+      orm: Prisma
+      cache: Redis
+      qr: qrcode
+      containerization: Docker
+    features:
+      - Custom short URLs with slugs
+      - Redis-cached fast redirects (<10ms)
+      - Click tracking and analytics
+      - QR code generation
+      - URL expiration
+      - Rate limiting
+      - Browser/country/device analytics
+      - Health checks
+    setup_time: "10 min"
+    loc: "~1200"
+    difficulty: beginner
+    token_savings: "80%"
+    provides:
+      - Redis caching utilities (Node.js)
+      - Prisma URL schema
+      - Analytics tracking
+      - Rate limiting
+    components_used:
+      - redis-client-nodejs (NEW - created for this blueprint)
+      - prisma-patterns (adapted for URLs)
+      - nodejs-best-practices
+    use_cases:
+      - Marketing campaigns
+      - Social media sharing
+      - QR code campaigns
+      - Link tracking
+      - Brand short links
+    documentation:
+      - README.md (comprehensive setup guide)
+      - API documentation included
+
+  - id: meme-generator
+    name: Meme Generator
+    path: blueprints/quickwins/meme-generator
+    category: quickwins
+    subcategory: gateway-app
+    stack:
+      language: Python
+      framework: FastAPI
+      image_processing: PIL/Pillow
+      storage: Local/Cloudinary/S3
+      frontend: Vanilla HTML/JS
+      containerization: Docker
+    features:
+      - Upload custom images
+      - Predefined meme templates
+      - Text overlay with auto-wrapping
+      - Outline text for readability
+      - Download as PNG/JPEG
+      - Gallery of recent memes
+      - Cloud storage ready (Cloudinary/S3)
+      - Responsive web UI
+    setup_time: "8 min"
+    loc: "~1250"
+    difficulty: beginner
+    token_savings: "75%"
+    provides:
+      - Image text overlay processor (PIL)
+      - Cloud file storage component
+      - Meme template system
+      - Simple upload UI
+    components_used:
+      - meme-text-overlay (NEW - created for this blueprint)
+      - cloud-file-storage (NEW - created for this blueprint)
+      - fastapi-best-practices
+    use_cases:
+      - Social media content
+      - Marketing memes
+      - Internal team fun
+      - Viral content creation
+      - Community engagement
+    documentation:
+      - README.md (comprehensive setup guide)
+      - API documentation included
+
+  - id: markdown-blog
+    name: Markdown Blog
+    path: blueprints/quickwins/markdown-blog
+    category: quickwins
+    subcategory: gateway-app
+    stack:
+      language: TypeScript
+      framework: Next.js 14
+      content: MDX
+      styling: Tailwind CSS
+      highlighting: Prism.js
+      static_generation: SSG
+    features:
+      - File-based content (posts/ directory)
+      - MDX support (Markdown + JSX)
+      - Syntax highlighting (Prism.js)
+      - Auto-generated RSS feed
+      - Tag filtering
+      - Reading time calculation
+      - Static site generation
+      - SEO optimized
+      - Zero configuration
+      - Responsive design
+    setup_time: "12 min"
+    loc: "~1500"
+    difficulty: beginner
+    token_savings: "85%"
+    provides:
+      - MDX blog utilities (frontmatter parsing)
+      - Blog post listing and detail pages
+      - RSS feed generator
+      - Example blog posts
+    components_used:
+      - mdx-blog-utils (NEW - created for this blueprint)
+      - next-mdx-remote
+      - gray-matter
+    use_cases:
+      - Personal blogs
+      - Developer portfolios
+      - Documentation sites
+      - Company blogs
+      - Content marketing
+    documentation:
+      - README.md (comprehensive setup guide)
+      - Example posts included
+
+  # ============================================================================
+  # CORE APPLICATIONS (AI & Search)
+  # ============================================================================
+
+  - id: ai-chat-interface
+    name: AI Chat Interface
+    path: blueprints/core-apps/ai-chat-interface
+    category: core-apps
+    subcategory: ai-chat
+    stack:
+      language: TypeScript
+      framework: Next.js 14
+      ai: OpenAI
+      database: PostgreSQL
+      orm: Prisma
+      ui: React (Onyx-inspired)
+    features:
+      - Streaming AI responses
+      - Conversation history and persistence
+      - Share conversation links
+      - Multiple OpenAI models (GPT-4, GPT-4o, GPT-3.5)
+      - Token tracking and cost monitoring
+      - Onyx-inspired dark theme
+      - Responsive chat UI
+      - Message threading
+    setup_time: "15 min"
+    loc: "~2000"
+    difficulty: intermediate
+    token_savings: "70%"
+    provides:
+      - OpenAI streaming integration
+      - Conversation management
+      - Share link generation
+      - Chat UI (reused from components)
+    components_used:
+      - react-chat-ui (EXISTING - reused from components/frontend/)
+      - azure-openai (EXISTING - optional alternative)
+      - gemini (EXISTING - optional alternative)
+    api_keys_required:
+      - name: OPENAI_API_KEY
+        provider: OpenAI
+        cost: $0.15-$30 per 1M tokens
+        signup_url: https://platform.openai.com/signup
+        docs_url: https://platform.openai.com/docs
+        free_tier: $5 credits for new accounts
+    use_cases:
+      - AI chatbots
+      - Customer support automation
+      - Internal knowledge assistants
+      - Conversational interfaces
+      - AI-powered tools
+    documentation:
+      - README.md (comprehensive with API key setup)
+      - Environment configuration guide
+      - Security best practices
+      - Pricing and cost estimation
+
+  - id: perplexity-clone
+    name: Perplexity Clone
+    path: blueprints/core-apps/perplexity-clone
+    category: core-apps
+    subcategory: ai-search
+    stack:
+      language: TypeScript
+      framework: Next.js 14
+      ai: Multi-provider (OpenAI/Azure/Gemini/Claude/Ollama)
+      search: Multi-provider (Brave/Serper/Google/Bing)
+      ui: React
+      styling: Tailwind CSS
+    features:
+      - Multiple LLM Providers (OpenAI, Azure OpenAI, Gemini, Claude, Ollama)
+      - Multiple Search APIs (Brave, Serper, Google Custom, Bing)
+      - Web Search Integration with real-time results
+      - AI-Powered Answers with citations
+      - Source Citations with inline links
+      - Follow-up Questions with context
+      - Streaming Responses
+      - Related Questions suggestions
+      - Clean Perplexity.ai-inspired UI
+      - Responsive Design
+      - FREE Option (Ollama + Brave free tier)
+    setup_time: "20 min"
+    loc: "~2500"
+    difficulty: intermediate
+    token_savings: "65%"
+    provides:
+      - Universal LLM client (5 providers)
+      - Universal Search client (4 providers)
+      - Multi-provider architecture pattern
+      - Search result synthesis
+      - Citation extraction
+    components_used:
+      - react-chat-ui (EXISTING - reused from components/frontend/)
+      - azure-openai (EXISTING - optional)
+      - gemini (EXISTING - optional)
+      - anthropic-bedrock (EXISTING - optional)
+      - node-llm-framework (NEW - Ollama support)
+    api_keys_required:
+      - name: LLM Provider (ONE REQUIRED)
+        providers:
+          - name: Ollama (LOCAL)
+            cost: FREE (runs locally)
+            signup_url: https://ollama.ai
+            docs_url: https://ollama.ai/docs
+            free_tier: Unlimited (local)
+            recommended: true
+          - name: OPENAI_API_KEY
+            cost: $0.15-$30 per 1M tokens
+            signup_url: https://platform.openai.com/signup
+            docs_url: https://platform.openai.com/docs
+            free_tier: $5 credits
+          - name: GEMINI_API_KEY
+            cost: $0.075-$7 per 1M tokens (CHEAPEST)
+            signup_url: https://makersuite.google.com/app/apikey
+            docs_url: https://ai.google.dev/docs
+            free_tier: Yes
+          - name: AZURE_OPENAI (Enterprise)
+            cost: Same as OpenAI
+            signup_url: https://portal.azure.com
+            docs_url: https://learn.microsoft.com/azure/ai-services/openai/
+            free_tier: No
+          - name: CLAUDE (Bedrock)
+            cost: $3-$15 per 1M tokens
+            signup_url: https://aws.amazon.com/bedrock
+            docs_url: https://docs.anthropic.com/
+            free_tier: No
+      - name: Search Provider (ONE REQUIRED)
+        providers:
+          - name: BRAVE_SEARCH_API_KEY
+            cost: FREE (2,000/month) or $5 for 20K/month
+            signup_url: https://brave.com/search/api/
+            docs_url: https://brave.com/search/api/
+            free_tier: 2,000 queries/month
+            recommended: true
+          - name: SERPER_API_KEY
+            cost: $50 per 1M queries (CHEAPEST AT SCALE)
+            signup_url: https://serper.dev/
+            docs_url: https://serper.dev/documentation
+            free_tier: 2,500 queries
+          - name: GOOGLE_SEARCH_API_KEY
+            cost: FREE (100/day) or $5 per 1,000
+            signup_url: https://programmablesearchengine.google.com/
+            docs_url: https://developers.google.com/custom-search
+            free_tier: 100/day
+          - name: BING_SEARCH_API_KEY
+            cost: FREE (1,000/month) or $3 per 1,000
+            signup_url: https://www.microsoft.com/en-us/bing/apis
+            docs_url: https://www.microsoft.com/en-us/bing/apis/bing-web-search-api
+            free_tier: 1,000/month
+    use_cases:
+      - AI-powered search engines
+      - Research assistants
+      - Question answering systems
+      - Knowledge discovery
+      - Competitive intelligence
+      - Academic research tools
+    documentation:
+      - README.md (comprehensive multi-provider setup)
+      - FREE setup guide (Ollama + Brave)
+      - Environment configuration with 9 providers
+      - Security best practices for multiple APIs
+      - Pricing comparison tables
+      - Cost per search analysis
+
+  # ============================================================================
+  # STARTER BLUEPRINTS (Quick-Start Applications)
+  # ============================================================================
+
+  - id: fastapi-rag-starter
+    name: FastAPI RAG Starter
+    path: blueprints/starters/fastapi-rag-starter
+    category: starters
+    subcategory: ai-backend
+    stack:
+      language: Python
+      framework: FastAPI
+      vector_db: ChromaDB
+      llm: OpenAI/Gemini
+      embedding: OpenAI/sentence-transformers
+      document_processing: pypdf/unstructured
+    features:
+      - Document ingestion pipeline
+      - Vector storage with ChromaDB
+      - Semantic search
+      - RAG query endpoint
+      - Multiple LLM support
+      - Streaming responses
+    setup_time: "25 min"
+    loc: "~2000"
+    difficulty: intermediate
+    token_savings: "70%"
+    provides:
+      - RAG pipeline
+      - Document processing
+      - Vector search
+    compatible_with:
+      - next-landing-page
+      - modernai-education
+    use_cases:
+      - Knowledge base Q&A
+      - Document analysis
+      - Customer support bots
+
+  - id: next-landing-page
+    name: Next.js Landing Page
+    path: blueprints/starters/next-landing-page
+    category: starters
+    subcategory: marketing-site
+    stack:
+      language: TypeScript
+      framework: Next.js 14
+      styling: Tailwind CSS
+      forms: React Hook Form + Zod
+      analytics: Vercel Analytics
+    features:
+      - Modern landing page template
+      - Responsive design
+      - Form validation
+      - SEO optimized
+      - Fast deployment
+      - A/B testing ready
+    setup_time: "12 min"
+    loc: "~1500"
+    difficulty: beginner
+    token_savings: "80%"
+    provides:
+      - Landing page UI
+      - Form components
+      - SEO setup
+    compatible_with:
+      - All backend blueprints
+    use_cases:
+      - Product launches
+      - Marketing campaigns
+      - Lead generation
+
+  - id: react-landing
+    name: React Landing Page
+    path: blueprints/starters/react-landing
+    category: starters
+    subcategory: marketing-site
+    stack:
+      language: TypeScript
+      framework: React + Vite
+      styling: Tailwind CSS
+      routing: React Router
+      forms: React Hook Form
+    features:
+      - Fast Vite development
+      - Component library
+      - Responsive layout
+      - Form handling
+      - Image optimization
+    setup_time: "10 min"
+    loc: "~1200"
+    difficulty: beginner
+    token_savings: "75%"
+    provides:
+      - SPA landing page
+      - Reusable components
+    compatible_with:
+      - fastapi-rag-starter
+      - practica-clean-architecture
+    use_cases:
+      - Single-page marketing sites
+      - Portfolio pages
+      - Simple web apps
+
+  - id: modernai-education
+    name: Modern AI Education Platform
+    path: blueprints/starters/modernai-education
+    category: starters
+    subcategory: education
+    stack:
+      language: TypeScript
+      framework: Next.js
+      styling: Tailwind CSS
+      auth: NextAuth.js
+      database: PostgreSQL + Prisma
+      payment: Stripe
+    features:
+      - Course management
+      - Video lessons
+      - Progress tracking
+      - Quiz system
+      - Certificate generation
+      - Payment integration
+    setup_time: "40 min"
+    loc: "~3500"
+    difficulty: intermediate
+    token_savings: "65%"
+    provides:
+      - LMS foundation
+      - Course builder
+      - Student dashboard
+    use_cases:
+      - Online courses
+      - Training platforms
+      - Educational content delivery
+
+  - id: gamified-learning-ui
+    name: Gamified Learning UI
+    path: blueprints/starters/gamified-learning-ui
+    category: starters
+    subcategory: education
+    stack:
+      language: TypeScript
+      framework: React
+      styling: Tailwind CSS
+      animations: Framer Motion
+      state: Zustand
+    features:
+      - Gamification mechanics (XP, badges, levels)
+      - Progress visualization
+      - Leaderboards
+      - Achievement system
+      - Animated UI components
+    setup_time: "20 min"
+    loc: "~2200"
+    difficulty: intermediate
+    token_savings: "70%"
+    provides:
+      - Gamification UI
+      - Progress tracking
+      - Achievement components
+    compatible_with:
+      - modernai-education
+    use_cases:
+      - Educational games
+      - Training applications
+      - Skill development platforms
+
+  # ============================================================================
+  # INDUSTRY BLUEPRINTS (Domain-Specific Applications)
+  # ============================================================================
+
+  - id: ai-governance
+    name: AI Governance Platform
+    path: blueprints/industry/ai-governance
+    category: industry
+    subcategory: compliance
+    stack:
+      language: Python + TypeScript
+      backend: FastAPI
+      frontend: Next.js 14
+      database: SQLite (production: PostgreSQL)
+      agents: Custom Python agents
+    features:
+      - AI model registry
+      - Bias detection with fairness metrics
+      - Risk assessment (6 dimensions)
+      - Compliance checking (EU AI Act, GDPR, NIST)
+      - Audit trails
+      - Real-time dashboard
+      - Encrypted data storage
+    setup_time: "30 min"
+    loc: "~4000"
+    difficulty: advanced
+    token_savings: "75%"
+    provides:
+      - Bias detection agent
+      - Risk assessment agent
+      - Compliance checker agent
+      - Governance dashboard
+    use_cases:
+      - Enterprise AI governance
+      - Regulatory compliance
+      - Model risk management
+      - Fairness auditing
+    documentation:
+      - README.md
+      - IMPLEMENTATION_COMPLETE.md
+      - QUICKSTART.md
+
+  - id: healthcare-triage
+    name: Healthcare Patient Triage System
+    path: blueprints/industry/healthcare-triage
+    category: industry
+    subcategory: healthcare
+    stack:
+      language: Python + TypeScript
+      backend: FastAPI
+      frontend: React
+      database: PostgreSQL + Prisma
+      compliance: HIPAA
+      ai: OpenAI/Gemini
+    features:
+      - Patient intake forms
+      - Symptom analysis
+      - Urgency classification
+      - Medical history management
+      - Appointment scheduling
+      - HIPAA-compliant data handling
+      - Audit logging
+    setup_time: "45 min"
+    loc: "~3800"
+    difficulty: advanced
+    token_savings: "70%"
+    provides:
+      - Triage agent
+      - Medical NLP
+      - Compliance layer
+    use_cases:
+      - Emergency department triage
+      - Telehealth platforms
+      - Clinic management
+
+  - id: legal-analysis
+    name: Legal Document Analysis
+    path: blueprints/industry/legal-analysis
+    category: industry
+    subcategory: legal
+    stack:
+      language: Python
+      backend: FastAPI
+      vector_db: ChromaDB
+      llm: Claude/GPT-4
+      document: pypdf + docx
+    features:
+      - Contract analysis
+      - Clause extraction
+      - Risk identification
+      - Precedent search
+      - Citation verification
+      - Redaction tools
+    setup_time: "35 min"
+    loc: "~3000"
+    difficulty: advanced
+    token_savings: "65%"
+    provides:
+      - Legal RAG pipeline
+      - Contract analyzer agent
+      - Citation checker
+    use_cases:
+      - Contract review
+      - Legal research
+      - Due diligence
+
+  - id: finance-analysis
+    name: Financial Analysis Platform
+    path: blueprints/industry/finance-analysis
+    category: industry
+    subcategory: finance
+    stack:
+      language: Python + TypeScript
+      backend: FastAPI
+      frontend: Next.js
+      database: PostgreSQL
+      analytics: pandas + numpy
+      visualization: Recharts
+    features:
+      - Financial data ingestion
+      - Portfolio analysis
+      - Risk metrics
+      - Trend analysis
+      - Report generation
+      - Real-time dashboards
+    setup_time: "40 min"
+    loc: "~3500"
+    difficulty: advanced
+    token_savings: "68%"
+    provides:
+      - Financial data pipeline
+      - Analytics engine
+      - Visualization components
+    use_cases:
+      - Investment analysis
+      - Portfolio management
+      - Risk assessment
+
+  - id: education
+    name: Educational Content Platform
+    path: blueprints/industry/education
+    category: industry
+    subcategory: education
+    stack:
+      language: TypeScript
+      framework: Next.js
+      database: PostgreSQL + Prisma
+      auth: NextAuth.js
+      payment: Stripe
+      content: MDX
+    features:
+      - Course creation
+      - Student management
+      - Progress tracking
+      - Assessment system
+      - Certificate generation
+      - Discussion forums
+    setup_time: "50 min"
+    loc: "~4200"
+    difficulty: intermediate
+    token_savings: "72%"
+    provides:
+      - LMS core
+      - Assessment engine
+      - Certificate system
+    use_cases:
+      - Online education
+      - Corporate training
+      - Certification programs
+
+  - id: team-knowledge-base
+    name: Team Knowledge Base
+    path: blueprints/industry/team-knowledge-base
+    category: industry
+    subcategory: productivity
+    stack:
+      language: TypeScript
+      framework: Next.js
+      database: PostgreSQL + Prisma
+      search: MeiliSearch/Algolia
+      editor: TipTap/Slate
+      auth: Clerk/Auth0
+    features:
+      - WYSIWYG editor
+      - Version control
+      - Full-text search
+      - Permissions system
+      - Comments and collaboration
+      - Export to PDF/Markdown
+    setup_time: "35 min"
+    loc: "~3200"
+    difficulty: intermediate
+    token_savings: "70%"
+    provides:
+      - Wiki engine
+      - Collaborative editor
+      - Search system
+    use_cases:
+      - Internal documentation
+      - Team wikis
+      - Knowledge management
+
+# ============================================================================
+# COMPATIBILITY MATRIX
+# ============================================================================
+
+compatibility:
+  # Frontend starters work with any backend
+  frontend_backends:
+    - next-landing-page: [fastapi-rag-starter, practica-clean-architecture, go-clean-template]
+    - react-landing: [fastapi-fullstack-official, practica-clean-architecture]
+
+  # Industry apps can be built on reference foundations
+  industry_foundations:
+    - ai-governance: [fastapi-fullstack-official, practica-clean-architecture]
+    - healthcare-triage: [fastapi-fullstack-official, jason-taylor-clean-architecture]
+    - legal-analysis: [fastapi-fullstack-official, practica-clean-architecture]
+    - finance-analysis: [practica-clean-architecture, go-clean-template]
+
+# ============================================================================
+# METRICS
+# ============================================================================
+
+metrics:
+  total_blueprints: 19
+  by_category:
+    reference: 5
+    quickwins: 3
+    core_apps: 2
+    starters: 5
+    industry: 6
+  by_difficulty:
+    beginner: 5
+    intermediate: 8
+    advanced: 6
+  by_stack:
+    typescript: 12
+    python: 6
+    csharp: 1
+    go: 1
+    java: 1
+  average_setup_time: "27 min"
+  average_token_savings: "72%"
+  blueprints_with_api_keys: 2
+  blueprints_with_free_option: 1
+
+# ============================================================================
+# TAGS FOR SEARCH
+# ============================================================================
+
+tags:
+  quickwin: [url-shortener, meme-generator, markdown-blog]
+  gateway: [url-shortener, meme-generator, markdown-blog]
+  ai_ml: [ai-chat-interface, perplexity-clone, fastapi-rag-starter, ai-governance, legal-analysis, healthcare-triage]
+  openai: [ai-chat-interface, perplexity-clone]
+  chat: [ai-chat-interface]
+  streaming: [ai-chat-interface, perplexity-clone]
+  fullstack: [fastapi-fullstack-official, jason-taylor-clean-architecture, modernai-education, ai-chat-interface, perplexity-clone]
+  backend: [practica-clean-architecture, go-clean-template, fastapi-rag-starter, url-shortener, meme-generator]
+  frontend: [next-landing-page, react-landing, gamified-learning-ui, markdown-blog, ai-chat-interface, perplexity-clone]
+  enterprise: [jason-taylor-clean-architecture, jhipster-sample, ai-governance]
+  compliance: [ai-governance, healthcare-triage, legal-analysis]
+  education: [modernai-education, gamified-learning-ui, education]
+  finance: [finance-analysis]
+  healthcare: [healthcare-triage]
+  legal: [legal-analysis]
+  productivity: [team-knowledge-base, markdown-blog, ai-chat-interface, perplexity-clone]
+  redis: [url-shortener]
+  analytics: [url-shortener]
+  qr_code: [url-shortener]
+  image_processing: [meme-generator]
+  social_media: [meme-generator]
+  file_storage: [meme-generator]
+  mdx: [markdown-blog]
+  blog: [markdown-blog]
+  content: [markdown-blog]
+  static_site: [markdown-blog]
+  requires_api_key: [ai-chat-interface, perplexity-clone]
+  free_option: [perplexity-clone]
+  multi_provider: [perplexity-clone]
+  search: [perplexity-clone]
+  web_search: [perplexity-clone]
+  citations: [perplexity-clone]
+  ollama: [perplexity-clone]
+  gemini: [perplexity-clone]
+  azure: [perplexity-clone]
+  claude: [perplexity-clone]
+  brave_search: [perplexity-clone]
+
+  # ============================================================================
+  # AI ADVANCED BLUEPRINTS (Advanced AI Applications)
+  # ============================================================================
+
+  - id: langgraph-multi-agent
+    name: Langraph Multi-Agent System
+    path: blueprints/ai-advanced/langgraph-multi-agent
+    category: ai-advanced
+    subcategory: agents
+    stack:
+      language: Python
+      framework: LangChain + Langraph
+      ui: Gradio
+      llm: Groq (Free), OpenAI, Anthropic, Gemini
+      tools: Tavily, Polygon.io, ArXiv, YouTube, NASA
+    agents:
+      - Research Agent (web search, papers, videos)
+      - Finance Agent (stocks, financial data)
+      - General Agent (booking, NASA, general tasks)
+    features:
+      - Multi-agent orchestration
+      - Automatic keyword routing
+      - ReAct (Reasoning + Acting) pattern
+      - Tool calling and execution
+      - Conversation memory
+      - Streaming responses
+      - Token usage tracking
+      - Gradio chat interface
+      - 10+ integrated tools
+      - Agent performance monitoring
+    setup_time: "5 min"
+    loc: "~450"
+    difficulty: medium
+    token_savings: "5000+"
+    components_used:
+      - langgraph-agent-framework (NEW)
+    provides:
+      - Multi-agent framework
+      - Specialized agent templates
+      - Tool orchestration
+      - Gradio UI
+    compatible_with:
+      - langchain
+      - langgraph
+      - groq
+      - openai
+      - anthropic
+    api_keys_required:
+      - GROQ_API_KEY (free)
+      - TAVILY_API_KEY (free)
+      - POLYGON_API_KEY (free)
+    pricing:
+      minimum: "$0/month (all free APIs)"
+      production: "$78/month (upgraded API tiers)"
+    use_cases:
+      - Research assistance with multi-source data
+      - Financial analysis and stock tracking
+      - Customer support automation
+      - Educational AI demonstrations
+      - Prototype development
+    deployment_targets:
+      - Docker
+      - Railway (recommended)
+      - Hugging Face Spaces (free)
+      - AWS/GCP/Azure containers
+    curriculum_source: Modern AI Pro - Advanced Agents

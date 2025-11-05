@@ -1,0 +1,39 @@
+blueprint_id: braine-react-theme
+name: Braine React Theme Starter
+version: 0.1.0
+category: starter
+subcategory: marketing-site
+setup_time_minutes: 20
+token_savings: 18000
+tech_stack:
+  - nextjs
+  - react
+  - tailwindcss
+  - swiper
+provides:
+  - agency_landing
+  - hero_section
+  - services_section
+  - testimonial_section
+  - contact_form
+compatible_with:
+  - vercel
+  - netlify
+incompatible_with: []
+description: |
+  Next.js App Router starter kit recreating the Braine agency theme with modular React components and bundled assets.
+features:
+  - Hero, services, case studies, testimonials, contact form, footer components
+  - Original CSS/JS assets imported via globals.css
+  - Swiper carousel replacing jQuery slider
+voice_patterns:
+  - "braine react starter"
+  - "agency nextjs template"
+  - "marketing site blueprint"
+installation:
+  steps:
+    - npm install
+    - npm run dev
+usage_examples:
+  - path: src/app/page.tsx
+    description: Landing page composed from the provided sections.

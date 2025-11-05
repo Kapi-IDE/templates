@@ -1,0 +1,342 @@
+# Healthcare Triage System Alert Rules
+groups:
+  - name: healthcare_triage_critical
+    interval: 30s
+    rules:
+      # System Health Critical Alerts
+      - alert: SystemDown
+        expr: up{service="healthcare-triage"} == 0
+        for: 1m
+        labels:
+          severity: critical
+          service: healthcare-triage
+          category: availability
+        annotations:
+          summary: "Healthcare Triage System is down"
+          description: "The Healthcare Triage System has been down for more than 1 minute. Immediate attention required."
+          runbook_url: "https://docs.healthcare-triage.com/runbooks/system-down"
+          action_required: "Check application logs, verify database connectivity, restart services if needed"
+
+      - alert: DatabaseDown
+        expr: up{service="postgresql"} == 0
+        for: 2m
+        labels:
+          severity: critical
+          service: postgresql
+          category: database
+        annotations:
+          summary: "PostgreSQL database is unreachable"
+          description: "Database connection has been down for {{ $value }} minutes. This will cause complete system failure."
+          runbook_url: "https://docs.healthcare-triage.com/runbooks/database-down"
+
+      - alert: AIServiceUnavailable
+        expr: up{service="ai-service"} == 0
+        for: 5m
+        labels:
+          severity: critical
+          service: ai-service
+          category: ai
+        annotations:
+          summary: "AI triage service is unavailable"
+          description: "AI service has been down for {{ $value }} minutes. Manual triage protocols should be activated."
+          runbook_url: "https://docs.healthcare-triage.com/runbooks/ai-service-down"
+          manual_action: "Activate manual triage protocols, notify clinical staff"
+
+      # Performance Critical Alerts
+      - alert: HighResponseTime
+        expr: histogram_quantile(0.95, rate(http_request_duration_seconds_bucket{service="healthcare-triage"}[5m])) > 10
+        for: 3m
+        labels:
+          severity: critical
+          service: healthcare-triage
+          category: performance
+        annotations:
+          summary: "High response time detected"
+          description: "95th percentile response time is {{ $value }}s, exceeding 10s threshold for {{ $for }}"
+          runbook_url: "https://docs.healthcare-triage.com/runbooks/high-response-time"
+
+      - alert: DatabaseConnectionExhaustion
+        expr: sum(postgresql_stat_activity_count) > 90
+        for: 2m
+        labels:
+          severity: critical
+          service: postgresql
+          category: database
+        annotations:
+          summary: "Database connection pool near exhaustion"
+          description: "Database has {{ $value }} active connections (max 100). System may become unresponsive."
+          runbook_url: "https://docs.healthcare-triage.com/runbooks/db-connections"
+
+      # Patient Safety Critical Alerts
+      - alert: CriticalPatientQueueBackup
+        expr: patient_queue_size{priority="CRITICAL"} > 5
+        for: 1m
+        labels:
+          severity: critical
+          service: healthcare-triage
+          category: patient_safety
+        annotations:
+          summary: "Critical patient queue backup"
+          description: "{{ $value }} critical patients are waiting for more than 1 minute. Immediate clinical intervention required."
+          runbook_url: "https://docs.healthcare-triage.com/runbooks/critical-queue"
+          clinical_action: "Notify charge nurse, activate emergency protocols"
+
+      - alert: AIAccuracyDrop
+        expr: ai_accuracy_rate < 0.85
+        for: 10m
+        labels:
+          severity: critical
+          service: ai-service
+          category: quality
+        annotations:
+          summary: "AI triage accuracy below threshold"
+          description: "AI accuracy has dropped to {{ $value | humanizePercentage }}, below 85% threshold"
+          runbook_url: "https://docs.healthcare-triage.com/runbooks/ai-accuracy"
+          action_required: "Switch to manual triage, investigate AI model"
+
+  - name: healthcare_triage_warning
+    interval: 60s
+    rules:
+      # System Health Warnings
+      - alert: HighMemoryUsage
+        expr: (1 - (node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes)) * 100 > 85
+        for: 5m
+        labels:
+          severity: warning
+          service: system
+          category: resources
+        annotations:
+          summary: "High memory usage on {{ $labels.instance }}"
+          description: "Memory usage is {{ $value }}% on {{ $labels.instance }}"
+          runbook_url: "https://docs.healthcare-triage.com/runbooks/high-memory"
+
+      - alert: HighCPUUsage
+        expr: 100 - (avg by(instance) (irate(node_cpu_seconds_total{mode="idle"}[5m])) * 100) > 80
+        for: 10m
+        labels:
+          severity: warning
+          service: system
+          category: resources
+        annotations:
+          summary: "High CPU usage on {{ $labels.instance }}"
+          description: "CPU usage is {{ $value }}% on {{ $labels.instance }}"
+          runbook_url: "https://docs.healthcare-triage.com/runbooks/high-cpu"
+
+      - alert: DiskSpaceWarning
+        expr: (1 - node_filesystem_avail_bytes{fstype!="tmpfs"} / node_filesystem_size_bytes) * 100 > 80
+        for: 5m
+        labels:
+          severity: warning
+          service: system
+          category: storage
+        annotations:
+          summary: "Disk space running low on {{ $labels.instance }}"
+          description: "Disk usage is {{ $value }}% on {{ $labels.instance }} filesystem {{ $labels.mountpoint }}"
+          runbook_url: "https://docs.healthcare-triage.com/runbooks/disk-space"
+
+      # Application Performance Warnings
+      - alert: SlowAIProcessing
+        expr: histogram_quantile(0.95, rate(ai_processing_duration_seconds_bucket[5m])) > 5
+        for: 5m
+        labels:
+          severity: warning
+          service: ai-service
+          category: performance
+        annotations:
+          summary: "AI processing time is slow"
+          description: "95th percentile AI processing time is {{ $value }}s"
+          runbook_url: "https://docs.healthcare-triage.com/runbooks/slow-ai"
+
+      - alert: HighErrorRate
+        expr: rate(http_requests_total{status=~"5.."}[5m]) / rate(http_requests_total[5m]) > 0.05
+        for: 3m
+        labels:
+          severity: warning
+          service: healthcare-triage
+          category: errors
+        annotations:
+          summary: "High error rate detected"
+          description: "Error rate is {{ $value | humanizePercentage }} over the last 5 minutes"
+          runbook_url: "https://docs.healthcare-triage.com/runbooks/high-error-rate"
+
+      # Business Logic Warnings
+      - alert: UnusualPatientVolume
+        expr: increase(patients_registered_total[1h]) > 200
+        for: 0m
+        labels:
+          severity: warning
+          service: healthcare-triage
+          category: business
+        annotations:
+          summary: "Unusual patient volume detected"
+          description: "{{ $value }} patients registered in the last hour (normal: 50-100)"
+          runbook_url: "https://docs.healthcare-triage.com/runbooks/patient-volume"
+
+      - alert: LongPatientWaitTime
+        expr: histogram_quantile(0.95, rate(patient_wait_time_seconds_bucket[10m])) > 3600
+        for: 5m
+        labels:
+          severity: warning
+          service: healthcare-triage
+          category: patient_experience
+        annotations:
+          summary: "Patient wait times are high"
+          description: "95th percentile wait time is {{ $value | humanizeDuration }}"
+          runbook_url: "https://docs.healthcare-triage.com/runbooks/wait-times"
+
+  - name: healthcare_triage_security
+    interval: 60s
+    rules:
+      # Security Alerts
+      - alert: UnauthorizedAccess
+        expr: increase(http_requests_total{status="401"}[5m]) > 20
+        for: 1m
+        labels:
+          severity: warning
+          service: healthcare-triage
+          category: security
+        annotations:
+          summary: "High number of unauthorized access attempts"
+          description: "{{ $value }} unauthorized access attempts in the last 5 minutes"
+          runbook_url: "https://docs.healthcare-triage.com/runbooks/unauthorized-access"
+
+      - alert: SuspiciousActivity
+        expr: increase(failed_login_attempts_total[5m]) > 10
+        for: 1m
+        labels:
+          severity: warning
+          service: healthcare-triage
+          category: security
+        annotations:
+          summary: "Multiple failed login attempts detected"
+          description: "{{ $value }} failed login attempts from {{ $labels.ip_address }}"
+          runbook_url: "https://docs.healthcare-triage.com/runbooks/failed-logins"
+
+      - alert: PHIAccessAnomaly
+        expr: increase(phi_access_total[1h]) > 1000
+        for: 0m
+        labels:
+          severity: warning
+          service: healthcare-triage
+          category: compliance
+        annotations:
+          summary: "Unusual PHI access pattern detected"
+          description: "{{ $value }} PHI access events in the last hour (normal: 200-500)"
+          runbook_url: "https://docs.healthcare-triage.com/runbooks/phi-access"
+
+  - name: healthcare_triage_infrastructure
+    interval: 120s
+    rules:
+      # Infrastructure Monitoring
+      - alert: CertificateExpiration
+        expr: probe_ssl_earliest_cert_expiry - time() < 7 * 24 * 3600
+        for: 0m
+        labels:
+          severity: warning
+          service: infrastructure
+          category: certificates
+        annotations:
+          summary: "SSL certificate expiring soon"
+          description: "SSL certificate for {{ $labels.instance }} expires in {{ $value | humanizeDuration }}"
+          runbook_url: "https://docs.healthcare-triage.com/runbooks/certificate-renewal"
+
+      - alert: BackupFailure
+        expr: time() - backup_last_success_timestamp > 25 * 3600
+        for: 0m
+        labels:
+          severity: critical
+          service: infrastructure
+          category: backup
+        annotations:
+          summary: "Database backup has failed"
+          description: "Last successful backup was {{ $value | humanizeDuration }} ago"
+          runbook_url: "https://docs.healthcare-triage.com/runbooks/backup-failure"
+
+      - alert: KubernetesNodeNotReady
+        expr: kube_node_status_condition{condition="Ready",status="true"} == 0
+        for: 10m
+        labels:
+          severity: warning
+          service: kubernetes
+          category: infrastructure
+        annotations:
+          summary: "Kubernetes node is not ready"
+          description: "Node {{ $labels.node }} has been not ready for more than 10 minutes"
+          runbook_url: "https://docs.healthcare-triage.com/runbooks/k8s-node-not-ready"
+
+      - alert: KubernetesPodCrashLooping
+        expr: increase(kube_pod_container_status_restarts_total[1h]) > 5
+        for: 0m
+        labels:
+          severity: warning
+          service: kubernetes
+          category: infrastructure
+        annotations:
+          summary: "Pod is crash looping"
+          description: "Pod {{ $labels.namespace }}/{{ $labels.pod }} has restarted {{ $value }} times in the last hour"
+          runbook_url: "https://docs.healthcare-triage.com/runbooks/pod-crash-loop"
+
+  - name: healthcare_triage_compliance
+    interval: 300s
+    rules:
+      # HIPAA Compliance Monitoring
+      - alert: AuditLogFailure
+        expr: increase(audit_log_errors_total[10m]) > 0
+        for: 0m
+        labels:
+          severity: critical
+          service: healthcare-triage
+          category: compliance
+        annotations:
+          summary: "Audit logging failure detected"
+          description: "{{ $value }} audit log errors in the last 10 minutes. HIPAA compliance may be compromised."
+          runbook_url: "https://docs.healthcare-triage.com/runbooks/audit-log-failure"
+          compliance_action: "Investigate immediately, notify compliance officer"
+
+      - alert: UnencryptedDataDetected
+        expr: unencrypted_phi_count > 0
+        for: 0m
+        labels:
+          severity: critical
+          service: healthcare-triage
+          category: compliance
+        annotations:
+          summary: "Unencrypted PHI detected"
+          description: "{{ $value }} records with unencrypted PHI found"
+          runbook_url: "https://docs.healthcare-triage.com/runbooks/unencrypted-phi"
+          immediate_action: "Encrypt data immediately, notify security team"
+
+      - alert: DataRetentionViolation
+        expr: overdue_data_retention_count > 0
+        for: 0m
+        labels:
+          severity: warning
+          service: healthcare-triage
+          category: compliance
+        annotations:
+          summary: "Data retention policy violation"
+          description: "{{ $value }} records exceed data retention policy"
+          runbook_url: "https://docs.healthcare-triage.com/runbooks/data-retention"
+
+# Inhibition rules to reduce alert noise
+inhibit_rules:
+  # If system is down, don't alert on performance issues
+  - source_match:
+      alertname: SystemDown
+    target_match_re:
+      alertname: High.*|Slow.*
+    equal: ['service']
+
+  # If database is down, don't alert on application issues
+  - source_match:
+      alertname: DatabaseDown
+    target_match_re:
+      alertname: SystemDown|HighResponseTime|HighErrorRate
+    equal: ['instance']
+
+  # If node is not ready, don't alert on resource issues
+  - source_match:
+      alertname: KubernetesNodeNotReady
+    target_match_re:
+      alertname: HighMemoryUsage|HighCPUUsage|DiskSpaceWarning
+    equal: ['instance']

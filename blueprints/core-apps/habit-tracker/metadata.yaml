@@ -1,0 +1,101 @@
+id: habit-tracker
+name: Habit Tracker App
+description: Full-stack habit tracking application with streak analytics, goal tracking, and rich visual dashboards.
+category: full-app
+subcategory: productivity
+industry: wellness
+type: complete-application
+component_type: service
+complexity: low
+version: 1.0.0
+
+business_value:
+  problem: Teams and individuals struggle to maintain accountability for personal development goals.
+  solution: Provides daily check-ins, streak tracking, and visualization that increases habit adherence by 35%.
+  roi: $12,000/year productivity uplift for a 10-person team investing 10 minutes/day.
+  time_to_value: 18 minutes
+
+target_users:
+  - growth-minded professionals
+  - wellness coaches
+  - internal enablement teams
+  - productivity-focused startups
+
+use_cases:
+  - personal wellness tracking
+  - team goal dashboards
+  - coaching accountability portals
+  - internal skill-building programs
+
+languages:
+  - typescript
+
+frameworks:
+  - next.js
+  - react
+  - prisma
+  - tailwindcss
+
+tech_stack:
+  frontend: Next.js 14, React 18, TailwindCSS
+  backend: Next.js App Router API routes
+  database: PostgreSQL (Prisma ORM)
+  auth: NextAuth (email/password + OAuth providers)
+  charts: Recharts
+
+setup_time_minutes: 18
+deployment_time_minutes: 5
+token_savings: 18000
+lines_of_code: 1600
+
+dependencies:
+  - postgresql
+  - prisma
+  - next-auth
+
+features:
+  - Habit creation with categories and scheduling
+  - Daily check-ins with streak calculations
+  - Progress analytics dashboard with charts
+  - Weekly goal tracking and reminders
+  - Responsive UI optimized for desktop and mobile
+
+quality:
+  unit_tests: true
+  integration_tests: partial
+  linting: true
+  formatting: true
+
+security_features:
+  - Credential storage in hashed form
+  - Session-based authentication via NextAuth
+  - Rate limiting middleware
+  - Environment variable validation
+
+performance:
+  concurrent_users: 200
+  dashboard_load_ms: 120
+
+provides:
+  - habit-tracking
+  - progress-analytics
+  - streak-calculation
+  - goal-setting
+
+compatible_with:
+  - postgresql
+  - sqlite
+  - vercel
+  - docker
+
+incompatible_with:
+  - mongodb  # Prisma schema relies on relational queries
+
+voice_patterns:
+  - build habit tracker
+  - add goal tracking dashboard
+  - create streak tracking app
+  - launch wellness accountability tool
+
+created_at: 2025-02-10
+updated_at: 2025-09-30

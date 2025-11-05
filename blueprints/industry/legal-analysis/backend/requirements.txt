@@ -1,0 +1,15 @@
+flask
+flask-cors
+python-dotenv
+google-generativeai
+chromadb
+sentence-transformers
+cryptography
+faker
+requests
+numpy
+pandas
+scikit-learn
+pytest
+pytest-cov
+httpx

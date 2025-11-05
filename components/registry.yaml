@@ -1,0 +1,236 @@
+components:
+  - id: express-oidc-provider
+    name: Express OIDC Provider
+    path: auth/oidc-provider
+    version: 1.0.0
+    category: auth
+    subcategory: oidc
+  - id: agent-foundation
+    name: Agent Foundation Base Class
+    path: backend/agent-base
+    version: 0.1.0
+    category: backend
+    subcategory: agent-framework
+    description: Shared foundation for conversational agents with prompt scaffolding, structured data extraction, urgency assessment, logging helpers, and health checks.
+  - id: agent-framework
+    name: Agent Framework
+    path: backend/agent_framework
+    version: 1.0.0
+    category: backend
+    subcategory: ai-agents
+    description: Domain-agnostic foundation for building conversational AI agents with LLM integration, structured data extraction, audit logging, and health monitoring. Easily customizable for healthcare, finance, legal, or any other domain.
+  - id: anthropic-bedrock
+    name: anthropic-claude-bedrock
+    path: backend/ai-integrations/anthropic-bedrock
+    category: ai-integrations
+    description: Anthropic Claude integration via AWS Bedrock with enterprise security. Supports Claude 3.5 Sonnet, Haiku, and 3.7 Sonnet with advanced reasoning capabilities.
+  - id: azure-openai
+    name: azure-openai-integration
+    path: backend/ai-integrations/azure-openai
+    category: ai-integrations
+    description: Enterprise-grade Azure OpenAI client with multi-region support, DeepSeek integration, and special model handling (o3-mini). Production-ready with comprehensive error handling.
+  - id: gemini
+    name: gemini-integration
+    path: backend/ai-integrations/gemini
+    category: ai-integrations
+    description: Production-ready Gemini AI client with OpenAI-compatible interface. Supports reasoning effort, tool calling, embeddings, and streaming.
+  - id: jwt-express-middleware
+    name: Express JWT Middleware
+    path: backend/authentication/jwt-express
+    version: 1.0.0
+    category: backend
+    subcategory: authentication
+  - id: jwt-fastify-plugin
+    name: Fastify JWT Plugin
+    path: backend/authentication/jwt-fastify
+    version: 1.0.0
+    category: backend
+    subcategory: authentication
+  - id: jwt-authentication-node
+    name: JWT Authentication (Node.js/TypeScript)
+    path: backend/authentication/jwt-node
+    version: 1.0.0
+    category: backend
+    subcategory: authentication
+    description: Production-ready JWT authentication with access/refresh tokens, password hashing, and blacklisting
+  - id: redis-client
+    name: Redis Client & Session Manager
+    path: backend/caching/redis
+    version: 1.0.0
+    category: backend
+    subcategory: caching
+  - id: redis-client-nodejs
+    name: Redis Client for Node.js
+    path: backend/caching/redis-nodejs
+    version: 1.0.0
+    category: backend
+    subcategory: caching
+    description: Production-ready Redis client for Node.js with specialized utilities for URL caching, click counting, and rate limiting.
+  - id: postgresql-prisma
+    name: PostgreSQL + Prisma Setup
+    path: backend/database/postgresql-prisma
+    version: 1.0.0
+    category: backend
+    subcategory: database
+    description: Production-ready PostgreSQL database with Prisma ORM, migrations, relations, and type-safe queries
+  - id: cloud-file-storage
+    name: Cloud File Storage Component
+    path: backend/file-storage
+    version: 1.0.0
+    category: backend
+    subcategory: file-storage
+    description: Flexible file storage component supporting local filesystem, Cloudinary, and AWS S3. Provides unified interface for file upload, retrieval, and deletion.
+  - id: meme-text-overlay
+    name: Meme Text Overlay Processor
+    path: backend/image-processing
+    version: 1.0.0
+    category: backend
+    subcategory: image-processing
+    description: Image processing component for adding text overlays to images. Designed for meme generation with automatic text wrapping, outlines, and template-based positioning.
+  - id: gemini-client-wrapper
+    name: Gemini Client Wrapper
+    path: backend/llm-wrapper
+    version: 0.1.0
+    category: backend
+    subcategory: llm-wrapper
+    description: Configurable Gemini client that handles API key discovery, text generation, structured JSON extraction, and health checks for Python agents.
+  - id: interaction-logger
+    name: Agent Interaction Logger
+    path: backend/logging
+    version: 0.1.0
+    category: backend
+    subcategory: logging
+    description: Helper that records agent interactions into any audit store while emitting telemetry when logging fails.
+  - id: node-llm-framework
+    name: Node.js LLM Framework
+    path: backend/node-llm-framework
+    version: 0.1.0
+    category: backend
+    subcategory: ai-services
+    description: Unified TypeScript services for Azure OpenAI, Google Gemini, Anthropic Claude, and Amazon Nova with a shared interface, factory, and capability lookup.
+  - id: celery-config
+    name: Celery Task Queue Config
+    path: backend/task-queue
+    version: 1.0.0
+    category: backend
+    subcategory: task-queue
+  - id: express-service
+    name: Express Service Skeleton
+    path: backend/web-servers/express-service
+    version: 1.0.0
+    category: backend
+    subcategory: web-server
+  - id: fastify-service
+    name: Fastify Service Skeleton
+    path: backend/web-servers/fastify-service
+    version: 1.0.0
+    category: backend
+    subcategory: web-server
+  - id: mdx-blog-utils
+    name: MDX Blog Utilities
+    path: content/mdx-processing
+    version: 1.0.0
+    category: content
+    subcategory: mdx-processing
+    description: File-based MDX blog utilities for Next.js applications. Parse frontmatter, load posts, sort by date, and generate slugs.
+  - id: prisma-schema-patterns
+    name: Prisma Schema Patterns
+    path: database/prisma-patterns
+    version: 1.0.0
+    category: database
+    subcategory: prisma
+  - id: docker-compose-stack
+    name: Docker Compose Stack
+    path: devops/docker/docker-compose-stack
+    version: 1.0.0
+    category: devops
+    subcategory: containers
+    description: Production-ready Docker Compose configurations for common stacks (PostgreSQL, Redis, Nginx, monitoring)
+  - id: reveal-presentation
+    name: Reveal.js Presentation Template
+    path: documentation/reveal-presentation
+    version: 1.0.0
+    category: documentation
+    subcategory: presentations
+    description: Modern, customizable presentation template with dark theme and variable substitution
+  - id: email-template-renderer
+    name: Email Template Renderer
+    path: email/templates
+    version: 1.0.0
+    category: email
+    subcategory: templating
+  - id: react-hook-form-zod
+    name: React Hook Form + Zod Validation
+    path: frontend/forms/react-hook-form-zod
+    version: 1.0.0
+    category: frontend
+    subcategory: forms
+    description: Production-ready form handling with type-safe Zod validation, error handling, and common patterns
+  - id: react-chat-ui
+    name: React Chat UI (Onyx-Inspired)
+    path: frontend/react-chat-ui
+    version: 1.0.0
+    category: frontend
+    subcategory: complete-ui
+    description: Professional Onyx-inspired React chat interface with multi-assistant support, dark theme, and modern UI components
+  - id: streamlit-auth-ui
+    name: Streamlit Authentication UI
+    path: frontend/streamlit-components/auth-ui
+    version: 1.0.0
+    category: frontend
+    subcategory: atomic-component
+    description: Reusable authentication UI with login, signup, logout, and session management
+  - id: streamlit-chat-interface
+    name: Streamlit Chat Interface
+    path: frontend/streamlit-components/chat-interface
+    version: 1.0.0
+    category: frontend
+    subcategory: atomic-component
+    description: Reusable chat interface component with message history, streaming support, and source citations
+  - id: streamlit-dark-theme
+    name: Streamlit Dark Theme
+    path: frontend/streamlit-components/dark-theme
+    version: 1.0.0
+    category: frontend
+    subcategory: atomic-component
+    description: Customizable dark theme for Streamlit with multiple color palettes (Onyx, Nord, Dracula)
+  - id: streamlit-file-uploader
+    name: Streamlit File Uploader
+    path: frontend/streamlit-components/file-uploader
+    version: 1.0.0
+    category: frontend
+    subcategory: atomic-component
+    description: Reusable file upload component with validation, progress tracking, and file list management
+  - id: streamlit-rag-ui
+    name: Streamlit RAG UI
+    path: frontend/streamlit-rag-ui
+    version: 1.0.0
+    category: frontend
+    subcategory: complete-ui
+    description: Complete Streamlit UI for RAG applications with Onyx-inspired dark theme, chat interface, document upload, and authentication
+  - id: stripe-payment-server
+    name: Stripe Payment Server
+    path: payments/stripe
+    version: 1.0.0
+    category: payments
+    subcategory: stripe
+  - id: deterministic-faker
+    name: Deterministic Fake Data Generator
+    path: testing/data-generation
+    version: 1.0.0
+    category: testing
+    subcategory: data-generation
+  - id: 3d-visualizations
+    name: 3d-visualizations
+    path: ui/3d-visualizations
+    version: 1.0.0
+    category: ui-components
+    subcategory: threejs-visualization
+    description: Enterprise-grade Three.js visualization components for knowledge management, industrial applications, and creative presentations. Includes Digital Twin, Knowledge Seismograph, Knowledge Galaxy, and Space Animation components.
+  - id: langgraph-agent-framework
+    name: Langraph Multi-Agent Framework
+    path: backend/langgraph-agent-framework
+    version: 1.0.0
+    category: backend
+    subcategory: ai-agents
+    description: Production-ready framework for building multi-agent systems with Langraph, ReAct pattern, memory management, tool orchestration, and Gradio integration. Includes LanggraphAgent class, MultiAgentOrchestrator, and helper functions for custom tools.

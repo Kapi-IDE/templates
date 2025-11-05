@@ -1,0 +1,13 @@
+component_id: stripe-payment-server
+name: Stripe Payment Server
+version: 1.0.0
+category: payments
+subcategory: stripe
+maintainer: KAPI Templates Team
+
+provides:
+  - stripe_payment_intent_api
+  - webhook_signature_verification
+  - tax_calculation_example
+  - express_server_bootstrap
+

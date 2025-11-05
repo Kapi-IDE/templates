@@ -1,0 +1,224 @@
+component_id: docker-compose-stack
+name: Docker Compose Stack
+description: Production-ready Docker Compose configurations for common stacks (PostgreSQL, Redis, Nginx, monitoring)
+category: devops
+subcategory: containers
+type: component
+component_type: atomic
+complexity: medium
+version: 1.0.0
+languages:
+  - yaml
+  - dockerfile
+frameworks:
+  - docker
+  - docker-compose
+tags:
+  - docker
+  - containers
+  - devops
+  - infrastructure
+  - deployment
+  - orchestration
+use_cases:
+  - Local development environment
+  - Production deployment
+  - Microservices architecture
+  - Database management
+  - Caching layer
+  - Reverse proxy setup
+  - Development tools
+  - Testing environments
+setup_time_minutes: 5
+token_savings: 8000
+lines_of_code: 300
+dependencies:
+  docker: ">=20.10"
+  docker-compose: ">=2.0"
+services_included:
+  - app - Node.js application
+  - postgres - PostgreSQL 16 database
+  - redis - Redis 7 cache
+  - nginx - Nginx reverse proxy
+  - adminer - Database admin tool (optional)
+  - redis-commander - Redis admin tool (optional)
+features:
+  - Health checks for all services
+  - Persistent volumes
+  - Network isolation
+  - Resource limits
+  - Restart policies
+  - Environment variables
+  - Service dependencies
+  - Hot reload support (dev)
+  - SSL support
+  - Database initialization
+  - Admin tools (optional)
+configurations:
+  - docker-compose.yml - Base configuration
+  - docker-compose.dev.yml - Development overrides
+  - docker-compose.prod.yml - Production overrides
+  - .env.example - Environment template
+service_configs:
+  postgres:
+    image: postgres:16-alpine
+    ports: ["5432:5432"]
+    healthcheck: pg_isready
+    volumes: [postgres_data, init.sql]
+  redis:
+    image: redis:7-alpine
+    ports: ["6379:6379"]
+    healthcheck: redis-cli ping
+    volumes: [redis_data]
+  nginx:
+    image: nginx:alpine
+    ports: ["80:80", "443:443"]
+    healthcheck: wget health
+    volumes: [nginx.conf, ssl]
+networks:
+  frontend:
+    description: Public-facing services
+    driver: bridge
+  backend:
+    description: Internal services
+    driver: bridge
+    internal: optional
+volumes:
+  postgres_data:
+    description: PostgreSQL data persistence
+  redis_data:
+    description: Redis data persistence
+health_checks:
+  - Service health monitoring
+  - Automatic restart on failure
+  - Dependency management
+  - Graceful startup order
+resource_limits:
+  app:
+    cpu: "1"
+    memory: "1G"
+  postgres:
+    cpu: "0.5"
+    memory: "512M"
+  redis:
+    cpu: "0.25"
+    memory: "256M"
+  nginx:
+    cpu: "0.25"
+    memory: "128M"
+environment_variables:
+  required:
+    - NODE_ENV
+    - POSTGRES_USER
+    - POSTGRES_PASSWORD
+    - POSTGRES_DB
+    - REDIS_PASSWORD
+    - JWT_SECRET
+  optional:
+    - APP_PORT
+    - POSTGRES_PORT
+    - REDIS_PORT
+    - SSL_ENABLED
+common_commands:
+  start: docker-compose up -d
+  build: docker-compose up -d --build
+  logs: docker-compose logs -f
+  stop: docker-compose down
+  clean: docker-compose down -v
+  restart: docker-compose restart [service]
+  exec: docker-compose exec [service] [command]
+  status: docker-compose ps
+development_features:
+  - Hot reload
+  - Volume mounts for code
+  - Debug port (9229)
+  - Admin tools (Adminer, Redis Commander)
+  - Exposed ports for direct access
+production_features:
+  - Resource limits
+  - Health checks
+  - Restart policies
+  - Network isolation
+  - SSL support
+  - Log management
+  - Security hardening
+best_practices:
+  - Use health checks
+  - Set resource limits
+  - Use named volumes
+  - Use networks for isolation
+  - Use environment variables
+  - Include restart policies
+  - Use specific image tags
+  - Log to stdout/stderr
+security_features:
+  - Network isolation
+  - No unnecessary privileges
+  - Read-only filesystems (optional)
+  - Non-root users
+  - Secret management
+  - SSL/TLS support
+monitoring_ready:
+  - Prometheus compatible
+  - Grafana integration
+  - Log aggregation ready
+  - Health check endpoints
+provides:
+  - container-orchestration
+  - service-networking
+  - volume-management
+  - health-checks
+  - resource-limits
+  - environment-config
+  - multi-service-stack
+compatible_with:
+  - docker
+  - linux
+  - macos
+  - windows
+  - postgresql
+  - redis
+  - nginx
+  - node.js
+  - python
+  - go
+  - any-backend
+  - any-frontend
+incompatible_with:
+  - kubernetes
+  - docker-swarm
+  - podman-compose
+voice_patterns:
+  - add docker compose
+  - set up docker containers
+  - create development environment
+  - add postgres and redis containers
+  - set up docker stack
+  - containerize application
+integration_with:
+  - postgresql-prisma - Database ORM
+  - redis-cache - Caching layer
+  - nginx-config - Web server
+  - jwt-authentication - App authentication
+  - ci-cd-pipeline - Deployment automation
+common_issues:
+  port_already_in_use:
+    - Change port in .env
+    - Check for conflicting services
+  permission_denied:
+    - Check volume permissions
+    - Run with correct user
+  service_unhealthy:
+    - Check logs with docker-compose logs
+    - Verify environment variables
+  connection_refused:
+    - Ensure services are healthy
+    - Check network configuration
+related_components:
+  - postgresql-prisma
+  - redis-cache
+  - nginx-config
+  - ci-cd-github-actions
+  - kubernetes-deployment
+created_at: 2025-01-29
+updated_at: 2025-01-29

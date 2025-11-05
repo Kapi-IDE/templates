@@ -1,0 +1,1035 @@
+openapi: 3.0.3
+info:
+  title: Healthcare AI Triage System API
+  description: |
+    Comprehensive API for intelligent patient triage and care coordination.
+    
+    This API provides endpoints for:
+    - Patient registration and management
+    - AI-powered triage assessment
+    - Multi-agent interaction and coordination
+    - Clinical decision support
+    - Real-time communication and alerts
+    - HIPAA-compliant audit and reporting
+    
+    **Security**: All endpoints require authentication and follow HIPAA compliance standards.
+    **Performance**: 95th percentile response time < 500ms for all endpoints.
+    **Availability**: 99.9% uptime SLA with automated failover.
+  version: 1.0.0
+  contact:
+    name: Healthcare Triage API Support
+    email: api-support@healthcare-triage.com
+    url: https://docs.healthcare-triage.com
+  license:
+    name: Proprietary
+    url: https://healthcare-triage.com/license
+
+servers:
+  - url: https://api.healthcare-triage.com/v1
+    description: Production server
+  - url: https://staging-api.healthcare-triage.com/v1
+    description: Staging server
+  - url: http://localhost:8000/v1
+    description: Local development server
+
+security:
+  - BearerAuth: []
+  - HIPAACompliant: []
+
+paths:
+  # Patient Management Endpoints
+  /patients:
+    post:
+      summary: Create new patient record
+      description: Register a new patient in the system with encrypted demographics
+      operationId: createPatient
+      security:
+        - BearerAuth: []
+        - HIPAACompliant: []
+      tags:
+        - Patient Management
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatientCreate'
+            examples:
+              adult_patient:
+                summary: Adult patient registration
+                value:
+                  medical_record_number: "MRN-2024-001234"
+                  demographics:
+                    first_name: "John"
+                    last_name: "Doe"
+                    date_of_birth: "1985-06-15"
+                    gender: "male"
+                    phone: "+1-555-0123"
+                    email: "john.doe@email.com"
+                  emergency_contact:
+                    name: "Jane Doe"
+                    relationship: "spouse"
+                    phone: "+1-555-0124"
+      responses:
+        '201':
+          description: Patient created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Patient'
+              examples:
+                created_patient:
+                  summary: Successfully created patient
+                  value:
+                    id: "550e8400-e29b-41d4-a716-446655440000"
+                    medical_record_number: "MRN-2024-001234"
+                    encrypted_demographics: "encrypted_data_blob"
+                    created_at: "2024-01-15T10:30:00Z"
+                    updated_at: "2024-01-15T10:30:00Z"
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '409':
+          description: Patient with MRN already exists
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+    get:
+      summary: Search patients
+      description: Search for patients by medical record number or demographics (authorized users only)
+      operationId: searchPatients
+      security:
+        - BearerAuth: []
+        - HIPAACompliant: []
+      tags:
+        - Patient Management
+      parameters:
+        - name: medical_record_number
+          in: query
+          description: Patient's medical record number
+          schema:
+            type: string
+            pattern: '^MRN-\d{4}-\d{6}$'
+        - name: last_name
+          in: query
+          description: Patient's last name (partial match)
+          schema:
+            type: string
+            minLength: 2
+        - name: date_of_birth
+          in: query
+          description: Patient's date of birth (YYYY-MM-DD)
+          schema:
+            type: string
+            format: date
+        - name: limit
+          in: query
+          description: Maximum number of results to return
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+            default: 20
+      responses:
+        '200':
+          description: Patient search results
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  patients:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/PatientSummary'
+                  total_count:
+                    type: integer
+                  has_more:
+                    type: boolean
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+
+  /patients/{patient_id}:
+    get:
+      summary: Get patient details
+      description: Retrieve detailed patient information including medical history
+      operationId: getPatient
+      security:
+        - BearerAuth: []
+        - HIPAACompliant: []
+      tags:
+        - Patient Management
+      parameters:
+        - $ref: '#/components/parameters/PatientId'
+      responses:
+        '200':
+          description: Patient details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PatientDetailed'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    put:
+      summary: Update patient information
+      description: Update patient demographics and medical information
+      operationId: updatePatient
+      security:
+        - BearerAuth: []
+        - HIPAACompliant: []
+      tags:
+        - Patient Management
+      parameters:
+        - $ref: '#/components/parameters/PatientId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatientUpdate'
+      responses:
+        '200':
+          description: Patient updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Patient'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  # Triage Session Endpoints
+  /triage/sessions:
+    post:
+      summary: Start new triage session
+      description: Initialize a new triage assessment session for a patient
+      operationId: startTriageSession
+      security:
+        - BearerAuth: []
+        - ClinicalRole: []
+      tags:
+        - Triage Management
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TriageSessionCreate'
+            examples:
+              emergency_session:
+                summary: Emergency department triage
+                value:
+                  patient_id: "550e8400-e29b-41d4-a716-446655440000"
+                  department: "emergency"
+                  triage_nurse_id: "nurse-12345"
+                  chief_complaint: "Chest pain and shortness of breath"
+                  arrival_method: "ambulance"
+                  vital_signs:
+                    temperature: 98.6
+                    blood_pressure_systolic: 140
+                    blood_pressure_diastolic: 90
+                    heart_rate: 88
+                    respiratory_rate: 20
+                    oxygen_saturation: 95
+      responses:
+        '201':
+          description: Triage session started successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TriageSession'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+
+  /triage/sessions/{session_id}:
+    get:
+      summary: Get triage session details
+      description: Retrieve complete triage session information and assessment results
+      operationId: getTriageSession
+      security:
+        - BearerAuth: []
+        - ClinicalRole: []
+      tags:
+        - Triage Management
+      parameters:
+        - $ref: '#/components/parameters/SessionId'
+      responses:
+        '200':
+          description: Triage session details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TriageSessionDetailed'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    put:
+      summary: Update triage session
+      description: Update triage assessment, ESI level, or session status
+      operationId: updateTriageSession
+      security:
+        - BearerAuth: []
+        - ClinicalRole: []
+      tags:
+        - Triage Management
+      parameters:
+        - $ref: '#/components/parameters/SessionId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TriageSessionUpdate'
+      responses:
+        '200':
+          description: Triage session updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TriageSession'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  # AI Agent Interaction Endpoints
+  /agents/interact:
+    post:
+      summary: Interact with AI agents
+      description: Send messages to AI agents and receive intelligent responses
+      operationId: interactWithAgent
+      security:
+        - BearerAuth: []
+        - ActiveSession: []
+      tags:
+        - AI Agents
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AgentInteraction'
+            examples:
+              intake_interaction:
+                summary: Intake agent interaction
+                value:
+                  session_id: "session-550e8400-e29b-41d4-a716-446655440000"
+                  agent_type: "intake"
+                  message: "Patient reports severe chest pain that started 2 hours ago"
+                  context:
+                    previous_responses: []
+                    patient_age: 45
+                    current_medications: ["lisinopril", "metformin"]
+              triage_interaction:
+                summary: Triage agent assessment
+                value:
+                  session_id: "session-550e8400-e29b-41d4-a716-446655440000"
+                  agent_type: "triage"
+                  message: "Please assess ESI level for this patient"
+                  context:
+                    symptoms: ["chest_pain", "shortness_of_breath"]
+                    vital_signs:
+                      blood_pressure: "140/90"
+                      heart_rate: 88
+                      oxygen_saturation: 95
+      responses:
+        '200':
+          description: Agent response received
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AgentResponse'
+              examples:
+                intake_response:
+                  summary: Intake agent response
+                  value:
+                    agent_type: "intake"
+                    response_type: "question"
+                    message: "Can you describe the chest pain? Is it sharp, crushing, or burning?"
+                    confidence_score: 0.95
+                    suggested_actions:
+                      - "Obtain 12-lead ECG immediately"
+                      - "Start continuous cardiac monitoring"
+                    processing_time_ms: 1247
+                triage_response:
+                  summary: Triage agent ESI assessment
+                  value:
+                    agent_type: "triage"
+                    response_type: "assessment"
+                    message: "Based on presenting symptoms and vital signs, recommend ESI Level 2"
+                    confidence_score: 0.92
+                    assessment:
+                      esi_level: 2
+                      urgency: "high"
+                      reasoning: "Acute chest pain with hemodynamic stability requires immediate evaluation"
+                      recommended_protocols: ["chest_pain_protocol", "cardiac_monitoring"]
+                    processing_time_ms: 2156
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+
+  /agents/status:
+    get:
+      summary: Get agent system status
+      description: Retrieve current status and performance metrics for all AI agents
+      operationId: getAgentStatus
+      security:
+        - BearerAuth: []
+      tags:
+        - AI Agents
+      responses:
+        '200':
+          description: Agent system status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AgentSystemStatus'
+
+  # Knowledge Base Endpoints
+  /knowledge/search:
+    post:
+      summary: Search medical knowledge base
+      description: Perform semantic search across medical protocols, guidelines, and drug interactions
+      operationId: searchKnowledge
+      security:
+        - BearerAuth: []
+        - ClinicalRole: []
+      tags:
+        - Knowledge Base
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/KnowledgeSearch'
+            examples:
+              protocol_search:
+                summary: Search for treatment protocols
+                value:
+                  query: "chest pain treatment protocol emergency department"
+                  filters:
+                    content_type: ["protocols", "guidelines"]
+                    specialty: ["emergency_medicine", "cardiology"]
+                    urgency_level: ["high", "critical"]
+                  limit: 10
+      responses:
+        '200':
+          description: Knowledge search results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KnowledgeSearchResults'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+
+  /knowledge/drug-interactions:
+    post:
+      summary: Check drug interactions
+      description: Analyze potential drug interactions for a given medication list
+      operationId: checkDrugInteractions
+      security:
+        - BearerAuth: []
+        - ClinicalRole: []
+      tags:
+        - Knowledge Base
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DrugInteractionCheck'
+      responses:
+        '200':
+          description: Drug interaction analysis results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DrugInteractionResults'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+
+  # Analytics and Reporting Endpoints
+  /analytics/dashboard:
+    get:
+      summary: Get triage dashboard analytics
+      description: Retrieve real-time analytics for triage operations and performance metrics
+      operationId: getTriageDashboard
+      security:
+        - BearerAuth: []
+        - ManagerRole: []
+      tags:
+        - Analytics
+      parameters:
+        - name: time_range
+          in: query
+          description: Time range for analytics data
+          schema:
+            type: string
+            enum: [hour, day, week, month]
+            default: day
+        - name: department
+          in: query
+          description: Filter by department
+          schema:
+            type: string
+            enum: [emergency, urgent_care, all]
+            default: all
+      responses:
+        '200':
+          description: Triage analytics dashboard data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TriageDashboard'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+
+  # System Health and Monitoring
+  /health:
+    get:
+      summary: System health check
+      description: Basic health check endpoint for monitoring system availability
+      operationId: healthCheck
+      tags:
+        - System
+      security: []
+      responses:
+        '200':
+          description: System is healthy
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthCheck'
+        '503':
+          description: System is unhealthy
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthCheck'
+
+  /health/detailed:
+    get:
+      summary: Detailed system health status
+      description: Comprehensive health check including database, AI services, and external integrations
+      operationId: detailedHealthCheck
+      security:
+        - BearerAuth: []
+        - AdminRole: []
+      tags:
+        - System
+      responses:
+        '200':
+          description: Detailed system health status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DetailedHealthCheck'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: JWT token obtained from authentication endpoint
+    HIPAACompliant:
+      type: apiKey
+      in: header
+      name: X-HIPAA-Audit-Token
+      description: HIPAA compliance tracking token
+    ClinicalRole:
+      type: oauth2
+      description: OAuth2 scope for clinical staff access
+      flows:
+        authorizationCode:
+          authorizationUrl: https://auth.healthcare-triage.com/oauth/authorize
+          tokenUrl: https://auth.healthcare-triage.com/oauth/token
+          scopes:
+            clinical:read: Read access to clinical data
+            clinical:write: Write access to clinical data
+            patient:read: Read access to patient information
+            patient:write: Write access to patient information
+    AdminRole:
+      type: oauth2
+      description: OAuth2 scope for administrative access
+      flows:
+        authorizationCode:
+          authorizationUrl: https://auth.healthcare-triage.com/oauth/authorize
+          tokenUrl: https://auth.healthcare-triage.com/oauth/token
+          scopes:
+            admin:read: Read access to administrative functions
+            admin:write: Write access to administrative functions
+            system:monitor: System monitoring access
+    ManagerRole:
+      type: oauth2
+      description: OAuth2 scope for management access
+      flows:
+        authorizationCode:
+          authorizationUrl: https://auth.healthcare-triage.com/oauth/authorize
+          tokenUrl: https://auth.healthcare-triage.com/oauth/token
+          scopes:
+            analytics:read: Read access to analytics and reports
+            department:manage: Department management access
+    ActiveSession:
+      type: apiKey
+      in: header
+      name: X-Session-Token
+      description: Active triage session token
+
+  parameters:
+    PatientId:
+      name: patient_id
+      in: path
+      required: true
+      description: Unique patient identifier
+      schema:
+        type: string
+        format: uuid
+    SessionId:
+      name: session_id
+      in: path
+      required: true
+      description: Unique triage session identifier
+      schema:
+        type: string
+        format: uuid
+
+  schemas:
+    # Patient Management Schemas
+    PatientCreate:
+      type: object
+      required:
+        - medical_record_number
+        - demographics
+      properties:
+        medical_record_number:
+          type: string
+          pattern: '^MRN-\d{4}-\d{6}$'
+          description: Hospital-assigned medical record number
+        demographics:
+          $ref: '#/components/schemas/PatientDemographics'
+        emergency_contact:
+          $ref: '#/components/schemas/EmergencyContact'
+        insurance_information:
+          $ref: '#/components/schemas/InsuranceInformation'
+
+    Patient:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique patient identifier
+        medical_record_number:
+          type: string
+          description: Hospital-assigned medical record number
+        encrypted_demographics:
+          type: string
+          description: Encrypted patient demographic data
+        created_at:
+          type: string
+          format: date-time
+          description: Record creation timestamp
+        updated_at:
+          type: string
+          format: date-time
+          description: Last update timestamp
+
+    PatientDemographics:
+      type: object
+      required:
+        - first_name
+        - last_name
+        - date_of_birth
+        - gender
+      properties:
+        first_name:
+          type: string
+          minLength: 1
+          maxLength: 50
+        last_name:
+          type: string
+          minLength: 1
+          maxLength: 50
+        middle_name:
+          type: string
+          maxLength: 50
+        date_of_birth:
+          type: string
+          format: date
+        gender:
+          type: string
+          enum: [male, female, other, unknown]
+        phone:
+          type: string
+          pattern: '^\+1-\d{3}-\d{4}$'
+        email:
+          type: string
+          format: email
+        address:
+          $ref: '#/components/schemas/Address'
+
+    Address:
+      type: object
+      properties:
+        street_address:
+          type: string
+          maxLength: 100
+        city:
+          type: string
+          maxLength: 50
+        state:
+          type: string
+          minLength: 2
+          maxLength: 2
+        zip_code:
+          type: string
+          pattern: '^\d{5}(-\d{4})?$'
+        country:
+          type: string
+          default: "US"
+
+    EmergencyContact:
+      type: object
+      required:
+        - name
+        - relationship
+        - phone
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        relationship:
+          type: string
+          enum: [spouse, parent, child, sibling, friend, other]
+        phone:
+          type: string
+          pattern: '^\+1-\d{3}-\d{4}$'
+        email:
+          type: string
+          format: email
+
+    # Triage Session Schemas
+    TriageSessionCreate:
+      type: object
+      required:
+        - patient_id
+        - department
+        - triage_nurse_id
+        - chief_complaint
+      properties:
+        patient_id:
+          type: string
+          format: uuid
+        department:
+          type: string
+          enum: [emergency, urgent_care, fast_track]
+        triage_nurse_id:
+          type: string
+          description: Identifier for the triage nurse
+        chief_complaint:
+          type: string
+          minLength: 5
+          maxLength: 500
+          description: Patient's primary complaint or reason for visit
+        arrival_method:
+          type: string
+          enum: [walk_in, ambulance, wheelchair, stretcher]
+        vital_signs:
+          $ref: '#/components/schemas/VitalSigns'
+        pain_scale:
+          type: integer
+          minimum: 0
+          maximum: 10
+          description: Patient-reported pain level (0-10 scale)
+
+    TriageSession:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        patient_id:
+          type: string
+          format: uuid
+        department:
+          type: string
+          enum: [emergency, urgent_care, fast_track]
+        session_start:
+          type: string
+          format: date-time
+        session_end:
+          type: string
+          format: date-time
+          nullable: true
+        esi_level:
+          type: integer
+          minimum: 1
+          maximum: 5
+          description: Emergency Severity Index level
+        chief_complaint:
+          type: string
+        triage_nurse_id:
+          type: string
+        status:
+          type: string
+          enum: [active, completed, escalated, transferred]
+        created_at:
+          type: string
+          format: date-time
+
+    VitalSigns:
+      type: object
+      properties:
+        temperature:
+          type: number
+          minimum: 90.0
+          maximum: 110.0
+          description: Body temperature in Fahrenheit
+        blood_pressure_systolic:
+          type: integer
+          minimum: 60
+          maximum: 300
+          description: Systolic blood pressure in mmHg
+        blood_pressure_diastolic:
+          type: integer
+          minimum: 30
+          maximum: 200
+          description: Diastolic blood pressure in mmHg
+        heart_rate:
+          type: integer
+          minimum: 30
+          maximum: 250
+          description: Heart rate in beats per minute
+        respiratory_rate:
+          type: integer
+          minimum: 8
+          maximum: 60
+          description: Respiratory rate in breaths per minute
+        oxygen_saturation:
+          type: integer
+          minimum: 70
+          maximum: 100
+          description: Oxygen saturation percentage
+        weight:
+          type: number
+          minimum: 1.0
+          maximum: 1000.0
+          description: Patient weight in pounds
+        height:
+          type: number
+          minimum: 12.0
+          maximum: 96.0
+          description: Patient height in inches
+
+    # AI Agent Schemas
+    AgentInteraction:
+      type: object
+      required:
+        - session_id
+        - agent_type
+        - message
+      properties:
+        session_id:
+          type: string
+          format: uuid
+        agent_type:
+          type: string
+          enum: [intake, triage, knowledge, escalation]
+        message:
+          type: string
+          minLength: 1
+          maxLength: 2000
+        context:
+          type: object
+          description: Additional context for agent processing
+          additionalProperties: true
+
+    AgentResponse:
+      type: object
+      properties:
+        agent_type:
+          type: string
+          enum: [intake, triage, knowledge, escalation]
+        response_type:
+          type: string
+          enum: [question, assessment, information, action, error]
+        message:
+          type: string
+          description: Agent's response message
+        confidence_score:
+          type: number
+          minimum: 0.0
+          maximum: 1.0
+          description: Confidence level of the agent's response
+        suggested_actions:
+          type: array
+          items:
+            type: string
+          description: Recommended actions based on assessment
+        assessment:
+          type: object
+          description: Structured assessment results
+          additionalProperties: true
+        processing_time_ms:
+          type: integer
+          description: Time taken to process the request in milliseconds
+        metadata:
+          type: object
+          description: Additional metadata about the response
+          additionalProperties: true
+
+    # Error and Response Schemas
+    Error:
+      type: object
+      required:
+        - error
+        - message
+      properties:
+        error:
+          type: string
+          description: Error type identifier
+        message:
+          type: string
+          description: Human-readable error message
+        details:
+          type: object
+          description: Additional error details
+          additionalProperties: true
+        correlation_id:
+          type: string
+          format: uuid
+          description: Unique identifier for tracking this error
+
+    HealthCheck:
+      type: object
+      properties:
+        status:
+          type: string
+          enum: [healthy, unhealthy, degraded]
+        timestamp:
+          type: string
+          format: date-time
+        version:
+          type: string
+          description: Application version
+        uptime:
+          type: integer
+          description: System uptime in seconds
+
+  responses:
+    BadRequest:
+      description: Bad request - invalid input parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            validation_error:
+              summary: Input validation error
+              value:
+                error: "validation_error"
+                message: "Invalid input parameters"
+                details:
+                  field: "medical_record_number"
+                  issue: "Must match pattern MRN-YYYY-NNNNNN"
+
+    Unauthorized:
+      description: Unauthorized - authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            missing_token:
+              summary: Missing authentication token
+              value:
+                error: "authentication_required"
+                message: "Valid authentication token required"
+
+    Forbidden:
+      description: Forbidden - insufficient permissions
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            insufficient_permissions:
+              summary: Insufficient permissions
+              value:
+                error: "insufficient_permissions"
+                message: "Clinical role required for this operation"
+
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            patient_not_found:
+              summary: Patient not found
+              value:
+                error: "resource_not_found"
+                message: "Patient with specified ID not found"
+
+tags:
+  - name: Patient Management
+    description: Patient registration, search, and profile management
+  - name: Triage Management
+    description: Triage session management and assessment
+  - name: AI Agents
+    description: Intelligent agent interaction and coordination
+  - name: Knowledge Base
+    description: Medical knowledge search and clinical decision support
+  - name: Analytics
+    description: Performance analytics and operational reporting
+  - name: System
+    description: System health monitoring and administration

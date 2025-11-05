@@ -1,0 +1,44 @@
+{
+  "name": "postgresql-prisma-example",
+  "version": "1.0.0",
+  "description": "PostgreSQL with Prisma ORM example",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev",
+    "prisma:migrate:prod": "prisma migrate deploy",
+    "prisma:studio": "prisma studio",
+    "prisma:seed": "ts-node prisma/seed.ts",
+    "prisma:reset": "prisma migrate reset --force",
+    "db:setup": "npx prisma migrate dev && npx prisma db seed",
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.8.0",
+    "bcrypt": "^5.1.1"
+  },
+  "devDependencies": {
+    "prisma": "^5.8.0",
+    "@types/node": "^20.10.5",
+    "@types/bcrypt": "^5.0.2",
+    "typescript": "^5.3.3",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0"
+  },
+  "keywords": [
+    "postgresql",
+    "prisma",
+    "orm",
+    "database",
+    "typescript"
+  ],
+  "author": "KAPI",
+  "license": "MIT"
+}

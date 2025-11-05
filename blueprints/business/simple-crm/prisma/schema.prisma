@@ -1,0 +1,287 @@
+// Simple CRM Database Schema
+// PostgreSQL with Prisma ORM
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ============================================================================
+// ORGANIZATIONS & USERS
+// ============================================================================
+
+model Organization {
+  id        String   @id @default(cuid())
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  users     User[]
+  contacts  Contact[]
+  companies Company[]
+  deals     Deal[]
+  tasks     Task[]
+  invoices  Invoice[]
+  tags      Tag[]
+}
+
+model User {
+  id             String   @id @default(cuid())
+  email          String   @unique
+  password       String
+  name           String
+  role           String   @default("user") // admin, manager, user
+  organizationId String
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  assignedContacts Contact[]
+  assignedDeals    Deal[]
+  assignedTasks    Task[]
+  activities       Activity[]
+  createdInvoices  Invoice[]
+}
+
+// ============================================================================
+// CONTACTS & COMPANIES
+// ============================================================================
+
+model Company {
+  id             String   @id @default(cuid())
+  name           String
+  website        String?
+  industry       String?
+  size           String? // "1-10", "11-50", "51-200", "201-1000", "1000+"
+  revenue        Float?
+  description    String?
+  address        String?
+  city           String?
+  state          String?
+  country        String?
+  postalCode     String?
+  phone          String?
+  organizationId String
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  contacts Contact[]
+  deals    Deal[]
+}
+
+model Contact {
+  id                String   @id @default(cuid())
+  email             String
+  firstName         String
+  lastName          String
+  phone             String?
+  mobile            String?
+  title             String? // Job title
+  companyId         String?
+  status            String   @default("lead") // lead, prospect, customer, churned
+  source            String?  // website, referral, cold_call, event, linkedin, other
+  assignedToId      String?
+  organizationId    String
+  lastContactedAt   DateTime?
+  customFields      Json?    // Flexible custom data
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  company      Company?     @relation(fields: [companyId], references: [id], onDelete: SetNull)
+  assignedTo   User?        @relation(fields: [assignedToId], references: [id], onDelete: SetNull)
+
+  deals      Deal[]
+  activities Activity[]
+  tasks      Task[]
+  tags       ContactTag[]
+
+  @@index([email])
+  @@index([organizationId])
+  @@index([companyId])
+  @@index([assignedToId])
+}
+
+// ============================================================================
+// SALES PIPELINE
+// ============================================================================
+
+model Deal {
+  id              String   @id @default(cuid())
+  title           String
+  value           Float
+  probability     Int      @default(50) // 0-100
+  stage           String   @default("lead") // lead, qualified, proposal, negotiation, won, lost
+  contactId       String?
+  companyId       String?
+  assignedToId    String?
+  organizationId  String
+  expectedCloseAt DateTime?
+  closedAt        DateTime?
+  wonLostReason   String?
+  customFields    Json?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  contact      Contact?     @relation(fields: [contactId], references: [id], onDelete: SetNull)
+  company      Company?     @relation(fields: [companyId], references: [id], onDelete: SetNull)
+  assignedTo   User?        @relation(fields: [assignedToId], references: [id], onDelete: SetNull)
+
+  activities   Activity[]
+  stageHistory DealStageHistory[]
+
+  @@index([organizationId])
+  @@index([contactId])
+  @@index([assignedToId])
+  @@index([stage])
+}
+
+model DealStageHistory {
+  id        String   @id @default(cuid())
+  dealId    String
+  fromStage String?
+  toStage   String
+  changedAt DateTime @default(now())
+
+  deal Deal @relation(fields: [dealId], references: [id], onDelete: Cascade)
+
+  @@index([dealId])
+}
+
+// ============================================================================
+// ACTIVITIES & TASKS
+// ============================================================================
+
+model Activity {
+  id             String   @id @default(cuid())
+  type           String   // call, email, meeting, note, deal_stage_change, invoice_sent, etc.
+  title          String
+  description    String?
+  contactId      String?
+  dealId         String?
+  userId         String
+  organizationId String
+  occurredAt     DateTime @default(now())
+  createdAt      DateTime @default(now())
+
+  contact Contact? @relation(fields: [contactId], references: [id], onDelete: SetNull)
+  deal    Deal?    @relation(fields: [dealId], references: [id], onDelete: SetNull)
+  user    User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([contactId])
+  @@index([dealId])
+  @@index([userId])
+  @@index([occurredAt])
+}
+
+model Task {
+  id             String    @id @default(cuid())
+  title          String
+  description    String?
+  dueDate        DateTime?
+  priority       String    @default("medium") // low, medium, high, urgent
+  status         String    @default("pending") // pending, in_progress, completed
+  assignedToId   String
+  contactId      String?
+  organizationId String
+  reminderAt     DateTime?
+  completedAt    DateTime?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  assignedTo   User         @relation(fields: [assignedToId], references: [id], onDelete: Cascade)
+  contact      Contact?     @relation(fields: [contactId], references: [id], onDelete: SetNull)
+
+  @@index([assignedToId])
+  @@index([contactId])
+  @@index([dueDate])
+  @@index([status])
+}
+
+// ============================================================================
+// INVOICING (Stripe Integration)
+// ============================================================================
+
+model Invoice {
+  id                String    @id @default(cuid())
+  invoiceNumber     String    @unique
+  contactId         String?
+  companyId         String?
+  status            String    @default("draft") // draft, sent, paid, overdue, cancelled
+  subtotal          Float
+  taxRate           Float     @default(0)
+  taxAmount         Float
+  total             Float
+  currency          String    @default("USD")
+  dueDate           DateTime?
+  paidAt            DateTime?
+  stripeInvoiceId   String?   @unique
+  stripePaymentLink String?
+  organizationId    String
+  createdById       String
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  createdBy    User         @relation(fields: [createdById], references: [id], onDelete: Cascade)
+
+  items InvoiceItem[]
+
+  @@index([contactId])
+  @@index([companyId])
+  @@index([organizationId])
+  @@index([status])
+}
+
+model InvoiceItem {
+  id          String  @id @default(cuid())
+  invoiceId   String
+  description String
+  quantity    Float
+  unitPrice   Float
+  total       Float
+
+  invoice Invoice @relation(fields: [invoiceId], references: [id], onDelete: Cascade)
+
+  @@index([invoiceId])
+}
+
+// ============================================================================
+// TAGS & ORGANIZATION
+// ============================================================================
+
+model Tag {
+  id             String   @id @default(cuid())
+  name           String
+  color          String?  // hex color
+  organizationId String
+  createdAt      DateTime @default(now())
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  contacts ContactTag[]
+
+  @@unique([name, organizationId])
+  @@index([organizationId])
+}
+
+model ContactTag {
+  contactId String
+  tagId     String
+
+  contact Contact @relation(fields: [contactId], references: [id], onDelete: Cascade)
+  tag     Tag     @relation(fields: [tagId], references: [id], onDelete: Cascade)
+
+  @@id([contactId, tagId])
+  @@index([contactId])
+  @@index([tagId])
+}

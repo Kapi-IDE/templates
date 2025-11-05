@@ -1,0 +1,12 @@
+component_id: express-oidc-provider
+name: Express OIDC Provider
+version: 1.0.0
+category: auth
+subcategory: oidc
+maintainer: KAPI Templates Team
+
+provides:
+  - oidc_provider_bootstrap
+  - account_store_hook
+  - express_security_headers
+

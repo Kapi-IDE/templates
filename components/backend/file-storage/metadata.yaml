@@ -1,0 +1,51 @@
+component_id: cloud-file-storage
+name: Cloud File Storage Component
+version: 1.0.0
+category: backend
+subcategory: file-storage
+language: Python
+framework: N/A
+
+description: |
+  Flexible file storage component supporting local filesystem,
+  Cloudinary, and AWS S3. Provides unified interface for file
+  upload, retrieval, and deletion.
+
+features:
+  - Local filesystem storage
+  - Cloudinary integration (optional)
+  - AWS S3 integration (optional)
+  - Automatic filename generation
+  - MD5 hash deduplication
+  - File listing and management
+
+dependencies:
+  - cloudinary>=1.41.0 (optional)
+  - boto3>=1.35.0 (optional)
+
+use_cases:
+  - User file uploads
+  - Image storage
+  - Document management
+  - Static asset hosting
+  - Meme generation storage
+
+created_for: blueprints/quickwins/meme-generator
+
+example_usage: |
+  from cloud_storage import create_storage
+
+  # Local storage (default)
+  storage = create_storage("local")
+  file_id, url = storage.save_meme(image_bytes, "photo.jpg")
+
+  # Cloudinary (with env var CLOUDINARY_URL set)
+  storage = create_storage("cloudinary")
+  public_id, url = storage.save_meme(image_bytes)
+
+  # AWS S3 (with AWS credentials set)
+  storage = create_storage("s3")
+  object_key, url = storage.save_meme(image_bytes)
+
+  # List files
+  memes = storage.list_memes(limit=50)

@@ -1,0 +1,525 @@
+---
+# KAPI Implementation Roadmap Template
+# Based on: Comprehensive AI-Augmented Coding Playbook 2025 - Part IX Implementation Roadmap
+# Version: 1.0.0
+# Purpose: Strategic implementation planning with systematic AI assistance and quality gates
+
+template_metadata:
+  id: "implementation-roadmap-template"
+  version: "1.0.0"
+  category: "project-management"
+  last_updated: "2025-01-29"
+  author: "KAPI AI Development Team"
+  description: "Comprehensive roadmap framework for systematic feature implementation with AI assistance"
+  methodology: "Backwards Build with Progressive Feature Development"
+
+# ===== PROJECT CONTEXT =====
+project_profile:
+  project: "[PROJECT_NAME]"
+  roadmap_lead: "[ROADMAP_LEAD_NAME]"
+  planning_date: "2025-01-29"
+  project_phase: "planning" # planning | development | validation | deployment
+  
+  project_scope:
+    primary_objective: "[MAIN_PROJECT_GOAL]"
+    success_criteria:
+      - "[MEASURABLE_SUCCESS_CRITERION_1]"
+      - "[MEASURABLE_SUCCESS_CRITERION_2]"
+      - "[MEASURABLE_SUCCESS_CRITERION_3]"
+    
+    constraints:
+      timeline: "[PROJECT_TIMELINE]"
+      budget: "[PROJECT_BUDGET]"
+      team_size: "[TEAM_SIZE_AND_COMPOSITION]"
+      technical_constraints: ["[CONSTRAINT_1]", "[CONSTRAINT_2]"]
+      business_constraints: ["[CONSTRAINT_1]", "[CONSTRAINT_2]"]
+
+# ===== ROADMAP PHILOSOPHY =====
+roadmap_framework:
+  core_principle: "Living specifications drive implementation roadmap, not arbitrary timelines"
+  ai_integration_strategy: "AI assists in realistic estimation and risk assessment while maintaining human strategic judgment"
+  quality_assurance_approach: "Built-in quality gates prevent technical debt accumulation throughout development"
+  
+  backwards_build_integration:
+    specification_first: "All roadmap items begin with comprehensive specification definition"
+    architecture_second: "Technical architecture defined before implementation timelines"
+    testing_third: "Test strategies established before development begins"
+    implementation_fourth: "Implementation planned with clear quality gates"
+    validation_continuous: "Ongoing validation against specifications throughout development"
+
+# ===== STRATEGIC FEATURE BREAKDOWN =====
+feature_hierarchy:
+  tier_1_core_features:
+    description: "Essential features required for minimum viable product"
+    completion_required: "100% before any deployment"
+    
+    features:
+      - feature_id: "F001"
+        feature_name: "[CORE_FEATURE_1_NAME]"
+        business_value: "critical" # critical | high | medium | low
+        technical_complexity: "medium" # low | medium | high | critical
+        dependencies: ["[DEPENDENCY_1]", "[DEPENDENCY_2]"]
+        specification_status: "complete" # complete | draft | missing
+        estimated_effort: "[TIME_ESTIMATE]"
+        risk_level: "low" # low | medium | high | critical
+        
+      - feature_id: "F002"
+        feature_name: "[CORE_FEATURE_2_NAME]"
+        business_value: "critical"
+        technical_complexity: "high"
+        dependencies: ["[DEPENDENCY_1]"]
+        specification_status: "draft"
+        estimated_effort: "[TIME_ESTIMATE]"
+        risk_level: "medium"
+        
+  tier_2_enhanced_features:
+    description: "Important features that significantly improve user experience"
+    completion_required: "80% for initial release, 100% for feature-complete release"
+    
+    features:
+      - feature_id: "F101"
+        feature_name: "[ENHANCED_FEATURE_1_NAME]"
+        business_value: "high"
+        technical_complexity: "medium"
+        dependencies: ["F001", "F002"]
+        specification_status: "complete"
+        estimated_effort: "[TIME_ESTIMATE]"
+        risk_level: "low"
+        
+  tier_3_optimization_features:
+    description: "Performance and user experience optimizations"
+    completion_required: "50% for initial release, can be incrementally added"
+    
+    features:
+      - feature_id: "F201"
+        feature_name: "[OPTIMIZATION_FEATURE_1_NAME]"
+        business_value: "medium"
+        technical_complexity: "low"
+        dependencies: ["F101"]
+        specification_status: "missing"
+        estimated_effort: "[TIME_ESTIMATE]"
+        risk_level: "low"
+
+# ===== SYSTEMATIC IMPLEMENTATION PHASES =====
+implementation_phases:
+  phase_1_foundation:
+    duration: "[PHASE_DURATION]"
+    objective: "Establish core architecture and essential infrastructure"
+    success_criteria: ["[CRITERIA_1]", "[CRITERIA_2]", "[CRITERIA_3]"]
+    
+    phase_deliverables:
+      - deliverable: "Complete living specifications for all Tier 1 features"
+        owner: "[RESPONSIBLE_PERSON]"
+        completion_date: "[DATE]"
+        validation_method: "[HOW_COMPLETION_IS_VERIFIED]"
+        
+      - deliverable: "Technical architecture with all major component interfaces"
+        owner: "[RESPONSIBLE_PERSON]"
+        completion_date: "[DATE]"
+        validation_method: "[HOW_COMPLETION_IS_VERIFIED]"
+        
+      - deliverable: "Development environment setup with CI/CD pipeline"
+        owner: "[RESPONSIBLE_PERSON]"
+        completion_date: "[DATE]"
+        validation_method: "[HOW_COMPLETION_IS_VERIFIED]"
+        
+    ai_assistance_strategy:
+      specification_development: "AI-assisted requirement analysis and edge case identification"
+      architecture_design: "AI-generated architectural alternatives with trade-off analysis"
+      environment_setup: "AI-guided infrastructure configuration and optimization"
+      
+    quality_gates:
+      - gate: "Specification completeness review"
+        criteria: "All Tier 1 features have comprehensive specifications"
+        validation_method: "Automated specification coverage analysis + human review"
+        
+      - gate: "Architecture consistency validation"
+        criteria: "All components integrate correctly with defined interfaces"
+        validation_method: "Interface compatibility testing + architectural review"
+        
+      - gate: "Development environment reliability"
+        criteria: "CI/CD pipeline successfully builds and tests sample applications"
+        validation_method: "End-to-end pipeline execution with success criteria"
+        
+  phase_2_core_implementation:
+    duration: "[PHASE_DURATION]"
+    objective: "Implement all Tier 1 features with comprehensive testing"
+    success_criteria: ["[CRITERIA_1]", "[CRITERIA_2]", "[CRITERIA_3]"]
+    
+    implementation_strategy:
+      feature_sequencing:
+        approach: "Implement features in dependency order with parallel development where possible"
+        ai_assistance: "Optimize feature implementation sequence based on dependencies and team capacity"
+        risk_mitigation: "Early implementation of highest-risk features to identify issues quickly"
+        
+      quality_assurance_integration:
+        testing_approach: "TDD with AI-generated test scenarios and edge case coverage"
+        code_review_process: "AI-assisted code review with human architectural oversight"
+        performance_validation: "Continuous performance monitoring against specification requirements"
+        
+      progress_tracking:
+        measurement_method: "Feature completion against specifications with quality metrics"
+        reporting_frequency: "Daily progress updates with weekly stakeholder summaries"
+        adjustment_triggers: "Conditions that require roadmap adjustment or re-estimation"
+        
+    phase_deliverables:
+      - deliverable: "All Tier 1 features implemented and tested"
+        owner: "[RESPONSIBLE_PERSON]"
+        completion_date: "[DATE]"
+        validation_method: "Automated test suite + specification compliance verification"
+        
+      - deliverable: "Performance benchmarks meeting specification requirements"
+        owner: "[RESPONSIBLE_PERSON]"
+        completion_date: "[DATE]"
+        validation_method: "Performance testing results + load testing validation"
+        
+      - deliverable: "Security validation and vulnerability assessment"
+        owner: "[RESPONSIBLE_PERSON]"
+        completion_date: "[DATE]"
+        validation_method: "Security audit + penetration testing results"
+        
+  phase_3_enhancement_and_optimization:
+    duration: "[PHASE_DURATION]"
+    objective: "Implement Tier 2 features and optimize overall system performance"
+    success_criteria: ["[CRITERIA_1]", "[CRITERIA_2]", "[CRITERIA_3]"]
+    
+    enhancement_strategy:
+      user_experience_optimization: "AI-assisted analysis of user workflows with experience improvements"
+      performance_optimization: "Systematic performance analysis with AI-suggested optimizations"
+      feature_integration: "Seamless integration of enhanced features with core functionality"
+      
+    validation_approach:
+      user_acceptance_testing: "Systematic user testing with AI-analyzed feedback and improvements"
+      performance_validation: "Comprehensive performance testing under realistic load conditions"
+      integration_testing: "End-to-end system testing with all features integrated"
+
+# ===== RISK MANAGEMENT AND MITIGATION =====
+risk_management:
+  systematic_risk_identification:
+    technical_risks:
+      - risk: "[TECHNICAL_RISK_1]"
+        probability: "medium" # low | medium | high
+        impact: "high" # low | medium | high
+        current_mitigation: "[EXISTING_MITIGATION_STRATEGY]"
+        additional_mitigation: "[ADDITIONAL_MITIGATION_ACTIONS]"
+        owner: "[RISK_OWNER]"
+        monitoring_method: "[HOW_RISK_IS_MONITORED]"
+        
+      - risk: "[TECHNICAL_RISK_2]"
+        probability: "high"
+        impact: "medium"
+        current_mitigation: "[EXISTING_MITIGATION_STRATEGY]"
+        additional_mitigation: "[ADDITIONAL_MITIGATION_ACTIONS]"
+        owner: "[RISK_OWNER]"
+        monitoring_method: "[HOW_RISK_IS_MONITORED]"
+        
+    business_risks:
+      - risk: "[BUSINESS_RISK_1]"
+        probability: "low"
+        impact: "critical"
+        current_mitigation: "[EXISTING_MITIGATION_STRATEGY]"
+        additional_mitigation: "[ADDITIONAL_MITIGATION_ACTIONS]"
+        owner: "[RISK_OWNER]"
+        monitoring_method: "[HOW_RISK_IS_MONITORED]"
+        
+    resource_risks:
+      - risk: "[RESOURCE_RISK_1]"
+        probability: "medium"
+        impact: "medium"
+        current_mitigation: "[EXISTING_MITIGATION_STRATEGY]"
+        additional_mitigation: "[ADDITIONAL_MITIGATION_ACTIONS]"
+        owner: "[RISK_OWNER]"
+        monitoring_method: "[HOW_RISK_IS_MONITORED]"
+        
+  ai_assisted_risk_analysis:
+    predictive_risk_modeling: "AI analysis of historical project data to predict emerging risks"
+    scenario_planning: "AI-generated scenario analysis for various risk combination outcomes"
+    mitigation_optimization: "AI-suggested risk mitigation strategies with cost-benefit analysis"
+    
+    risk_monitoring_automation:
+      automated_risk_detection: "Continuous monitoring of project metrics for risk indicator changes"
+      early_warning_systems: "Automated alerts when risk indicators exceed threshold values"
+      mitigation_effectiveness_tracking: "AI analysis of mitigation strategy effectiveness over time"
+
+# ===== RESOURCE PLANNING AND ALLOCATION =====
+resource_planning:
+  team_capacity_analysis:
+    current_team_composition:
+      - role: "[TEAM_MEMBER_ROLE]"
+        name: "[TEAM_MEMBER_NAME]"
+        capacity: "[AVAILABLE_HOURS_PER_WEEK]"
+        skills: ["[SKILL_1]", "[SKILL_2]", "[SKILL_3]"]
+        ai_proficiency: "intermediate" # expert | intermediate | beginner
+        feature_assignments: ["F001", "F002"]
+        
+    capacity_optimization:
+      skill_matching: "AI-assisted matching of team member skills to feature requirements"
+      load_balancing: "Systematic workload distribution to prevent bottlenecks"
+      cross_training_opportunities: "Identify opportunities for skill development and redundancy"
+      
+  ai_assistance_resource_allocation:
+    cost_budgeting:
+      monthly_ai_budget: "$[MONTHLY_AI_BUDGET]"
+      cost_per_feature_estimate: "$[ESTIMATED_AI_COST_PER_FEATURE]"
+      optimization_targets: "[COST_REDUCTION_GOALS]"
+      
+    ai_tool_allocation:
+      development_phase_tools: ["[AI_TOOL_1]", "[AI_TOOL_2]"]
+      testing_phase_tools: ["[AI_TOOL_1]", "[AI_TOOL_2]"]
+      optimization_phase_tools: ["[AI_TOOL_1]", "[AI_TOOL_2]"]
+      
+  external_resource_requirements:
+    infrastructure_needs:
+      - resource: "[INFRASTRUCTURE_RESOURCE]"
+        cost: "$[MONTHLY_COST]"
+        timeline: "[WHEN_NEEDED]"
+        alternatives: ["[ALTERNATIVE_1]", "[ALTERNATIVE_2]"]
+        
+    third_party_services:
+      - service: "[THIRD_PARTY_SERVICE]"
+        cost: "$[COST]"
+        integration_effort: "[EFFORT_ESTIMATE]"
+        risk_assessment: "[RISK_LEVEL]"
+
+# ===== QUALITY ASSURANCE INTEGRATION =====
+quality_assurance_framework:
+  continuous_quality_validation:
+    specification_compliance:
+      validation_method: "Automated checking of implementation against living specifications"
+      frequency: "Every commit"
+      success_criteria: "[MINIMUM_COMPLIANCE_PERCENTAGE]% compliance required for deployment"
+      
+    code_quality_metrics:
+      maintainability_targets:
+        - metric: "Cyclomatic complexity"
+          target: "[TARGET_VALUE]"
+          measurement_method: "[HOW_MEASURED]"
+          
+        - metric: "Code coverage"
+          target: "[TARGET_PERCENTAGE]%"
+          measurement_method: "[HOW_MEASURED]"
+          
+        - metric: "Technical debt ratio"
+          target: "[TARGET_RATIO]"
+          measurement_method: "[HOW_MEASURED]"
+          
+    security_validation:
+      security_scanning: "Automated security vulnerability scanning with every build"
+      penetration_testing: "Professional penetration testing at each phase completion"
+      compliance_checking: "Automated compliance validation against relevant standards"
+      
+  ai_assisted_quality_assurance:
+    automated_code_review: "AI-powered code review for patterns, security issues, and best practices"
+    test_generation: "AI-generated comprehensive test suites based on specifications"
+    performance_optimization: "AI-suggested performance improvements based on profiling data"
+    
+    quality_trend_analysis:
+      quality_metrics_tracking: "AI analysis of quality metrics trends over time"
+      predictive_quality_assessment: "AI prediction of quality issues based on development patterns"
+      optimization_recommendations: "AI-suggested process improvements for quality enhancement"
+
+# ===== DEPLOYMENT AND VALIDATION STRATEGY =====
+deployment_strategy:
+  phased_deployment_approach:
+    alpha_deployment:
+      timeline: "[ALPHA_DEPLOYMENT_DATE]"
+      scope: "Core features (Tier 1) with limited user base"
+      success_criteria: ["[ALPHA_SUCCESS_CRITERION_1]", "[ALPHA_SUCCESS_CRITERION_2]"]
+      validation_method: "Internal team testing + select external user feedback"
+      rollback_criteria: "[CONDITIONS_REQUIRING_ROLLBACK]"
+      
+    beta_deployment:
+      timeline: "[BETA_DEPLOYMENT_DATE]"
+      scope: "Core + Enhanced features (Tier 1 + 2) with expanded user base"
+      success_criteria: ["[BETA_SUCCESS_CRITERION_1]", "[BETA_SUCCESS_CRITERION_2]"]
+      validation_method: "Extended user testing + performance monitoring"
+      rollback_criteria: "[CONDITIONS_REQUIRING_ROLLBACK]"
+      
+    production_deployment:
+      timeline: "[PRODUCTION_DEPLOYMENT_DATE]"
+      scope: "Full feature set with complete optimization"
+      success_criteria: ["[PRODUCTION_SUCCESS_CRITERION_1]", "[PRODUCTION_SUCCESS_CRITERION_2]"]
+      validation_method: "Full user acceptance + comprehensive monitoring"
+      rollback_criteria: "[CONDITIONS_REQUIRING_ROLLBACK]"
+      
+  validation_framework:
+    user_acceptance_validation:
+      user_testing_approach: "Systematic user testing with AI-analyzed feedback collection"
+      success_metrics: ["[USER_SUCCESS_METRIC_1]", "[USER_SUCCESS_METRIC_2]"]
+      feedback_integration: "AI-assisted analysis of user feedback for improvement prioritization"
+      
+    performance_validation:
+      load_testing: "Comprehensive load testing under realistic usage scenarios"
+      scalability_testing: "Validation of system scalability under projected growth"
+      reliability_testing: "Extended reliability testing to validate uptime requirements"
+      
+    business_validation:
+      roi_measurement: "Quantitative measurement of return on investment"
+      user_adoption_tracking: "Systematic tracking of user adoption and engagement"
+      business_impact_assessment: "Analysis of business impact and goal achievement"
+
+# ===== MONITORING AND CONTINUOUS IMPROVEMENT =====
+monitoring_framework:
+  real_time_monitoring:
+    implementation_progress_tracking:
+      feature_completion_monitoring: "Real-time tracking of feature implementation progress"
+      quality_metrics_monitoring: "Continuous monitoring of code quality and performance metrics"
+      resource_utilization_tracking: "Monitoring of team capacity and AI resource usage"
+      
+    automated_alerts:
+      progress_deviation_alerts: "Automatic alerts when implementation deviates from plan"
+      quality_degradation_alerts: "Alerts when quality metrics fall below acceptable thresholds"
+      resource_constraint_alerts: "Alerts when resource usage approaches budgeted limits"
+      
+  continuous_improvement_process:
+    retrospective_analysis:
+      weekly_progress_reviews: "Weekly analysis of progress against roadmap with adjustment recommendations"
+      monthly_quality_assessments: "Monthly comprehensive quality review with improvement planning"
+      quarterly_strategy_reviews: "Quarterly strategic review of roadmap effectiveness and optimization"
+      
+    ai_assisted_optimization:
+      process_improvement_suggestions: "AI analysis of development process with efficiency recommendations"
+      resource_optimization_recommendations: "AI-suggested optimizations for resource allocation and utilization"
+      quality_improvement_strategies: "AI-generated strategies for quality enhancement based on trends"
+      
+    adaptation_framework:
+      roadmap_adjustment_triggers: "Specific conditions that trigger roadmap reassessment"
+      change_management_process: "Systematic process for incorporating changes without disrupting progress"
+      stakeholder_communication: "Clear communication strategy for roadmap changes and rationale"
+
+---
+
+# Implementation Roadmap Summary Report
+
+## Project Overview
+
+**Project**: [PROJECT_NAME]
+**Roadmap Lead**: [ROADMAP_LEAD_NAME]
+**Planning Date**: [DATE]
+**Project Phase**: [CURRENT_PHASE]
+**Overall Progress**: [PERCENTAGE_COMPLETE]%
+
+## Feature Implementation Status
+
+### Tier 1 Features (Core - 100% Required)
+- **F001 - [FEATURE_NAME]**: [STATUS] ([PERCENTAGE]% complete)
+- **F002 - [FEATURE_NAME]**: [STATUS] ([PERCENTAGE]% complete)
+- **Overall Tier 1 Progress**: [PERCENTAGE]% complete
+
+### Tier 2 Features (Enhanced - 80% Required for Release)
+- **F101 - [FEATURE_NAME]**: [STATUS] ([PERCENTAGE]% complete)
+- **Overall Tier 2 Progress**: [PERCENTAGE]% complete
+
+### Tier 3 Features (Optimization - 50% Required for Release)
+- **F201 - [FEATURE_NAME]**: [STATUS] ([PERCENTAGE]% complete)
+- **Overall Tier 3 Progress**: [PERCENTAGE]% complete
+
+## Phase Progress
+
+### Current Phase: [PHASE_NAME]
+**Duration**: [ACTUAL_DURATION] / [PLANNED_DURATION]
+**Progress**: [PERCENTAGE]% complete
+**Quality Gates Passed**: [NUMBER] / [TOTAL]
+
+### Upcoming Phases
+- **[NEXT_PHASE_NAME]**: Scheduled [START_DATE] - [END_DATE]
+- **[SUBSEQUENT_PHASE_NAME]**: Scheduled [START_DATE] - [END_DATE]
+
+## Quality Metrics
+
+### Code Quality
+- **Specification Compliance**: [PERCENTAGE]%
+- **Code Coverage**: [PERCENTAGE]%
+- **Technical Debt Ratio**: [RATIO]
+- **Security Scan Results**: [NUMBER] issues ([CRITICAL]/[HIGH]/[MEDIUM]/[LOW])
+
+### Performance
+- **Response Time**: [AVERAGE_TIME]ms (Target: [TARGET]ms)
+- **Throughput**: [REQUESTS_PER_SECOND] (Target: [TARGET])
+- **Uptime**: [PERCENTAGE]% (Target: [TARGET]%)
+
+## Risk Status
+
+### High Priority Risks
+1. **[RISK_NAME]** - Probability: [LEVEL], Impact: [LEVEL]
+   - Status: [CURRENT_STATUS]
+   - Mitigation: [MITIGATION_ACTION]
+   - Owner: [RISK_OWNER]
+
+### Risk Trend
+- **New Risks Identified**: [NUMBER] this period
+- **Risks Mitigated**: [NUMBER] this period
+- **Overall Risk Score**: [SCORE] (Previous: [PREVIOUS_SCORE])
+
+## Resource Utilization
+
+### Team Capacity
+- **Total Available Hours**: [HOURS] per week
+- **Current Utilization**: [PERCENTAGE]%
+- **AI Tool Budget**: $[AMOUNT] / $[BUDGET] ([PERCENTAGE]% used)
+
+### Resource Optimization
+- **Bottlenecks Identified**: [NUMBER]
+- **Optimization Opportunities**: [NUMBER]
+- **Cross-training Needs**: [NUMBER] skills gaps identified
+
+## AI Assistance Effectiveness
+
+### AI Integration Success
+- **Code Generation Accuracy**: [PERCENTAGE]% first-pass success
+- **Test Generation Quality**: [PERCENTAGE]% of AI tests require minimal modification
+- **Specification Analysis**: [PERCENTAGE]% of requirements gaps identified by AI
+
+### Cost Efficiency
+- **AI Cost per Feature**: $[AMOUNT] (Target: $[TARGET])
+- **Development Velocity Improvement**: [PERCENTAGE]% increase
+- **Quality Improvement**: [PERCENTAGE]% reduction in defects
+
+## Deployment Readiness
+
+### Alpha Deployment
+- **Readiness**: [PERCENTAGE]%
+- **Blocking Issues**: [NUMBER]
+- **Target Date**: [DATE] (On track/At risk/Behind schedule)
+
+### Production Deployment
+- **Overall Readiness**: [PERCENTAGE]%
+- **Critical Path**: [CRITICAL_PATH_ITEMS]
+- **Target Date**: [DATE] (On track/At risk/Behind schedule)
+
+## Key Achievements This Period
+
+### Development Milestones
+- [MILESTONE_1]: [ACHIEVEMENT_DESCRIPTION]
+- [MILESTONE_2]: [ACHIEVEMENT_DESCRIPTION]
+- [MILESTONE_3]: [ACHIEVEMENT_DESCRIPTION]
+
+### Quality Improvements
+- [IMPROVEMENT_1]: [SPECIFIC_IMPROVEMENT_DETAILS]
+- [IMPROVEMENT_2]: [SPECIFIC_IMPROVEMENT_DETAILS]
+
+### Process Optimizations
+- [OPTIMIZATION_1]: [EFFICIENCY_GAIN_ACHIEVED]
+- [OPTIMIZATION_2]: [COST_REDUCTION_ACHIEVED]
+
+## Next Period Priorities
+
+### Immediate Focus (Next 2 Weeks)
+1. [PRIORITY_1]: [SPECIFIC_ACTION] - Owner: [PERSON]
+2. [PRIORITY_2]: [SPECIFIC_ACTION] - Owner: [PERSON]
+3. [PRIORITY_3]: [SPECIFIC_ACTION] - Owner: [PERSON]
+
+### Strategic Initiatives (Next Month)
+- [INITIATIVE_1]: [DESCRIPTION_AND_TARGET]
+- [INITIATIVE_2]: [DESCRIPTION_AND_TARGET]
+
+### Risk Mitigation Actions
+- [MITIGATION_1]: [SPECIFIC_ACTION_AND_TIMELINE]
+- [MITIGATION_2]: [SPECIFIC_ACTION_AND_TIMELINE]
+
+---
+
+*This implementation roadmap template provides systematic planning and execution framework for AI-augmented development, ensuring that implementation progress maintains quality standards while achieving business objectives. It serves as persistent memory for strategic decisions and progress tracking, enabling continuous optimization of development processes and outcomes.*
+
+*Last updated: [TIMESTAMP] by [ROADMAP_LEAD]*
+*Next roadmap review: [DATE]*

@@ -1,0 +1,12 @@
+flask
+flask-cors
+google-generativeai
+chromadb
+sentence-transformers
+cryptography
+python-dotenv
+requests
+numpy
+pandas
+scikit-learn
+nltk

@@ -1,0 +1,15 @@
+🚀 Starting AMC8 Learning Platform v3.0...
+📚 Loaded 37 problems from question bank
+📈 Progress data loaded successfully
+✅ AMC8 Learning Platform is running!
+🌐 Dashboard: http://localhost:3000
+📚 Study Guide: http://localhost:3000/study
+🎮 Practice: http://localhost:3000/practice
+📊 Browse Problems: http://localhost:3000/browse
+🔗 API: http://localhost:3000/api
+
+📁 Modular Architecture:
+   ├── routes/        (Route handlers)
+   ├── services/      (Business logic)
+   ├── views/         (HTML generation)
+   └── utils/         (Helper functions)

@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Prism syntax highlighting theme */
+@import 'prismjs/themes/prism-tomorrow.css';
+
+/* Custom styles */
+body {
+  @apply text-gray-900;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Code block improvements */
+pre[class*="language-"] {
+  @apply rounded-lg my-6;
+}
+
+code[class*="language-"] {
+  @apply text-sm;
+}
+
+/* Link styles */
+a {
+  @apply transition-colors duration-200;
+}

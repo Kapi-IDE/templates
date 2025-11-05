@@ -1,0 +1,42 @@
+{
+  "version": "2025.02.01",
+  "releasedAt": "2025-02-01T00:00:00.000Z",
+  "platforms": {
+    "darwin-arm64": {
+      "version": "2025.02.01",
+      "bundle": {
+        "fileName": "kapi-toolkit-darwin-arm64.tar.zst",
+        "sha256": "REPLACE_WITH_REAL_SHA256",
+        "size": 0,
+        "compression": "tar.zst"
+      },
+      "tools": {
+        "semgrep": {
+          "version": "1.72.0",
+          "sha256": "REPLACE_WITH_REAL_SHA256",
+          "size": 0
+        },
+        "gitleaks": {
+          "version": "8.30.1",
+          "sha256": "REPLACE_WITH_REAL_SHA256",
+          "size": 0
+        },
+        "scc": {
+          "version": "3.5.0",
+          "sha256": "REPLACE_WITH_REAL_SHA256",
+          "size": 0
+        },
+        "jscpd": {
+          "version": "4.0.0",
+          "sha256": "REPLACE_WITH_REAL_SHA256",
+          "size": 0
+        },
+        "hugot-embeddings": {
+          "version": "all-MiniLM-L6-v2",
+          "sha256": "6fd5d72fe4589f189f8ebc006442dbb529bb7ce38f8082112682524616046452",
+          "size": 90405214
+        }
+      }
+    }
+  }
+}

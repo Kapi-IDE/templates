@@ -1,0 +1,39 @@
+component_id: gemini-client-wrapper
+name: Gemini Client Wrapper
+version: 0.1.0
+category: backend
+subcategory: llm-wrapper
+type: component
+component_type: service
+languages: python
+frameworks: none
+tech_stack: google-generativeai
+provides:
+  - llm_interface
+  - text_generation
+  - structured_extraction
+compatible_with:
+  - python>=3.9
+  - google-generativeai>=0.3.0
+incompatible_with: []
+dependencies:
+  runtime:
+    - google-generativeai
+metrics:
+  token_savings: 2500
+  lines_of_code: 70
+  setup_time_minutes: 2
+  complexity: low
+description: |
+  Configurable Gemini client that handles API key discovery, text generation, structured JSON extraction, and health checks for Python agents.
+voice_patterns:
+  - "gemini client"
+  - "llm wrapper"
+  - "generative ai helper"
+installation:
+  steps:
+    - Copy the component into your project or install through the component installer.
+    - Set `GOOGLE_API_KEY` in the environment.
+usage_examples:
+  - path: example/use_client.py
+    description: Minimal script demonstrating the wrapper.

@@ -1,0 +1,250 @@
+{
+  "finra_rules": {
+    "rule_2111_suitability": {
+      "description": "FINRA Rule 2111 - Suitability requirements for investment recommendations",
+      "requirements": [
+        "Reasonable basis suitability",
+        "Customer-specific suitability", 
+        "Quantitative suitability"
+      ],
+      "risk_tolerance_mapping": {
+        "conservative": {
+          "max_risk_score": 4,
+          "suitable_instruments": ["bonds", "dividend_stocks", "money_market", "conservative_mutual_funds"],
+          "unsuitable_instruments": ["options", "futures", "speculative_stocks", "high_yield_bonds"]
+        },
+        "moderate": {
+          "max_risk_score": 7,
+          "suitable_instruments": ["growth_stocks", "balanced_funds", "corporate_bonds", "etfs"],
+          "unsuitable_instruments": ["commodity_futures", "penny_stocks", "complex_derivatives"]
+        },
+        "aggressive": {
+          "max_risk_score": 10,
+          "suitable_instruments": ["growth_stocks", "emerging_markets", "sector_funds", "reits"],
+          "monitor_carefully": ["options", "leveraged_etfs", "individual_stocks"]
+        }
+      }
+    },
+    "rule_3110_supervision": {
+      "description": "FINRA Rule 3110 - Supervision requirements",
+      "requirements": [
+        "Written supervisory procedures",
+        "Designated supervisory person",
+        "Regular review of transactions",
+        "Exception reporting"
+      ],
+      "review_frequencies": {
+        "high_risk_transactions": "Real-time",
+        "customer_complaints": "Immediate",
+        "investment_recommendations": "Daily",
+        "portfolio_reviews": "Quarterly"
+      }
+    }
+  },
+  "sec_regulations": {
+    "investment_advisers_act": {
+      "rule_206_4_7": {
+        "description": "Compliance policies and procedures",
+        "requirements": [
+          "Written compliance policies",
+          "Annual compliance review",
+          "Chief compliance officer",
+          "Compliance training"
+        ]
+      },
+      "regulation_best_interest": {
+        "description": "Regulation Best Interest (Reg BI)",
+        "requirements": [
+          "Act in customer's best interest",
+          "Disclosure of material facts",
+          "Care obligation",
+          "Conflict of interest mitigation"
+        ],
+        "disclosure_requirements": [
+          "Fees and costs",
+          "Material conflicts of interest",
+          "Disciplinary history",
+          "Business model"
+        ]
+      }
+    }
+  },
+  "soc2_compliance": {
+    "trust_services_criteria": {
+      "security": {
+        "description": "Information and systems are protected against unauthorized access",
+        "controls": [
+          "Access controls",
+          "Data encryption",
+          "Network security",
+          "Security monitoring"
+        ]
+      },
+      "availability": {
+        "description": "Information and systems are available for operation and use",
+        "controls": [
+          "System monitoring",
+          "Capacity management", 
+          "Backup procedures",
+          "Disaster recovery"
+        ]
+      },
+      "confidentiality": {
+        "description": "Information designated as confidential is protected",
+        "controls": [
+          "Data classification",
+          "Access restrictions",
+          "Confidentiality agreements",
+          "Secure disposal"
+        ]
+      },
+      "privacy": {
+        "description": "Personal information is collected, used, retained, and disposed of properly",
+        "controls": [
+          "Privacy notice",
+          "Consent management",
+          "Data retention policies",
+          "Third-party oversight"
+        ]
+      }
+    }
+  },
+  "concentration_limits": {
+    "individual_securities": {
+      "conservative": 0.10,
+      "moderate": 0.15,
+      "aggressive": 0.20
+    },
+    "sector_allocation": {
+      "conservative": 0.25,
+      "moderate": 0.30,
+      "aggressive": 0.35
+    },
+    "asset_class": {
+      "equity_max": 0.80,
+      "fixed_income_max": 0.80,
+      "alternatives_max": 0.15,
+      "cash_max": 0.20
+    }
+  },
+  "risk_management": {
+    "var_limits": {
+      "conservative": {
+        "1_day_var_95": 0.02,
+        "10_day_var_95": 0.08
+      },
+      "moderate": {
+        "1_day_var_95": 0.03,
+        "10_day_var_95": 0.12
+      },
+      "aggressive": {
+        "1_day_var_95": 0.05,
+        "10_day_var_95": 0.18
+      }
+    },
+    "stress_test_scenarios": {
+      "market_crash": {
+        "equity_decline": -0.30,
+        "bond_decline": -0.10,
+        "probability": 0.05
+      },
+      "interest_rate_shock": {
+        "rate_increase": 0.02,
+        "bond_impact": -0.15,
+        "probability": 0.15
+      },
+      "recession": {
+        "equity_decline": -0.25,
+        "credit_spread_widening": 0.03,
+        "probability": 0.20
+      }
+    }
+  },
+  "documentation_requirements": {
+    "investment_recommendation": {
+      "required_elements": [
+        "Investment rationale",
+        "Risk assessment",
+        "Suitability analysis",
+        "Price target and timeline",
+        "Exit strategy",
+        "Client acknowledgment"
+      ],
+      "retention_period": "7 years"
+    },
+    "client_profile": {
+      "required_elements": [
+        "Financial situation",
+        "Investment experience",
+        "Investment objectives",
+        "Risk tolerance",
+        "Time horizon",
+        "Liquidity needs"
+      ],
+      "update_frequency": "Annual or upon material change",
+      "retention_period": "7 years after account closure"
+    }
+  },
+  "escalation_procedures": {
+    "suitability_concerns": {
+      "level_1": {
+        "trigger": "Automated system flags",
+        "action": "Supervisor review within 1 business day",
+        "authority": "Branch manager"
+      },
+      "level_2": {
+        "trigger": "Supervisor escalation or customer complaint",
+        "action": "Compliance review within 2 business days",
+        "authority": "Chief compliance officer"
+      },
+      "level_3": {
+        "trigger": "Potential regulatory violation",
+        "action": "Legal review and potential regulatory notification",
+        "authority": "Senior management and legal counsel"
+      }
+    }
+  },
+  "training_requirements": {
+    "initial_training": {
+      "new_advisors": "40 hours within first 90 days",
+      "topics": [
+        "FINRA regulations",
+        "SEC requirements",
+        "Suitability analysis",
+        "Product knowledge",
+        "Ethics and professional conduct"
+      ]
+    },
+    "ongoing_training": {
+      "frequency": "Annual",
+      "minimum_hours": 15,
+      "required_topics": [
+        "Regulatory updates",
+        "Product updates", 
+        "Risk management",
+        "Technology systems"
+      ]
+    }
+  },
+  "audit_requirements": {
+    "internal_audit": {
+      "frequency": "Annual",
+      "scope": [
+        "Compliance procedures",
+        "Supervisory procedures",
+        "Customer complaint handling",
+        "Books and records"
+      ]
+    },
+    "regulatory_examination": {
+      "finra_cycle": "Every 1-4 years depending on firm size",
+      "sec_cycle": "Every 1-5 years depending on firm size",
+      "preparation_requirements": [
+        "Complete books and records",
+        "Compliance manual current",
+        "Exception reports available",
+        "Training records current"
+      ]
+    }
+  }
+}

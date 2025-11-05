@@ -1,0 +1,49 @@
+component_id: meme-text-overlay
+name: Meme Text Overlay Processor
+version: 1.0.0
+category: backend
+subcategory: image-processing
+language: Python
+framework: PIL/Pillow
+
+description: |
+  Image processing component for adding text overlays to images.
+  Designed for meme generation with automatic text wrapping, outlines,
+  and template-based positioning.
+
+features:
+  - Text overlay with custom positioning
+  - Automatic text wrapping
+  - Outline text for readability
+  - Meme template support
+  - Image resizing and optimization
+  - Multiple output formats (PNG, JPEG)
+
+dependencies:
+  - pillow>=10.4.0
+
+use_cases:
+  - Meme generation
+  - Image annotation
+  - Watermarking
+  - Social media graphics
+  - Marketing materials
+
+created_for: blueprints/quickwins/meme-generator
+
+example_usage: |
+  from meme_text_overlay import ImageProcessor
+
+  processor = ImageProcessor(font_size=50)
+
+  # Create meme with custom text
+  meme_bytes = processor.create_meme(
+      image_input="photo.jpg",
+      texts=["Top text", "Bottom text"],
+      resize=True,
+      output_format="PNG"
+  )
+
+  # Save result
+  with open("meme.png", "wb") as f:
+      f.write(meme_bytes)
